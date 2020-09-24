@@ -25,7 +25,8 @@ final class Screens {
 extension Screens {
 
     func createHome() -> UIViewController {
-        return HomeViewController()
+        let viewModel = HomeViewModel()
+        return HomeViewController(viewModel: viewModel)
     }
 
 }

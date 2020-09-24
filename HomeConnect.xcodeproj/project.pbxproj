@@ -8,14 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
-		56D7DFE6251C903400DD5B37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE5251C903400DD5B37 /* SceneDelegate.swift */; };
-		56D7DFE8251C903400DD5B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE7251C903400DD5B37 /* ViewController.swift */; };
-		56D7DFEB251C903400DD5B37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFE9251C903400DD5B37 /* Main.storyboard */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
 		56D7DFF3251C903500DD5B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */; };
 		56D7DFFE251C903500DD5B37 /* HomeConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFFD251C903500DD5B37 /* HomeConnectTests.swift */; };
 		56D7E009251C903500DD5B37 /* HomeConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */; };
+		56D7E038251C97B900DD5B37 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E037251C97B900DD5B37 /* Context.swift */; };
+		56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */; };
+		56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E05D251C9B4E00DD5B37 /* Screens.swift */; };
+		56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E065251C9B7300DD5B37 /* HomeCoordinator.swift */; };
+		56D7E06D251C9BF000DD5B37 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E06C251C9BF000DD5B37 /* HTTPClient.swift */; };
+		56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E074251C9BFF00DD5B37 /* HTTPEngine.swift */; };
+		56D7E07A251C9C1600DD5B37 /* RequestCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E079251C9C1600DD5B37 /* RequestCancellationToken.swift */; };
+		56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E07E251C9CF700DD5B37 /* HomeViewController.swift */; };
+		56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E086251C9D0C00DD5B37 /* LightViewController.swift */; };
+		56D7E08C251C9D1900DD5B37 /* RollerShutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E08B251C9D1900DD5B37 /* RollerShutterViewController.swift */; };
+		56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E090251C9D2200DD5B37 /* HeaterViewController.swift */; };
+		56D7E096251C9D2E00DD5B37 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E095251C9D2E00DD5B37 /* FiltersViewController.swift */; };
+		56D7E09B251C9D3D00DD5B37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E09A251C9D3D00DD5B37 /* ProfileViewController.swift */; };
+		56D7E0A0251C9D5400DD5B37 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */; };
+		56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0A4251C9D5D00DD5B37 /* LightViewModel.swift */; };
+		56D7E0B2251C9D7E00DD5B37 /* RollerShutterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0B1251C9D7E00DD5B37 /* RollerShutterViewModel.swift */; };
+		56D7E0B7251C9D8700DD5B37 /* HeaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0B6251C9D8700DD5B37 /* HeaterViewModel.swift */; };
+		56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */; };
+		56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +54,6 @@
 /* Begin PBXFileReference section */
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		56D7DFE5251C903400DD5B37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		56D7DFE7251C903400DD5B37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		56D7DFEA251C903400DD5B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
 		56D7DFEF251C903500DD5B37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D7DFF2251C903500DD5B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +64,25 @@
 		56D7E004251C903500DD5B37 /* HomeConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectUITests.swift; sourceTree = "<group>"; };
 		56D7E00A251C903500DD5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D7E037251C97B900DD5B37 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		56D7E05D251C9B4E00DD5B37 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
+		56D7E065251C9B7300DD5B37 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		56D7E06C251C9BF000DD5B37 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		56D7E074251C9BFF00DD5B37 /* HTTPEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEngine.swift; sourceTree = "<group>"; };
+		56D7E079251C9C1600DD5B37 /* RequestCancellationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCancellationToken.swift; sourceTree = "<group>"; };
+		56D7E07E251C9CF700DD5B37 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		56D7E086251C9D0C00DD5B37 /* LightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
+		56D7E08B251C9D1900DD5B37 /* RollerShutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterViewController.swift; sourceTree = "<group>"; };
+		56D7E090251C9D2200DD5B37 /* HeaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterViewController.swift; sourceTree = "<group>"; };
+		56D7E095251C9D2E00DD5B37 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		56D7E09A251C9D3D00DD5B37 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		56D7E0A4251C9D5D00DD5B37 /* LightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModel.swift; sourceTree = "<group>"; };
+		56D7E0B1251C9D7E00DD5B37 /* RollerShutterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterViewModel.swift; sourceTree = "<group>"; };
+		56D7E0B6251C9D8700DD5B37 /* HeaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterViewModel.swift; sourceTree = "<group>"; };
+		56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
+		56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +133,10 @@
 		56D7DFE2251C903400DD5B37 /* HomeConnect */ = {
 			isa = PBXGroup;
 			children = (
-				56D7DFE3251C903400DD5B37 /* AppDelegate.swift */,
-				56D7DFE5251C903400DD5B37 /* SceneDelegate.swift */,
-				56D7DFE7251C903400DD5B37 /* ViewController.swift */,
-				56D7DFE9251C903400DD5B37 /* Main.storyboard */,
-				56D7DFEF251C903500DD5B37 /* Assets.xcassets */,
-				56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */,
-				56D7DFF4251C903500DD5B37 /* Info.plist */,
+				56D7E01B251C909700DD5B37 /* Sources */,
+				56D7E02D251C91C200DD5B37 /* Network */,
+				56D7E0D1251CA20600DD5B37 /* Database */,
+				56D7E01C251C909B00DD5B37 /* Ressources */,
 				56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */,
 			);
 			path = HomeConnect;
@@ -131,6 +160,121 @@
 			path = HomeConnectUITests;
 			sourceTree = "<group>";
 		};
+		56D7E01B251C909700DD5B37 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E037251C97B900DD5B37 /* Context.swift */,
+				56D7DFE3251C903400DD5B37 /* AppDelegate.swift */,
+				56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */,
+				56D7E05C251C9AD000DD5B37 /* Screens */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		56D7E01C251C909B00DD5B37 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				56D7DFF4251C903500DD5B37 /* Info.plist */,
+				56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */,
+				56D7DFEF251C903500DD5B37 /* Assets.xcassets */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		56D7E02A251C919800DD5B37 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E07E251C9CF700DD5B37 /* HomeViewController.swift */,
+				56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		56D7E02B251C91A700DD5B37 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E09A251C9D3D00DD5B37 /* ProfileViewController.swift */,
+				56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		56D7E02C251C91AE00DD5B37 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E095251C9D2E00DD5B37 /* FiltersViewController.swift */,
+				56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		56D7E02D251C91C200DD5B37 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E06C251C9BF000DD5B37 /* HTTPClient.swift */,
+				56D7E074251C9BFF00DD5B37 /* HTTPEngine.swift */,
+				56D7E079251C9C1600DD5B37 /* RequestCancellationToken.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		56D7E031251C941100DD5B37 /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E086251C9D0C00DD5B37 /* LightViewController.swift */,
+				56D7E0A4251C9D5D00DD5B37 /* LightViewModel.swift */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
+		56D7E032251C941E00DD5B37 /* RollerShutter */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E08B251C9D1900DD5B37 /* RollerShutterViewController.swift */,
+				56D7E0B1251C9D7E00DD5B37 /* RollerShutterViewModel.swift */,
+			);
+			path = RollerShutter;
+			sourceTree = "<group>";
+		};
+		56D7E033251C943100DD5B37 /* Heater */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E090251C9D2200DD5B37 /* HeaterViewController.swift */,
+				56D7E0B6251C9D8700DD5B37 /* HeaterViewModel.swift */,
+			);
+			path = Heater;
+			sourceTree = "<group>";
+		};
+		56D7E034251C944500DD5B37 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E031251C941100DD5B37 /* Light */,
+				56D7E032251C941E00DD5B37 /* RollerShutter */,
+				56D7E033251C943100DD5B37 /* Heater */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		56D7E05C251C9AD000DD5B37 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E05D251C9B4E00DD5B37 /* Screens.swift */,
+				56D7E065251C9B7300DD5B37 /* HomeCoordinator.swift */,
+				56D7E02A251C919800DD5B37 /* Home */,
+				56D7E034251C944500DD5B37 /* Devices */,
+				56D7E02C251C91AE00DD5B37 /* Filters */,
+				56D7E02B251C91A700DD5B37 /* Profile */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		56D7E0D1251CA20600DD5B37 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +285,7 @@
 				56D7DFDC251C903400DD5B37 /* Sources */,
 				56D7DFDD251C903400DD5B37 /* Frameworks */,
 				56D7DFDE251C903400DD5B37 /* Resources */,
+				56D7E058251C99A100DD5B37 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -236,7 +381,6 @@
 			files = (
 				56D7DFF3251C903500DD5B37 /* LaunchScreen.storyboard in Resources */,
 				56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */,
-				56D7DFEB251C903400DD5B37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,14 +400,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56D7E058251C99A100DD5B37 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		56D7DFDC251C903400DD5B37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D7DFE8251C903400DD5B37 /* ViewController.swift in Sources */,
+				56D7E0A0251C9D5400DD5B37 /* HomeViewModel.swift in Sources */,
+				56D7E07A251C9C1600DD5B37 /* RequestCancellationToken.swift in Sources */,
+				56D7E08C251C9D1900DD5B37 /* RollerShutterViewController.swift in Sources */,
+				56D7E0B2251C9D7E00DD5B37 /* RollerShutterViewModel.swift in Sources */,
+				56D7E0B7251C9D8700DD5B37 /* HeaterViewModel.swift in Sources */,
 				56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */,
-				56D7DFE6251C903400DD5B37 /* SceneDelegate.swift in Sources */,
+				56D7E096251C9D2E00DD5B37 /* FiltersViewController.swift in Sources */,
+				56D7E06D251C9BF000DD5B37 /* HTTPClient.swift in Sources */,
+				56D7E09B251C9D3D00DD5B37 /* ProfileViewController.swift in Sources */,
+				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
+				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
+				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
+				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
+				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
+				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
+				56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */,
+				56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */,
+				56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */,
+				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
+				56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */,
 				56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,14 +481,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		56D7DFE9251C903400DD5B37 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				56D7DFEA251C903400DD5B37 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +615,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
-				INFOPLIST_FILE = HomeConnect/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/HomeConnect/Ressources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +623,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.PaulineNomballais.HomeConnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -461,7 +634,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
-				INFOPLIST_FILE = HomeConnect/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/HomeConnect/Ressources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.PaulineNomballais.HomeConnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

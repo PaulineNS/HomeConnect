@@ -5,4 +5,27 @@
 //  Created by Pauline Nomballais on 24/09/2020.
 //
 
-import Foundation
+import UIKit
+
+final class Screens {
+
+    // MARK: - Properties
+
+    private let context: Context
+
+    // MARK: - Initializer
+
+    init(context: Context) {
+        self.context = context
+    }
+}
+
+// Home
+
+extension Screens {
+
+    func createHome() -> UIViewController {
+        return HomeViewController()
+    }
+
+}

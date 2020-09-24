@@ -137,7 +137,6 @@
 				56D7E02D251C91C200DD5B37 /* Network */,
 				56D7E0D1251CA20600DD5B37 /* Database */,
 				56D7E01C251C909B00DD5B37 /* Ressources */,
-				56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */,
 			);
 			path = HomeConnect;
 			sourceTree = "<group>";
@@ -271,6 +270,7 @@
 		56D7E0D1251CA20600DD5B37 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";

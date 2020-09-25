@@ -11,8 +11,9 @@ class HomeViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let viewModel: HomeViewModel
     private lazy var collectionView = UICollectionView()
+    private lazy var source: HomeDataSource = HomeDataSource()
+    private let viewModel: HomeViewModel
 
     // MARK: - Initializer
 
@@ -27,22 +28,29 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUI()
+        setNavigationBar()
+        setCollectionView()
+        collectionView.delegate = source
+        collectionView.dataSource = source
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bind(to: source)
+        bind(to: viewModel)
+
+        viewModel.viewDidLoad()
     }
 
     // MARK: - Configure UI
 
-    private func setUI() {
+    private func setNavigationBar() {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.title = "Coucou"
+    }
 
+    private func setCollectionView() {
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
@@ -51,49 +59,23 @@ class HomeViewController: UIViewController {
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.backgroundColor = .white
-
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionView.setCollectionViewLayout(collectionViewFlowLayout, animated: true)
         collectionViewFlowLayout.scrollDirection = .vertical
         collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collectionViewFlowLayout.minimumInteritemSpacing = 10
         collectionViewFlowLayout.minimumLineSpacing = 10
-
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "deviceCell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegate,
-                              UICollectionViewDataSource,
-                              UICollectionViewDelegateFlowLayout {
-
-    // MARK: - UICollectionViewDataSource
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceCell",
-                                                            for: indexPath) as? HomeCollectionViewCell else {
-            return UICollectionViewCell()
+    private func bind(to source: HomeDataSource) {
+        source.selectedDevice = viewModel.didSelectItem
+    }
+
+    private func bind(to viewModel: HomeViewModel) {
+
+        viewModel.homeTitle = { [weak self] title in
+            self?.navigationController?.navigationBar.topItem?.title = title
         }
-
-        cell.autoLayoutCell()
-        return cell
-    }
-
-    // MARK: - UICollectionViewDelegateFlowLayout
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (UIScreen.main.bounds.size.width - 3 * 10) / 2
-        let height = width
-        return CGSize(width: width, height: height)
     }
 }

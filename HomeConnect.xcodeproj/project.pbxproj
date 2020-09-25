@@ -33,6 +33,7 @@
 		56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */; };
 		56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */; };
 		56D7E0E8251CC7AA00DD5B37 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */; };
+		56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				56D7E07E251C9CF700DD5B37 /* HomeViewController.swift */,
 				56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */,
 				56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */,
+				56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				56D7E096251C9D2E00DD5B37 /* FiltersViewController.swift in Sources */,
 				56D7E06D251C9BF000DD5B37 /* HTTPClient.swift in Sources */,
 				56D7E09B251C9D3D00DD5B37 /* ProfileViewController.swift in Sources */,
+				56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */,
 				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
 				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,

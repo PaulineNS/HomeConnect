@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+final class RequestCancellationToken {
+
+    init() {}
+
+    var willDealocate: (() -> Void)?
+
+    deinit {
+        willDealocate?()
+    }
+}

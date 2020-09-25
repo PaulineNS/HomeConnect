@@ -20,13 +20,49 @@ final class Screens {
     }
 }
 
-// Home
+// MARK: - Fetch Devices
+
+protocol HomeScreenDelegate: class {
+//    func artistSearchScreenDidSelectArtist(for id: Int)
+    func homeScreenShouldDisplayAlert(for type: AlertType)
+}
+
+// MARK: - Home
 
 extension Screens {
 
-    func createHome() -> UIViewController {
-        let viewModel = HomeViewModel()
+    func createHome(delegate: HomeScreenDelegate?) -> UIViewController {
+
+//        if firstOpen {
+//
+//        }
+        let repository = HomeRepository(networkClient: context.client,
+                                        token: context.requestCancellation,
+                                        dependanceType: .network)
+        let viewModel = HomeViewModel(repository: repository, delegate: delegate)
         return HomeViewController(viewModel: viewModel)
+
+//        else {
+//            let repository = HomeRepository(networkClient: context.client,
+//        token: context.requestCancellation,
+//        dependanceType: .persistence)
+//            let viewModel = HomeViewModel(repository: repository, delegate: delegate)
+//            return HomeViewController(viewModel: viewModel)
+//        }
+    }
+
+}
+
+// MARK: - Alert
+
+extension Screens {
+
+    func createAlert(for type: AlertType) -> UIAlertController {
+        let alert = Alert(type: type)
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertController.addAction(action)
+        return alertController
     }
 
 }

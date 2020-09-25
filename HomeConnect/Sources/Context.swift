@@ -11,16 +11,16 @@ final class Context {
 
     // MARK: - Properties
 
-//    let client: HTTPClientType
-//    let engine: HTTPEngineType
-//    let requestCancellation: RequestCancellationToken
+    let client: HTTPClientType
+    let engine: HTTPEngineType
+    let requestCancellation: RequestCancellationToken
 
     // MARK: - Initializer
 
     private init() {
-//        self.client = HTTPClient()
-//        self.engine = HTTPEngine()
-//        self.requestCancellation = RequestCancellationToken()
+        self.engine = HTTPEngine()
+        self.client = HTTPClient(engine: engine)
+        self.requestCancellation = RequestCancellationToken()
     }
 
     // MARK: - Build

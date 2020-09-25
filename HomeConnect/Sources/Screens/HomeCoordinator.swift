@@ -31,9 +31,26 @@ final class HomeCoordinator {
         showHome()
     }
 
+    // MARK: - Home
+
     private func showHome() {
-        let viewController = screens.createHome()
+        let viewController = screens.createHome(delegate: self)
         navigationController.viewControllers = [viewController]
+    }
+
+    // MARK: - Alert
+
+    private func showAlert(for type: AlertType) {
+        let alert = screens.createAlert(for: type)
+        navigationController.visibleViewController?.present(alert, animated: true, completion: nil)
+    }
+
+}
+
+extension HomeCoordinator: HomeScreenDelegate {
+
+    func homeScreenShouldDisplayAlert(for type: AlertType) {
+        showAlert(for: type)
     }
 
 }

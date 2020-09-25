@@ -7,20 +7,28 @@
 
 import UIKit
 
-final class HomeDataSource: NSObject,
-                            UICollectionViewDataSource,
-                            UICollectionViewDelegate {
+final class HomeDataSource: NSObject {
 
     // MARK: - Public properties
 
-    private var devices: [Int] = [] //Devices
-    var selectedDevice: ((Int) -> Void)?
+    private var devices: [DeviceElement] = []
+    var selectedDevice: ((DeviceElement) -> Void)?
+
+    // MARK: - Methods
+
+    func updateCell (with devices: [DeviceElement]) {
+        self.devices = devices
+    }
+
+}
+
+extension HomeDataSource: UICollectionViewDataSource,
+                          UICollectionViewDelegate {
 
     // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
-//        return devices.count
+        return devices.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -31,6 +39,8 @@ final class HomeDataSource: NSObject,
         }
 
         cell.autoLayoutCell()
+        cell.updateCell(with: devices[indexPath.row])
+//        cell.updateCell(with: devices[indexPath.row].devices)
 //        cell.updateCell(with: devices[indexPath.row])
         return cell
     }
@@ -39,6 +49,7 @@ final class HomeDataSource: NSObject,
         guard indexPath.row < devices.count else { return }
         selectedDevice?(devices[indexPath.row])
     }
+
 }
 
 extension HomeDataSource: UICollectionViewDelegateFlowLayout {

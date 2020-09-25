@@ -28,10 +28,13 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.viewWillAppear()
+
         setNavigationBar()
         setCollectionView()
         collectionView.delegate = source
         collectionView.dataSource = source
+
     }
 
     override func viewDidLoad() {
@@ -69,13 +72,21 @@ class HomeViewController: UIViewController {
     }
 
     private func bind(to source: HomeDataSource) {
-        source.selectedDevice = viewModel.didSelectItem
+//        source.selectedDevice = viewModel.didSelectItem
     }
 
     private func bind(to viewModel: HomeViewModel) {
 
         viewModel.homeTitle = { [weak self] title in
-            self?.navigationController?.navigationBar.topItem?.title = title
+            DispatchQueue.main.async {
+                self?.navigationController?.navigationBar.topItem?.title = title
+            }
+        }
+        viewModel.devicesDisplayed = { [weak self] devices in
+            DispatchQueue.main.async {
+                self?.source.updateCell(with: devices)
+                self?.collectionView.reloadData()
+            }
         }
     }
 }

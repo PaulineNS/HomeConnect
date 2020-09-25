@@ -11,7 +11,6 @@
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
 		56D7DFF3251C903500DD5B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */; };
-		56D7DFFE251C903500DD5B37 /* HomeConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFFD251C903500DD5B37 /* HomeConnectTests.swift */; };
 		56D7E009251C903500DD5B37 /* HomeConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */; };
 		56D7E038251C97B900DD5B37 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E037251C97B900DD5B37 /* Context.swift */; };
 		56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */; };
@@ -34,6 +33,10 @@
 		56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */; };
 		56D7E0E8251CC7AA00DD5B37 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */; };
 		56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */; };
+		56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E100251DC27700DD5B37 /* MockHTTPClient.swift */; };
+		56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E111251DC9F200DD5B37 /* HomeRepository.swift */; };
+		56D7E118251DCAA100DD5B37 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E117251DCAA100DD5B37 /* NetworkModel.swift */; };
+		56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E123251DCFB900DD5B37 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +64,6 @@
 		56D7DFF2251C903500DD5B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56D7DFF4251C903500DD5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D7DFF9251C903500DD5B37 /* HomeConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		56D7DFFD251C903500DD5B37 /* HomeConnectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectTests.swift; sourceTree = "<group>"; };
 		56D7DFFF251C903500DD5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D7E004251C903500DD5B37 /* HomeConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectUITests.swift; sourceTree = "<group>"; };
@@ -87,6 +89,11 @@
 		56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
+		56D7E0FF251DC27700DD5B37 /* HomeConnectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeConnectTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		56D7E100251DC27700DD5B37 /* MockHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPClient.swift; sourceTree = "<group>"; };
+		56D7E111251DC9F200DD5B37 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		56D7E117251DCAA100DD5B37 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		56D7E123251DCFB900DD5B37 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +144,7 @@
 		56D7DFE2251C903400DD5B37 /* HomeConnect */ = {
 			isa = PBXGroup;
 			children = (
+				56D7E116251DCA8300DD5B37 /* NetworkModel */,
 				56D7E01B251C909700DD5B37 /* Sources */,
 				56D7E02D251C91C200DD5B37 /* Network */,
 				56D7E0D1251CA20600DD5B37 /* Database */,
@@ -148,7 +156,7 @@
 		56D7DFFC251C903500DD5B37 /* HomeConnectTests */ = {
 			isa = PBXGroup;
 			children = (
-				56D7DFFD251C903500DD5B37 /* HomeConnectTests.swift */,
+				56D7E0FE251DC25400DD5B37 /* Network */,
 				56D7DFFF251C903500DD5B37 /* Info.plist */,
 			);
 			path = HomeConnectTests;
@@ -166,6 +174,7 @@
 		56D7E01B251C909700DD5B37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				56D7E122251DCFA500DD5B37 /* Alert */,
 				56D7E037251C97B900DD5B37 /* Context.swift */,
 				56D7DFE3251C903400DD5B37 /* AppDelegate.swift */,
 				56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */,
@@ -191,6 +200,7 @@
 				56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */,
 				56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */,
 				56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */,
+				56D7E111251DC9F200DD5B37 /* HomeRepository.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -281,6 +291,31 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		56D7E0FE251DC25400DD5B37 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E100251DC27700DD5B37 /* MockHTTPClient.swift */,
+				56D7E0FF251DC27700DD5B37 /* HomeConnectTests-Bridging-Header.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		56D7E116251DCA8300DD5B37 /* NetworkModel */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E117251DCAA100DD5B37 /* NetworkModel.swift */,
+			);
+			path = NetworkModel;
+			sourceTree = "<group>";
+		};
+		56D7E122251DCFA500DD5B37 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				56D7E123251DCFB900DD5B37 /* Alert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +387,7 @@
 					};
 					56D7DFF8251C903500DD5B37 = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
 						TestTargetID = 56D7DFDF251C903400DD5B37;
 					};
 					56D7E003251C903500DD5B37 = {
@@ -447,13 +483,16 @@
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
 				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
+				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
+				56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */,
 				56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */,
 				56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */,
 				56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */,
 				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
 				56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */,
 				56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */,
+				56D7E118251DCAA100DD5B37 /* NetworkModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D7DFFE251C903500DD5B37 /* HomeConnectTests.swift in Sources */,
+				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +698,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = HomeConnectTests/Info.plist;
@@ -670,6 +710,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.PaulineNomballais.HomeConnectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HomeConnectTests/Network/HomeConnectTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeConnect.app/HomeConnect";
@@ -681,6 +723,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = HomeConnectTests/Info.plist;
@@ -692,6 +735,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.PaulineNomballais.HomeConnectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HomeConnectTests/Network/HomeConnectTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeConnect.app/HomeConnect";

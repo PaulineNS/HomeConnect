@@ -11,12 +11,12 @@ final class HomeDataSource: NSObject {
 
     // MARK: - Public properties
 
-    private var devices: [DeviceElement] = []
-    var selectedDevice: ((DeviceElement) -> Void)?
+    private var devices: [DeviceResponse.Device] = []
+    var selectedDevice: ((DeviceResponse.Device) -> Void)?
 
     // MARK: - Methods
 
-    func updateCell (with devices: [DeviceElement]) {
+    func updateCell (with devices: [DeviceResponse.Device]) {
         self.devices = devices
     }
 

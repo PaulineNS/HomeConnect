@@ -14,6 +14,8 @@ final class Context {
     let client: HTTPClientType
     let engine: HTTPEngineType
     let requestCancellation: RequestCancellationToken
+    let dataBaseStack: DataBaseStack
+    let dataBaseManager: DataBaseManager
 
     // MARK: - Initializer
 
@@ -21,6 +23,8 @@ final class Context {
         self.engine = HTTPEngine()
         self.client = HTTPClient(engine: engine)
         self.requestCancellation = RequestCancellationToken()
+        self.dataBaseStack = DataBaseStack(modelName: "HomeConnect")
+        self.dataBaseManager = DataBaseManager(dataBaseStack: dataBaseStack)
     }
 
     // MARK: - Build

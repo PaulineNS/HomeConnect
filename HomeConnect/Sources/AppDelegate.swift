@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Properties
@@ -26,6 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                      context: context)
         coordinator.start()
         return true
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        context.dataBaseStack.saveContext()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        context.dataBaseStack.saveContext()
     }
 
 }

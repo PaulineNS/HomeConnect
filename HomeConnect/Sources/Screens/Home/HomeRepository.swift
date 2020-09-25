@@ -13,7 +13,7 @@ enum DependanceType {
 }
 
 protocol HomeRepositoryType: class {
-    func getAllDevices(callback: @escaping (Device) -> Void, failure: @escaping (() -> Void))
+    func getAllDevices(callback: @escaping (DeviceResponse) -> Void, failure: @escaping (() -> Void))
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -26,10 +26,6 @@ final class HomeRepository: HomeRepositoryType {
 
     let dependanceType: DependanceType
 
-//    private let errorHandler = URLRequestBuilder
-
-    private let cancellationToken = RequestCancellationToken()
-
     // MARK: - Init
 
     init(networkClient: HTTPClientType,
@@ -40,19 +36,21 @@ final class HomeRepository: HomeRepositoryType {
         self.dependanceType = dependanceType
     }
 
-    func getAllDevices(callback: @escaping (Device) -> Void,
+    func getAllDevices(callback: @escaping (DeviceResponse) -> Void,
                        failure: @escaping (() -> Void)) {
         switch dependanceType {
         case .network:
-            guard let url = URL(string: "https://storage42.com/modulotest/data.json") else {
+            guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
                 return
             }
             networkClient.request(requestType: .GET,
                                   url: url,
-                                  cancelledBy: token ) { (result: Result<Device, HTTPClientError>) in
+                                  cancelledBy: token ) { (result: Result<DeviceResponse, HTTPClientError>) in
+
                 switch result {
                 case .success(let response):
                     callback(response)
+                    // put inside data base
                 case .failure:
                     failure()
                 }

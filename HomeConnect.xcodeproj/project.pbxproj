@@ -37,6 +37,8 @@
 		56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E111251DC9F200DD5B37 /* HomeRepository.swift */; };
 		56D7E118251DCAA100DD5B37 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E117251DCAA100DD5B37 /* NetworkModel.swift */; };
 		56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E123251DCFB900DD5B37 /* Alert.swift */; };
+		56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */; };
+		56D7E139251DF9FF00DD5B37 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		56D7E111251DC9F200DD5B37 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		56D7E117251DCAA100DD5B37 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		56D7E123251DCFB900DD5B37 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseStack.swift; sourceTree = "<group>"; };
+		56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */,
+				56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */,
+				56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -471,6 +477,7 @@
 				56D7E07A251C9C1600DD5B37 /* RequestCancellationToken.swift in Sources */,
 				56D7E0E8251CC7AA00DD5B37 /* HomeCollectionViewCell.swift in Sources */,
 				56D7E08C251C9D1900DD5B37 /* RollerShutterViewController.swift in Sources */,
+				56D7E139251DF9FF00DD5B37 /* DatabaseManager.swift in Sources */,
 				56D7E0B2251C9D7E00DD5B37 /* RollerShutterViewModel.swift in Sources */,
 				56D7E0B7251C9D8700DD5B37 /* HeaterViewModel.swift in Sources */,
 				56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */,
@@ -481,6 +488,7 @@
 				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
 				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
+				56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */,
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
 				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
 				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
@@ -663,6 +671,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = "$(SRCROOT)/HomeConnect/Ressources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -682,6 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = "$(SRCROOT)/HomeConnect/Ressources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

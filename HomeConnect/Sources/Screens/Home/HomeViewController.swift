@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         collectionView.dataSource = source
 
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,15 +78,11 @@ class HomeViewController: UIViewController {
     private func bind(to viewModel: HomeViewModel) {
 
         viewModel.homeTitle = { [weak self] title in
-            DispatchQueue.main.async {
-                self?.navigationController?.navigationBar.topItem?.title = title
-            }
+            self?.navigationController?.navigationBar.topItem?.title = title
         }
         viewModel.devicesDisplayed = { [weak self] devices in
-            DispatchQueue.main.async {
-                self?.source.updateCell(with: devices)
-                self?.collectionView.reloadData()
-            }
+            self?.source.updateCell(with: devices)
+            self?.collectionView.reloadData()
         }
     }
 }

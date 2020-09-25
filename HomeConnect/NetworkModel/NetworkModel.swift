@@ -7,38 +7,40 @@
 
 import Foundation
 
-// MARK: - Device
-struct Device: Codable {
-    let devices: [DeviceElement]
-    let user: User
+// MARK: - DeviceResponse
+struct DeviceResponse: Decodable {
+    let devices: [Device]?
+    let user: User?
+
+    // MARK: - Device
+    struct Device: Decodable {
+        let id: Int?
+        let deviceName: String?
+        let intensity: Int?
+        let mode: String?
+        let productType: ProductType?
+        let position, temperature: Int?
+    }
+
+
+    enum ProductType: String, Decodable {
+        case heater = "Heater"
+        case light = "Light"
+        case rollerShutter = "RollerShutter"
+    }
+
+    // MARK: - User
+    struct User: Decodable {
+        let firstName, lastName: String?
+        let address: Address?
+        let birthDate: Int?
+
+        // MARK: - Address
+        struct Address: Decodable {
+            let city: String?
+            let postalCode: Int?
+            let street, streetCode, country: String?
+        }
+    }
 }
 
-// MARK: - DeviceElement
-struct DeviceElement: Codable {
-    let deviceId: Int
-    let deviceName: String
-    let intensity: Int?
-    let mode: String?
-    let productType: ProductType
-    let position, temperature: Int?
-}
-
-enum ProductType: String, Codable {
-    case heater = "Heater"
-    case light = "Light"
-    case rollerShutter = "RollerShutter"
-}
-
-// MARK: - User
-struct User: Codable {
-    let firstName, lastName: String
-    let address: Address
-    let birthDate: Int
-}
-
-// MARK: - Address
-struct Address: Codable {
-    let city: String
-    let postalCode: Int
-    let street, streetCode, country: String
-}

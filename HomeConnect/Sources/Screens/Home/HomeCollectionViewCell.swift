@@ -14,7 +14,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private var stackView: UIStackView = UIStackView()
     private var deviceImageView: UIImageView = UIImageView()
     private var deviceNameLabel: UILabel = UILabel()
-    private var device: DeviceElement? = nil {
+    private var device: DeviceResponse.Device? = nil {
         didSet {
             guard let device = self.device else { return }
             deviceNameLabel.text = device.deviceName
@@ -28,6 +28,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
             case .rollerShutter:
                 deviceImageView.image = UIImage(named: "rollerShutter")
                 self.backgroundColor = .green
+            case .none:
+                break
             }
         }
     }
@@ -60,7 +62,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 10
     }
 
-    func updateCell(with device: DeviceElement) {
+    func updateCell(with device: DeviceResponse.Device) {
         self.device = device
     }
 

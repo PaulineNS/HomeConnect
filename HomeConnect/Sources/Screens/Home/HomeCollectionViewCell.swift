@@ -19,13 +19,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
             guard let device = self.device else { return }
             deviceNameLabel.text = device.deviceName
             switch device.productType {
-            case "Heater":
+            case .heater:
                 deviceImageView.image = UIImage(named: "heater")
                 self.backgroundColor = .red
-            case "Light":
+            case .light:
                 deviceImageView.image = UIImage(named: "light")
                 self.backgroundColor = .blue
-            case "RollerShutter":
+            case .rollerShutter:
                 deviceImageView.image = UIImage(named: "rollerShutter")
                 self.backgroundColor = .green
             default:

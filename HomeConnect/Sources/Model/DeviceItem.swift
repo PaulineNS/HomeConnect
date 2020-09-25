@@ -12,16 +12,6 @@ struct DeviceItem: Equatable {
     let deviceName: String?
     let intensity: Int?
     let mode: String?
-    let productType: String
+    let productType: ProductType?
     let position, temperature: Int?
-
-    static func == (parameterLhs: DeviceItem, parameterRhs: DeviceItem) -> Bool {
-        return parameterLhs.idNumber == parameterRhs.idNumber
-            && parameterLhs.deviceName == parameterRhs.deviceName
-            && parameterLhs.intensity == parameterRhs.intensity
-            && parameterLhs.mode == parameterRhs.mode
-            && parameterLhs.productType == parameterRhs.productType
-            && parameterLhs.position == parameterRhs.position
-            && parameterLhs.temperature == parameterRhs.temperature
-    }
 }

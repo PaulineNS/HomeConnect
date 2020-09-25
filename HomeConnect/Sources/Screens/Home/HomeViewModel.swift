@@ -49,7 +49,7 @@ final class HomeViewModel {
     }
 
     private func getAllDevices() {
-        repository.getAllDevices(callback: { [weak self] response in
+        repository.getAllDevices(success: { [weak self] response in
             DispatchQueue.main.async {
                 self?.devices = response
             }

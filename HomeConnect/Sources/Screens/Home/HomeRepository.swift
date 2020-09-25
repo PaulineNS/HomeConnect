@@ -13,7 +13,7 @@ enum DependanceType {
 }
 
 protocol HomeRepositoryType: class {
-    func getAllDevices(callback: @escaping ([DeviceItem]) -> Void, failure: @escaping (() -> Void))
+    func getAllDevices(success: @escaping ([DeviceItem]) -> Void, failure: @escaping (() -> Void))
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -33,43 +33,61 @@ final class HomeRepository: HomeRepositoryType {
         self.token = token
         self.dependanceType = dependanceType
     }
-
-    func getAllDevices(callback: @escaping ([DeviceItem]) -> Void,
-                       failure: @escaping (() -> Void)) {
+    
+    // MARK: - HomeRepositoryType
+    
+    func getAllDevices(
+        success: @escaping ([DeviceItem]) -> Void,
+        failure: @escaping (() -> Void)
+    ){
         switch dependanceType {
         case .network:
-            guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
-                return
-            }
-            networkClient.request(requestType: .GET,
-                                  url: url,
-                                  cancelledBy: token ) { (result: Result<DeviceResponse, HTTPClientError>) in
-                switch result {
-                case .success(let response):
-                    if let deviceItems = self.convertObjectDevice(from: response) {
-                        callback(deviceItems)
-                    }
-                case .failure:
-                    failure()
-                }
-            }
+            executeNetworkRequest(success: success, failure: failure)
         case .persistence:
             print("")
         }
     }
 
-    func convertObjectDevice(from device: DeviceResponse) -> [DeviceItem]? {
-        let devices = device.devices.map {
-            $0.map { device in
-                DeviceItem(idNumber: device.idNumber,
-                           deviceName: device.deviceName,
-                           intensity: device.intensity,
-                           mode: device.mode,
-                           productType: device.productType?.rawValue ?? "",
-                           position: device.position,
-                           temperature: device.temperature)
+    private func executeNetworkRequest(
+        success: @escaping ([DeviceItem]) -> Void,
+        failure: @escaping (() -> Void)
+    ) {
+        guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
+            return
+        }
+        networkClient.request(
+            requestType: .GET,
+            url: url,
+            cancelledBy: token
+        ) { (result: Result<DeviceResponse, HTTPClientError>) in
+            switch result {
+            case .success(let response):
+                let devices = response
+                    .devices?
+                    .compactMap { DeviceItem(device: $0) } ?? []
+                success(devices)
+            case .failure:
+                failure()
             }
         }
-        return devices
     }
+}
+
+private extension DeviceItem {
+    init(device: DeviceResponse.Device) {
+        self.idNumber = device.idNumber
+        self.deviceName = device.deviceName
+        self.intensity = device.intensity
+        self.mode = device.mode
+        self.productType = ProductType(rawValue: device.productType ?? "")
+        self.position = device.position
+        self.temperature = device.temperature
+    }
+}
+
+// A deplacer
+enum ProductType: String {
+    case heater = "Heater"
+    case light = "Light"
+    case rollerShutter = "RollerShutter"
 }

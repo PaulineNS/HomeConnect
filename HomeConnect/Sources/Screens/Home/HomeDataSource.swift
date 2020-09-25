@@ -11,12 +11,12 @@ final class HomeDataSource: NSObject {
 
     // MARK: - Public properties
 
-    private var devices: [DeviceResponse.Device] = []
-    var selectedDevice: ((DeviceResponse.Device) -> Void)?
+    private var devices: [DeviceItem] = []
+    var selectedDevice: ((DeviceItem) -> Void)?
 
     // MARK: - Methods
 
-    func updateCell (with devices: [DeviceResponse.Device]) {
+    func updateCell (with devices: [DeviceItem]) {
         self.devices = devices
     }
 
@@ -40,8 +40,6 @@ extension HomeDataSource: UICollectionViewDataSource,
 
         cell.autoLayoutCell()
         cell.updateCell(with: devices[indexPath.row])
-//        cell.updateCell(with: devices[indexPath.row].devices)
-//        cell.updateCell(with: devices[indexPath.row])
         return cell
     }
 

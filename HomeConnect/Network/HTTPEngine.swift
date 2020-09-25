@@ -30,7 +30,7 @@ final class HTTPEngine: HTTPEngineType {
     func send(request: URLRequest,
               cancelledBy token: RequestCancellationToken,
               callback: @escaping HTTPCompletionHandler) {
-        let task = session.dataTask(with: request) { (data, urlResponse, error) in
+        let task = session.dataTask(with: request) { (data, urlResponse, _) in
             if urlResponse != nil, let httpUrlResponse = urlResponse as? HTTPURLResponse {
                 callback(data, httpUrlResponse, nil)
             } else {

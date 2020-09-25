@@ -27,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.start()
         return true
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         context.dataBaseStack.saveContext()
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
         context.dataBaseStack.saveContext()
     }

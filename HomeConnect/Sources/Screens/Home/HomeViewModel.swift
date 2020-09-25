@@ -13,12 +13,13 @@ final class HomeViewModel {
 
     private let repository: HomeRepositoryType
     private weak var delegate: HomeScreenDelegate?
-    private var devices: [DeviceResponse.Device] = [] {
+    private var devices: [DeviceItem] = [] {
         didSet {
-            if !devices.isEmpty {
-                devicesDisplayed?(devices)
+            guard !devices.isEmpty else {
+                delegate?.homeScreenShouldDisplayAlert(for: .noDevicesError)
+                return
             }
-            delegate?.homeScreenShouldDisplayAlert(for: .noDevicesError)
+            devicesDisplayed?(devices)
         }
     }
 
@@ -33,7 +34,7 @@ final class HomeViewModel {
     // MARK: - Outputs
 
     var homeTitle: ((String) -> Void)?
-    var devicesDisplayed: (([DeviceResponse.Device]) -> Void)?
+    var devicesDisplayed: (([DeviceItem]) -> Void)?
 
     func viewWillAppear() {
         getAllDevices()
@@ -43,13 +44,14 @@ final class HomeViewModel {
         homeTitle?("Mes Objects connectés")
     }
 
-    func didSelectItem(at index: Int) {
+    func didSelectDevice(device: DeviceItem) {
+        delegate?.homeScreenDidSelectDevice(device: device)
     }
 
     private func getAllDevices() {
         repository.getAllDevices(callback: { [weak self] response in
             DispatchQueue.main.async {
-                self?.devices = response.devices ?? []
+                self?.devices = response
             }
         }, failure: { [weak self] in
             DispatchQueue.main.async {

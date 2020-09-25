@@ -13,7 +13,7 @@ enum DependanceType {
 }
 
 protocol HomeRepositoryType: class {
-    func getAllDevices(callback: @escaping (DeviceResponse) -> Void, failure: @escaping (() -> Void))
+    func getAllDevices(callback: @escaping ([DeviceItem]) -> Void, failure: @escaping (() -> Void))
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -21,10 +21,8 @@ final class HomeRepository: HomeRepositoryType {
     // MARK: - Properties
 
     private let networkClient: HTTPClientType
-
     private let token: RequestCancellationToken
-
-    let dependanceType: DependanceType
+    private let dependanceType: DependanceType
 
     // MARK: - Init
 
@@ -36,7 +34,7 @@ final class HomeRepository: HomeRepositoryType {
         self.dependanceType = dependanceType
     }
 
-    func getAllDevices(callback: @escaping (DeviceResponse) -> Void,
+    func getAllDevices(callback: @escaping ([DeviceItem]) -> Void,
                        failure: @escaping (() -> Void)) {
         switch dependanceType {
         case .network:
@@ -46,11 +44,11 @@ final class HomeRepository: HomeRepositoryType {
             networkClient.request(requestType: .GET,
                                   url: url,
                                   cancelledBy: token ) { (result: Result<DeviceResponse, HTTPClientError>) in
-
                 switch result {
                 case .success(let response):
-                    callback(response)
-                    // put inside data base
+                    if let deviceItems = self.convertObjectDevice(from: response) {
+                        callback(deviceItems)
+                    }
                 case .failure:
                     failure()
                 }
@@ -58,5 +56,20 @@ final class HomeRepository: HomeRepositoryType {
         case .persistence:
             print("")
         }
+    }
+
+    func convertObjectDevice(from device: DeviceResponse) -> [DeviceItem]? {
+        let devices = device.devices.map {
+            $0.map { device in
+                DeviceItem(idNumber: device.idNumber,
+                           deviceName: device.deviceName,
+                           intensity: device.intensity,
+                           mode: device.mode,
+                           productType: device.productType?.rawValue ?? "",
+                           position: device.position,
+                           temperature: device.temperature)
+            }
+        }
+        return devices
     }
 }

@@ -47,7 +47,7 @@ final class HTTPClient: HTTPClientType {
         var request = URLRequest(url: url)
         request.httpMethod = requestType.rawValue
 
-        engine.send(request: request, cancelledBy: token) { (data, response, error) in
+        engine.send(request: request, cancelledBy: token) { (data, _, error) in
             if let error = error {
                 completion(.failure(.generic(error)))
                 return

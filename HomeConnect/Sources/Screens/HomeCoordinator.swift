@@ -49,6 +49,10 @@ final class HomeCoordinator {
 
 extension HomeCoordinator: HomeScreenDelegate {
 
+    func homeScreenDidSelectDevice(device: DeviceItem) {
+        //Show Next Screen
+    }
+
     func homeScreenShouldDisplayAlert(for type: AlertType) {
         showAlert(for: type)
     }

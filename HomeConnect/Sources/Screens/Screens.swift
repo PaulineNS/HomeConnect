@@ -23,7 +23,7 @@ final class Screens {
 // MARK: - Fetch Devices
 
 protocol HomeScreenDelegate: class {
-//    func artistSearchScreenDidSelectArtist(for id: Int)
+    func homeScreenDidSelectDevice(device: DeviceItem)
     func homeScreenShouldDisplayAlert(for type: AlertType)
 }
 

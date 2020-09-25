@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         collectionView.dataSource = source
 
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,7 +72,7 @@ class HomeViewController: UIViewController {
     }
 
     private func bind(to source: HomeDataSource) {
-//        source.selectedDevice = viewModel.didSelectItem
+        source.selectedDevice = viewModel.didSelectDevice
     }
 
     private func bind(to viewModel: HomeViewModel) {

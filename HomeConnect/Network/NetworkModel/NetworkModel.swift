@@ -14,14 +14,13 @@ struct DeviceResponse: Decodable {
 
     // MARK: - Device
     struct Device: Decodable {
-        let id: Int?
+        let idNumber: Int?
         let deviceName: String?
         let intensity: Int?
         let mode: String?
         let productType: ProductType?
         let position, temperature: Int?
     }
-
 
     enum ProductType: String, Decodable {
         case heater = "Heater"
@@ -43,4 +42,3 @@ struct DeviceResponse: Decodable {
         }
     }
 }
-

@@ -14,22 +14,22 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private var stackView: UIStackView = UIStackView()
     private var deviceImageView: UIImageView = UIImageView()
     private var deviceNameLabel: UILabel = UILabel()
-    private var device: DeviceResponse.Device? = nil {
+    private var device: DeviceItem? = nil {
         didSet {
             guard let device = self.device else { return }
             deviceNameLabel.text = device.deviceName
             switch device.productType {
-            case .heater:
+            case "Heater":
                 deviceImageView.image = UIImage(named: "heater")
                 self.backgroundColor = .red
-            case .light:
+            case "Light":
                 deviceImageView.image = UIImage(named: "light")
                 self.backgroundColor = .blue
-            case .rollerShutter:
+            case "RollerShutter":
                 deviceImageView.image = UIImage(named: "rollerShutter")
                 self.backgroundColor = .green
-            case .none:
-                break
+            default:
+                return
             }
         }
     }
@@ -62,7 +62,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 10
     }
 
-    func updateCell(with device: DeviceResponse.Device) {
+    func updateCell(with device: DeviceItem) {
         self.device = device
     }
 

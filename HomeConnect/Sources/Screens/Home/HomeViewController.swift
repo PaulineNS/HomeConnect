@@ -45,18 +45,26 @@ class HomeViewController: UIViewController {
 
         viewModel.viewDidLoad()
     }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
 
     // MARK: - Configure UI
 
     private func setNavigationBar() {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtonItem
+        navigationController?.navigationBar.tintColor = .black
+
+        let filterButton = UIBarButtonItem(image: UIImage(named: "light"),
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(didTapFilterButton))
+        self.navigationItem.rightBarButtonItem  = filterButton
+        let profileButton = UIBarButtonItem(image: UIImage(named: "heater"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(didTapProfileButton))
+        self.navigationItem.leftBarButtonItem  = profileButton
     }
 
     private func setCollectionView() {
@@ -91,4 +99,17 @@ class HomeViewController: UIViewController {
             self?.collectionView.reloadData()
         }
     }
+
+    // MARK: - Selectors
+
+    @objc func didTapProfileButton() {
+        navigationController?.pushViewController(ProfileViewController(), animated: true)
+
+    }
+
+    @objc func didTapFilterButton() {
+        print("")
+
+    }
+
 }

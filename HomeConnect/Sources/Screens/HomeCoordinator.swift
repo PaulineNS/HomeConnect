@@ -40,8 +40,7 @@ final class HomeCoordinator {
 
     private func showDevicesDetail(device: DeviceItem) {
         let viewController = screens.createDeviceDetailViewController(deviceSelected: device)
-        navigationController.pushViewController(viewController,
-                                                animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     // MARK: - Alert

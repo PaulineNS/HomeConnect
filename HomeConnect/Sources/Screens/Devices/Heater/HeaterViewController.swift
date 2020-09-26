@@ -18,14 +18,21 @@ class HeaterViewController: UIViewController {
     private lazy var lightIntensitySlider = UISlider()
 
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
+    
+
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         // stackView
         view.addSubview(topStackView)
         topStackView.axis = .horizontal

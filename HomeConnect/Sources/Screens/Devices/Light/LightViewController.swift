@@ -17,7 +17,6 @@ class LightViewController: UIViewController {
     private lazy var lightStatusSwitch = UISwitch()
     private lazy var lightIntensitySlider = UISlider()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()

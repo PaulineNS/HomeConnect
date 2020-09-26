@@ -45,6 +45,12 @@ class HomeViewController: UIViewController {
 
         viewModel.viewDidLoad()
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
     // MARK: - Configure UI
 

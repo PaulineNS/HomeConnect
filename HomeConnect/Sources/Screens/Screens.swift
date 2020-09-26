@@ -53,6 +53,26 @@ extension Screens {
 
 }
 
+// MARK: - Device Details
+
+extension Screens {
+
+    func createDeviceDetailViewController(deviceSelected: DeviceItem) -> UIViewController {
+
+        switch deviceSelected.productType {
+        case .heater:
+            return HeaterViewController()
+        case .light:
+            return LightViewController()
+        case .rollerShutter:
+            return RollerShutterViewController()
+        case .none:
+            return UIViewController()
+        }
+
+    }
+}
+
 // MARK: - Alert
 
 extension Screens {

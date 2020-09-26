@@ -33,13 +33,13 @@ final class HomeRepository: HomeRepositoryType {
         self.token = token
         self.dependanceType = dependanceType
     }
-    
+
     // MARK: - HomeRepositoryType
-    
+
     func getAllDevices(
         success: @escaping ([DeviceItem]) -> Void,
         failure: @escaping (() -> Void)
-    ){
+    ) {
         switch dependanceType {
         case .network:
             executeNetworkRequest(success: success, failure: failure)

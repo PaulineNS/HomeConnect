@@ -38,6 +38,12 @@ final class HomeCoordinator {
         navigationController.viewControllers = [viewController]
     }
 
+    private func showDevicesDetail(device: DeviceItem) {
+        let viewController = screens.createDeviceDetailViewController(deviceSelected: device)
+        navigationController.pushViewController(viewController,
+                                                animated: true)
+    }
+
     // MARK: - Alert
 
     private func showAlert(for type: AlertType) {
@@ -50,7 +56,7 @@ final class HomeCoordinator {
 extension HomeCoordinator: HomeScreenDelegate {
 
     func homeScreenDidSelectDevice(device: DeviceItem) {
-        //Show Next Screen
+        showDevicesDetail(device: device)
     }
 
     func homeScreenShouldDisplayAlert(for type: AlertType) {

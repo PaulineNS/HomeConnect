@@ -49,15 +49,18 @@ final class HomeViewModel {
     }
 
     private func getAllDevices() {
-        repository.getAllDevices(success: { [weak self] response in
+        repository.getUserDevices(success: { [weak self] deviceResponse, _ in
             DispatchQueue.main.async {
-                self?.devices = response
+                self?.devices = deviceResponse
             }
         }, failure: { [weak self] in
             DispatchQueue.main.async {
                 self?.delegate?.homeScreenShouldDisplayAlert(for: .networkError)
             }
+        }, completion: { [weak self] persistence in
+            DispatchQueue.main.async {
+                self?.devices = persistence
+            }
         })
     }
-
 }

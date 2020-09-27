@@ -38,7 +38,8 @@ extension Screens {
 //        }
         let repository = HomeRepository(networkClient: context.client,
                                         token: context.requestCancellation,
-                                        dependanceType: .network)
+                                        dependanceType: .network,
+                                        dataBaseManager: context.dataBaseManager)
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
         return HomeViewController(viewModel: viewModel)
 

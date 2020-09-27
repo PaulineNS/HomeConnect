@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5614E96E251E210700B3CA27 /* DeviceItem.swift */; };
+		5686A2312520B77A00176D70 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2302520B77A00176D70 /* ProfileRepository.swift */; };
+		5686A2362520B7ED00176D70 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2352520B7ED00176D70 /* ProductType.swift */; };
+		5686A23B2520B84300176D70 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A23A2520B84300176D70 /* UserItem.swift */; };
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
@@ -61,6 +64,9 @@
 
 /* Begin PBXFileReference section */
 		5614E96E251E210700B3CA27 /* DeviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceItem.swift; sourceTree = "<group>"; };
+		5686A2302520B77A00176D70 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		5686A2352520B7ED00176D70 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
+		5686A23A2520B84300176D70 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
@@ -131,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				5614E96E251E210700B3CA27 /* DeviceItem.swift */,
+				5686A2352520B7ED00176D70 /* ProductType.swift */,
+				5686A23A2520B84300176D70 /* UserItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 			children = (
 				56D7E09A251C9D3D00DD5B37 /* ProfileViewController.swift */,
 				56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */,
+				5686A2302520B77A00176D70 /* ProfileRepository.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -487,6 +496,7 @@
 				56D7E0A0251C9D5400DD5B37 /* HomeViewModel.swift in Sources */,
 				56D7E07A251C9C1600DD5B37 /* RequestCancellationToken.swift in Sources */,
 				56D7E0E8251CC7AA00DD5B37 /* HomeCollectionViewCell.swift in Sources */,
+				5686A2312520B77A00176D70 /* ProfileRepository.swift in Sources */,
 				56D7E08C251C9D1900DD5B37 /* RollerShutterViewController.swift in Sources */,
 				56D7E139251DF9FF00DD5B37 /* DatabaseManager.swift in Sources */,
 				56D7E0B2251C9D7E00DD5B37 /* RollerShutterViewModel.swift in Sources */,
@@ -495,6 +505,7 @@
 				56D7E096251C9D2E00DD5B37 /* FiltersViewController.swift in Sources */,
 				56D7E06D251C9BF000DD5B37 /* HTTPClient.swift in Sources */,
 				56D7E09B251C9D3D00DD5B37 /* ProfileViewController.swift in Sources */,
+				5686A2362520B7ED00176D70 /* ProductType.swift in Sources */,
 				56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */,
 				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
 				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
@@ -505,6 +516,7 @@
 				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
 				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
+				5686A23B2520B84300176D70 /* UserItem.swift in Sources */,
 				56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */,
 				56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */,
 				56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */,

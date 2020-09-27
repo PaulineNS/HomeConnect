@@ -42,4 +42,42 @@ open class DataBaseManager {
         self.managedObjectContext = dataBaseStack.mainContext
     }
 
+    func createDeviceEntity(deviceItem: DeviceItem, user: UserAttributes) {
+        let device = DeviceAttributes(context: managedObjectContext)
+        device.deviceId = String(deviceItem.idNumber ?? 0)
+        device.intensity = String(deviceItem.intensity ?? 0)
+        device.mode = deviceItem.mode
+        device.name = deviceItem.deviceName
+        device.position = String(deviceItem.position ?? 0)
+        device.productType = deviceItem.productType?.rawValue
+        device.temperature = String(deviceItem.temperature ?? 0)
+        device.owner = user
+        dataBaseStack.saveContext()
+    }
+
+    func createUserEntity(userItem: UserItem) {
+        let user = UserAttributes(context: managedObjectContext)
+        //todo convert date
+        user.birthDate = Date(timeIntervalSince1970: 1432233446145.0/1000.0)
+        user.city = userItem.city
+        user.country = userItem.country
+        user.firstName = userItem.firstName
+        user.lastName = userItem.lastName
+        user.postalCode = String(userItem.postalCode ?? 0)
+        user.street = userItem.street
+        user.streetCode = userItem.streetCode
+        dataBaseStack.saveContext()
+    }
+
+    func deleteADevice(with deviceId: String) {
+        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+        let predicateListName = NSPredicate(format: "deviceId == %@", deviceId)
+        request.predicate = predicateListName
+
+        if let objects = try? managedObjectContext.fetch(request) {
+            objects.forEach { managedObjectContext.delete($0)}
+        }
+        dataBaseStack.saveContext()
+    }
+
 }

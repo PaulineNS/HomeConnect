@@ -13,7 +13,9 @@ enum DependanceType {
 }
 
 protocol HomeRepositoryType: class {
-    func getAllDevices(success: @escaping ([DeviceItem]) -> Void, failure: @escaping (() -> Void))
+    func getUserDevices(success: @escaping ([DeviceItem], UserItem) -> Void,
+                        failure: @escaping (() -> Void),
+                        completion: @escaping ([DeviceItem]) -> Void)
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -23,33 +25,47 @@ final class HomeRepository: HomeRepositoryType {
     private let networkClient: HTTPClientType
     private let token: RequestCancellationToken
     private let dependanceType: DependanceType
+    private let dataBaseManager: DataBaseManager
+
+    let hello = 1
 
     // MARK: - Init
 
     init(networkClient: HTTPClientType,
          token: RequestCancellationToken,
-         dependanceType: DependanceType) {
+         dependanceType: DependanceType,
+         dataBaseManager: DataBaseManager) {
         self.networkClient = networkClient
         self.token = token
         self.dependanceType = dependanceType
+        self.dataBaseManager = dataBaseManager
     }
 
     // MARK: - HomeRepositoryType
 
-    func getAllDevices(
-        success: @escaping ([DeviceItem]) -> Void,
-        failure: @escaping (() -> Void)
+    func getUserDevices(
+        success: @escaping ([DeviceItem], UserItem) -> Void,
+        failure: @escaping (() -> Void),
+        completion: @escaping ([DeviceItem]) -> Void
     ) {
         switch dependanceType {
         case .network:
             executeNetworkRequest(success: success, failure: failure)
         case .persistence:
-            print("")
+            fetchPersistenceDevices(completion: completion)
         }
     }
 
+    private func fetchPersistenceDevices(completion: @escaping ([DeviceItem]) -> Void) {
+        guard let user = dataBaseManager.users.first else { return }
+        let device = dataBaseManager.fetchDevicesDependingUser(user: user)
+        let deviceItem = device.compactMap {
+            DeviceItem(deviceAttributes: $0)}
+        completion(deviceItem)
+    }
+
     private func executeNetworkRequest(
-        success: @escaping ([DeviceItem]) -> Void,
+        success: @escaping ([DeviceItem], UserItem) -> Void,
         failure: @escaping (() -> Void)
     ) {
         guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
@@ -64,8 +80,20 @@ final class HomeRepository: HomeRepositoryType {
             case .success(let response):
                 let devices = response
                     .devices?
-                    .compactMap { DeviceItem(device: $0) } ?? []
-                success(devices)
+                    .compactMap {
+                        DeviceItem(device: $0)} ?? []
+
+                guard let user = response.user else {
+                    return
+                }
+                let userItem = UserItem(user: user)
+                self.dataBaseManager.createUserEntity(userItem: userItem)
+
+                devices.forEach { deviceItem in
+                    guard let userAttributes = self.dataBaseManager.users.first else { return }
+                    self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem, user: userAttributes)
+                }
+                success(devices, userItem)
             case .failure:
                 failure()
             }
@@ -85,9 +113,27 @@ private extension DeviceItem {
     }
 }
 
-// A deplacer
-enum ProductType: String {
-    case heater = "Heater"
-    case light = "Light"
-    case rollerShutter = "RollerShutter"
+private extension DeviceItem {
+    init(deviceAttributes: DeviceAttributes) {
+        self.idNumber = Int(deviceAttributes.deviceId ?? "")
+        self.deviceName = deviceAttributes.name
+        self.intensity = Int(deviceAttributes.intensity ?? "")
+        self.mode = deviceAttributes.mode
+        self.productType = ProductType(rawValue: deviceAttributes.productType ?? "")
+        self.position = Int(deviceAttributes.position ?? "")
+        self.temperature = Int(deviceAttributes.temperature ?? "")
+    }
+}
+
+private extension UserItem {
+    init(user: DeviceResponse.User) {
+        self.firstName = user.firstName
+        self.lastName = user.lastName
+        self.birthDate = user.birthDate
+        self.city = user.address?.city
+        self.postalCode = user.address?.postalCode
+        self.street = user.address?.street
+        self.streetCode = user.address?.streetCode
+        self.country = user.address?.country
+    }
 }

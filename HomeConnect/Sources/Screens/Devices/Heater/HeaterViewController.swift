@@ -17,18 +17,14 @@ class HeaterViewController: UIViewController {
     private lazy var lightStatusSwitch = UISwitch()
     private lazy var lightIntensitySlider = UISlider()
 
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
-    
-
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
@@ -45,23 +41,20 @@ class HeaterViewController: UIViewController {
         topStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 0).isActive = true
 
         //lightImgaeView
-    
 
         topStackView.addArrangedSubview(lightImageView)
         lightImageView.translatesAutoresizingMaskIntoConstraints = false
         lightImageView.image = UIImage(named: "heater")
         lightImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10).isActive = true
         lightImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10).isActive = true
-    
+
         lightImageView.contentMode = .scaleAspectFit
         lightImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         lightImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-    
         topStackView.addArrangedSubview(lightNameLabel)
         lightNameLabel.text = "hello"
         lightNameLabel.textAlignment = .left
-    
-    
+
         view.addSubview(bottomStackView)
         bottomStackView.axis = .vertical
         bottomStackView.alignment = .fill

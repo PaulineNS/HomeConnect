@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
 
     private lazy var collectionView = UICollectionView()
     private lazy var source: HomeDataSource = HomeDataSource()
+    private lazy var profileIconName: String = ""
+    private lazy var filterIconName: String = ""
     private let viewModel: HomeViewModel
 
     // MARK: - Initializer
@@ -55,12 +57,12 @@ class HomeViewController: UIViewController {
         navigationItem.backBarButtonItem = backBarButtonItem
         navigationController?.navigationBar.tintColor = .black
 
-        let filterButton = UIBarButtonItem(image: UIImage(named: "light"),
-                                           style: .plain,
-                                           target: self,
-                                           action: #selector(didTapFilterButton))
+        let filterButton = UIBarButtonItem(title: filterIconName,
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapFilterButton))
         self.navigationItem.rightBarButtonItem  = filterButton
-        let profileButton = UIBarButtonItem(image: UIImage(named: "heater"),
+        let profileButton = UIBarButtonItem(image: UIImage(named: profileIconName),
                                             style: .plain,
                                             target: self,
                                             action: #selector(didTapProfileButton))
@@ -98,6 +100,12 @@ class HomeViewController: UIViewController {
             self?.source.updateCell(with: devices)
             self?.collectionView.reloadData()
         }
+        viewModel.profileIconName = { [weak self] name in
+            self?.profileIconName = name
+        }
+        viewModel.filterIconName = { [weak self] name in
+            self?.filterIconName = name
+        }
     }
 
     // MARK: - Selectors
@@ -109,7 +117,6 @@ class HomeViewController: UIViewController {
 
     @objc func didTapFilterButton() {
         print("")
-
     }
 
 }

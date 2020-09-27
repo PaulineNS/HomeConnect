@@ -35,6 +35,8 @@ final class HomeViewModel {
 
     var homeTitle: ((String) -> Void)?
     var devicesDisplayed: (([DeviceItem]) -> Void)?
+    var profileIconName: ((String) -> Void)?
+    var filterIconName: ((String) -> Void)?
 
     // MARK: - Life cycle
 
@@ -44,6 +46,8 @@ final class HomeViewModel {
 
     func viewDidLoad() {
         homeTitle?("Mes Objects connectés")
+        profileIconName?("profile")
+        filterIconName?("Filtrer")
     }
 
     // MARK: - Methods

@@ -33,24 +33,22 @@ protocol HomeScreenDelegate: class {
 extension Screens {
 
     func createHome(delegate: HomeScreenDelegate?) -> UIViewController {
-
-//        if firstOpen {
-//
-//        }
-        let repository = HomeRepository(networkClient: context.client,
-                                        token: context.requestCancellation,
-                                        dependanceType: .network,
-                                        dataBaseManager: context.dataBaseManager)
-        let viewModel = HomeViewModel(repository: repository, delegate: delegate)
-        return HomeViewController(viewModel: viewModel)
-
-//        else {
-//            let repository = HomeRepository(networkClient: context.client,
-//        token: context.requestCancellation,
-//        dependanceType: .persistence)
-//            let viewModel = HomeViewModel(repository: repository, delegate: delegate)
-//            return HomeViewController(viewModel: viewModel)
-//        }
+        if UserDefaults.standard.bool(forKey: "hasLaunchBefore") != true {
+            UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
+            let repository = HomeRepository(networkClient: context.client,
+                                            token: context.requestCancellation,
+                                            dependanceType: .network,
+                                            dataBaseManager: context.dataBaseManager)
+            let viewModel = HomeViewModel(repository: repository, delegate: delegate)
+            return HomeViewController(viewModel: viewModel)
+        } else {
+            let repository = HomeRepository(networkClient: context.client,
+                                            token: context.requestCancellation,
+                                            dependanceType: .persistence,
+                                            dataBaseManager: context.dataBaseManager)
+            let viewModel = HomeViewModel(repository: repository, delegate: delegate)
+            return HomeViewController(viewModel: viewModel)
+        }
     }
 
 }

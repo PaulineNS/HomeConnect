@@ -75,7 +75,7 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

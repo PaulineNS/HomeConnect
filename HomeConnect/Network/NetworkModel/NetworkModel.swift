@@ -14,7 +14,7 @@ struct DeviceResponse: Decodable {
 
     // MARK: - Device
     struct Device: Decodable {
-        let idNumber: Int?
+        let id: Int?
         let deviceName: String?
         let intensity: Int?
         let mode: String?

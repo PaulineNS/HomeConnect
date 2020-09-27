@@ -24,7 +24,7 @@ final class HomeRepository: HomeRepositoryType {
 
     private let networkClient: HTTPClientType
     private let token: RequestCancellationToken
-    private let dependanceType: DependanceType
+    private var dependanceType: DependanceType
     private let dataBaseManager: DataBaseManager
 
     // MARK: - Init
@@ -79,18 +79,19 @@ final class HomeRepository: HomeRepositoryType {
                 let devices = response
                     .devices?
                     .compactMap {
-                        DeviceItem(device: $0)} ?? []
+                        DeviceItem(device: $0, user: self.dataBaseManager.users.first ?? UserAttributes())} ?? []
 
                 guard let user = response.user else {
                     return
                 }
                 let userItem = UserItem(user: user)
                 self.dataBaseManager.createUserEntity(userItem: userItem)
-
                 devices.forEach { deviceItem in
                     guard let userAttributes = self.dataBaseManager.users.first else { return }
-                    self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem, user: userAttributes)
+                    self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem,
+                                                            user: userAttributes)
                 }
+                self.dependanceType = .persistence
                 success(devices, userItem)
             case .failure:
                 failure()
@@ -100,26 +101,28 @@ final class HomeRepository: HomeRepositoryType {
 }
 
 private extension DeviceItem {
-    init(device: DeviceResponse.Device) {
-        self.idNumber = device.idNumber
+    init(device: DeviceResponse.Device, user: UserAttributes) {
+        self.idNumber = String(device.id ?? 0)
         self.deviceName = device.deviceName
-        self.intensity = device.intensity
+        self.intensity = String(device.intensity ?? 0)
         self.mode = device.mode
         self.productType = ProductType(rawValue: device.productType ?? "")
-        self.position = device.position
-        self.temperature = device.temperature
+        self.position = String(device.position ?? 0)
+        self.temperature = String(device.temperature ?? 0)
+        self.user = user
     }
 }
 
 private extension DeviceItem {
     init(deviceAttributes: DeviceAttributes) {
-        self.idNumber = Int(deviceAttributes.deviceId ?? "")
+        self.idNumber = deviceAttributes.deviceId
         self.deviceName = deviceAttributes.name
-        self.intensity = Int(deviceAttributes.intensity ?? "")
+        self.intensity = deviceAttributes.intensity
         self.mode = deviceAttributes.mode
         self.productType = ProductType(rawValue: deviceAttributes.productType ?? "")
-        self.position = Int(deviceAttributes.position ?? "")
-        self.temperature = Int(deviceAttributes.temperature ?? "")
+        self.position = deviceAttributes.position
+        self.temperature = deviceAttributes.temperature
+        self.user = deviceAttributes.owner ?? UserAttributes()
     }
 }
 

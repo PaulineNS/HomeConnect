@@ -92,7 +92,6 @@ class HomeViewController: UIViewController {
     }
 
     private func bind(to viewModel: HomeViewModel) {
-
         viewModel.homeTitle = { [weak self] title in
             self?.navigationController?.navigationBar.topItem?.title = title
         }

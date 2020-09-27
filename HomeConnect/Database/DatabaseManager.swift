@@ -50,13 +50,13 @@ open class DataBaseManager {
 
     func createDeviceEntity(deviceItem: DeviceItem, user: UserAttributes) {
         let device = DeviceAttributes(context: managedObjectContext)
-        device.deviceId = String(deviceItem.idNumber ?? 0)
-        device.intensity = String(deviceItem.intensity ?? 0)
+        device.deviceId = deviceItem.idNumber
+        device.intensity = deviceItem.intensity
         device.mode = deviceItem.mode
         device.name = deviceItem.deviceName
-        device.position = String(deviceItem.position ?? 0)
+        device.position = deviceItem.position
         device.productType = deviceItem.productType?.rawValue
-        device.temperature = String(deviceItem.temperature ?? 0)
+        device.temperature = deviceItem.temperature
         device.owner = user
         dataBaseStack.saveContext()
     }

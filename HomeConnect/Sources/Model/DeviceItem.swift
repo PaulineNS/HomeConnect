@@ -8,10 +8,11 @@
 import Foundation
 
 struct DeviceItem: Equatable {
-    let idNumber: Int?
+    let idNumber: String?
     let deviceName: String?
-    let intensity: Int?
+    let intensity: String?
     let mode: String?
     let productType: ProductType?
-    let position, temperature: Int?
+    let position, temperature: String?
+    let user: UserAttributes
 }

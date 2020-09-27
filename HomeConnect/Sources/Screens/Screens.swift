@@ -24,6 +24,7 @@ final class Screens {
 
 protocol HomeScreenDelegate: class {
     func homeScreenDidSelectDevice(device: DeviceItem)
+    func homeScreenDidSelectProfile()
     func homeScreenShouldDisplayAlert(for type: AlertType)
 }
 
@@ -71,6 +72,17 @@ extension Screens {
             return UIViewController()
         }
 
+    }
+}
+
+// MARK: - Profile
+
+extension Screens {
+
+    func createProfileViewController() -> UIViewController {
+        let repository = ProfileRepository()
+        let viewModel = ProfileViewModel(repository: repository)
+        return ProfileViewController(viewModel: viewModel)
     }
 }
 

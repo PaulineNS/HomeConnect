@@ -36,6 +36,8 @@ final class HomeViewModel {
     var homeTitle: ((String) -> Void)?
     var devicesDisplayed: (([DeviceItem]) -> Void)?
 
+    // MARK: - Life cycle
+
     func viewWillAppear() {
         getAllDevices()
     }
@@ -44,8 +46,14 @@ final class HomeViewModel {
         homeTitle?("Mes Objects connectés")
     }
 
+    // MARK: - Methods
+
     func didSelectDevice(device: DeviceItem) {
         delegate?.homeScreenDidSelectDevice(device: device)
+    }
+
+    func didSelectProfileButton() {
+        delegate?.homeScreenDidSelectProfile()
     }
 
     private func getAllDevices() {

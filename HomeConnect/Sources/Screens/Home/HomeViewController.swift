@@ -103,7 +103,7 @@ class HomeViewController: UIViewController {
     // MARK: - Selectors
 
     @objc func didTapProfileButton() {
-        navigationController?.pushViewController(ProfileViewController(), animated: true)
+        viewModel.didSelectProfileButton()
 
     }
 

@@ -10,6 +10,7 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     // MARK: - Properties
+    private let viewModel: ProfileViewModel
 
     lazy var containerView: UIView = {
         let view = UIView()
@@ -58,6 +59,15 @@ class ProfileViewController: UIViewController {
         label.textColor = .white
         return label
     }()
+
+    // MARK: - Initializer
+
+    init(viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     // MARK: - Lifecycle
 

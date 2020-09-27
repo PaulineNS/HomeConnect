@@ -7,6 +7,16 @@
 
 import Foundation
 
-final class ProfileRepository {
+protocol ProfileRepositoryType: class {
+
+    func getUserInformations()
+
+}
+
+final class ProfileRepository: ProfileRepositoryType {
+
+    func getUserInformations() {
+
+    }
 
 }

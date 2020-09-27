@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
 
     let profileImageView: UIImageView = {
         let profileIV = UIImageView()
-        profileIV.image = UIImage(named: "light")
+//        profileIV.image = UIImage(named: "light")
         profileIV.contentMode = .scaleAspectFill
         profileIV.clipsToBounds = true
         profileIV.layer.borderWidth = 3
@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "Pauline Nomballais"
+//        label.text = "Pauline Nomballais"
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.textColor = .white
         return label
@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     let ageLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "29 ans"
+//        label.text = "29 ans"
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = .white
         return label
@@ -71,6 +71,11 @@ class ProfileViewController: UIViewController {
 
     // MARK: - Lifecycle
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.viewWillAppear()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,6 +84,21 @@ class ProfileViewController: UIViewController {
         view.addSubview(containerView)
         containerView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 300)
 
+        bind(to: viewModel)
+        viewModel.viewDidLoad()
+    }
+
+    private func bind(to viewModel: ProfileViewModel) {
+
+        viewModel.profileImageName = { [weak self] name in
+            self?.profileImageView.image = UIImage(named: name)
+        }
+        viewModel.userName = { [weak self] name in
+            self?.nameLabel.text = name
+        }
+        viewModel.userCity = { [weak self] city in
+            self?.ageLabel.text = city
+        }
     }
 
 }

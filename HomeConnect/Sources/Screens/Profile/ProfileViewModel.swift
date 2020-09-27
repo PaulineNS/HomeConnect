@@ -12,39 +12,41 @@ final class ProfileViewModel {
     // MARK: - Private properties
 
     private let repository: ProfileRepositoryType
-    private var user: UserItem {
-            UserItem(firstName: "",
-                     lastName: "",
-                     birthDate: 1,
-                     city: "",
-                     postalCode: 1,
-                     street: "",
-                     streetCode: "",
-                     country: "")
+    private var user: UserAttributes = UserAttributes() {
+        didSet {
+            profileImageName?("light")
+            userName?("\(user.firstName ?? "") \(user.lastName ?? "")")
+//            userAge?(user.birthDate)
+            userStreet?("\(user.streetCode ?? ""), \(user.street ?? "")")
+            userCity?("\(user.postalCode ?? ""), \(user.city ?? ""), \(user.country ?? "")")
+
+        }
     }
 
     // MARK: - Initializer
 
     init(repository: ProfileRepositoryType) {
         self.repository = repository
+        print(user)
     }
 
     // MARK: - Outputs
 
-    var profileImageName: ((String) -> Void)?
     var userDisplayed: ((UserItem) -> Void)?
+    var profileImageName: ((String) -> Void)?
+    var userName: ((String) -> Void)?
+    var userAge: ((String) -> Void)?
+    var userStreet: ((String) -> Void)?
+    var userCity: ((String) -> Void)?
 
     // MARK: - Life cycle
 
     func viewWillAppear() {
+        user = repository.getUserInformations()
+
     }
 
     func viewDidLoad() {
-    }
-
-    // MARK: - Methods
-
-    private func getUserInformations() {
 
     }
 

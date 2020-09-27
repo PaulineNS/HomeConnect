@@ -15,6 +15,12 @@ open class DataBaseManager {
     private let dataBaseStack: DataBaseStack
     private let managedObjectContext: NSManagedObjectContext
 
+    var user: [UserAttributes] {
+        let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
+        guard let user = try? managedObjectContext.fetch(request) else { return [] }
+        return user
+    }
+
     func fetchDevicesDependingUser(user: UserAttributes) -> [DeviceAttributes] {
         let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
         let predicate = NSPredicate(format: "owner == %@", user)

@@ -80,7 +80,7 @@ extension Screens {
 extension Screens {
 
     func createProfileViewController() -> UIViewController {
-        let repository = ProfileRepository()
+        let repository = ProfileRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = ProfileViewModel(repository: repository)
         return ProfileViewController(viewModel: viewModel)
     }

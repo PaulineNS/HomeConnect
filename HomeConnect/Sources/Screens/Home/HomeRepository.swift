@@ -27,8 +27,6 @@ final class HomeRepository: HomeRepositoryType {
     private let dependanceType: DependanceType
     private let dataBaseManager: DataBaseManager
 
-    let hello = 1
-
     // MARK: - Init
 
     init(networkClient: HTTPClientType,

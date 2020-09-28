@@ -23,13 +23,25 @@ class ProfileViewController: UIViewController {
 
         view.addSubview(nameLabel)
         nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 12)
+        nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 30)
 
         view.addSubview(ageLabel)
         ageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         ageLabel.anchor(top: nameLabel.bottomAnchor, paddingTop: 4)
 
         return view
+    }()
+    
+    lazy var adressStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.addArrangedSubview(streetLabel)
+        stackView.addArrangedSubview(cityLabel)
+        stackView.addArrangedSubview(countryLabel)
+        return stackView
     }()
 
     let profileImageView: UIImageView = {
@@ -57,6 +69,30 @@ class ProfileViewController: UIViewController {
         return label
     }()
 
+    let streetLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .black
+        return label
+    }()
+
+    let cityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .black
+        return label
+    }()
+
+    let countryLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .black
+        return label
+    }()
+
     // MARK: - Initializer
 
     init(viewModel: ProfileViewModel) {
@@ -79,7 +115,14 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
 
         view.addSubview(containerView)
-        containerView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 300)
+        containerView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 250)
+        view.addSubview(adressStackView)
+        adressStackView.anchor(top: containerView.bottomAnchor,
+                               left: view.leftAnchor,
+                               bottom: view.bottomAnchor,
+                               right: view.rightAnchor,
+                               paddingTop: 20,
+                               paddingBottom: 200)
 
         bind(to: viewModel)
         viewModel.viewDidLoad()
@@ -93,8 +136,17 @@ class ProfileViewController: UIViewController {
         viewModel.userName = { [weak self] name in
             self?.nameLabel.text = name
         }
+        viewModel.userAge = { [weak self] age in
+            self?.ageLabel.text = age
+        }
+        viewModel.userStreet = { [weak self] street in
+            self?.streetLabel.text = street
+        }
         viewModel.userCity = { [weak self] city in
-            self?.ageLabel.text = city
+            self?.cityLabel.text = city
+        }
+        viewModel.userCountry = { [weak self] country in
+            self?.countryLabel.text = country
         }
     }
 

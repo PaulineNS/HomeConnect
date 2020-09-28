@@ -16,10 +16,10 @@ final class ProfileViewModel {
         didSet {
             profileImageName?("light")
             userName?("\(user.firstName ?? "") \(user.lastName ?? "")")
-//            userAge?(user.birthDate)
+            userAge?("29 ans")
             userStreet?("\(user.streetCode ?? ""), \(user.street ?? "")")
-            userCity?("\(user.postalCode ?? ""), \(user.city ?? ""), \(user.country ?? "")")
-
+            userCity?("\(user.postalCode ?? ""), \(user.city ?? "")")
+            userCountry?("\(user.country ?? "")")
         }
     }
 
@@ -38,6 +38,7 @@ final class ProfileViewModel {
     var userAge: ((String) -> Void)?
     var userStreet: ((String) -> Void)?
     var userCity: ((String) -> Void)?
+    var userCountry: ((String) -> Void)?
 
     // MARK: - Life cycle
 

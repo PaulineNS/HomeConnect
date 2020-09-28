@@ -9,9 +9,13 @@ import UIKit
 
 final class HomeCollectionViewCell: UICollectionViewCell {
 
-    // MARK: - Private properties
+    // MARK: - Public Properties
 
     static let identifier = "HomeCollectionViewCell"
+
+    // MARK: - Private Properties
+
+    private var viewModel: HomeCellViewModel!
 
     private lazy var cellStackView: UIStackView = {
         let stackView = UIStackView()
@@ -37,27 +41,39 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private var deviceItem: DeviceItem? = nil {
-        didSet {
-            guard let device = self.deviceItem else { return }
-            deviceNameLabel.text = device.deviceName
-            switch device.productType {
-            case .heater:
-                deviceImageView.image = UIImage(named: "heater")
-                self.backgroundColor = .red
-            case .light:
-                deviceImageView.image = UIImage(named: "light")
-                self.backgroundColor = .blue
-            case .rollerShutter:
-                deviceImageView.image = UIImage(named: "rollerShutter")
-                self.backgroundColor = .green
+    // MARK: - Public Methods
+
+    func configure(with viewModel: HomeCellViewModel) {
+        autoLayoutCell()
+        self.viewModel = viewModel
+        bindViewModel()
+        self.viewModel.didUpdateCell()
+    }
+
+    // MARK: - Private Methods
+
+    private func bindViewModel() {
+        viewModel.deviceName = { [weak self] text in
+            self?.deviceNameLabel.text = text
+        }
+        viewModel.imageName = { [weak self] name in
+            self?.deviceImageView.image = UIImage(named: name)
+        }
+        viewModel.backgroundColorName = { [weak self] colorName in
+            switch colorName {
+            case "red":
+                self?.backgroundColor = .red
+            case "blue":
+                self?.backgroundColor = .blue
+            case "green":
+                self?.backgroundColor = .green
             default:
                 return
             }
         }
     }
 
-    func autoLayoutCell() {
+    private func autoLayoutCell() {
         self.layer.cornerRadius = 10
         self.addSubview(cellStackView)
         cellStackView.anchor(top: contentView.topAnchor,
@@ -72,9 +88,4 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         deviceImageView.heightAnchor.constraint(equalTo: cellStackView.heightAnchor, multiplier: 2/3).isActive = true
         deviceNameLabel.translatesAutoresizingMaskIntoConstraints = false
     }
-
-    func updateCell(with device: DeviceItem) {
-        self.deviceItem = device
-    }
-
 }

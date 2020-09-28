@@ -18,9 +18,10 @@ final class ProductTypeFilterTableViewCell: UITableViewCell {
     }()
 
     private let productTypeSegmentedControl: UISegmentedControl = {
-        let segmentedControlItems = [ProductType.heater.rawValue,
-                                     ProductType.light.rawValue,
-                                     ProductType.rollerShutter.rawValue]
+//        let segmentedControlItems = [ProductType.heater.rawValue,
+//                                     ProductType.light.rawValue,
+//                                     ProductType.rollerShutter.rawValue]
+        let segmentedControlItems: [ProductType] = []
         let segmentedControl = UISegmentedControl(items: segmentedControlItems)
 
         segmentedControl.selectedSegmentIndex = 1

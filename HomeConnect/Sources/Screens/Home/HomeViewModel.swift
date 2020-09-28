@@ -25,7 +25,7 @@ final class HomeViewModel {
 
     // MARK: - Initializer
 
-    init(repository: HomeRepositoryType,
+    init(repository: HomeRepositoryType,// TODO
          delegate: HomeScreenDelegate?) {
         self.repository = repository
         self.delegate = delegate
@@ -51,7 +51,7 @@ final class HomeViewModel {
     }
 
     func viewDidAppear() {
-        repository.deleteTout()
+        repository.deleteTout() // TODO
     }
 
     // MARK: - Methods

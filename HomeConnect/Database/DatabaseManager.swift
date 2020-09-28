@@ -27,13 +27,13 @@ open class DataBaseManager {
         return device
     }
 
-    func fetchDevicesDependingUser(user: UserAttributes) -> [DeviceAttributes] {
-        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-        let predicate = NSPredicate(format: "owner == %@", user)
-        request.predicate = predicate
-        guard let devices = try? managedObjectContext.fetch(request) else { return [] }
-        return devices
-    }
+//    func fetchDevicesDependingUser(user: UserAttributes) -> [DeviceAttributes] {
+//        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+//        let predicate = NSPredicate(format: "owner == %@", user)
+//        request.predicate = predicate
+//        guard let devices = try? managedObjectContext.fetch(request) else { return [] }
+//        return devices
+//    }
 
 //    var devices: [DeviceAttributes] {
 //        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
@@ -54,16 +54,24 @@ open class DataBaseManager {
         self.managedObjectContext = dataBaseStack.mainContext
     }
 
-    func createDeviceEntity(deviceItem: DeviceItem, user: UserAttributes) {
+    func createDeviceEntity(deviceItem: DeviceItem) {
         let device = DeviceAttributes(context: managedObjectContext)
         device.deviceId = deviceItem.idNumber
-        device.intensity = deviceItem.intensity
-        device.mode = deviceItem.mode
+//        device.productType = deviceItem.productType.item
+//        device.intensity = deviceItem.intensity
+//        device.mode = deviceItem.mode
         device.name = deviceItem.deviceName
-        device.position = deviceItem.position
-        device.productType = deviceItem.productType?.rawValue
-        device.temperature = deviceItem.temperature
-        device.owner = user
+        device.productType = deviceItem.productType.name
+        
+//        switch device.productType {
+//        case :
+//            <#code#>
+//        default:
+//            <#code#>
+//        }
+//        device.position = deviceItem.position
+//        device.productType = deviceItem.productType?.rawValue
+//        device.temperature = deviceItem.temperature
         dataBaseStack.saveContext()
     }
 
@@ -101,5 +109,4 @@ open class DataBaseManager {
         user.forEach { managedObjectContext.delete($0) }
         dataBaseStack.saveContext()
     }
-
 }

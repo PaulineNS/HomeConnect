@@ -45,7 +45,7 @@ final class HomeCoordinator {
 
     private func showProfile() {
         let viewController = screens.createProfileViewController()
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)// TODO: je ferais un present plutot
     }
 
     private func showFilter() {

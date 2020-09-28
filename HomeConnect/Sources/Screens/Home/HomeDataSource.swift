@@ -33,13 +33,19 @@ extension HomeDataSource: UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier,
-                                                            for: indexPath) as? HomeCollectionViewCell else {
-            return UICollectionViewCell()
-        }
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: HomeCollectionViewCell.identifier,
+                for: indexPath
+            ) as? HomeCollectionViewCell,
+            devices.indices.contains(indexPath.row)
+            else { return UICollectionViewCell() }
 
-        cell.autoLayoutCell()
-        cell.updateCell(with: devices[indexPath.row])
+        let device = devices[indexPath.row]
+        let viewModel = HomeCellViewModel(device: .init(name: device.deviceName, type: device.productType))
+        cell.configure(with: viewModel)
+//        cell.autoLayoutCell()
+//        cell.updateCell(with: devices[indexPath.row])
         return cell
     }
 

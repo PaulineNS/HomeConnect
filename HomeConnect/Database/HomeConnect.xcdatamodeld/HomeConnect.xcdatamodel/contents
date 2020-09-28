@@ -8,7 +8,6 @@
         <attribute name="position" optional="YES" attributeType="String"/>
         <attribute name="productType" optional="YES" attributeType="String"/>
         <attribute name="temperature" optional="YES" attributeType="String"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserAttributes" inverseName="devices" inverseEntity="UserAttributes"/>
     </entity>
     <entity name="UserAttributes" representedClassName="UserAttributes" syncable="YES" codeGenerationType="class">
         <attribute name="birthDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -19,10 +18,9 @@
         <attribute name="postalCode" optional="YES" attributeType="String"/>
         <attribute name="street" optional="YES" attributeType="String"/>
         <attribute name="streetCode" optional="YES" attributeType="String"/>
-        <relationship name="devices" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeviceAttributes" inverseName="owner" inverseEntity="DeviceAttributes"/>
     </entity>
     <elements>
-        <element name="DeviceAttributes" positionX="-63" positionY="-18" width="128" height="163"/>
-        <element name="UserAttributes" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="DeviceAttributes" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="UserAttributes" positionX="-54" positionY="-9" width="128" height="163"/>
     </elements>
 </model>

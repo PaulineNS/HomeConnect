@@ -29,17 +29,23 @@ final class HomeRepository: HomeRepositoryType {
     private let token: RequestCancellationToken
     private var dependanceType: DependanceType
     private let dataBaseManager: DataBaseManager
+    private let checker: UserDefaultChecker
+    
 
     // MARK: - Init
 
-    init(networkClient: HTTPClientType,
-         token: RequestCancellationToken,
-         dependanceType: DependanceType,
-         dataBaseManager: DataBaseManager) {
+    init(
+        networkClient: HTTPClientType,
+        token: RequestCancellationToken,
+        dependanceType: DependanceType,
+        dataBaseManager: DataBaseManager,
+        checker: UserDefaultChecker
+    ) {
         self.networkClient = networkClient
         self.token = token
         self.dependanceType = dependanceType
         self.dataBaseManager = dataBaseManager
+        self.checker = checker
     }
 
     // MARK: - HomeRepositoryType
@@ -54,6 +60,11 @@ final class HomeRepository: HomeRepositoryType {
         failure: @escaping (() -> Void),
         completion: @escaping ([DeviceItem]) -> Void
     ) {
+        if checker.hasAlreadyBeenLaunched() {
+            dependanceType = .persistence
+        } else {
+            dependanceType = .network
+        }
         switch dependanceType {
         case .network:
             executeNetworkRequest(success: success, failure: failure)
@@ -63,11 +74,11 @@ final class HomeRepository: HomeRepositoryType {
     }
 
     private func fetchPersistenceDevices(completion: @escaping ([DeviceItem]) -> Void) {
-        guard let user = dataBaseManager.user.first else { return }
-        let device = dataBaseManager.fetchDevicesDependingUser(user: user)
-        let deviceItem = device.compactMap {
-            DeviceItem(deviceAttributes: $0)}
-        completion(deviceItem)
+        let devices = dataBaseManager.devices
+        let devicesItem = devices.compactMap {
+            DeviceItem(device: $0)
+        }
+        completion(devicesItem)
     }
 
     private func executeNetworkRequest(
@@ -77,60 +88,114 @@ final class HomeRepository: HomeRepositoryType {
         guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
             return
         }
-        networkClient.request(
-            requestType: .GET,
-            url: url,
-            cancelledBy: token
-        ) { (result: Result<DeviceResponse, HTTPClientError>) in
-            switch result {
-            case .success(let response):
-                let devices = response
-                    .devices?
-                    .compactMap {
-                        DeviceItem(device: $0, user: self.dataBaseManager.user.first ?? UserAttributes())} ?? []
+            networkClient.request(
+                        requestType: .GET,
+                        url: url,
+                        cancelledBy: token
+                    ) { (result: Result<DeviceResponse, HTTPClientError>) in
+                        switch result {
+                        case .success(let response):
+                            let devices = response
+                                .devices?
+                                .compactMap { DeviceItem(device: $0) } ?? []
+                            
+                            guard let user = response.user else {
+                                return
+                            }
+                            let userItem = UserItem(user: user)
+                            self.dataBaseManager.createUserEntity(userItem: userItem)
+                            
+                            devices.forEach { deviceItem in
 
-                guard let user = response.user else {
-                    return
-                }
-                let userItem = UserItem(user: user)
-                self.dataBaseManager.createUserEntity(userItem: userItem)
-                devices.forEach { deviceItem in
-                    guard let userAttributes = self.dataBaseManager.user.first else { return }
-                    self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem,
-                                                            user: userAttributes)
-                }
-//                self.dependanceType = .persistence
-                success(devices, userItem)
-            case .failure:
-                failure()
-            }
+                                self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem)
+                            }
+                            success(devices, userItem)
+                        case .failure:
+                            failure()
+                        }
+                    }
+        }
+    }
+//}
+
+private extension DeviceItem {
+    init?(device: DeviceResponse.Device) {
+        guard
+            let id = device.id,
+            let name = device.deviceName,
+            let type = ProductType(device: device)
+            else { return nil }
+
+        self.idNumber = "\(id)"
+        self.deviceName = name
+        self.productType = type
+    }
+}
+
+private extension DeviceItem {
+    init?(device: DeviceAttributes) {
+        guard
+            let id = device.deviceId,
+            let name = device.name,
+            let type = ProductType(device: device)
+            else {
+            return nil
+        }
+        
+        self.idNumber = "\(id)"
+        self.deviceName = name
+        self.productType = type
+    }
+}
+
+extension ProductType {
+    init?(device: DeviceAttributes) {
+        switch device.productType {
+        case "Heater":
+            guard
+                let mode = device.mode,
+                let temperature = device.temperature
+                else { return nil }
+            self = .heater(mode: mode, temperature: "\(temperature)")
+        case "Light":
+        guard
+            let mode = device.mode,
+            let intensity = device.intensity
+            else { return nil }
+        self = .light(mode: mode, intensity: "\(intensity)")
+        case "RollerShutter":
+        guard
+            let position = device.position
+            else { return nil }
+        self = .rollerShutter(position: "\(position)")
+        default: return nil
         }
     }
 }
 
-private extension DeviceItem {
-    init(device: DeviceResponse.Device, user: UserAttributes) {
-        self.idNumber = String(device.id ?? 0)
-        self.deviceName = device.deviceName
-        self.intensity = String(device.intensity ?? 0)
-        self.mode = device.mode
-        self.productType = ProductType(rawValue: device.productType ?? "")
-        self.position = String(device.position ?? 0)
-        self.temperature = String(device.temperature ?? 0)
-        self.user = user
-    }
-}
 
-private extension DeviceItem {
-    init(deviceAttributes: DeviceAttributes) {
-        self.idNumber = deviceAttributes.deviceId
-        self.deviceName = deviceAttributes.name
-        self.intensity = deviceAttributes.intensity
-        self.mode = deviceAttributes.mode
-        self.productType = ProductType(rawValue: deviceAttributes.productType ?? "")
-        self.position = deviceAttributes.position
-        self.temperature = deviceAttributes.temperature
-        self.user = deviceAttributes.owner ?? UserAttributes()
+extension ProductType {
+    init?(device: DeviceResponse.Device) {
+        switch device.productType {
+        case "Heater":
+            guard
+                let mode = device.mode,
+                let temperature = device.temperature
+                else { return nil }
+            self = .heater(mode: mode, temperature: "\(temperature)")
+        case "Light":
+        guard
+            let mode = device.mode,
+            let intensity = device.intensity
+            else { return nil }
+        self = .light(mode: mode, intensity: "\(intensity)")
+        case "RollerShutter":
+        guard
+            let position = device.position
+            else { return nil }
+        self = .rollerShutter(position: "\(position)")
+        default: return nil
+        }
     }
 }
 

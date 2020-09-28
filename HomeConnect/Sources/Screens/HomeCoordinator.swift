@@ -48,6 +48,11 @@ final class HomeCoordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
+    private func showFilter() {
+        let viewController = screens.createFilterViewController()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
     // MARK: - Alert
 
     private func showAlert(for type: AlertType) {
@@ -65,6 +70,10 @@ extension HomeCoordinator: HomeScreenDelegate {
 
     func homeScreenDidSelectProfile() {
         showProfile()
+    }
+
+    func homeScreenDidSelectFilter() {
+        showFilter()
     }
 
     func homeScreenShouldDisplayAlert(for type: AlertType) {

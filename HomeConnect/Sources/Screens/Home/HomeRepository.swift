@@ -16,6 +16,9 @@ protocol HomeRepositoryType: class {
     func getUserDevices(success: @escaping ([DeviceItem], UserItem) -> Void,
                         failure: @escaping (() -> Void),
                         completion: @escaping ([DeviceItem]) -> Void)
+
+    func deleteTout()
+
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -41,6 +44,11 @@ final class HomeRepository: HomeRepositoryType {
 
     // MARK: - HomeRepositoryType
 
+    func deleteTout() {
+        dataBaseManager.deleteAllUsers()
+        dataBaseManager.deleteAllDevices()
+    }
+
     func getUserDevices(
         success: @escaping ([DeviceItem], UserItem) -> Void,
         failure: @escaping (() -> Void),
@@ -55,7 +63,7 @@ final class HomeRepository: HomeRepositoryType {
     }
 
     private func fetchPersistenceDevices(completion: @escaping ([DeviceItem]) -> Void) {
-        guard let user = dataBaseManager.users.first else { return }
+        guard let user = dataBaseManager.user.first else { return }
         let device = dataBaseManager.fetchDevicesDependingUser(user: user)
         let deviceItem = device.compactMap {
             DeviceItem(deviceAttributes: $0)}
@@ -79,7 +87,7 @@ final class HomeRepository: HomeRepositoryType {
                 let devices = response
                     .devices?
                     .compactMap {
-                        DeviceItem(device: $0, user: self.dataBaseManager.users.first ?? UserAttributes())} ?? []
+                        DeviceItem(device: $0, user: self.dataBaseManager.user.first ?? UserAttributes())} ?? []
 
                 guard let user = response.user else {
                     return
@@ -87,7 +95,7 @@ final class HomeRepository: HomeRepositoryType {
                 let userItem = UserItem(user: user)
                 self.dataBaseManager.createUserEntity(userItem: userItem)
                 devices.forEach { deviceItem in
-                    guard let userAttributes = self.dataBaseManager.users.first else { return }
+                    guard let userAttributes = self.dataBaseManager.user.first else { return }
                     self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem,
                                                             user: userAttributes)
                 }

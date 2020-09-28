@@ -50,6 +50,10 @@ final class HomeViewModel {
         filterIconName?("Filtrer")
     }
 
+    func viewDidAppear() {
+        repository.deleteTout()
+    }
+
     // MARK: - Methods
 
     func didSelectDevice(device: DeviceItem) {
@@ -58,6 +62,10 @@ final class HomeViewModel {
 
     func didSelectProfileButton() {
         delegate?.homeScreenDidSelectProfile()
+    }
+
+    func didSelectFilterButton() {
+        delegate?.homeScreenDidSelectFilter()
     }
 
     private func getAllDevices() {

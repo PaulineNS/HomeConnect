@@ -26,7 +26,7 @@ final class ProfileRepository: ProfileRepositoryType {
     }
 
     func getUserInformations() -> UserAttributes {
-        guard let user = dataBaseManager.users.first else { return UserAttributes()}
+        guard let user = dataBaseManager.user.first else { return UserAttributes()}
         return user
     }
 

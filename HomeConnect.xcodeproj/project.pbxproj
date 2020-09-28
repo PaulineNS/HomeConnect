@@ -11,6 +11,11 @@
 		5686A2312520B77A00176D70 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2302520B77A00176D70 /* ProfileRepository.swift */; };
 		5686A2362520B7ED00176D70 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2352520B7ED00176D70 /* ProductType.swift */; };
 		5686A23B2520B84300176D70 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A23A2520B84300176D70 /* UserItem.swift */; };
+		569581282521C8F9005EACA7 /* IntensityFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */; };
+		5695812D2521C914005EACA7 /* ModeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */; };
+		569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */; };
+		569581372521C92D005EACA7 /* PositionFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */; };
+		5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */; };
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
@@ -67,6 +72,11 @@
 		5686A2302520B77A00176D70 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		5686A2352520B7ED00176D70 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		5686A23A2520B84300176D70 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
+		569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityFilterTableViewCell.swift; sourceTree = "<group>"; };
+		5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeFilterTableViewCell.swift; sourceTree = "<group>"; };
+		569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeFilterTableViewCell.swift; sourceTree = "<group>"; };
+		569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionFilterTableViewCell.swift; sourceTree = "<group>"; };
+		5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFilterTableViewCell.swift; sourceTree = "<group>"; };
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
@@ -242,6 +252,11 @@
 			children = (
 				56D7E095251C9D2E00DD5B37 /* FiltersViewController.swift */,
 				56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */,
+				569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */,
+				5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */,
+				569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */,
+				569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */,
+				5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -495,6 +510,8 @@
 			files = (
 				56D7E0A0251C9D5400DD5B37 /* HomeViewModel.swift in Sources */,
 				56D7E07A251C9C1600DD5B37 /* RequestCancellationToken.swift in Sources */,
+				569581372521C92D005EACA7 /* PositionFilterTableViewCell.swift in Sources */,
+				5695812D2521C914005EACA7 /* ModeFilterTableViewCell.swift in Sources */,
 				56D7E0E8251CC7AA00DD5B37 /* HomeCollectionViewCell.swift in Sources */,
 				5686A2312520B77A00176D70 /* ProfileRepository.swift in Sources */,
 				56D7E08C251C9D1900DD5B37 /* RollerShutterViewController.swift in Sources */,
@@ -516,11 +533,14 @@
 				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
 				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
+				5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */,
+				569581282521C8F9005EACA7 /* IntensityFilterTableViewCell.swift in Sources */,
 				5686A23B2520B84300176D70 /* UserItem.swift in Sources */,
 				56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */,
 				56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */,
 				56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */,
 				56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */,
+				569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */,
 				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
 				56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */,
 				56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */,

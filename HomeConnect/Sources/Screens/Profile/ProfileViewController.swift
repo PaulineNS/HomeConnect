@@ -34,7 +34,6 @@ class ProfileViewController: UIViewController {
 
     let profileImageView: UIImageView = {
         let profileIV = UIImageView()
-//        profileIV.image = UIImage(named: "light")
         profileIV.contentMode = .scaleAspectFill
         profileIV.clipsToBounds = true
         profileIV.layer.borderWidth = 3
@@ -45,7 +44,6 @@ class ProfileViewController: UIViewController {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-//        label.text = "Pauline Nomballais"
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.textColor = .white
         return label
@@ -54,7 +52,6 @@ class ProfileViewController: UIViewController {
     let ageLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-//        label.text = "29 ans"
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = .white
         return label

@@ -21,6 +21,12 @@ open class DataBaseManager {
         return user
     }
 
+    var devices: [DeviceAttributes] {
+        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+        guard let device = try? managedObjectContext.fetch(request) else { return [] }
+        return device
+    }
+
     func fetchDevicesDependingUser(user: UserAttributes) -> [DeviceAttributes] {
         let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
         let predicate = NSPredicate(format: "owner == %@", user)
@@ -29,17 +35,17 @@ open class DataBaseManager {
         return devices
     }
 
-    var devices: [DeviceAttributes] {
-        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-        guard let devices = try? managedObjectContext.fetch(request) else { return [] }
-        return devices
-    }
-
-    var users: [UserAttributes] {
-        let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
-        guard let users = try? managedObjectContext.fetch(request) else { return [] }
-        return users
-    }
+//    var devices: [DeviceAttributes] {
+//        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+//        guard let devices = try? managedObjectContext.fetch(request) else { return [] }
+//        return devices
+//    }
+//
+//    var users: [UserAttributes] {
+//        let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
+//        guard let users = try? managedObjectContext.fetch(request) else { return [] }
+//        return users
+//    }
 
     // MARK: - Initializer
 
@@ -83,6 +89,16 @@ open class DataBaseManager {
         if let objects = try? managedObjectContext.fetch(request) {
             objects.forEach { managedObjectContext.delete($0)}
         }
+        dataBaseStack.saveContext()
+    }
+
+    func deleteAllDevices() {
+        devices.forEach { managedObjectContext.delete($0) }
+        dataBaseStack.saveContext()
+    }
+
+    func deleteAllUsers() {
+        user.forEach { managedObjectContext.delete($0) }
         dataBaseStack.saveContext()
     }
 

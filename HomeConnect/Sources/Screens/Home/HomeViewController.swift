@@ -48,6 +48,11 @@ class HomeViewController: UIViewController {
         viewModel.viewDidLoad()
     }
 
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        viewModel.viewDidAppear()
+//    }
+
     // MARK: - Configure UI
 
     private func setNavigationBar() {
@@ -115,7 +120,7 @@ class HomeViewController: UIViewController {
     }
 
     @objc func didTapFilterButton() {
-        print("")
+        viewModel.didSelectFilterButton()
     }
 
 }

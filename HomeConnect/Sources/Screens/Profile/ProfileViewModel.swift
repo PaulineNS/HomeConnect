@@ -44,7 +44,6 @@ final class ProfileViewModel {
 
     func viewWillAppear() {
         user = repository.getUserInformations()
-
     }
 
     func viewDidLoad() {

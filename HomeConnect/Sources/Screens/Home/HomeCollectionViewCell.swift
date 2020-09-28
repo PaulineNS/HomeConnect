@@ -11,12 +11,35 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Private properties
 
-    private var stackView: UIStackView = UIStackView()
-    private var deviceImageView: UIImageView = UIImageView()
-    private var deviceNameLabel: UILabel = UILabel()
-    private var device: DeviceItem? = nil {
+    static let identifier = "HomeCollectionViewCell"
+
+    private lazy var cellStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.addArrangedSubview(deviceImageView)
+        stackView.addArrangedSubview(deviceNameLabel)
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 10
+        return stackView
+    }()
+
+    private lazy var deviceImageView: UIImageView = {
+        let deviceImageView = UIImageView()
+        deviceImageView.contentMode = .scaleAspectFit
+        return deviceImageView
+    }()
+
+    private lazy var deviceNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private var deviceItem: DeviceItem? = nil {
         didSet {
-            guard let device = self.device else { return }
+            guard let device = self.deviceItem else { return }
             deviceNameLabel.text = device.deviceName
             switch device.productType {
             case .heater:
@@ -36,34 +59,22 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     func autoLayoutCell() {
         self.layer.cornerRadius = 10
-        self.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-
-        //autolayout deviceImageView
-        stackView.addArrangedSubview(deviceImageView)
+        self.addSubview(cellStackView)
+        cellStackView.anchor(top: contentView.topAnchor,
+                             left: contentView.leftAnchor,
+                             bottom: contentView.bottomAnchor,
+                             right: contentView.rightAnchor,
+                             paddingTop: 10,
+                             paddingLeft: 10,
+                             paddingBottom: 10,
+                             paddingRight: 10)
         deviceImageView.translatesAutoresizingMaskIntoConstraints = false
-        deviceImageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 2/3).isActive = true
-        deviceImageView.contentMode = .scaleAspectFit
-
-        //autolayout deviceNameLabel
+        deviceImageView.heightAnchor.constraint(equalTo: cellStackView.heightAnchor, multiplier: 2/3).isActive = true
         deviceNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        deviceNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        deviceNameLabel.numberOfLines = 0
-
-        // stackView setting
-        stackView.addArrangedSubview(deviceNameLabel)
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 10
     }
 
     func updateCell(with device: DeviceItem) {
-        self.device = device
+        self.deviceItem = device
     }
 
 }

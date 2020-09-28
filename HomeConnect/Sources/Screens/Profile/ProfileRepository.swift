@@ -8,9 +8,7 @@
 import Foundation
 
 protocol ProfileRepositoryType: class {
-
     func getUserInformations() -> UserAttributes
-
 }
 
 final class ProfileRepository: ProfileRepositoryType {
@@ -29,5 +27,4 @@ final class ProfileRepository: ProfileRepositoryType {
         guard let user = dataBaseManager.user.first else { return UserAttributes()}
         return user
     }
-
 }

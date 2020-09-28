@@ -16,6 +16,7 @@
 		569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */; };
 		569581372521C92D005EACA7 /* PositionFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */; };
 		5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */; };
+		5695814B2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */; };
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeFilterTableViewCell.swift; sourceTree = "<group>"; };
 		569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionFilterTableViewCell.swift; sourceTree = "<group>"; };
 		5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFilterTableViewCell.swift; sourceTree = "<group>"; };
+		5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AutoLayoutAnchor.swift"; sourceTree = "<group>"; };
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		569581492521F578005EACA7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		56D7DFD7251C903400DD5B37 = {
 			isa = PBXGroup;
 			children = (
@@ -205,11 +215,12 @@
 		56D7E01B251C909700DD5B37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5614E96D251E20A200B3CA27 /* Model */,
-				56D7E122251DCFA500DD5B37 /* Alert */,
+				569581492521F578005EACA7 /* Extensions */,
 				56D7E037251C97B900DD5B37 /* Context.swift */,
 				56D7DFE3251C903400DD5B37 /* AppDelegate.swift */,
 				56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */,
+				5614E96D251E20A200B3CA27 /* Model */,
+				56D7E122251DCFA500DD5B37 /* Alert */,
 				56D7E05C251C9AD000DD5B37 /* Screens */,
 			);
 			path = Sources;
@@ -534,6 +545,7 @@
 				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
 				5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */,
+				5695814B2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift in Sources */,
 				569581282521C8F9005EACA7 /* IntensityFilterTableViewCell.swift in Sources */,
 				5686A23B2520B84300176D70 /* UserItem.swift in Sources */,
 				56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */,

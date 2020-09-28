@@ -99,7 +99,7 @@ final class HomeRepository: HomeRepositoryType {
                     self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem,
                                                             user: userAttributes)
                 }
-                self.dependanceType = .persistence
+//                self.dependanceType = .persistence
                 success(devices, userItem)
             case .failure:
                 failure()

@@ -26,10 +26,11 @@ final class RollerShutterViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.spacing = 10
-        stackView.addArrangedSubview(rollerShutterStatusSwitch)
+        stackView.addArrangedSubview(rollerShutterOpenLabel)
         stackView.addArrangedSubview(rollerShutterIntensitySlider)
+        stackView.addArrangedSubview(rollerShutterClosedLabel)
         return stackView
     }()
 
@@ -47,13 +48,23 @@ final class RollerShutterViewController: UIViewController {
         return label
     }()
 
-    private lazy var rollerShutterStatusSwitch: UISwitch = {
-        let statusSwitch = UISwitch()
-        return statusSwitch
+    private lazy var rollerShutterOpenLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Ouvert"
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var rollerShutterClosedLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Fermé"
+        label.textAlignment = .center
+        return label
     }()
 
     private lazy var rollerShutterIntensitySlider: UISlider = {
         let slider = UISlider()
+        slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
         return slider
     }()
 
@@ -95,7 +106,6 @@ final class RollerShutterViewController: UIViewController {
                            paddingLeft: 10,
                            width: 100,
                            height: 100)
-        rollerShutterStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
         rollerShutterIntensitySlider.translatesAutoresizingMaskIntoConstraints = false
     }
 

@@ -22,14 +22,27 @@ final class HeaterViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var settingsStackView: UIStackView = {
+    private lazy var temperatureStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.spacing = 10
+        stackView.addArrangedSubview(heaterMinusButton)
+        stackView.addArrangedSubview(temperatureLabel)
+        stackView.addArrangedSubview(heaterPlusButton)
+        return stackView
+    }()
+
+    private lazy var modeStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        stackView.addArrangedSubview(modeOffLabel)
         stackView.addArrangedSubview(heaterStatusSwitch)
-        stackView.addArrangedSubview(heaterIntensitySlider)
+        stackView.addArrangedSubview(modeOnLabel)
         return stackView
     }()
 
@@ -47,14 +60,44 @@ final class HeaterViewController: UIViewController {
         return label
     }()
 
+    private lazy var temperatureLabel: UILabel = {
+        let label = UILabel()
+        label.text = "10 °C"
+        label.textAlignment = .center
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 3.0
+        return label
+    }()
+
+    private lazy var heaterPlusButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "plusButton"), for: .normal)
+        return button
+    }()
+
+    private lazy var heaterMinusButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "minusButton"), for: .normal)
+        return button
+    }()
+
+    private lazy var modeOnLabel: UILabel = {
+        let label = UILabel()
+        label.text = "On"
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var modeOffLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Off"
+        label.textAlignment = .center
+        return label
+    }()
+
     private lazy var heaterStatusSwitch: UISwitch = {
         let statusSwitch = UISwitch()
         return statusSwitch
-    }()
-
-    private lazy var heaterIntensitySlider: UISlider = {
-        let slider = UISlider()
-        return slider
     }()
 
     // MARK: - Lifecycle
@@ -74,29 +117,39 @@ final class HeaterViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
         view.addSubview(informationStackView)
-        view.addSubview(settingsStackView)
+        view.addSubview(modeStackView)
+        view.addSubview(temperatureStackView)
 
         informationStackView.anchor(top: safeArea.topAnchor,
                                     left: safeArea.leftAnchor,
                                     right: safeArea.rightAnchor,
                                     paddingLeft: 10,
                                     paddingRight: 10)
-        settingsStackView.anchor(top: informationStackView.bottomAnchor,
-                                 left: safeArea.leftAnchor,
-                                 bottom: safeArea.bottomAnchor,
-                                 right: safeArea.rightAnchor,
-                                 paddingTop: 10,
-                                 paddingLeft: 10,
-                                 paddingBottom: 10,
-                                 paddingRight: 10)
+        modeStackView.anchor(top: informationStackView.bottomAnchor,
+                             left: safeArea.leftAnchor,
+                             right: safeArea.rightAnchor,
+                             paddingTop: 10,
+                             paddingLeft: 10,
+                             paddingRight: 10)
+        temperatureStackView.anchor(top: modeStackView.bottomAnchor,
+                                    left: safeArea.leftAnchor,
+                                    right: safeArea.rightAnchor,
+                                    paddingTop: 10,
+                                    paddingLeft: 10,
+                                    paddingRight: 10)
         heaterImageView.anchor(top: safeArea.topAnchor,
                            left: safeArea.leftAnchor,
                            paddingTop: 10,
                            paddingLeft: 10,
                            width: 100,
                            height: 100)
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        heaterMinusButton.translatesAutoresizingMaskIntoConstraints = false
+        heaterPlusButton.translatesAutoresizingMaskIntoConstraints = false
+
         heaterStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
-        heaterIntensitySlider.translatesAutoresizingMaskIntoConstraints = false
+        modeOnLabel.translatesAutoresizingMaskIntoConstraints = false
+        modeOffLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

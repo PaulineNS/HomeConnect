@@ -7,64 +7,96 @@
 
 import UIKit
 
-class RollerShutterViewController: UIViewController {
+final class RollerShutterViewController: UIViewController {
 
     // MARK: - Properties
-    private var topStackView: UIStackView = UIStackView()
-    private var bottomStackView = UIStackView()
-    private lazy var lightImageView = UIImageView()
-    private lazy var lightNameLabel = UILabel()
-    private lazy var lightStatusSwitch = UISwitch()
-    private lazy var lightIntensitySlider = UISlider()
+
+    private lazy var informationStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.addArrangedSubview(rollerShutterImageView)
+        stackView.addArrangedSubview(rollerShutterNameLabel)
+        return stackView
+    }()
+
+    private lazy var settingsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.addArrangedSubview(rollerShutterStatusSwitch)
+        stackView.addArrangedSubview(rollerShutterIntensitySlider)
+        return stackView
+    }()
+
+    private lazy var rollerShutterImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "rollerShutter")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    private lazy var rollerShutterNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Volet"
+        label.textAlignment = .left
+        return label
+    }()
+
+    private lazy var rollerShutterStatusSwitch: UISwitch = {
+        let statusSwitch = UISwitch()
+        return statusSwitch
+    }()
+
+    private lazy var rollerShutterIntensitySlider: UISlider = {
+        let slider = UISlider()
+        return slider
+    }()
+
+    // MARK: - Lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
 
+    // MARK: - Configure UI
+
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
-        view.backgroundColor = .green
-        // stackView
-        view.addSubview(topStackView)
-        topStackView.axis = .horizontal
-        topStackView.alignment = .fill
-        topStackView.distribution = .equalSpacing
-        topStackView.spacing = 10
-        topStackView.translatesAutoresizingMaskIntoConstraints = false
-        topStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10).isActive = true
-        topStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10).isActive = true
-        topStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 0).isActive = true
+        view.backgroundColor = .white
+        view.addSubview(informationStackView)
+        view.addSubview(settingsStackView)
 
-        //lightImgaeView
-
-        topStackView.addArrangedSubview(lightImageView)
-        lightImageView.translatesAutoresizingMaskIntoConstraints = false
-        lightImageView.image = UIImage(named: "rollerShutter")
-        lightImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10).isActive = true
-        lightImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10).isActive = true
-
-        lightImageView.contentMode = .scaleAspectFit
-        lightImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        lightImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        topStackView.addArrangedSubview(lightNameLabel)
-        lightNameLabel.text = "hello"
-        lightNameLabel.textAlignment = .left
-
-        view.addSubview(bottomStackView)
-        bottomStackView.axis = .vertical
-        bottomStackView.alignment = .fill
-        bottomStackView.distribution = .equalSpacing
-        bottomStackView.spacing = 10
-        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
-        bottomStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10).isActive = true
-        bottomStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10).isActive = true
-        bottomStackView.topAnchor.constraint(equalTo: topStackView.bottomAnchor, constant: 10).isActive = true
-        bottomStackView.addArrangedSubview(lightStatusSwitch)
-        lightStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
-
-        bottomStackView.addArrangedSubview(lightIntensitySlider)
-        lightIntensitySlider.translatesAutoresizingMaskIntoConstraints = false
+        informationStackView.anchor(top: safeArea.topAnchor,
+                                    left: safeArea.leftAnchor,
+                                    right: safeArea.rightAnchor,
+                                    paddingLeft: 10,
+                                    paddingRight: 10)
+        settingsStackView.anchor(top: informationStackView.bottomAnchor,
+                                 left: safeArea.leftAnchor,
+                                 bottom: safeArea.bottomAnchor,
+                                 right: safeArea.rightAnchor,
+                                 paddingTop: 10,
+                                 paddingLeft: 10,
+                                 paddingBottom: 10,
+                                 paddingRight: 10)
+        rollerShutterImageView.anchor(top: safeArea.topAnchor,
+                           left: safeArea.leftAnchor,
+                           paddingTop: 10,
+                           paddingLeft: 10,
+                           width: 100,
+                           height: 100)
+        rollerShutterStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
+        rollerShutterIntensitySlider.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

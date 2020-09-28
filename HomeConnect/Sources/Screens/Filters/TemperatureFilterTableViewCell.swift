@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TemperatureFilterTableViewCell: UITableViewCell {
+final class TemperatureFilterTableViewCell: UITableViewCell {
 
     static let identifier = "TemperatureFilterTableViewCell"
 

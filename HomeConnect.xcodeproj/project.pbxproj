@@ -186,9 +186,9 @@
 		56D7DFE2251C903400DD5B37 /* HomeConnect */ = {
 			isa = PBXGroup;
 			children = (
-				56D7E01B251C909700DD5B37 /* Sources */,
 				56D7E02D251C91C200DD5B37 /* Network */,
 				56D7E0D1251CA20600DD5B37 /* Database */,
+				56D7E01B251C909700DD5B37 /* Sources */,
 				56D7E01C251C909B00DD5B37 /* Ressources */,
 			);
 			path = HomeConnect;
@@ -215,13 +215,13 @@
 		56D7E01B251C909700DD5B37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				569581492521F578005EACA7 /* Extensions */,
 				56D7E037251C97B900DD5B37 /* Context.swift */,
 				56D7DFE3251C903400DD5B37 /* AppDelegate.swift */,
 				56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */,
+				56D7E05C251C9AD000DD5B37 /* Screens */,
 				5614E96D251E20A200B3CA27 /* Model */,
 				56D7E122251DCFA500DD5B37 /* Alert */,
-				56D7E05C251C9AD000DD5B37 /* Screens */,
+				569581492521F578005EACA7 /* Extensions */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

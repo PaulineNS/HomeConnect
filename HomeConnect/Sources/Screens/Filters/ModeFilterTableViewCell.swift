@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModeFilterTableViewCell: UITableViewCell {
+final class ModeFilterTableViewCell: UITableViewCell {
 
     static let identifier = "ModeFilterTableViewCell"
 

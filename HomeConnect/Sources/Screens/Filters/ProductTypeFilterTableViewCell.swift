@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductTypeFilterTableViewCell: UITableViewCell {
+final class ProductTypeFilterTableViewCell: UITableViewCell {
 
     static let identifier = "ProductTypeFilterTableViewCell"
 

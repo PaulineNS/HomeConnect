@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PositionFilterTableViewCell: UITableViewCell {
+final class PositionFilterTableViewCell: UITableViewCell {
 
     static let identifier = "PositionFilterTableViewCell"
 

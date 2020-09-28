@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IntensityFilterTableViewCell: UITableViewCell {
+final class IntensityFilterTableViewCell: UITableViewCell {
 
     static let identifier = "IntensityFilterTableViewCell"
 

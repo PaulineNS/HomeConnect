@@ -17,13 +17,24 @@ class PositionFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let positionSlider: UISlider = {
+        let slider = UISlider()
+        return slider
+    }()
+
     public func configure() {
         contentView.addSubview(positionLabel)
-    }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        positionLabel.frame = CGRect(x: 105, y: 5, width: contentView.frame.size.width, height: 100)
-    }
+        contentView.addSubview(positionSlider)
 
+        positionLabel.anchor(top: contentView.topAnchor,
+                              left: contentView.leftAnchor,
+                              paddingTop: 10, paddingLeft: 10, height: 30)
+        positionSlider.anchor(top: positionLabel.bottomAnchor,
+                               left: contentView.leftAnchor,
+                               right: contentView.rightAnchor,
+                               paddingTop: 10,
+                               paddingLeft: 50,
+                               paddingRight: 50)
+    }
 }

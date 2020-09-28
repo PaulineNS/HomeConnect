@@ -13,10 +13,6 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     private let tableView: UITableView = {
         let table = UITableView()
-//        table.register(SimpleTableViewCell.self,
-//                       forCellReuseIdentifier: SimpleTableViewCell.identifier)
-//        table.register(ImageTableViewCell.self,
-//                       forCellReuseIdentifier: ImageTableViewCell.identifier)
         table.register(IntensityFilterTableViewCell.self,
                        forCellReuseIdentifier: IntensityFilterTableViewCell.identifier)
         table.register(ModeFilterTableViewCell.self,

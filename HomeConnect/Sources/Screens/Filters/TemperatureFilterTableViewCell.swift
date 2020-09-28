@@ -17,12 +17,23 @@ class TemperatureFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let temperatureSlider: UISlider = {
+        let slider = UISlider()
+        return slider
+    }()
+
     public func configure() {
         contentView.addSubview(temperatureLabel)
-    }
+        contentView.addSubview(temperatureSlider)
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        temperatureLabel.frame = CGRect(x: 105, y: 5, width: contentView.frame.size.width, height: 100)
+        temperatureLabel.anchor(top: contentView.topAnchor,
+                              left: contentView.leftAnchor,
+                              paddingTop: 10, paddingLeft: 10, height: 30)
+        temperatureSlider.anchor(top: temperatureLabel.bottomAnchor,
+                               left: contentView.leftAnchor,
+                               right: contentView.rightAnchor,
+                               paddingTop: 10,
+                               paddingLeft: 50,
+                               paddingRight: 50)
     }
 }

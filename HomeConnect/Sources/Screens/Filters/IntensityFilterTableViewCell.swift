@@ -17,14 +17,24 @@ class IntensityFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let intensitySlider: UISlider = {
+        let slider = UISlider()
+        return slider
+    }()
+
     public func configure() {
         contentView.addSubview(intensityLabel)
+        contentView.addSubview(intensitySlider)
+        intensityLabel.anchor(top: contentView.topAnchor,
+                              left: contentView.leftAnchor,
+                              paddingTop: 10, paddingLeft: 10, height: 30)
+        intensitySlider.anchor(top: intensityLabel.bottomAnchor,
+                               left: contentView.leftAnchor,
+                               right: contentView.rightAnchor,
+                               paddingTop: 10,
+                               paddingLeft: 50,
+                               paddingRight: 50)
 
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        intensityLabel.frame = CGRect(x: 105, y: 5, width: contentView.frame.size.width, height: 100)
     }
 
 }

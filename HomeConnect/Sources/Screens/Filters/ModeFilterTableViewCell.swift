@@ -17,12 +17,21 @@ class ModeFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let modeSwitch: UISwitch = {
+        let mySwitch = UISwitch()
+        return mySwitch
+    }()
+
     public func configure() {
         contentView.addSubview(modeLabel)
-    }
+        contentView.addSubview(modeSwitch)
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        modeLabel.frame = CGRect(x: 105, y: 5, width: contentView.frame.size.width, height: 100)
+        modeLabel.anchor(top: contentView.topAnchor,
+                         left: contentView.leftAnchor,
+                         paddingTop: 10, paddingLeft: 10, height: 30)
+
+        modeSwitch.anchor(top: modeLabel.bottomAnchor,
+                          paddingTop: 10)
+        modeSwitch.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
 }

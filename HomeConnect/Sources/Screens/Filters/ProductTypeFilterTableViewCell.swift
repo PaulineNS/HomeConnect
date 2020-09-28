@@ -17,13 +17,30 @@ class ProductTypeFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let productTypeSegmentedControl: UISegmentedControl = {
+        let segmentedControlItems = [ProductType.heater.rawValue,
+                                     ProductType.light.rawValue,
+                                     ProductType.rollerShutter.rawValue]
+        let segmentedControl = UISegmentedControl(items: segmentedControlItems)
+
+        segmentedControl.selectedSegmentIndex = 1
+        return segmentedControl
+    }()
+
     public func configure() {
         contentView.addSubview(productTypeLabel)
-    }
+        contentView.addSubview(productTypeSegmentedControl)
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        productTypeLabel.frame = CGRect(x: 105, y: 5, width: contentView.frame.size.width, height: 100)
+        productTypeLabel.anchor(top: contentView.topAnchor,
+                              left: contentView.leftAnchor,
+                              paddingTop: 10, paddingLeft: 10, height: 30)
+        productTypeSegmentedControl.anchor(top: productTypeLabel.bottomAnchor,
+                               left: contentView.leftAnchor,
+                               right: contentView.rightAnchor,
+                               paddingTop: 10,
+                               paddingLeft: 20,
+                               paddingRight: 20,
+                               height: 30)
     }
 
 }

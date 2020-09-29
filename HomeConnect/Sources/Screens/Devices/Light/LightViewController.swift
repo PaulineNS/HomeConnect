@@ -31,7 +31,8 @@ final class LightViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.spacing = 10
-        stackView.addArrangedSubview(lightStatusSwitch)
+        stackView.addArrangedSubview(lightModeSwitch)
+        stackView.addArrangedSubview(lightIntensityLabel)
         stackView.addArrangedSubview(lightIntensitySlider)
         return stackView
     }()
@@ -48,13 +49,26 @@ final class LightViewController: UIViewController {
         return label
     }()
 
-    private lazy var lightStatusSwitch: UISwitch = {
-        let statusSwitch = UISwitch()
-        return statusSwitch
+    private lazy var lightModeSwitch: UISwitch = {
+        let modeSwitch = UISwitch()
+        modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
+        return modeSwitch
+    }()
+
+    private lazy var lightIntensityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
     }()
 
     private lazy var lightIntensitySlider: UISlider = {
         let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.tintColor = .red
+        slider.thumbTintColor = .black
+        slider.isContinuous = true
+        slider.addTarget(self, action: #selector(didMoveIntensitySlider), for: .valueChanged)
         return slider
     }()
 
@@ -87,6 +101,10 @@ final class LightViewController: UIViewController {
         super.viewDidLoad()
         bind(to: viewModel)
         viewModel.viewDidLoad()
+        if let nnn = Int(lightIntensityLabel.text ?? "") {
+            lightIntensitySlider.setValue(Float(nnn), animated: true)
+        }
+
     }
 
     // MARK: - Private Functions
@@ -94,7 +112,6 @@ final class LightViewController: UIViewController {
     // MARK: - Bindings
 
     private func bind(to viewModel: LightViewModel) {
-
         viewModel.lightName = { [weak self] name in
             self?.lightNameLabel.text = name
         }
@@ -103,13 +120,16 @@ final class LightViewController: UIViewController {
         }
         viewModel.lightMode = { [weak self] mode in
             guard mode == "ON" else {
-                self?.lightStatusSwitch.setOn(false, animated: true)
+                self?.lightModeSwitch.setOn(false, animated: true)
                 return
             }
-            self?.lightStatusSwitch.setOn(true, animated: true)
+            self?.lightModeSwitch.setOn(true, animated: true)
         }
         viewModel.lightDeleteIconName = { [weak self] name in
             self?.deleteIconName = name
+        }
+        viewModel.lightIntensity = { [weak self] value in
+            self?.lightIntensityLabel.text = value
         }
     }
 
@@ -117,6 +137,17 @@ final class LightViewController: UIViewController {
 
     @objc func didTapDeleteButton() {
         viewModel.didPressDeleteIconButton()
+    }
+
+    @objc func didMoveIntensitySlider() {
+        viewModel.didChangeLightIntensity(with: Int(lightIntensitySlider.value))
+    }
+
+    @objc func modeSwitchValueDidChange() {
+        viewModel.didChangeModeSwitchValue(withOnvalue: lightModeSwitch.isOn)
+        if let nnn = Int(lightIntensityLabel.text ?? "") {
+            lightIntensitySlider.setValue(Float(nnn), animated: true)
+        }
     }
 
     // MARK: - Configure UI
@@ -150,8 +181,11 @@ final class LightViewController: UIViewController {
                            paddingLeft: 10,
                            width: 100,
                            height: 100)
-        lightStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
-        lightIntensitySlider.translatesAutoresizingMaskIntoConstraints = false
+        lightIntensitySlider.anchor(left: settingsStackView.leftAnchor,
+                                    right: settingsStackView.rightAnchor,
+                                    paddingLeft: 50,
+                                    paddingRight: 50)
+        lightModeSwitch.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

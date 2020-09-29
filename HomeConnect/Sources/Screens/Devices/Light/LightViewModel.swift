@@ -14,6 +14,7 @@ final class LightViewModel {
     private var device: DeviceItem
     private var repository: LightRepositoryType
     private weak var delegate: DevicesScreensDelegate?
+    private var intensity = 0
 
     // MARK: - Initializer
 
@@ -43,7 +44,7 @@ final class LightViewModel {
         lightDeleteIconName?("dustbin")
         defineLightAndIntensity(for: device)
     }
-    
+
     func didPressDeleteIconButton() {
         delegate?.devicesScreensShouldDisplayMultiChoicesAlert(for: .deleteDevice) { [weak self] response in
             if response, let deviceId = self?.device.idNumber {
@@ -53,14 +54,32 @@ final class LightViewModel {
         }
     }
 
+    func didChangeLightIntensity(with value: Int) {
+        if value == 0 {
+            lightMode?("OFF")
+        } else {
+            lightMode?("ON")
+        }
+        lightIntensity?("\(value)")
+    }
+    
+    func didChangeModeSwitchValue(withOnvalue: Bool) {
+        withOnvalue ? lightIntensity?("50") : lightIntensity?("0")
+    }
+
     func defineLightAndIntensity(for device: DeviceItem) {
         switch device.productType {
         case .light(let mode, let intensity):
-            lightMode?("\(mode)")
-            lightIntensity?("\(intensity)")
+            self.intensity = Int(intensity) ?? 0
+            if mode == "ON" && intensity != "0" {
+                lightMode?("\(mode)")
+                lightIntensity?("\(intensity)")
+            } else {
+                lightMode?("OFF")
+                lightIntensity?("\(intensity)")
+            }
         default:
             return
         }
     }
-
 }

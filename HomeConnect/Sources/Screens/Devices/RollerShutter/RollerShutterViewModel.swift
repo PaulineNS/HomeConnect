@@ -42,7 +42,7 @@ final class RollerShutterViewModel {
         rollerDeleteIconName?("dustbin")
         definePostion(for: device)
     }
-    
+
     func didPressDeleteIconButton() {
         delegate?.devicesScreensShouldDisplayMultiChoicesAlert(for: .deleteDevice) { [weak self] response in
             if response, let deviceId = self?.device.idNumber {
@@ -52,6 +52,9 @@ final class RollerShutterViewModel {
         }
     }
 
+    func didChangeRollerPostion(with value: Int) {
+        rollerPosition?("\(value)")
+    }
 
     func definePostion(for device: DeviceItem) {
         switch device.productType {

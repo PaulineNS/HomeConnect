@@ -67,7 +67,7 @@ final class HomeCoordinator {
 //        let alert = screens.createAlert(for: type)
         navigationController.visibleViewController?.present(alert, animated: true, completion: nil)
     }
-    
+
 }
 
 extension HomeCoordinator: HomeScreenDelegate {

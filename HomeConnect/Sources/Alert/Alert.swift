@@ -24,15 +24,20 @@ extension Alert {
     init(type: AlertType) {
         switch type {
         case .networkError:
-            self = Alert(title: "Alert", message: "A very very bad thing happened.. 🙈")
+            self = Alert(title: "😲",
+                         message: "Veuillez réesayer ultérieurement...")
         case .noDevicesError:
-            self = Alert(title: "Alert", message: "No devices found. Try to reset your account in your profile")
+            self = Alert(title: "🔄",
+                         message: "Pas d'objet trouvés. Veuillez réinitialiser votre comptre dans votre profil.")
         case .maximumTemperatureReached:
-            self = Alert(title: "Alert", message: "Too hot")
+            self = Alert(title: "🔥",
+                         message: "Vous avez atteint la température maximale")
         case .minimumTemperatureReached:
-            self = Alert(title: "Alert", message: "Too cold")
+            self = Alert(title: "🥶",
+                         message: "Vous avez atteint la température minimale")
         case .deleteDevice:
-            self = Alert(title: "Alert", message: "Voulez-vous vraiment supprimer cet objet ?")
+            self = Alert(title: "🗑️",
+                         message: "Voulez-vous vraiment supprimer cet objet ?")
         }
     }
 }

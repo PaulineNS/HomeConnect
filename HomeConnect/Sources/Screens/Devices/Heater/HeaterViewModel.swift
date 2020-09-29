@@ -15,6 +15,7 @@ final class HeaterViewModel {
     private var repository: HeaterRepositoryType
     private weak var delegate: DevicesScreensDelegate?
     private var temperature = 0.0
+    private var mode = ""
 
     // MARK: - Initializer
 
@@ -59,6 +60,9 @@ final class HeaterViewModel {
             delegate?.devicesScreensShouldDisplayAlert(for: .maximumTemperatureReached)
             return
         }
+        if mode == "OFF"{
+            heaterMode?("ON")
+        }
         temperature += 0.5
         heaterTemperature?("\(temperature) C°")
     }
@@ -67,6 +71,9 @@ final class HeaterViewModel {
         guard temperature > 7.0 else {
             delegate?.devicesScreensShouldDisplayAlert(for: .minimumTemperatureReached)
             return
+        }
+        if mode == "OFF"{
+            heaterMode?("ON")
         }
         temperature -= 0.5
         heaterTemperature?("\(temperature) C°")
@@ -80,6 +87,7 @@ final class HeaterViewModel {
         switch device.productType {
         case .heater(let mode, let temperature):
             heaterMode?(mode)
+            self.mode = mode
             self.temperature = Double(temperature) ?? 1.1
             guard mode == "ON" else {
                 heaterTemperature?("0 C°")

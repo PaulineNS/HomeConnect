@@ -22,7 +22,7 @@ final class RollerShutterRepository: RollerShutterRepositoryType {
     init( dataBaseManager: DataBaseManager) {
         self.dataBaseManager = dataBaseManager
     }
-    
+
     // MARK: - RollerShutterRepositoryType
 
     func deleteItem(with deviceId: String) {

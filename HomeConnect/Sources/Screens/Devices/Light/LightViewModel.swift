@@ -62,7 +62,7 @@ final class LightViewModel {
         }
         lightIntensity?("\(value)")
     }
-    
+
     func didChangeModeSwitchValue(withOnvalue: Bool) {
         withOnvalue ? lightIntensity?("50") : lightIntensity?("0")
     }

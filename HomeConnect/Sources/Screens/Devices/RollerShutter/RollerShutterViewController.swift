@@ -32,7 +32,8 @@ final class RollerShutterViewController: UIViewController {
         stackView.distribution = .fillProportionally
         stackView.spacing = 10
         stackView.addArrangedSubview(rollerShutterOpenLabel)
-        stackView.addArrangedSubview(rollerShutterIntensitySlider)
+        stackView.addArrangedSubview(rollerShutterPositionLabel)
+        stackView.addArrangedSubview(rollerShutterPositionSlider)
         stackView.addArrangedSubview(rollerShutterClosedLabel)
         return stackView
     }()
@@ -63,8 +64,20 @@ final class RollerShutterViewController: UIViewController {
         return label
     }()
 
-    private lazy var rollerShutterIntensitySlider: UISlider = {
+    private lazy var rollerShutterPositionLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var rollerShutterPositionSlider: UISlider = {
         let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.tintColor = .red
+        slider.thumbTintColor = .black
+        slider.isContinuous = true
+        slider.addTarget(self, action: #selector(didMovePositionSlider), for: .valueChanged)
         slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
         return slider
     }()
@@ -98,6 +111,9 @@ final class RollerShutterViewController: UIViewController {
         super.viewDidLoad()
         bind(to: viewModel)
         viewModel.viewDidLoad()
+        if let nnn = Int(rollerShutterPositionLabel.text ?? "") {
+            rollerShutterPositionSlider.setValue(Float(nnn), animated: true)
+        }
     }
 
     // MARK: - Private Functions
@@ -115,6 +131,9 @@ final class RollerShutterViewController: UIViewController {
         viewModel.rollerDeleteIconName = { [weak self] name in
             self?.deleteIconName = name
         }
+        viewModel.rollerPosition = { [weak self] value in
+            self?.rollerShutterPositionLabel.text = value
+        }
 
     }
 
@@ -122,6 +141,10 @@ final class RollerShutterViewController: UIViewController {
 
     @objc func didTapDeleteButton() {
         viewModel.didPressDeleteIconButton()
+    }
+
+    @objc func didMovePositionSlider() {
+        viewModel.didChangeRollerPostion(with: Int(rollerShutterPositionSlider.value))
     }
 
     // MARK: - Configure UI
@@ -155,7 +178,7 @@ final class RollerShutterViewController: UIViewController {
                            paddingLeft: 10,
                            width: 100,
                            height: 100)
-        rollerShutterIntensitySlider.translatesAutoresizingMaskIntoConstraints = false
+        rollerShutterPositionSlider.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

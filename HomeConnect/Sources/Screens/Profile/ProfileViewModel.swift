@@ -12,6 +12,7 @@ final class ProfileViewModel {
     // MARK: - Private properties
 
     private let repository: ProfileRepositoryType
+    private weak var delegate: ProfileScreenDelegate?
     private var user: UserAttributes = UserAttributes() {
         didSet {
             profileImageName?("light")
@@ -25,9 +26,10 @@ final class ProfileViewModel {
 
     // MARK: - Initializer
 
-    init(repository: ProfileRepositoryType) {
+    init(repository: ProfileRepositoryType,
+         delegate: ProfileScreenDelegate?) {
         self.repository = repository
-        print(user)
+        self.delegate = delegate
     }
 
     // MARK: - Outputs
@@ -48,6 +50,10 @@ final class ProfileViewModel {
 
     func viewDidLoad() {
 
+    }
+
+    func didSelectUpdateProfileButton() {
+        delegate?.profileScreenDidSelectUpdateProfileButton()
     }
 
 }

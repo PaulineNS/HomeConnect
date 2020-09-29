@@ -54,6 +54,9 @@
 		56DA60B425230C5F0005F7CE /* LightRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60B325230C5F0005F7CE /* LightRepository.swift */; };
 		56DA60B925230C6D0005F7CE /* RollerShutterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60B825230C6D0005F7CE /* RollerShutterRepository.swift */; };
 		56DA60BE25230C780005F7CE /* HeaterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60BD25230C780005F7CE /* HeaterRepository.swift */; };
+		56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */; };
+		56DA60E825237F200005F7CE /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */; };
+		56DA60ED25237F2F0005F7CE /* UpdateProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +131,9 @@
 		56DA60B325230C5F0005F7CE /* LightRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightRepository.swift; sourceTree = "<group>"; };
 		56DA60B825230C6D0005F7CE /* RollerShutterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterRepository.swift; sourceTree = "<group>"; };
 		56DA60BD25230C780005F7CE /* HeaterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterRepository.swift; sourceTree = "<group>"; };
+		56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
+		56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +267,7 @@
 		56D7E02B251C91A700DD5B37 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				56DA60DE25237EF30005F7CE /* UpdateProfile */,
 				56D7E09A251C9D3D00DD5B37 /* ProfileViewController.swift */,
 				56D7E0C0251C9D9B00DD5B37 /* ProfileViewModel.swift */,
 				5686A2302520B77A00176D70 /* ProfileRepository.swift */,
@@ -389,6 +396,16 @@
 				56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */,
 			);
 			path = HomeCollectionView;
+			sourceTree = "<group>";
+		};
+		56DA60DE25237EF30005F7CE /* UpdateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */,
+				56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */,
+				56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */,
+			);
+			path = UpdateProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,8 +584,11 @@
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
 				5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */,
 				56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */,
+				56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */,
+				56DA60ED25237F2F0005F7CE /* UpdateProfileRepository.swift in Sources */,
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
 				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
+				56DA60E825237F200005F7CE /* UpdateProfileViewModel.swift in Sources */,
 				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
 				5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */,

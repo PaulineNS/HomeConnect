@@ -36,17 +36,9 @@ protocol DevicesScreensDelegate: class {
     func devicesScreensShouldDisplayMultiChoicesAlert(for type: AlertType, completion: @escaping (Bool) -> Void)
 }
 
-//protocol LightScreenDelegate: class {
-//    func lightScreenDidDeleteDevice(device: DeviceItem)
-//}
-//
-//protocol RollerShutterScreenDelegate: class {
-//    func rollerScreenDidDeleteDevice(device: DeviceItem)
-//}
-//
-//protocol HeaterScreenDelegate: class {
-//    func heaterScreenDidDeleteDevice(device: DeviceItem)
-//}
+protocol ProfileScreenDelegate: class {
+    func profileScreenDidSelectUpdateProfileButton()
+}
 
 // MARK: - Home
 
@@ -115,9 +107,9 @@ extension Screens {
 
 extension Screens {
 
-    func createProfileViewController() -> UIViewController {
+    func createProfileViewController(delegate: ProfileScreenDelegate?) -> UIViewController {
         let repository = ProfileRepository(dataBaseManager: context.dataBaseManager)
-        let viewModel = ProfileViewModel(repository: repository)
+        let viewModel = ProfileViewModel(repository: repository, delegate: delegate)
         return ProfileViewController(viewModel: viewModel)
     }
 }
@@ -128,6 +120,17 @@ extension Screens {
 
     func createFilterViewController() -> UIViewController {
         return FiltersViewController()
+    }
+}
+
+// MARK: - Update Profile
+
+extension Screens {
+
+    func createUpdateProfileViewController() -> UIViewController {
+//        let repository = ProfileRepository(dataBaseManager: context.dataBaseManager)
+//        let viewModel = ProfileViewModel(repository: repository)
+        return UpdateProfileViewController()
     }
 }
 

@@ -44,12 +44,17 @@ final class HomeCoordinator {
     }
 
     private func showProfile() {
-        let viewController = screens.createProfileViewController()
+        let viewController = screens.createProfileViewController(delegate: self)
         navigationController.pushViewController(viewController, animated: true)// TODO: je ferais un present plutot
     }
 
     private func showFilter() {
         let viewController = screens.createFilterViewController()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    private func showUpdateProfile() {
+        let viewController = screens.createUpdateProfileViewController()
         navigationController.pushViewController(viewController, animated: true)
     }
 
@@ -108,4 +113,10 @@ extension HomeCoordinator: DevicesScreensDelegate {
         showMultiChoiseAlert(for: type, completion: completion)
     }
 
+}
+
+extension HomeCoordinator: ProfileScreenDelegate {
+    func profileScreenDidSelectUpdateProfileButton() {
+        showUpdateProfile()
+    }
 }

@@ -26,13 +26,27 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
         return table
     }()
 
+    private lazy var searchButton: UIBarButtonItem = {
+        let updateButton = UIBarButtonItem(title: "Chercher",
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapSearchButton))
+        return updateButton
+    }()
+
+    // MARK: - Lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBar()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-
     }
 
     override func viewDidLayoutSubviews() {
@@ -90,4 +104,15 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
         return 100
     }
 
+    // MARK: - Selectors
+
+    @objc func didTapSearchButton() {
+
+    }
+
+    // MARK: - Configure UI
+
+    private func setNavigationBar() {
+        self.navigationItem.rightBarButtonItem  = searchButton
+    }
 }

@@ -156,7 +156,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - Selectors
 
     @objc func didTapUpdateProfileButton() {
-        print("")
+        viewModel.didSelectUpdateProfileButton()
     }
 
     // MARK: - Configure UI

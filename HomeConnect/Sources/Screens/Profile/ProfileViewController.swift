@@ -98,6 +98,14 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
+    private lazy var updateProfileButton: UIBarButtonItem = {
+        let updateButton = UIBarButtonItem(title: "Modifier",
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapUpdateProfileButton))
+        return updateButton
+    }()
+
     // MARK: - Initializer
 
     init(viewModel: ProfileViewModel) {
@@ -112,22 +120,12 @@ final class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
+        setUI()
+        setNavigationBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let safeArea = view.safeAreaLayoutGuide
-        view.backgroundColor = .white
-        view.addSubview(containerView)
-        containerView.anchor(top: safeArea.topAnchor,
-                             left: safeArea.leftAnchor,
-                             right: safeArea.rightAnchor,
-                             height: 250)
-        view.addSubview(adressStackView)
-        adressStackView.anchor(top: containerView.bottomAnchor,
-                               left: safeArea.leftAnchor,
-                               right: safeArea.rightAnchor,
-                               paddingTop: 20)
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }
@@ -154,4 +152,32 @@ final class ProfileViewController: UIViewController {
             self?.countryLabel.text = country
         }
     }
+
+    // MARK: - Selectors
+
+    @objc func didTapUpdateProfileButton() {
+        print("")
+    }
+
+    // MARK: - Configure UI
+
+    private func setNavigationBar() {
+        self.navigationItem.rightBarButtonItem  = updateProfileButton
+    }
+
+    private func setUI() {
+        let safeArea = view.safeAreaLayoutGuide
+        view.backgroundColor = .white
+        view.addSubview(containerView)
+        containerView.anchor(top: safeArea.topAnchor,
+                             left: safeArea.leftAnchor,
+                             right: safeArea.rightAnchor,
+                             height: 250)
+        view.addSubview(adressStackView)
+        adressStackView.anchor(top: containerView.bottomAnchor,
+                               left: safeArea.leftAnchor,
+                               right: safeArea.rightAnchor,
+                               paddingTop: 20)
+    }
+
 }

@@ -12,6 +12,7 @@ final class LightViewController: UIViewController {
     // MARK: - Properties
 
     private let viewModel: LightViewModel
+    private lazy var deleteIconName: String = ""
 
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
@@ -57,6 +58,14 @@ final class LightViewController: UIViewController {
         return slider
     }()
 
+    private lazy var deleteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: deleteIconName),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapDeleteButton))
+        return button
+    }()
+
     // MARK: - Initializer
 
     init(viewModel: LightViewModel) {
@@ -70,11 +79,12 @@ final class LightViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUI()
+        setNavigationBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }
@@ -90,11 +100,30 @@ final class LightViewController: UIViewController {
         }
         viewModel.lightImage = { [weak self] image in
             self?.lightImageView.image = UIImage(named: image)
-
+        }
+        viewModel.lightMode = { [weak self] mode in
+            guard mode == "ON" else {
+                self?.lightStatusSwitch.setOn(false, animated: true)
+                return
+            }
+            self?.lightStatusSwitch.setOn(true, animated: true)
+        }
+        viewModel.lightDeleteIconName = { [weak self] name in
+            self?.deleteIconName = name
         }
     }
 
+    // MARK: - Selectors
+
+    @objc func didTapDeleteButton() {
+
+    }
+
     // MARK: - Configure UI
+
+    private func setNavigationBar() {
+        self.navigationItem.rightBarButtonItem  = deleteButton
+    }
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide

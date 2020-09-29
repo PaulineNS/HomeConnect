@@ -29,13 +29,24 @@ final class RollerShutterViewModel {
     var rollerName: ((String) -> Void)?
     var rollerProductType: ((String) -> Void)?
     var rollerPosition: ((String) -> Void)?
-    var navBarTitle: ((String) -> Void)?
+    var rollerDeleteIconName: ((String) -> Void)?
 
     // MARK: - Input
 
     func viewDidLoad() {
         rollerImage?("rollerShutter")
         rollerName?("\(device.deviceName)")
+        rollerDeleteIconName?("dustbin")
+        definePostion(for: device)
+    }
+
+    func definePostion(for device: DeviceItem) {
+        switch device.productType {
+        case .rollerShutter(let position):
+            rollerPosition?("\(position)")
+        default:
+            return
+        }
     }
 
 }

@@ -30,14 +30,25 @@ final class LightViewModel {
     var lightProductType: ((String) -> Void)?
     var lightMode: ((String) -> Void)?
     var lightIntensity: ((String) -> Void)?
-    var navBarTitle: ((String) -> Void)?
+    var lightDeleteIconName: ((String) -> Void)?
 
     // MARK: - Input
 
     func viewDidLoad() {
         lightImage?("light")
         lightName?("\(device.deviceName)")
+        lightDeleteIconName?("dustbin")
+        defineLightAndIntensity(for: device)
+    }
 
+    func defineLightAndIntensity(for device: DeviceItem) {
+        switch device.productType {
+        case .light(let mode, let intensity):
+            lightMode?("\(mode)")
+            lightIntensity?("\(intensity)")
+        default:
+            return
+        }
     }
 
 }

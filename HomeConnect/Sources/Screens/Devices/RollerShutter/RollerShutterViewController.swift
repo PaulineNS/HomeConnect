@@ -12,6 +12,7 @@ final class RollerShutterViewController: UIViewController {
     // MARK: - Properties
 
     private let viewModel: RollerShutterViewModel
+    private lazy var deleteIconName: String = ""
 
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
@@ -68,6 +69,14 @@ final class RollerShutterViewController: UIViewController {
         return slider
     }()
 
+    private lazy var deleteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: deleteIconName),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapDeleteButton))
+        return button
+    }()
+
     // MARK: - Initializer
 
     init(viewModel: RollerShutterViewModel) {
@@ -81,11 +90,12 @@ final class RollerShutterViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUI()
+        setNavigationBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }
@@ -102,9 +112,23 @@ final class RollerShutterViewController: UIViewController {
         viewModel.rollerImage = { [weak self] image in
             self?.rollerShutterImageView.image = UIImage(named: image)
         }
+        viewModel.rollerDeleteIconName = { [weak self] name in
+            self?.deleteIconName = name
+        }
+
+    }
+
+    // MARK: - Selectors
+
+    @objc func didTapDeleteButton() {
+
     }
 
     // MARK: - Configure UI
+
+    private func setNavigationBar() {
+        self.navigationItem.rightBarButtonItem  = deleteButton
+    }
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide

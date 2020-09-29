@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LightRepositoryType {
-    
+
 }
 
 final class LightRepository: LightRepositoryType {

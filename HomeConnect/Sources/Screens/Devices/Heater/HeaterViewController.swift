@@ -12,6 +12,7 @@ final class HeaterViewController: UIViewController {
     // MARK: - Properties
 
     private let viewModel: HeaterViewModel
+    private lazy var deleteIconName: String = ""
 
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
@@ -74,7 +75,6 @@ final class HeaterViewController: UIViewController {
 
     private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
-        label.text = "10 °C"
         label.textAlignment = .center
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 3.0
@@ -112,6 +112,14 @@ final class HeaterViewController: UIViewController {
         return statusSwitch
     }()
 
+    private lazy var deleteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: deleteIconName),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapDeleteButton))
+        return button
+    }()
+
     // MARK: - Initializer
 
     init(viewModel: HeaterViewModel) {
@@ -125,11 +133,12 @@ final class HeaterViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUI()
+        setNavigationBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }
@@ -146,9 +155,33 @@ final class HeaterViewController: UIViewController {
         viewModel.heaterImage = { [weak self] image in
             self?.heaterImageView.image = UIImage(named: image)
         }
+        viewModel.heaterMode = { [weak self] mode in
+            guard mode == "ON" else {
+                self?.heaterStatusSwitch.setOn(false, animated: true)
+                return
+            }
+            self?.heaterStatusSwitch.setOn(true, animated: true)
+        }
+        viewModel.heaterTemperature = { [weak self] temperature in
+            self?.temperatureLabel.text = temperature
+        }
+        viewModel.heaterDeleteIconName = { [weak self] name in
+            self?.deleteIconName = name
+        }
+
+    }
+
+    // MARK: - Selectors
+
+    @objc func didTapDeleteButton() {
+
     }
 
     // MARK: - Configure UI
+
+    private func setNavigationBar() {
+        self.navigationItem.rightBarButtonItem  = deleteButton
+    }
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide

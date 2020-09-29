@@ -12,6 +12,7 @@ enum AlertType: Equatable {
     case noDevicesError
     case maximumTemperatureReached
     case minimumTemperatureReached
+    case deleteDevice
 }
 
 struct Alert: Equatable {
@@ -30,6 +31,8 @@ extension Alert {
             self = Alert(title: "Alert", message: "Too hot")
         case .minimumTemperatureReached:
             self = Alert(title: "Alert", message: "Too cold")
+        case .deleteDevice:
+            self = Alert(title: "Alert", message: "Voulez-vous vraiment supprimer cet objet ?")
         }
     }
 }

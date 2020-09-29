@@ -178,7 +178,7 @@ final class HeaterViewController: UIViewController {
     // MARK: - Selectors
 
     @objc func didTapDeleteButton() {
-
+        viewModel.didPressDeleteIconButton()
     }
 
     @objc func didTapPlusButton() {

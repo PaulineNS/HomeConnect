@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HeaterRepositoryType {
-
+    func deleteItem(with deviceId: String)
 }
 
 final class HeaterRepository: HeaterRepositoryType {
@@ -21,6 +21,12 @@ final class HeaterRepository: HeaterRepositoryType {
 
     init( dataBaseManager: DataBaseManager) {
         self.dataBaseManager = dataBaseManager
+    }
+
+    // MARK: - HeaterRepositoryType
+
+    func deleteItem(with deviceId: String) {
+        dataBaseManager.deleteADevice(with: deviceId)
     }
 
 }

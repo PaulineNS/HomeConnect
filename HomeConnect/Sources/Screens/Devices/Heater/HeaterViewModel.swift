@@ -46,7 +46,12 @@ final class HeaterViewModel {
     }
 
     func didPressDeleteIconButton() {
-
+        delegate?.devicesScreensShouldDisplayMultiChoicesAlert(for: .deleteDevice) { [weak self] response in
+            if response, let deviceId = self?.device.idNumber {
+                self?.repository.deleteItem(with: deviceId)
+                self?.delegate?.devicesScreenDidSelectDeleteButton()
+            }
+        }
     }
 
     func didPressPlusButton() {

@@ -53,13 +53,21 @@ final class HomeCoordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    // MARK: - Alert
+    // MARK: - SimpleAlert
 
-    private func showAlert(for type: AlertType) {
+    private func showSimpleAlert(for type: AlertType) {
         let alert = screens.createAlert(for: type)
         navigationController.visibleViewController?.present(alert, animated: true, completion: nil)
     }
 
+    // MARK: - MultiChoicesAlert
+
+    private func showMultiChoiseAlert(for type: AlertType, completion: @escaping (Bool) -> Void) {
+        let alert = screens.createMultiChoicesAlert(for: type, completion: completion)
+//        let alert = screens.createAlert(for: type)
+        navigationController.visibleViewController?.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension HomeCoordinator: HomeScreenDelegate {
@@ -77,14 +85,22 @@ extension HomeCoordinator: HomeScreenDelegate {
     }
 
     func homeScreenShouldDisplayAlert(for type: AlertType) {
-        showAlert(for: type)
+        showSimpleAlert(for: type)
     }
 
 }
 
 extension HomeCoordinator: DevicesScreensDelegate {
+    func devicesScreenDidSelectDeleteButton() {
+        self.navigationController.popViewController(animated: true)
+    }
+
     func devicesScreensShouldDisplayAlert(for type: AlertType) {
-        showAlert(for: type)
+        showSimpleAlert(for: type)
+    }
+
+    func devicesScreensShouldDisplayMultiChoicesAlert(for type: AlertType, completion: @escaping (Bool) -> Void) {
+        showMultiChoiseAlert(for: type, completion: completion)
     }
 
 }

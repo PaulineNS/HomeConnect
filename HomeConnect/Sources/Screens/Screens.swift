@@ -31,6 +31,8 @@ protocol HomeScreenDelegate: class {
 
 protocol DevicesScreensDelegate: class {
     func devicesScreensShouldDisplayAlert(for type: AlertType)
+    func devicesScreenDidSelectDeleteButton()
+    func devicesScreensShouldDisplayMultiChoicesAlert(for type: AlertType, completion: @escaping (Bool) -> Void)
 }
 
 //protocol LightScreenDelegate: class {
@@ -64,7 +66,9 @@ extension Screens {
 // MARK: - Device Details
 
 extension Screens {
-    func createDeviceDetailViewController(deviceSelected: DeviceItem, delegate: DevicesScreensDelegate) -> UIViewController {
+
+    func createDeviceDetailViewController(deviceSelected: DeviceItem,
+                                          delegate: DevicesScreensDelegate) -> UIViewController {
         switch deviceSelected.productType {
         case .heater:
             return createHeaterViewController(heaterSelected: deviceSelected,
@@ -124,7 +128,7 @@ extension Screens {
     }
 }
 
-// MARK: - Alert
+// MARK: - Simple Alert
 
 extension Screens {
 
@@ -135,5 +139,42 @@ extension Screens {
         alertController.addAction(action)
         return alertController
     }
+
+}
+
+// MARK: - Multichoices Alert
+
+extension Screens {
+
+    func createMultiChoicesAlert(for type: AlertType, completion: @escaping (Bool) -> Void) -> UIAlertController {
+        let alert = Alert(type: type)
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+//        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+//        alertController.addAction(action)
+
+        alertController.addAction(UIAlertAction(title: "Oui", style: UIAlertAction.Style.default, handler: { _ in
+            alertController.dismiss(animated: true, completion: nil)
+            completion(true)
+        }))
+        alertController.addAction(UIAlertAction(title: "Non", style: UIAlertAction.Style.default, handler: { _ in
+            alertController.dismiss(animated: true, completion: nil)
+            completion(false)
+        }))
+
+        return alertController
+    }
+
+//    func presentMultiChoiceAlert(title: String, message: String, completion: @escaping (Bool) -> Void) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: "Oui", style: UIAlertAction.Style.default, handler: { (action) in
+//            alert.dismiss(animated: true, completion: nil)
+//            completion(true)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Non", style: UIAlertAction.Style.default, handler: { (action) in
+//            alert.dismiss(animated: true, completion: nil)
+//            completion(false)
+//        }))
+//        present(alert, animated: true, completion: nil)
+//    }
 
 }

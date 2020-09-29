@@ -41,24 +41,6 @@ extension Screens {
                                         checker: context.userDefaultchecker)
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
         return HomeViewController(viewModel: viewModel)
-//        if UserDefaults.standard.bool(forKey: "hasLaunchBefore") != true {
-//            UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
-//            let repository = HomeRepository(networkClient: context.client,
-//                                            token: context.requestCancellation,
-//                                            dependanceType: .network,
-//                                            dataBaseManager: context.dataBaseManager,
-//                                            checker: context.userDefaultchecker)
-//            let viewModel = HomeViewModel(repository: repository, delegate: delegate)
-//            return HomeViewController(viewModel: viewModel)
-//        } else {
-//            let repository = HomeRepository(networkClient: context.client,
-//                                            token: context.requestCancellation,
-//                                            dependanceType: .persistence,
-//                                            dataBaseManager: context.dataBaseManager,
-//                                            checker: context.userDefaultchecker)
-//            let viewModel = HomeViewModel(repository: repository, delegate: delegate)
-//            return HomeViewController(viewModel: viewModel)
-//        }
     }
 
 }
@@ -69,16 +51,33 @@ extension Screens {
     func createDeviceDetailViewController(deviceSelected: DeviceItem) -> UIViewController {
         switch deviceSelected.productType {
         case .heater:
-            return createHeaterViewController()
+            return createHeaterViewController(heaterSelected: deviceSelected)
         case .light:
-            return LightViewController()
+            return createLightViewController(lightSelected: deviceSelected)
         case .rollerShutter:
-            return RollerShutterViewController()
+            return createRollerShutterViewController(rollerShutterSelected: deviceSelected)
         }
     }
 
-    private func createHeaterViewController() -> UIViewController {
-        return HeaterViewController()
+    private func createHeaterViewController(heaterSelected: DeviceItem) -> UIViewController {
+        let repository = HeaterRepository(dataBaseManager: context.dataBaseManager)
+        let viewModel = HeaterViewModel(device: heaterSelected,
+                                        repository: repository)
+        return HeaterViewController(viewModel: viewModel)
+    }
+
+    private func createLightViewController(lightSelected: DeviceItem) -> UIViewController {
+        let repository = LightRepository(dataBaseManager: context.dataBaseManager)
+        let viewModel = LightViewModel(device: lightSelected,
+                                       repository: repository)
+        return LightViewController(viewModel: viewModel)
+    }
+
+    private func createRollerShutterViewController(rollerShutterSelected: DeviceItem) -> UIViewController {
+        let repository = RollerShutterRepository(dataBaseManager: context.dataBaseManager)
+        let viewModel = RollerShutterViewModel(device: rollerShutterSelected,
+                                               repository: repository)
+        return RollerShutterViewController(viewModel: viewModel)
     }
 }
 

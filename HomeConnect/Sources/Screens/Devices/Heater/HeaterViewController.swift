@@ -10,7 +10,9 @@ import UIKit
 final class HeaterViewController: UIViewController {
 
     // MARK: - Properties
-    
+
+    private let viewModel: HeaterViewModel
+
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -60,14 +62,12 @@ final class HeaterViewController: UIViewController {
 
     private lazy var heaterImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "heater")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var heaterNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Radiateur"
         label.textAlignment = .left
         return label
     }()
@@ -112,6 +112,15 @@ final class HeaterViewController: UIViewController {
         return statusSwitch
     }()
 
+    // MARK: - Initializer
+
+    init(viewModel: HeaterViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
     // MARK: - Lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +130,22 @@ final class HeaterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        bind(to: viewModel)
+        viewModel.viewDidLoad()
+    }
+
+    // MARK: - Private Functions
+
+    // MARK: - Bindings
+
+    private func bind(to viewModel: HeaterViewModel) {
+
+        viewModel.heaterName = { [weak self] name in
+            self?.heaterNameLabel.text = name
+        }
+        viewModel.heaterImage = { [weak self] image in
+            self?.heaterImageView.image = UIImage(named: image)
+        }
     }
 
     // MARK: - Configure UI

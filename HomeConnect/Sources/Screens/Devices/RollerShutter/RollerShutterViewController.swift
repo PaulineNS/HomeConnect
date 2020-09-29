@@ -11,6 +11,8 @@ final class RollerShutterViewController: UIViewController {
 
     // MARK: - Properties
 
+    private let viewModel: RollerShutterViewModel
+
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -36,14 +38,12 @@ final class RollerShutterViewController: UIViewController {
 
     private lazy var rollerShutterImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "rollerShutter")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var rollerShutterNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Volet"
         label.textAlignment = .left
         return label
     }()
@@ -68,6 +68,15 @@ final class RollerShutterViewController: UIViewController {
         return slider
     }()
 
+    // MARK: - Initializer
+
+    init(viewModel: RollerShutterViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
     // MARK: - Lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +86,22 @@ final class RollerShutterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        bind(to: viewModel)
+        viewModel.viewDidLoad()
+    }
+
+    // MARK: - Private Functions
+
+    // MARK: - Bindings
+
+    private func bind(to viewModel: RollerShutterViewModel) {
+
+        viewModel.rollerName = { [weak self] name in
+            self?.rollerShutterNameLabel.text = name
+        }
+        viewModel.rollerImage = { [weak self] image in
+            self?.rollerShutterImageView.image = UIImage(named: image)
+        }
     }
 
     // MARK: - Configure UI

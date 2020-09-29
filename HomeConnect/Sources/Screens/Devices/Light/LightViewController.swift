@@ -11,6 +11,8 @@ final class LightViewController: UIViewController {
 
     // MARK: - Properties
 
+    private let viewModel: LightViewModel
+
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -35,14 +37,12 @@ final class LightViewController: UIViewController {
 
     private lazy var lightImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "light")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var lightNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lumière"
         label.textAlignment = .left
         return label
     }()
@@ -57,6 +57,15 @@ final class LightViewController: UIViewController {
         return slider
     }()
 
+    // MARK: - Initializer
+
+    init(viewModel: LightViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
     // MARK: - Lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +75,23 @@ final class LightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        bind(to: viewModel)
+        viewModel.viewDidLoad()
+    }
+
+    // MARK: - Private Functions
+
+    // MARK: - Bindings
+
+    private func bind(to viewModel: LightViewModel) {
+
+        viewModel.lightName = { [weak self] name in
+            self?.lightNameLabel.text = name
+        }
+        viewModel.lightImage = { [weak self] image in
+            self?.lightImageView.image = UIImage(named: image)
+
+        }
     }
 
     // MARK: - Configure UI

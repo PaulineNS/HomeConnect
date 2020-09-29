@@ -51,6 +51,9 @@
 		56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E123251DCFB900DD5B37 /* Alert.swift */; };
 		56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */; };
 		56D7E139251DF9FF00DD5B37 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */; };
+		56DA60B425230C5F0005F7CE /* LightRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60B325230C5F0005F7CE /* LightRepository.swift */; };
+		56DA60B925230C6D0005F7CE /* RollerShutterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60B825230C6D0005F7CE /* RollerShutterRepository.swift */; };
+		56DA60BE25230C780005F7CE /* HeaterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60BD25230C780005F7CE /* HeaterRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		56D7E123251DCFB900DD5B37 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseStack.swift; sourceTree = "<group>"; };
 		56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		56DA60B325230C5F0005F7CE /* LightRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightRepository.swift; sourceTree = "<group>"; };
+		56DA60B825230C6D0005F7CE /* RollerShutterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterRepository.swift; sourceTree = "<group>"; };
+		56DA60BD25230C780005F7CE /* HeaterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +298,7 @@
 			children = (
 				56D7E086251C9D0C00DD5B37 /* LightViewController.swift */,
 				56D7E0A4251C9D5D00DD5B37 /* LightViewModel.swift */,
+				56DA60B325230C5F0005F7CE /* LightRepository.swift */,
 			);
 			path = Light;
 			sourceTree = "<group>";
@@ -301,6 +308,7 @@
 			children = (
 				56D7E08B251C9D1900DD5B37 /* RollerShutterViewController.swift */,
 				56D7E0B1251C9D7E00DD5B37 /* RollerShutterViewModel.swift */,
+				56DA60B825230C6D0005F7CE /* RollerShutterRepository.swift */,
 			);
 			path = RollerShutter;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 			children = (
 				56D7E090251C9D2200DD5B37 /* HeaterViewController.swift */,
 				56D7E0B6251C9D8700DD5B37 /* HeaterViewModel.swift */,
+				56DA60BD25230C780005F7CE /* HeaterRepository.swift */,
 			);
 			path = Heater;
 			sourceTree = "<group>";
@@ -552,6 +561,8 @@
 				5686A2362520B7ED00176D70 /* ProductType.swift in Sources */,
 				56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */,
 				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
+				56DA60BE25230C780005F7CE /* HeaterRepository.swift in Sources */,
+				56DA60B425230C5F0005F7CE /* LightRepository.swift in Sources */,
 				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
 				5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */,
@@ -571,6 +582,7 @@
 				569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */,
 				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
 				56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */,
+				56DA60B925230C6D0005F7CE /* RollerShutterRepository.swift in Sources */,
 				56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */,
 				56D7E118251DCAA100DD5B37 /* NetworkModel.swift in Sources */,
 			);

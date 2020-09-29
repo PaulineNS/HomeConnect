@@ -14,10 +14,22 @@ final class LightViewController: UIViewController {
     private let viewModel: LightViewModel
     private lazy var deleteIconName: String = ""
 
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        stackView.addArrangedSubview(informationStackView)
+        stackView.addArrangedSubview(settingsStackView)
+        return stackView
+    }()
+
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.backgroundColor = .yellow
         stackView.axis = .horizontal
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fillEqually
         stackView.spacing = 10
         stackView.addArrangedSubview(lightImageView)
@@ -27,6 +39,7 @@ final class LightViewController: UIViewController {
 
     private lazy var settingsStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.backgroundColor = .green
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
@@ -34,6 +47,7 @@ final class LightViewController: UIViewController {
         stackView.addArrangedSubview(lightModeSwitch)
         stackView.addArrangedSubview(lightIntensityLabel)
         stackView.addArrangedSubview(lightIntensitySlider)
+        stackView.addArrangedSubview(lightSaveButton)
         return stackView
     }()
 
@@ -77,6 +91,14 @@ final class LightViewController: UIViewController {
                         style: .plain,
                         target: self,
                         action: #selector(didTapDeleteButton))
+        return button
+    }()
+
+    private lazy var lightSaveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Enregistrer", for: .normal)
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        button.backgroundColor = .red
         return button
     }()
 
@@ -150,6 +172,10 @@ final class LightViewController: UIViewController {
         }
     }
 
+    @objc func didTapSaveButton() {
+        viewModel.saveNewDeviceSettings()
+    }
+
     // MARK: - Configure UI
 
     private func setNavigationBar() {
@@ -159,33 +185,13 @@ final class LightViewController: UIViewController {
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
-        view.addSubview(informationStackView)
-        view.addSubview(settingsStackView)
-
-        informationStackView.anchor(top: safeArea.topAnchor,
-                                    left: safeArea.leftAnchor,
-                                    right: safeArea.rightAnchor,
-                                    paddingLeft: 10,
-                                    paddingRight: 10)
-        settingsStackView.anchor(top: informationStackView.bottomAnchor,
-                                 left: safeArea.leftAnchor,
-                                 bottom: safeArea.bottomAnchor,
-                                 right: safeArea.rightAnchor,
-                                 paddingTop: 10,
-                                 paddingLeft: 10,
-                                 paddingBottom: 10,
-                                 paddingRight: 10)
-        lightImageView.anchor(top: safeArea.topAnchor,
-                           left: safeArea.leftAnchor,
-                           paddingTop: 10,
-                           paddingLeft: 10,
-                           width: 100,
-                           height: 100)
-        lightIntensitySlider.anchor(left: settingsStackView.leftAnchor,
-                                    right: settingsStackView.rightAnchor,
-                                    paddingLeft: 50,
-                                    paddingRight: 50)
-        lightModeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerStackView)
+        containerStackView.anchor(top: safeArea.topAnchor,
+                                  left: safeArea.leftAnchor,
+                                  bottom: safeArea.bottomAnchor,
+                                  right: safeArea.rightAnchor)
+        lightImageView.anchor(width: 50,
+                           height: 50)
     }
 
 }

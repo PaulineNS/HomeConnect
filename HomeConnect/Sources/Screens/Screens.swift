@@ -32,6 +32,7 @@ protocol HomeScreenDelegate: class {
 protocol DevicesScreensDelegate: class {
     func devicesScreensShouldDisplayAlert(for type: AlertType)
     func devicesScreenDidSelectDeleteButton()
+    func devicesScreenDidSelectSaveButton()
     func devicesScreensShouldDisplayMultiChoicesAlert(for type: AlertType, completion: @escaping (Bool) -> Void)
 }
 
@@ -151,9 +152,6 @@ extension Screens {
     func createMultiChoicesAlert(for type: AlertType, completion: @escaping (Bool) -> Void) -> UIAlertController {
         let alert = Alert(type: type)
         let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
-//        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-//        alertController.addAction(action)
-
         alertController.addAction(UIAlertAction(title: "Oui", style: UIAlertAction.Style.default, handler: { _ in
             alertController.dismiss(animated: true, completion: nil)
             completion(true)
@@ -165,18 +163,5 @@ extension Screens {
 
         return alertController
     }
-
-//    func presentMultiChoiceAlert(title: String, message: String, completion: @escaping (Bool) -> Void) {
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-//        alert.addAction(UIAlertAction(title: "Oui", style: UIAlertAction.Style.default, handler: { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//            completion(true)
-//        }))
-//        alert.addAction(UIAlertAction(title: "Non", style: UIAlertAction.Style.default, handler: { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//            completion(false)
-//        }))
-//        present(alert, animated: true, completion: nil)
-//    }
 
 }

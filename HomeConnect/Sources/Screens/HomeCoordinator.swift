@@ -91,7 +91,12 @@ extension HomeCoordinator: HomeScreenDelegate {
 }
 
 extension HomeCoordinator: DevicesScreensDelegate {
+
     func devicesScreenDidSelectDeleteButton() {
+        self.navigationController.popViewController(animated: true)
+    }
+
+    func devicesScreenDidSelectSaveButton() {
         self.navigationController.popViewController(animated: true)
     }
 
@@ -104,21 +109,3 @@ extension HomeCoordinator: DevicesScreensDelegate {
     }
 
 }
-
-//extension HomeCoordinator: LightScreenDelegate {
-//    func lightScreenDidDeleteDevice(device: DeviceItem) {
-//        print("")
-//    }
-//}
-//
-//extension HomeCoordinator: RollerShutterScreenDelegate {
-//    func rollerScreenDidDeleteDevice(device: DeviceItem) {
-//        print("")
-//    }
-//}
-//
-//extension HomeCoordinator: HeaterScreenDelegate {
-//    func heaterScreenDidDeleteDevice(device: DeviceItem) {
-//        print("")
-//    }
-//}

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol LightRepositoryType {
-    func deleteItem(with deviceId: String)
+    func deleteDevice(with deviceId: String)
+    func updateDevice(with deviceId: String, mode: String, intensity: String)
 }
 
 final class LightRepository: LightRepositoryType {
@@ -22,11 +23,17 @@ final class LightRepository: LightRepositoryType {
     init( dataBaseManager: DataBaseManager) {
         self.dataBaseManager = dataBaseManager
     }
-    
+
     // MARK: - LightRepositoryType
 
-    func deleteItem(with deviceId: String) {
+    func deleteDevice(with deviceId: String) {
         dataBaseManager.deleteADevice(with: deviceId)
+    }
+
+    func updateDevice(with deviceId: String, mode: String, intensity: String) {
+        dataBaseManager.updateDeviceEntity(for: deviceId,
+                                           mode: mode,
+                                           intensity: intensity)
     }
 
 }

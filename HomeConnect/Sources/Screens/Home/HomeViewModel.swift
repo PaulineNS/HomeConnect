@@ -25,7 +25,8 @@ final class HomeViewModel {
 
     // MARK: - Initializer
 
-    init(repository: HomeRepositoryType,// TODO
+    // TODO
+    init(repository: HomeRepositoryType,
          delegate: HomeScreenDelegate?) {
         self.repository = repository
         self.delegate = delegate

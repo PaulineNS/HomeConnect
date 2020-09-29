@@ -239,7 +239,6 @@ final class HeaterViewController: UIViewController {
         heaterPlusButton.anchor(height: 50)
         heaterMinusButton.anchor(height: 50)
         heaterMinusButton.translatesAutoresizingMaskIntoConstraints = false
-        heaterPlusButton.translatesAutoresizingMaskIntoConstraints = false
         heaterModeSwitch.translatesAutoresizingMaskIntoConstraints = false
         modeOnLabel.translatesAutoresizingMaskIntoConstraints = false
         modeOffLabel.translatesAutoresizingMaskIntoConstraints = false

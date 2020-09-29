@@ -27,26 +27,6 @@ open class DataBaseManager {
         return device
     }
 
-//    func fetchDevicesDependingUser(user: UserAttributes) -> [DeviceAttributes] {
-//        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-//        let predicate = NSPredicate(format: "owner == %@", user)
-//        request.predicate = predicate
-//        guard let devices = try? managedObjectContext.fetch(request) else { return [] }
-//        return devices
-//    }
-
-//    var devices: [DeviceAttributes] {
-//        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-//        guard let devices = try? managedObjectContext.fetch(request) else { return [] }
-//        return devices
-//    }
-//
-//    var users: [UserAttributes] {
-//        let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
-//        guard let users = try? managedObjectContext.fetch(request) else { return [] }
-//        return users
-//    }
-
     // MARK: - Initializer
 
     init(dataBaseStack: DataBaseStack) {
@@ -91,8 +71,8 @@ open class DataBaseManager {
 
     func deleteADevice(with deviceId: String) {
         let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-        let predicateListName = NSPredicate(format: "deviceId == %@", deviceId)
-        request.predicate = predicateListName
+        let predicateDeviceId = NSPredicate(format: "deviceId == %@", deviceId)
+        request.predicate = predicateDeviceId
 
         if let objects = try? managedObjectContext.fetch(request) {
             objects.forEach { managedObjectContext.delete($0)}
@@ -108,5 +88,24 @@ open class DataBaseManager {
     func deleteAllUsers() {
         user.forEach { managedObjectContext.delete($0) }
         dataBaseStack.saveContext()
+    }
+
+    func updateDeviceEntity(for deviceId: String,
+                            mode: String? = "",
+                            position: String? = "",
+                            intensity: String? = "",
+                            temperature: String? = "") {
+        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+        let predicateDeviceId = NSPredicate(format: "deviceId == %@", deviceId)
+        request.predicate = predicateDeviceId
+        guard let devices = try? managedObjectContext.fetch(request) else { return }
+        if devices.count != 0 {
+            let managedObject = devices[0]
+            managedObject.setValue(mode, forKey: "mode")
+            managedObject.setValue(position, forKey: "position")
+            managedObject.setValue(intensity, forKey: "intensity")
+            managedObject.setValue(temperature, forKey: "temperature")
+            dataBaseStack.saveContext()
+        }
     }
 }

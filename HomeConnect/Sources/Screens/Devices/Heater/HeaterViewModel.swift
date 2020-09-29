@@ -13,13 +13,17 @@ final class HeaterViewModel {
 
     private var device: DeviceItem
     private var repository: HeaterRepositoryType
+    private weak var delegate: DevicesScreensDelegate?
+    private var temperature = 0.0
 
     // MARK: - Initializer
 
     init(device: DeviceItem,
-         repository: HeaterRepositoryType) {
+         repository: HeaterRepositoryType,
+         delegate: DevicesScreensDelegate?) {
         self.device = device
         self.repository = repository
+        self.delegate = delegate
     }
 
     // MARK: - Output
@@ -39,13 +43,36 @@ final class HeaterViewModel {
         heaterName?("\(device.deviceName)")
         heaterDeleteIconName?("dustbin")
         defineModeAndTemperature(for: device)
+        heaterTemperature?("\(temperature) C°")
+    }
+
+    func didPressDeleteIconButton() {
+    }
+
+    func didPressPlusButton() {
+        guard temperature < 28.0 else {
+            delegate?.devicesScreensShouldDisplayAlert(for: .maximumTemperatureReached)
+            return
+        }
+        temperature += 0.5
+        heaterTemperature?("\(temperature) C°")
+    }
+
+    func didPressMinusButton() {
+        guard temperature > 7.0 else {
+            delegate?.devicesScreensShouldDisplayAlert(for: .minimumTemperatureReached)
+            return
+        }
+        temperature -= 0.5
+        heaterTemperature?("\(temperature) C°")
     }
 
     func defineModeAndTemperature(for device: DeviceItem) {
         switch device.productType {
         case .heater(let mode, let temperature):
             heaterMode?("\(mode)")
-            heaterTemperature?("\(temperature) C°")
+            self.temperature = Double(temperature) ?? 1.1
+        //            heaterTemperature?("\(temperature) C°")
         default:
             return
         }

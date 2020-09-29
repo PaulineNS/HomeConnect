@@ -39,7 +39,7 @@ final class HomeCoordinator {
     }
 
     private func showDevicesDetail(device: DeviceItem) {
-        let viewController = screens.createDeviceDetailViewController(deviceSelected: device)
+        let viewController = screens.createDeviceDetailViewController(deviceSelected: device, delegate: self)
         navigationController.pushViewController(viewController, animated: true)
     }
 
@@ -81,3 +81,29 @@ extension HomeCoordinator: HomeScreenDelegate {
     }
 
 }
+
+extension HomeCoordinator: DevicesScreensDelegate {
+    func devicesScreensShouldDisplayAlert(for type: AlertType) {
+        showAlert(for: type)
+    }
+    
+    
+}
+
+//extension HomeCoordinator: LightScreenDelegate {
+//    func lightScreenDidDeleteDevice(device: DeviceItem) {
+//        print("")
+//    }
+//}
+//
+//extension HomeCoordinator: RollerShutterScreenDelegate {
+//    func rollerScreenDidDeleteDevice(device: DeviceItem) {
+//        print("")
+//    }
+//}
+//
+//extension HomeCoordinator: HeaterScreenDelegate {
+//    func heaterScreenDidDeleteDevice(device: DeviceItem) {
+//        print("")
+//    }
+//}

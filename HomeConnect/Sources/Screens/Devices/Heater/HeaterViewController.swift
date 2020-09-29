@@ -84,12 +84,14 @@ final class HeaterViewController: UIViewController {
     private lazy var heaterPlusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "plusButton"), for: .normal)
+        button.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
         return button
     }()
 
     private lazy var heaterMinusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "minusButton"), for: .normal)
+        button.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
         return button
     }()
 
@@ -175,6 +177,14 @@ final class HeaterViewController: UIViewController {
 
     @objc func didTapDeleteButton() {
 
+    }
+
+    @objc func didTapPlusButton() {
+        viewModel.didPressPlusButton()
+    }
+
+    @objc func didTapMinusButton() {
+        viewModel.didPressMinusButton()
     }
 
     // MARK: - Configure UI

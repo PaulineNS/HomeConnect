@@ -10,6 +10,8 @@ import Foundation
 enum AlertType: Equatable {
     case networkError
     case noDevicesError
+    case maximumTemperatureReached
+    case minimumTemperatureReached
 }
 
 struct Alert: Equatable {
@@ -24,6 +26,10 @@ extension Alert {
             self = Alert(title: "Alert", message: "A very very bad thing happened.. 🙈")
         case .noDevicesError:
             self = Alert(title: "Alert", message: "No devices found. Try to reset your account in your profile")
+        case .maximumTemperatureReached:
+            self = Alert(title: "Alert", message: "Too hot")
+        case .minimumTemperatureReached:
+            self = Alert(title: "Alert", message: "Too cold")
         }
     }
 }

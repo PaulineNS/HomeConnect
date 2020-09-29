@@ -29,6 +29,22 @@ protocol HomeScreenDelegate: class {
     func homeScreenShouldDisplayAlert(for type: AlertType)
 }
 
+protocol DevicesScreensDelegate: class {
+    func devicesScreensShouldDisplayAlert(for type: AlertType)
+}
+
+//protocol LightScreenDelegate: class {
+//    func lightScreenDidDeleteDevice(device: DeviceItem)
+//}
+//
+//protocol RollerShutterScreenDelegate: class {
+//    func rollerScreenDidDeleteDevice(device: DeviceItem)
+//}
+//
+//protocol HeaterScreenDelegate: class {
+//    func heaterScreenDidDeleteDevice(device: DeviceItem)
+//}
+
 // MARK: - Home
 
 extension Screens {
@@ -48,32 +64,39 @@ extension Screens {
 // MARK: - Device Details
 
 extension Screens {
-    func createDeviceDetailViewController(deviceSelected: DeviceItem) -> UIViewController {
+    func createDeviceDetailViewController(deviceSelected: DeviceItem, delegate: DevicesScreensDelegate) -> UIViewController {
         switch deviceSelected.productType {
         case .heater:
-            return createHeaterViewController(heaterSelected: deviceSelected)
+            return createHeaterViewController(heaterSelected: deviceSelected,
+                                              delegate: delegate)
         case .light:
-            return createLightViewController(lightSelected: deviceSelected)
+            return createLightViewController(lightSelected: deviceSelected,
+                                             delegate: delegate)
         case .rollerShutter:
-            return createRollerShutterViewController(rollerShutterSelected: deviceSelected)
+            return createRollerShutterViewController(rollerShutterSelected: deviceSelected,
+                                                     delegate: delegate)
         }
     }
 
-    private func createHeaterViewController(heaterSelected: DeviceItem) -> UIViewController {
+    private func createHeaterViewController(heaterSelected: DeviceItem,
+                                            delegate: DevicesScreensDelegate?) -> UIViewController {
         let repository = HeaterRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = HeaterViewModel(device: heaterSelected,
-                                        repository: repository)
+                                        repository: repository,
+                                        delegate: delegate)
         return HeaterViewController(viewModel: viewModel)
     }
 
-    private func createLightViewController(lightSelected: DeviceItem) -> UIViewController {
+    private func createLightViewController(lightSelected: DeviceItem,
+                                           delegate: DevicesScreensDelegate?) -> UIViewController {
         let repository = LightRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = LightViewModel(device: lightSelected,
                                        repository: repository)
         return LightViewController(viewModel: viewModel)
     }
 
-    private func createRollerShutterViewController(rollerShutterSelected: DeviceItem) -> UIViewController {
+    private func createRollerShutterViewController(rollerShutterSelected: DeviceItem,
+                                                   delegate: DevicesScreensDelegate?) -> UIViewController {
         let repository = RollerShutterRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = RollerShutterViewModel(device: rollerShutterSelected,
                                                repository: repository)

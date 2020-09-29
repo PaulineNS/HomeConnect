@@ -60,8 +60,12 @@ final class HeaterViewModel {
             delegate?.devicesScreensShouldDisplayAlert(for: .maximumTemperatureReached)
             return
         }
+        if temperature < 7.0 {
+            temperature = 6.5
+        }
         if mode == "OFF"{
             heaterMode?("ON")
+            mode = "ON"
         }
         temperature += 0.5
         heaterTemperature?("\(temperature) C°")
@@ -74,13 +78,29 @@ final class HeaterViewModel {
         }
         if mode == "OFF"{
             heaterMode?("ON")
+            mode = "ON"
         }
         temperature -= 0.5
         heaterTemperature?("\(temperature) C°")
     }
 
     func didChangeModeSwitchValue(withOnvalue: Bool) {
-        withOnvalue ? heaterTemperature?("\(temperature) C°") : heaterTemperature?("0 C°")
+        guard withOnvalue else {
+            heaterTemperature?("0.0 C°")
+            temperature = 0.0
+            mode = "OFF"
+            return
+        }
+        temperature = 14.0
+        heaterTemperature?("\(temperature) C°")
+        mode = "ON"
+    }
+
+    func saveNewDeviceSettings() {
+        repository.updateDevice(with: device.idNumber,
+                                mode: mode,
+                                temperature: String(temperature))
+        self.delegate?.devicesScreenDidSelectSaveButton()
     }
 
     func defineModeAndTemperature(for device: DeviceItem) {
@@ -91,6 +111,7 @@ final class HeaterViewModel {
             self.temperature = Double(temperature) ?? 1.1
             guard mode == "ON" else {
                 heaterTemperature?("0 C°")
+                self.temperature = 0.0
                 return
             }
             heaterTemperature?("\(temperature) C°")

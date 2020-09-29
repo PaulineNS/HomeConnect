@@ -17,11 +17,23 @@ final class HeaterViewController: UIViewController {
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 400
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        stackView.addArrangedSubview(informationStackView)
+        stackView.addArrangedSubview(settingsStackView)
+        return stackView
+    }()
+
+    private lazy var settingsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
         stackView.addArrangedSubview(temperatureStackView)
         stackView.addArrangedSubview(modeStackView)
+        stackView.addArrangedSubview(heaterSaveButton)
         stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         return stackView
     }()
@@ -29,7 +41,7 @@ final class HeaterViewController: UIViewController {
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fillEqually
         stackView.spacing = 10
         stackView.addArrangedSubview(heaterImageView)
@@ -124,6 +136,14 @@ final class HeaterViewController: UIViewController {
         return button
     }()
 
+    private lazy var heaterSaveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Enregistrer", for: .normal)
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        button.backgroundColor = .red
+        return button
+    }()
+
     // MARK: - Initializer
 
     init(viewModel: HeaterViewModel) {
@@ -193,6 +213,10 @@ final class HeaterViewController: UIViewController {
         viewModel.didChangeModeSwitchValue(withOnvalue: heaterModeSwitch.isOn)
     }
 
+    @objc func didTapSaveButton() {
+        viewModel.saveNewDeviceSettings()
+    }
+
     // MARK: - Configure UI
 
     private func setNavigationBar() {
@@ -202,46 +226,15 @@ final class HeaterViewController: UIViewController {
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
-        view.addSubview(informationStackView)
         view.addSubview(containerStackView)
 
-        containerStackView.anchor(top: informationStackView.bottomAnchor,
+        containerStackView.anchor(top: safeArea.topAnchor,
                                   left: safeArea.leftAnchor,
-                                  right: safeArea.rightAnchor,
-                                  paddingTop: 20,
-                                  paddingLeft: 15, paddingRight: 15)
+                                  bottom: safeArea.bottomAnchor,
+                                  right: safeArea.rightAnchor)
+        heaterImageView.anchor(width: 50,
+                           height: 50)
 
-        informationStackView.anchor(top: safeArea.topAnchor,
-                                    left: safeArea.leftAnchor,
-                                    right: safeArea.rightAnchor,
-                                    paddingTop: 10,
-                                    paddingLeft: 10,
-                                    paddingRight: 10)
-
-        temperatureStackView.anchor(top: containerStackView.topAnchor,
-                             left: containerStackView.leftAnchor,
-                             right: containerStackView.rightAnchor,
-                             paddingTop: 100,
-                             paddingLeft: 50,
-                             paddingRight: 50)
-        modeStackView.anchor(top: temperatureStackView.bottomAnchor,
-                                    left: containerStackView.leftAnchor,
-                                    right: containerStackView.rightAnchor,
-                                    paddingTop: 100,
-                                    paddingLeft: 80,
-                                    paddingRight: 80)
-
-        heaterImageView.anchor(width: 100,
-                           height: 100)
-        temperatureLabel.anchor(height: 50)
-        modeOnLabel.anchor(height: 50)
-        modeOffLabel.anchor(height: 50)
-        heaterPlusButton.anchor(height: 50)
-        heaterMinusButton.anchor(height: 50)
-        heaterMinusButton.translatesAutoresizingMaskIntoConstraints = false
-        heaterModeSwitch.translatesAutoresizingMaskIntoConstraints = false
-        modeOnLabel.translatesAutoresizingMaskIntoConstraints = false
-        modeOffLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

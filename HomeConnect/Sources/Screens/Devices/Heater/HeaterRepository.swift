@@ -9,6 +9,10 @@ import Foundation
 
 protocol HeaterRepositoryType {
     func deleteItem(with deviceId: String)
+    func updateDevice(with deviceId: String,
+                      mode: String,
+                      temperature: String)
+
 }
 
 final class HeaterRepository: HeaterRepositoryType {
@@ -27,6 +31,14 @@ final class HeaterRepository: HeaterRepositoryType {
 
     func deleteItem(with deviceId: String) {
         dataBaseManager.deleteADevice(with: deviceId)
+    }
+
+    func updateDevice(with deviceId: String,
+                      mode: String,
+                      temperature: String) {
+        dataBaseManager.updateDeviceEntity(for: deviceId,
+                                           mode: mode,
+                                           temperature: temperature)
     }
 
 }

@@ -14,6 +14,7 @@ final class RollerShutterViewModel {
     private var device: DeviceItem
     private var repository: RollerShutterRepositoryType
     private weak var delegate: DevicesScreensDelegate?
+    private var devicePosition = ""
 
     // MARK: - Initializer
 
@@ -46,20 +47,28 @@ final class RollerShutterViewModel {
     func didPressDeleteIconButton() {
         delegate?.devicesScreensShouldDisplayMultiChoicesAlert(for: .deleteDevice) { [weak self] response in
             if response, let deviceId = self?.device.idNumber {
-                self?.repository.deleteItem(with: deviceId)
+                self?.repository.deleteDevice(with: deviceId)
                 self?.delegate?.devicesScreenDidSelectDeleteButton()
             }
         }
     }
 
-    func didChangeRollerPostion(with value: Int) {
-        rollerPosition?("\(value)")
+    func didChangeRollerPosition(with value: Int) {
+        devicePosition = "\(value)"
+        rollerPosition?(devicePosition)
+    }
+
+    func saveNewDeviceSettings() {
+        repository.updateDevice(with: device.idNumber,
+                                position: devicePosition)
+        self.delegate?.devicesScreenDidSelectSaveButton()
     }
 
     func definePostion(for device: DeviceItem) {
         switch device.productType {
         case .rollerShutter(let position):
-            rollerPosition?("\(position)")
+            devicePosition = position
+            rollerPosition?(devicePosition)
         default:
             return
         }

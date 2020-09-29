@@ -14,6 +14,17 @@ final class RollerShutterViewController: UIViewController {
     private let viewModel: RollerShutterViewModel
     private lazy var deleteIconName: String = ""
 
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        stackView.addArrangedSubview(informationStackView)
+        stackView.addArrangedSubview(settingsStackView)
+        return stackView
+    }()
+
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -29,12 +40,13 @@ final class RollerShutterViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.spacing = 10
         stackView.addArrangedSubview(rollerShutterOpenLabel)
         stackView.addArrangedSubview(rollerShutterPositionLabel)
         stackView.addArrangedSubview(rollerShutterPositionSlider)
         stackView.addArrangedSubview(rollerShutterClosedLabel)
+        stackView.addArrangedSubview(rollerShutterSaveButton)
         return stackView
     }()
 
@@ -87,6 +99,14 @@ final class RollerShutterViewController: UIViewController {
                         style: .plain,
                         target: self,
                         action: #selector(didTapDeleteButton))
+        return button
+    }()
+
+    private lazy var rollerShutterSaveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Enregistrer", for: .normal)
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        button.backgroundColor = .red
         return button
     }()
 
@@ -144,7 +164,11 @@ final class RollerShutterViewController: UIViewController {
     }
 
     @objc func didMovePositionSlider() {
-        viewModel.didChangeRollerPostion(with: Int(rollerShutterPositionSlider.value))
+        viewModel.didChangeRollerPosition(with: Int(rollerShutterPositionSlider.value))
+    }
+
+    @objc func didTapSaveButton() {
+        viewModel.saveNewDeviceSettings()
     }
 
     // MARK: - Configure UI
@@ -156,29 +180,13 @@ final class RollerShutterViewController: UIViewController {
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
-        view.addSubview(informationStackView)
-        view.addSubview(settingsStackView)
-
-        informationStackView.anchor(top: safeArea.topAnchor,
-                                    left: safeArea.leftAnchor,
-                                    right: safeArea.rightAnchor,
-                                    paddingLeft: 10,
-                                    paddingRight: 10)
-        settingsStackView.anchor(top: informationStackView.bottomAnchor,
-                                 left: safeArea.leftAnchor,
-                                 bottom: safeArea.bottomAnchor,
-                                 right: safeArea.rightAnchor,
-                                 paddingTop: 10,
-                                 paddingLeft: 10,
-                                 paddingBottom: 10,
-                                 paddingRight: 10)
-        rollerShutterImageView.anchor(top: safeArea.topAnchor,
-                           left: safeArea.leftAnchor,
-                           paddingTop: 10,
-                           paddingLeft: 10,
-                           width: 100,
-                           height: 100)
-        rollerShutterPositionSlider.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerStackView)
+        containerStackView.anchor(top: safeArea.topAnchor,
+                                  left: safeArea.leftAnchor,
+                                  bottom: safeArea.bottomAnchor,
+                                  right: safeArea.rightAnchor)
+        rollerShutterImageView.anchor(width: 50,
+                                     height: 50)
     }
 
 }

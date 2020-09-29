@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RollerShutterRepositoryType {
-
+    func deleteItem(with deviceId: String)
 }
 
 final class RollerShutterRepository: RollerShutterRepositoryType {
@@ -21,6 +21,12 @@ final class RollerShutterRepository: RollerShutterRepositoryType {
 
     init( dataBaseManager: DataBaseManager) {
         self.dataBaseManager = dataBaseManager
+    }
+    
+    // MARK: - RollerShutterRepositoryType
+
+    func deleteItem(with deviceId: String) {
+        dataBaseManager.deleteADevice(with: deviceId)
     }
 
 }

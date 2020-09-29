@@ -13,13 +13,16 @@ final class LightViewModel {
 
     private var device: DeviceItem
     private var repository: LightRepositoryType
+    private weak var delegate: DevicesScreensDelegate?
 
     // MARK: - Initializer
 
     init(device: DeviceItem,
-         repository: LightRepositoryType) {
+         repository: LightRepositoryType,
+         delegate: DevicesScreensDelegate?) {
         self.device = device
         self.repository = repository
+        self.delegate = delegate
     }
 
     // MARK: - Output
@@ -39,6 +42,15 @@ final class LightViewModel {
         lightName?("\(device.deviceName)")
         lightDeleteIconName?("dustbin")
         defineLightAndIntensity(for: device)
+    }
+    
+    func didPressDeleteIconButton() {
+        delegate?.devicesScreensShouldDisplayMultiChoicesAlert(for: .deleteDevice) { [weak self] response in
+            if response, let deviceId = self?.device.idNumber {
+                self?.repository.deleteItem(with: deviceId)
+                self?.delegate?.devicesScreenDidSelectDeleteButton()
+            }
+        }
     }
 
     func defineLightAndIntensity(for device: DeviceItem) {

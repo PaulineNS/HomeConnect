@@ -121,7 +121,7 @@ final class RollerShutterViewController: UIViewController {
     // MARK: - Selectors
 
     @objc func didTapDeleteButton() {
-
+        viewModel.didPressDeleteIconButton()
     }
 
     // MARK: - Configure UI

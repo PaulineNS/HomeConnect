@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LightRepositoryType {
-
+    func deleteItem(with deviceId: String)
 }
 
 final class LightRepository: LightRepositoryType {
@@ -21,6 +21,12 @@ final class LightRepository: LightRepositoryType {
 
     init( dataBaseManager: DataBaseManager) {
         self.dataBaseManager = dataBaseManager
+    }
+    
+    // MARK: - LightRepositoryType
+
+    func deleteItem(with deviceId: String) {
+        dataBaseManager.deleteADevice(with: deviceId)
     }
 
 }

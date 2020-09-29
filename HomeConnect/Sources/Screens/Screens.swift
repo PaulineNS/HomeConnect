@@ -95,7 +95,8 @@ extension Screens {
                                            delegate: DevicesScreensDelegate?) -> UIViewController {
         let repository = LightRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = LightViewModel(device: lightSelected,
-                                       repository: repository)
+                                       repository: repository,
+                                       delegate: delegate)
         return LightViewController(viewModel: viewModel)
     }
 
@@ -103,7 +104,8 @@ extension Screens {
                                                    delegate: DevicesScreensDelegate?) -> UIViewController {
         let repository = RollerShutterRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = RollerShutterViewModel(device: rollerShutterSelected,
-                                               repository: repository)
+                                               repository: repository,
+                                               delegate: delegate)
         return RollerShutterViewController(viewModel: viewModel)
     }
 }

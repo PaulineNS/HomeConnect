@@ -86,8 +86,7 @@ extension HomeCoordinator: DevicesScreensDelegate {
     func devicesScreensShouldDisplayAlert(for type: AlertType) {
         showAlert(for: type)
     }
-    
-    
+
 }
 
 //extension HomeCoordinator: LightScreenDelegate {

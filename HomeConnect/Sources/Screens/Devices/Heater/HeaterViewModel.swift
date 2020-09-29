@@ -43,10 +43,10 @@ final class HeaterViewModel {
         heaterName?("\(device.deviceName)")
         heaterDeleteIconName?("dustbin")
         defineModeAndTemperature(for: device)
-        heaterTemperature?("\(temperature) C°")
     }
 
     func didPressDeleteIconButton() {
+
     }
 
     func didPressPlusButton() {
@@ -67,12 +67,20 @@ final class HeaterViewModel {
         heaterTemperature?("\(temperature) C°")
     }
 
+    func didChangeModeSwitchValue(withOnvalue: Bool) {
+        withOnvalue ? heaterTemperature?("\(temperature) C°") : heaterTemperature?("0 C°")
+    }
+
     func defineModeAndTemperature(for device: DeviceItem) {
         switch device.productType {
         case .heater(let mode, let temperature):
-            heaterMode?("\(mode)")
+            heaterMode?(mode)
             self.temperature = Double(temperature) ?? 1.1
-        //            heaterTemperature?("\(temperature) C°")
+            guard mode == "ON" else {
+                heaterTemperature?("0 C°")
+                return
+            }
+            heaterTemperature?("\(temperature) C°")
         default:
             return
         }

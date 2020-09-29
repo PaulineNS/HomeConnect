@@ -56,7 +56,7 @@ final class HeaterViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.spacing = 10
         stackView.addArrangedSubview(modeOffLabel)
-        stackView.addArrangedSubview(heaterStatusSwitch)
+        stackView.addArrangedSubview(heaterModeSwitch)
         stackView.addArrangedSubview(modeOnLabel)
         return stackView
     }()
@@ -109,9 +109,11 @@ final class HeaterViewController: UIViewController {
         return label
     }()
 
-    private lazy var heaterStatusSwitch: UISwitch = {
-        let statusSwitch = UISwitch()
-        return statusSwitch
+    private lazy var heaterModeSwitch: UISwitch = {
+        let modeSwitch = UISwitch()
+        modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
+
+        return modeSwitch
     }()
 
     private lazy var deleteButton: UIBarButtonItem = {
@@ -159,10 +161,10 @@ final class HeaterViewController: UIViewController {
         }
         viewModel.heaterMode = { [weak self] mode in
             guard mode == "ON" else {
-                self?.heaterStatusSwitch.setOn(false, animated: true)
+                self?.heaterModeSwitch.setOn(false, animated: true)
                 return
             }
-            self?.heaterStatusSwitch.setOn(true, animated: true)
+            self?.heaterModeSwitch.setOn(true, animated: true)
         }
         viewModel.heaterTemperature = { [weak self] temperature in
             self?.temperatureLabel.text = temperature
@@ -185,6 +187,10 @@ final class HeaterViewController: UIViewController {
 
     @objc func didTapMinusButton() {
         viewModel.didPressMinusButton()
+    }
+
+    @objc func modeSwitchValueDidChange() {
+        viewModel.didChangeModeSwitchValue(withOnvalue: heaterModeSwitch.isOn)
     }
 
     // MARK: - Configure UI
@@ -234,7 +240,7 @@ final class HeaterViewController: UIViewController {
         heaterMinusButton.anchor(height: 50)
         heaterMinusButton.translatesAutoresizingMaskIntoConstraints = false
         heaterPlusButton.translatesAutoresizingMaskIntoConstraints = false
-        heaterStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
+        heaterModeSwitch.translatesAutoresizingMaskIntoConstraints = false
         modeOnLabel.translatesAutoresizingMaskIntoConstraints = false
         modeOffLabel.translatesAutoresizingMaskIntoConstraints = false
     }

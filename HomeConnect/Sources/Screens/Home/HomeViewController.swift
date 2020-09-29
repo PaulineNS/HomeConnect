@@ -86,6 +86,11 @@ final class HomeViewController: UIViewController {
 //        viewModel.viewDidAppear()
 //    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     // MARK: - Bindings
 
     private func bind(to source: HomeDataSource) {

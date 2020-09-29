@@ -243,13 +243,11 @@
 		56D7E02A251C919800DD5B37 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				56DA609E252305280005F7CE /* HomeCollectionView */,
 				56D7E07E251C9CF700DD5B37 /* HomeViewController.swift */,
 				56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */,
-				56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */,
-				56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */,
 				56D7E111251DC9F200DD5B37 /* HomeRepository.swift */,
 				2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */,
-				56AFCF8D25223DAB00CF2B4B /* HomeCellViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -372,6 +370,16 @@
 				56D7E123251DCFB900DD5B37 /* Alert.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		56DA609E252305280005F7CE /* HomeCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				56AFCF8D25223DAB00CF2B4B /* HomeCellViewModel.swift */,
+				56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */,
+				56D7E0E7251CC7AA00DD5B37 /* HomeCollectionViewCell.swift */,
+			);
+			path = HomeCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -45,6 +45,7 @@ final class ProfileViewController: UIViewController {
         stackView.addArrangedSubview(streetLabel)
         stackView.addArrangedSubview(cityLabel)
         stackView.addArrangedSubview(countryLabel)
+        stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         return stackView
     }()
 
@@ -115,16 +116,18 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
         view.addSubview(containerView)
-        containerView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 250)
+        containerView.anchor(top: safeArea.topAnchor,
+                             left: safeArea.leftAnchor,
+                             right: safeArea.rightAnchor,
+                             height: 250)
         view.addSubview(adressStackView)
         adressStackView.anchor(top: containerView.bottomAnchor,
-                               left: view.leftAnchor,
-                               bottom: view.bottomAnchor,
-                               right: view.rightAnchor,
-                               paddingTop: 20,
-                               paddingBottom: 200)
+                               left: safeArea.leftAnchor,
+                               right: safeArea.rightAnchor,
+                               paddingTop: 20)
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }

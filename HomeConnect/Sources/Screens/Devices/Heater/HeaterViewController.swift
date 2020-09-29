@@ -10,6 +10,18 @@ import UIKit
 final class HeaterViewController: UIViewController {
 
     // MARK: - Properties
+    
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 400
+        stackView.addArrangedSubview(temperatureStackView)
+        stackView.addArrangedSubview(modeStackView)
+        stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return stackView
+    }()
 
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
@@ -38,7 +50,7 @@ final class HeaterViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .equalSpacing
         stackView.spacing = 10
         stackView.addArrangedSubview(modeOffLabel)
         stackView.addArrangedSubview(heaterStatusSwitch)
@@ -117,36 +129,43 @@ final class HeaterViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
         view.addSubview(informationStackView)
-        view.addSubview(modeStackView)
-        view.addSubview(temperatureStackView)
+        view.addSubview(containerStackView)
+
+        containerStackView.anchor(top: informationStackView.bottomAnchor,
+                                  left: safeArea.leftAnchor,
+                                  right: safeArea.rightAnchor,
+                                  paddingTop: 20,
+                                  paddingLeft: 15, paddingRight: 15)
 
         informationStackView.anchor(top: safeArea.topAnchor,
-                                    left: safeArea.leftAnchor,
-                                    right: safeArea.rightAnchor,
-                                    paddingLeft: 10,
-                                    paddingRight: 10)
-        modeStackView.anchor(top: informationStackView.bottomAnchor,
-                             left: safeArea.leftAnchor,
-                             right: safeArea.rightAnchor,
-                             paddingTop: 10,
-                             paddingLeft: 10,
-                             paddingRight: 10)
-        temperatureStackView.anchor(top: modeStackView.bottomAnchor,
                                     left: safeArea.leftAnchor,
                                     right: safeArea.rightAnchor,
                                     paddingTop: 10,
                                     paddingLeft: 10,
                                     paddingRight: 10)
-        heaterImageView.anchor(top: safeArea.topAnchor,
-                           left: safeArea.leftAnchor,
-                           paddingTop: 10,
-                           paddingLeft: 10,
-                           width: 100,
+
+        temperatureStackView.anchor(top: containerStackView.topAnchor,
+                             left: containerStackView.leftAnchor,
+                             right: containerStackView.rightAnchor,
+                             paddingTop: 100,
+                             paddingLeft: 50,
+                             paddingRight: 50)
+        modeStackView.anchor(top: temperatureStackView.bottomAnchor,
+                                    left: containerStackView.leftAnchor,
+                                    right: containerStackView.rightAnchor,
+                                    paddingTop: 100,
+                                    paddingLeft: 80,
+                                    paddingRight: 80)
+
+        heaterImageView.anchor(width: 100,
                            height: 100)
-        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        temperatureLabel.anchor(height: 50)
+        modeOnLabel.anchor(height: 50)
+        modeOffLabel.anchor(height: 50)
+        heaterPlusButton.anchor(height: 50)
+        heaterMinusButton.anchor(height: 50)
         heaterMinusButton.translatesAutoresizingMaskIntoConstraints = false
         heaterPlusButton.translatesAutoresizingMaskIntoConstraints = false
-
         heaterStatusSwitch.translatesAutoresizingMaskIntoConstraints = false
         modeOnLabel.translatesAutoresizingMaskIntoConstraints = false
         modeOffLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -57,21 +57,21 @@ open class DataBaseManager {
     func createDeviceEntity(deviceItem: DeviceItem) {
         let device = DeviceAttributes(context: managedObjectContext)
         device.deviceId = deviceItem.idNumber
-//        device.productType = deviceItem.productType.item
-//        device.intensity = deviceItem.intensity
-//        device.mode = deviceItem.mode
         device.name = deviceItem.deviceName
-        device.productType = deviceItem.productType.name
-        
-//        switch device.productType {
-//        case :
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//        device.position = deviceItem.position
-//        device.productType = deviceItem.productType?.rawValue
-//        device.temperature = deviceItem.temperature
+
+        switch deviceItem.productType {
+        case .heater(let mode, let temperature):
+            device.productType = "Heater"
+            device.mode = mode
+            device.temperature = temperature
+        case .light(let mode, let intensity):
+            device.productType = "Light"
+            device.mode = mode
+            device.intensity = intensity
+        case .rollerShutter(let position):
+            device.productType = "RollerShutter"
+            device.position = position
+        }
         dataBaseStack.saveContext()
     }
 

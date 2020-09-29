@@ -30,7 +30,6 @@ final class HomeRepository: HomeRepositoryType {
     private var dependanceType: DependanceType
     private let dataBaseManager: DataBaseManager
     private let checker: UserDefaultChecker
-    
 
     // MARK: - Init
 
@@ -98,13 +97,13 @@ final class HomeRepository: HomeRepositoryType {
                             let devices = response
                                 .devices?
                                 .compactMap { DeviceItem(device: $0) } ?? []
-                            
+
                             guard let user = response.user else {
                                 return
                             }
                             let userItem = UserItem(user: user)
                             self.dataBaseManager.createUserEntity(userItem: userItem)
-                            
+
                             devices.forEach { deviceItem in
 
                                 self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem)
@@ -116,17 +115,18 @@ final class HomeRepository: HomeRepositoryType {
                     }
         }
     }
-//}
+
+// MARK: - Device Item
 
 private extension DeviceItem {
     init?(device: DeviceResponse.Device) {
         guard
-            let id = device.id,
+            let deviceId = device.id,
             let name = device.deviceName,
             let type = ProductType(device: device)
             else { return nil }
 
-        self.idNumber = "\(id)"
+        self.idNumber = "\(deviceId)"
         self.deviceName = name
         self.productType = type
     }
@@ -135,18 +135,20 @@ private extension DeviceItem {
 private extension DeviceItem {
     init?(device: DeviceAttributes) {
         guard
-            let id = device.deviceId,
+            let deviceId = device.deviceId,
             let name = device.name,
             let type = ProductType(device: device)
             else {
             return nil
         }
-        
-        self.idNumber = "\(id)"
+
+        self.idNumber = "\(deviceId)"
         self.deviceName = name
         self.productType = type
     }
 }
+
+// MARK: - ProductType
 
 extension ProductType {
     init?(device: DeviceAttributes) {
@@ -172,7 +174,6 @@ extension ProductType {
         }
     }
 }
-
 
 extension ProductType {
     init?(device: DeviceResponse.Device) {

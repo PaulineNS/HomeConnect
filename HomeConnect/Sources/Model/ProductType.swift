@@ -33,5 +33,4 @@ enum ProductType: Equatable {
             return "RollerShutter"
         }
     }
-
 }

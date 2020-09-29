@@ -44,8 +44,6 @@ extension HomeDataSource: UICollectionViewDataSource,
         let device = devices[indexPath.row]
         let viewModel = HomeCellViewModel(device: .init(name: device.deviceName, type: device.productType))
         cell.configure(with: viewModel)
-//        cell.autoLayoutCell()
-//        cell.updateCell(with: devices[indexPath.row])
         return cell
     }
 

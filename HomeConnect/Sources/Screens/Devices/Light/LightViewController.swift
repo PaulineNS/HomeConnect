@@ -202,7 +202,7 @@ final class LightViewController: UIViewController {
                              bottom: lightIntensitySlider.topAnchor,
                              right: safeArea.rightAnchor,
                              paddingLeft: 20,
-                             paddingBottom: 40,
+                             paddingBottom: 60,
                              paddingRight: 20)
         modeStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }

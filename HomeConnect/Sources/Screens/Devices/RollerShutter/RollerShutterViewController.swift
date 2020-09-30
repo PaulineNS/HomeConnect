@@ -31,6 +31,12 @@ final class RollerShutterViewController: UIViewController {
     private lazy var rollerShutterPositionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 3.0
+        label.layer.cornerRadius = 10
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
 

@@ -20,13 +20,12 @@ final class ProfileViewController: UIViewController {
 
         // Profile Image View
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImageView.anchor(top: view.topAnchor, paddingTop: 44, width: 120, height: 88)
-        profileImageView.layer.cornerRadius = 120/2
+        profileImageView.anchor(top: view.topAnchor, paddingTop: 10, width: 150, height: 150)
 
         // User Name Label
         view.addSubview(nameLabel)
         nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 30)
+        nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 10)
 
         // User Age Label
         view.addSubview(ageLabel)
@@ -41,7 +40,7 @@ final class ProfileViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 10
+        stackView.spacing = 40
         stackView.addArrangedSubview(streetLabel)
         stackView.addArrangedSubview(cityLabel)
         stackView.addArrangedSubview(countryLabel)
@@ -51,10 +50,6 @@ final class ProfileViewController: UIViewController {
 
     private let profileImageView: UIImageView = {
         let profileIV = UIImageView()
-        profileIV.contentMode = .scaleAspectFill
-        profileIV.clipsToBounds = true
-        profileIV.layer.borderWidth = 3
-        profileIV.layer.borderColor = UIColor.white.cgColor
         return profileIV
     }()
 
@@ -162,6 +157,9 @@ final class ProfileViewController: UIViewController {
 
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = updateProfileButton
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.tintColor = .black
     }
 
     private func setUI() {
@@ -176,7 +174,7 @@ final class ProfileViewController: UIViewController {
         adressStackView.anchor(top: containerView.bottomAnchor,
                                left: safeArea.leftAnchor,
                                right: safeArea.rightAnchor,
-                               paddingTop: 20)
+                               paddingTop: 40)
     }
 
 }

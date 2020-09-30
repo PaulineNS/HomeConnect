@@ -15,7 +15,7 @@ final class ProfileViewModel {
     private weak var delegate: ProfileScreenDelegate?
     private var user: [UserItem] = [] {
         didSet {
-            profileImageName?("light")
+            profileImageName?("profilePicture")
             userName?("\(user.first?.firstName ?? "") \(user.first?.lastName ?? "")")
             userAge?("29 ans")
             userStreet?("\(user.first?.streetCode ?? ""), \(user.first?.street ?? "")")

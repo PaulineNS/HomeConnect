@@ -64,14 +64,14 @@ final class HeaterViewController: UIViewController {
 
     private lazy var heaterPlusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "plusButton"), for: .normal)
+        button.setImage(UIImage(named: "hot"), for: .normal)
         button.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
         return button
     }()
 
     private lazy var heaterMinusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "minusButton"), for: .normal)
+        button.setImage(UIImage(named: "cold"), for: .normal)
         button.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
         return button
     }()

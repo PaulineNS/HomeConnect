@@ -130,6 +130,10 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
 
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = searchButton
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.tintColor = .black
+
     }
 
 }

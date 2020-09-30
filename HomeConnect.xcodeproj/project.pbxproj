@@ -12,6 +12,9 @@
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
+		56437A7025251EBD00CD5C44 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A6F25251EBD00CD5C44 /* HomeViewModelTest.swift */; };
+		56437A762525216E00CD5C44 /* HomeRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A752525216E00CD5C44 /* HomeRepositoryTests.swift */; };
+		56437A7A2525250900CD5C44 /* MockHomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A792525250900CD5C44 /* MockHomeRepository.swift */; };
 		5686A2312520B77A00176D70 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2302520B77A00176D70 /* ProfileRepository.swift */; };
 		5686A2362520B7ED00176D70 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2352520B7ED00176D70 /* ProductType.swift */; };
 		5686A23B2520B84300176D70 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A23A2520B84300176D70 /* UserItem.swift */; };
@@ -80,6 +83,9 @@
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		56437A6F25251EBD00CD5C44 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
+		56437A752525216E00CD5C44 /* HomeRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepositoryTests.swift; sourceTree = "<group>"; };
+		56437A792525250900CD5C44 /* MockHomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeRepository.swift; sourceTree = "<group>"; };
 		5686A2302520B77A00176D70 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		5686A2352520B7ED00176D70 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		5686A23A2520B84300176D70 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
@@ -174,6 +180,16 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		56437A6E25251E9700CD5C44 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				56437A6F25251EBD00CD5C44 /* HomeViewModelTest.swift */,
+				56437A752525216E00CD5C44 /* HomeRepositoryTests.swift */,
+				56437A792525250900CD5C44 /* MockHomeRepository.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		569581492521F578005EACA7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +230,7 @@
 		56D7DFFC251C903500DD5B37 /* HomeConnectTests */ = {
 			isa = PBXGroup;
 			children = (
+				56437A6E25251E9700CD5C44 /* Home */,
 				56437A402524FB0100CD5C44 /* DataBase */,
 				56D7E0FE251DC25400DD5B37 /* Network */,
 				56D7DFFF251C903500DD5B37 /* Info.plist */,
@@ -585,7 +602,10 @@
 			files = (
 				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
 				56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */,
+				56437A7A2525250900CD5C44 /* MockHomeRepository.swift in Sources */,
+				56437A762525216E00CD5C44 /* HomeRepositoryTests.swift in Sources */,
 				56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */,
+				56437A7025251EBD00CD5C44 /* HomeViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

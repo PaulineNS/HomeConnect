@@ -97,7 +97,7 @@ final class DataBaseManagerTests: XCTestCase {
         XCTAssertTrue(dataBaseManager.user[0].street! == "Rue Jean Paul")
         XCTAssertTrue(dataBaseManager.user[0].streetCode! == "12")
     }
-    
+
 }
 
 struct DeviceMock {
@@ -112,7 +112,7 @@ struct DeviceMock {
 
 // MARK: - ProductType
 
-private extension DeviceItem {
+extension DeviceItem {
     init?(device: DeviceMock) {
         self.init(idNumber: device.deviceId,
                   deviceName: device.deviceName,

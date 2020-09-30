@@ -13,12 +13,12 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
 
     private let tableView: UITableView = {
         let table = UITableView()
+        table.register(ProductTypeFilterTableViewCell.self,
+                       forCellReuseIdentifier: ProductTypeFilterTableViewCell.identifier)
         table.register(IntensityFilterTableViewCell.self,
                        forCellReuseIdentifier: IntensityFilterTableViewCell.identifier)
         table.register(ModeFilterTableViewCell.self,
                        forCellReuseIdentifier: ModeFilterTableViewCell.identifier)
-        table.register(ProductTypeFilterTableViewCell.self,
-                       forCellReuseIdentifier: ProductTypeFilterTableViewCell.identifier)
         table.register(PositionFilterTableViewCell.self,
                        forCellReuseIdentifier: PositionFilterTableViewCell.identifier)
         table.register(TemperatureFilterTableViewCell.self,
@@ -62,9 +62,9 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
 
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: IntensityFilterTableViewCell.identifier,
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTypeFilterTableViewCell.identifier,
                                                            for: indexPath)
-                    as? IntensityFilterTableViewCell else { return UITableViewCell() }
+                    as? ProductTypeFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
             return cell
         case 1:
@@ -74,10 +74,12 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
             cell.configure()
             return cell
         case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTypeFilterTableViewCell.identifier,
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: IntensityFilterTableViewCell.identifier,
                                                            for: indexPath)
-                    as? ProductTypeFilterTableViewCell else { return UITableViewCell() }
+                    as? IntensityFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.intensitySlider.addTarget(cell, action: #selector(cell.didMoveIntensitySlider), for: .valueChanged)
             return cell
 
         case 3:
@@ -85,6 +87,7 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
                                                            for: indexPath)
                     as? PositionFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.positionSlider.addTarget(cell, action: #selector(cell.didMovePositionSlider), for: .valueChanged)
             return cell
 
         case 4:
@@ -92,6 +95,8 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
                                                            for: indexPath)
                     as? TemperatureFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.heaterMinusButton.addTarget(cell, action: #selector(cell.didTapMinusButton), for: .touchUpInside)
+            cell.heaterPlusButton.addTarget(cell, action: #selector(cell.didTapPlusButton), for: .touchUpInside)
             return cell
 
         default:
@@ -115,4 +120,5 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = searchButton
     }
+
 }

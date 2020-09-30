@@ -123,8 +123,8 @@ final class LightViewController: UIViewController {
         super.viewDidLoad()
         bind(to: viewModel)
         viewModel.viewDidLoad()
-        if let nnn = Int(lightIntensityLabel.text ?? "") {
-            lightIntensitySlider.setValue(Float(nnn), animated: true)
+        if let intensityValue = Int(lightIntensityLabel.text ?? "") {
+            lightIntensitySlider.setValue(Float(intensityValue), animated: true)
         }
 
     }

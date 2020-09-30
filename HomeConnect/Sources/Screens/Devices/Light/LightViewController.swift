@@ -34,6 +34,8 @@ final class LightViewController: UIViewController {
 
     private lazy var lightIntensitySlider: UISlider = {
         let slider = UISlider()
+        slider.minimumValueImage = #imageLiteral(resourceName: "lightOff")
+        slider.maximumValueImage = #imageLiteral(resourceName: "lightOn")
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.tintColor = .red

@@ -14,53 +14,6 @@ final class RollerShutterViewController: UIViewController {
     private let viewModel: RollerShutterViewModel
     private lazy var deleteIconName: String = ""
 
-    private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 10
-        stackView.addArrangedSubview(informationStackView)
-        stackView.addArrangedSubview(settingsStackView)
-        return stackView
-    }()
-
-    private lazy var informationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(rollerShutterImageView)
-        stackView.addArrangedSubview(rollerShutterNameLabel)
-        return stackView
-    }()
-
-    private lazy var settingsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(rollerShutterOpenLabel)
-        stackView.addArrangedSubview(rollerShutterPositionLabel)
-        stackView.addArrangedSubview(rollerShutterPositionSlider)
-        stackView.addArrangedSubview(rollerShutterClosedLabel)
-        return stackView
-    }()
-
-    private lazy var rollerShutterImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-
-    private lazy var rollerShutterNameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        return label
-    }()
-
     private lazy var rollerShutterOpenLabel: UILabel = {
         let label = UILabel()
         label.text = "Ouvert"
@@ -83,6 +36,8 @@ final class RollerShutterViewController: UIViewController {
 
     private lazy var rollerShutterPositionSlider: UISlider = {
         let slider = UISlider()
+        slider.minimumValueImage = #imageLiteral(resourceName: "close")
+        slider.maximumValueImage = #imageLiteral(resourceName: "open")
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.tintColor = .red
@@ -144,10 +99,7 @@ final class RollerShutterViewController: UIViewController {
     private func bind(to viewModel: RollerShutterViewModel) {
 
         viewModel.rollerName = { [weak self] name in
-            self?.rollerShutterNameLabel.text = name
-        }
-        viewModel.rollerImage = { [weak self] image in
-            self?.rollerShutterImageView.image = UIImage(named: image)
+            self?.navigationItem.title = name
         }
         viewModel.rollerDeleteIconName = { [weak self] name in
             self?.deleteIconName = name
@@ -181,15 +133,22 @@ final class RollerShutterViewController: UIViewController {
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
-        view.addSubview(containerStackView)
         view.addSubview(rollerShutterSaveButton)
-        containerStackView.anchor(top: safeArea.topAnchor,
-                                  left: safeArea.leftAnchor,
-                                  right: safeArea.rightAnchor)
-        rollerShutterImageView.anchor(width: 50,
-                                     height: 50)
-        rollerShutterSaveButton.anchor(top: containerStackView.bottomAnchor, bottom: safeArea.bottomAnchor, paddingTop: 15, paddingBottom: 15, width: 100, height: 60)
+        rollerShutterSaveButton.anchor(bottom: safeArea.bottomAnchor, paddingBottom: 15, width: 100, height: 60)
         rollerShutterSaveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+
+        view.addSubview(rollerShutterPositionSlider)
+        rollerShutterPositionSlider.anchor(left: safeArea.leftAnchor,
+                                    right: safeArea.rightAnchor,
+                                    paddingLeft: 20, paddingRight: 20)
+        rollerShutterPositionSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        rollerShutterPositionSlider.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        view.addSubview(rollerShutterPositionLabel)
+        rollerShutterPositionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        rollerShutterPositionLabel.anchor(right: safeArea.rightAnchor,
+                                          paddingRight: 60,
+                                          width: 60, height: 60)
     }
 
 }

@@ -29,7 +29,6 @@ final class RollerShutterViewModel {
     // MARK: - Output
 
     var rollerDisplayed: ((DeviceItem) -> Void)?
-    var rollerImage: ((String) -> Void)?
     var rollerName: ((String) -> Void)?
     var rollerProductType: ((String) -> Void)?
     var rollerPosition: ((String) -> Void)?
@@ -38,7 +37,6 @@ final class RollerShutterViewModel {
     // MARK: - Input
 
     func viewDidLoad() {
-        rollerImage?("rollerShutter")
         rollerName?("\(device.deviceName)")
         rollerDeleteIconName?("dustbin")
         definePostion(for: device)

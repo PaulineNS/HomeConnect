@@ -10,6 +10,9 @@ import UIKit
 final class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Properties
+    
+    private let viewModel: FiltersViewModel
+
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -33,6 +36,15 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
                         action: #selector(didTapSearchButton))
         return updateButton
     }()
+
+    // MARK: - Initializer
+
+    init(viewModel: FiltersViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     // MARK: - Lifecycle
 
@@ -112,6 +124,7 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Selectors
 
     @objc func didTapSearchButton() {
+        
 
     }
 

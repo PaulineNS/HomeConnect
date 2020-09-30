@@ -124,7 +124,10 @@ extension Screens {
 extension Screens {
 
     func createFilterViewController() -> UIViewController {
-        return FiltersViewController()
+        let repository = FiltersRepository(dataBaseManager: context.dataBaseManager)
+        let viewModel = FiltersViewModel(repository: repository)
+        return FiltersViewController(viewModel: viewModel)
+    
     }
 }
 

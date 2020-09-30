@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+final class FiltersViewModel {
+
+    // MARK: - Private properties
+
+    private let repository: FiltersRepositoryType
+
+    // MARK: - Initializer
+
+    init(repository: FiltersRepositoryType) {
+        self.repository = repository
+    }
+}

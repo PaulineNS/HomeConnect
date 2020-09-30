@@ -34,7 +34,6 @@ final class ProfileViewModel {
 
     // MARK: - Outputs
 
-    var userDisplayed: ((UserItem) -> Void)?
     var profileImageName: ((String) -> Void)?
     var userName: ((String) -> Void)?
     var userAge: ((String) -> Void)?

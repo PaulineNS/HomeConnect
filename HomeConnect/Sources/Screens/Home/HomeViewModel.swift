@@ -51,10 +51,6 @@ final class HomeViewModel {
         filterIconName?("Filtrer")
     }
 
-    func viewDidAppear() {
-        repository.deleteTout() // TODO
-    }
-
     // MARK: - Methods
 
     func didSelectDevice(device: DeviceItem) {

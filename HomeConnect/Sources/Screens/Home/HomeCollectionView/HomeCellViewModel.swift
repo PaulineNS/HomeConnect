@@ -35,11 +35,11 @@ struct HomeCellViewModel {
         imageName?(device.type.imageName)
         switch device.type {
         case .heater:
-            backgroundColorName?("red")
+            backgroundColorName?("heater")
         case .light:
-            backgroundColorName?("blue")
+            backgroundColorName?("light")
         case .rollerShutter:
-            backgroundColorName?("green")
+            backgroundColorName?("roller")
         }
     }
 }

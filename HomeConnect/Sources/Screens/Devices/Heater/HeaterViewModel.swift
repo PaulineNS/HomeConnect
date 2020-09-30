@@ -30,7 +30,6 @@ final class HeaterViewModel {
     // MARK: - Output
 
     var heaterDisplayed: ((DeviceItem) -> Void)?
-    var heaterImage: ((String) -> Void)?
     var heaterName: ((String) -> Void)?
     var heaterProductType: ((String) -> Void)?
     var heaterMode: ((String) -> Void)?
@@ -40,7 +39,6 @@ final class HeaterViewModel {
     // MARK: - Input
 
     func viewDidLoad() {
-        heaterImage?("heater")
         heaterName?("\(device.deviceName)")
         heaterDeleteIconName?("dustbin")
         defineModeAndTemperature(for: device)

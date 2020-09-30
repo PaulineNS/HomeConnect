@@ -16,9 +16,6 @@ protocol HomeRepositoryType: class {
     func getUserDevices(success: @escaping ([DeviceItem], UserItem) -> Void,
                         failure: @escaping (() -> Void),
                         completion: @escaping ([DeviceItem]) -> Void)
-
-    func deleteTout()
-
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -48,11 +45,6 @@ final class HomeRepository: HomeRepositoryType {
     }
 
     // MARK: - HomeRepositoryType
-
-    func deleteTout() {
-        dataBaseManager.deleteAllUsers()
-        dataBaseManager.deleteAllDevices()
-    }
 
     func getUserDevices(
         success: @escaping ([DeviceItem], UserItem) -> Void,

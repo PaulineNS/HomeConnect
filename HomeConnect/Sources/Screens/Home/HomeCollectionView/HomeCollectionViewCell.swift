@@ -61,12 +61,12 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         }
         viewModel.backgroundColorName = { [weak self] colorName in
             switch colorName {
-            case "red":
-                self?.backgroundColor = .red
-            case "blue":
-                self?.backgroundColor = .blue
-            case "green":
-                self?.backgroundColor = .green
+            case "light":
+                self?.backgroundColor = #colorLiteral(red: 0.8992391229, green: 0.8554247022, blue: 0.2918801904, alpha: 1)
+            case "heater":
+                self?.backgroundColor = #colorLiteral(red: 0.8271351457, green: 0.3662813902, blue: 0.310879916, alpha: 1)
+            case "roller":
+                self?.backgroundColor = #colorLiteral(red: 0.391444236, green: 0.4994882345, blue: 0.5847318769, alpha: 1)
             default:
                 return
             }

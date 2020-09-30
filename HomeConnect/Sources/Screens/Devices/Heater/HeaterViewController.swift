@@ -14,38 +14,15 @@ final class HeaterViewController: UIViewController {
     private let viewModel: HeaterViewModel
     private lazy var deleteIconName: String = ""
 
-    private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 10
-        stackView.addArrangedSubview(informationStackView)
-        stackView.addArrangedSubview(settingsStackView)
-        return stackView
-    }()
-
     private lazy var settingsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(temperatureStackView)
+        stackView.distribution = .fill
+        stackView.spacing = 100
         stackView.addArrangedSubview(modeStackView)
-        stackView.addArrangedSubview(heaterSaveButton)
+        stackView.addArrangedSubview(temperatureStackView)
         stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        return stackView
-    }()
-
-    private lazy var informationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(heaterImageView)
-        stackView.addArrangedSubview(heaterNameLabel)
         return stackView
     }()
 
@@ -73,23 +50,15 @@ final class HeaterViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var heaterImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-
-    private lazy var heaterNameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        return label
-    }()
-
     private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 3.0
+        label.layer.cornerRadius = 10
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
 
@@ -111,6 +80,8 @@ final class HeaterViewController: UIViewController {
         let label = UILabel()
         label.text = "On"
         label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
         return label
     }()
 
@@ -118,6 +89,8 @@ final class HeaterViewController: UIViewController {
         let label = UILabel()
         label.text = "Off"
         label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
         return label
     }()
 
@@ -141,6 +114,8 @@ final class HeaterViewController: UIViewController {
         button.setTitle("Enregistrer", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.backgroundColor = .red
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
         return button
     }()
 
@@ -174,10 +149,7 @@ final class HeaterViewController: UIViewController {
     private func bind(to viewModel: HeaterViewModel) {
 
         viewModel.heaterName = { [weak self] name in
-            self?.heaterNameLabel.text = name
-        }
-        viewModel.heaterImage = { [weak self] image in
-            self?.heaterImageView.image = UIImage(named: image)
+            self?.navigationItem.title = name
         }
         viewModel.heaterMode = { [weak self] mode in
             guard mode == "ON" else {
@@ -221,20 +193,25 @@ final class HeaterViewController: UIViewController {
 
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = deleteButton
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .black
     }
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
-        view.addSubview(containerStackView)
-
-        containerStackView.anchor(top: safeArea.topAnchor,
-                                  left: safeArea.leftAnchor,
-                                  bottom: safeArea.bottomAnchor,
-                                  right: safeArea.rightAnchor)
-        heaterImageView.anchor(width: 50,
-                           height: 50)
-
+        view.addSubview(heaterSaveButton)
+        view.addSubview(settingsStackView)
+        settingsStackView.anchor()
+        settingsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        settingsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        temperatureLabel.anchor(width: 80, height: 80)
+        heaterSaveButton.anchor(bottom: safeArea.bottomAnchor,
+                                paddingTop: 15,
+                                paddingBottom: 15,
+                                width: 100, height: 60)
+        heaterSaveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
     }
 
 }

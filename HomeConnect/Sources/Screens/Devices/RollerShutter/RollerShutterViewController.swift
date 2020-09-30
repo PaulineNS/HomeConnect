@@ -46,7 +46,6 @@ final class RollerShutterViewController: UIViewController {
         stackView.addArrangedSubview(rollerShutterPositionLabel)
         stackView.addArrangedSubview(rollerShutterPositionSlider)
         stackView.addArrangedSubview(rollerShutterClosedLabel)
-        stackView.addArrangedSubview(rollerShutterSaveButton)
         return stackView
     }()
 
@@ -107,6 +106,8 @@ final class RollerShutterViewController: UIViewController {
         button.setTitle("Enregistrer", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.backgroundColor = .red
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
         return button
     }()
 
@@ -181,12 +182,14 @@ final class RollerShutterViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
         view.addSubview(containerStackView)
+        view.addSubview(rollerShutterSaveButton)
         containerStackView.anchor(top: safeArea.topAnchor,
                                   left: safeArea.leftAnchor,
-                                  bottom: safeArea.bottomAnchor,
                                   right: safeArea.rightAnchor)
         rollerShutterImageView.anchor(width: 50,
                                      height: 50)
+        rollerShutterSaveButton.anchor(top: containerStackView.bottomAnchor, bottom: safeArea.bottomAnchor, paddingTop: 15, paddingBottom: 15, width: 100, height: 60)
+        rollerShutterSaveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
     }
 
 }

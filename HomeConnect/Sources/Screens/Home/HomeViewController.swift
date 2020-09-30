@@ -64,12 +64,10 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
-
         setNavigationBar()
         setCollectionView()
         collectionView.delegate = source
         collectionView.dataSource = source
-
     }
 
     override func viewDidLoad() {
@@ -81,15 +79,10 @@ final class HomeViewController: UIViewController {
         viewModel.viewDidLoad()
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        viewModel.viewDidAppear()
+//    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.navigationItem.largeTitleDisplayMode = .never
+//        navigationController?.navigationBar.prefersLargeTitles = false
 //    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
 
     // MARK: - Bindings
 

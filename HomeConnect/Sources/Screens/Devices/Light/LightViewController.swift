@@ -14,54 +14,55 @@ final class LightViewController: UIViewController {
     private let viewModel: LightViewModel
     private lazy var deleteIconName: String = ""
 
-    private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 10
-        stackView.addArrangedSubview(informationStackView)
-        stackView.addArrangedSubview(settingsStackView)
-        return stackView
-    }()
+//    private lazy var containerStackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.axis = .vertical
+//        stackView.alignment = .fill
+//        stackView.distribution = .fillProportionally
+//        stackView.spacing = 10
+//        stackView.addArrangedSubview(informationStackView)
+//        stackView.addArrangedSubview(settingsStackView)
+//        return stackView
+//    }()
 
-    private lazy var informationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.backgroundColor = .yellow
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(lightImageView)
-        stackView.addArrangedSubview(lightNameLabel)
-        return stackView
-    }()
+//    private lazy var informationStackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.backgroundColor = .yellow
+//        stackView.axis = .horizontal
+//        stackView.alignment = .center
+//        stackView.distribution = .fillEqually
+//        stackView.spacing = 10
+//        stackView.addArrangedSubview(lightImageView)
+//        stackView.addArrangedSubview(lightNameLabel)
+//        return stackView
+//    }()
 
+    
     private lazy var settingsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = .green
         stackView.axis = .vertical
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.spacing = 10
+        stackView.spacing = 100
         stackView.addArrangedSubview(lightModeSwitch)
         stackView.addArrangedSubview(lightIntensityLabel)
         stackView.addArrangedSubview(lightIntensitySlider)
-        stackView.addArrangedSubview(lightSaveButton)
+//        stackView.addArrangedSubview(lightSaveButton)
         return stackView
     }()
 
-    private lazy var lightImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+//    private lazy var lightImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.contentMode = .scaleAspectFit
+//        return imageView
+//    }()
 
-    private lazy var lightNameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        return label
-    }()
+//    private lazy var lightNameLabel: UILabel = {
+//        let label = UILabel()
+//        label.textAlignment = .left
+//        return label
+//    }()
 
     private lazy var lightModeSwitch: UISwitch = {
         let modeSwitch = UISwitch()
@@ -72,6 +73,12 @@ final class LightViewController: UIViewController {
     private lazy var lightIntensityLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 3.0
+        label.layer.cornerRadius = 10
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
 
@@ -99,6 +106,8 @@ final class LightViewController: UIViewController {
         button.setTitle("Enregistrer", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.backgroundColor = .red
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
         return button
     }()
 
@@ -135,10 +144,13 @@ final class LightViewController: UIViewController {
 
     private func bind(to viewModel: LightViewModel) {
         viewModel.lightName = { [weak self] name in
-            self?.lightNameLabel.text = name
+            self?.navigationItem.title = name
+
+            
+//            self?.lightNameLabel.text = name
         }
         viewModel.lightImage = { [weak self] image in
-            self?.lightImageView.image = UIImage(named: image)
+//            self?.lightImageView.image = UIImage(named: image)
         }
         viewModel.lightMode = { [weak self] mode in
             guard mode == "ON" else {
@@ -180,18 +192,30 @@ final class LightViewController: UIViewController {
 
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = deleteButton
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .black
     }
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
-        view.addSubview(containerStackView)
-        containerStackView.anchor(top: safeArea.topAnchor,
-                                  left: safeArea.leftAnchor,
-                                  bottom: safeArea.bottomAnchor,
-                                  right: safeArea.rightAnchor)
-        lightImageView.anchor(width: 50,
-                           height: 50)
+//        view.addSubview(containerStackView)
+        view.addSubview(lightSaveButton)
+        view.addSubview(settingsStackView)
+        settingsStackView.anchor(left: safeArea.leftAnchor, right: safeArea.rightAnchor, paddingLeft: 20,paddingRight: 20)
+        settingsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        settingsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        containerStackView.anchor(top: safeArea.topAnchor,
+//                                  left: safeArea.leftAnchor,
+//                                  right: safeArea.rightAnchor)
+//        lightImageView.anchor(width: 50,
+//                           height: 50)
+        lightSaveButton.anchor(bottom: safeArea.bottomAnchor, paddingBottom: 15, width: 100, height: 60)
+        lightSaveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        lightIntensitySlider.anchor(width: 20)
     }
+    
 
 }
+

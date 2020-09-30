@@ -30,7 +30,6 @@ final class LightViewModel {
     // MARK: - Output
 
     var lightDisplayed: ((DeviceItem) -> Void)?
-    var lightImage: ((String) -> Void)?
     var lightName: ((String) -> Void)?
     var lightProductType: ((String) -> Void)?
     var lightMode: ((String) -> Void)?
@@ -40,7 +39,6 @@ final class LightViewModel {
     // MARK: - Input
 
     func viewDidLoad() {
-        lightImage?("light")
         lightName?("\(device.deviceName)")
         lightDeleteIconName?("dustbin")
         defineLightAndIntensity(for: device)

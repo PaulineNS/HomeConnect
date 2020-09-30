@@ -129,4 +129,15 @@ open class DataBaseManager {
         managedObject.setValue("birth", forKey: "birthDate")
         dataBaseStack.saveContext()
     }
+    
+    func fetchDevicesWithFilters() -> [DeviceAttributes] {
+        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+        
+        let predicate = NSPredicate(format: "productType == %@", "Light")
+        request.predicate = predicate
+        
+        guard let device = try? managedObjectContext.fetch(request) else { return [] }
+        return device
+        
+    }
 }

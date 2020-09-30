@@ -127,7 +127,7 @@ extension Screens {
         let repository = FiltersRepository(dataBaseManager: context.dataBaseManager)
         let viewModel = FiltersViewModel(repository: repository)
         return FiltersViewController(viewModel: viewModel)
-    
+
     }
 }
 

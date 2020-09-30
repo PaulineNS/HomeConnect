@@ -46,7 +46,7 @@ final class HomeViewModel {
     }
 
     func viewDidLoad() {
-        homeTitle?("Mes Objects connectés")
+        homeTitle?("Mes Objets")
         profileIconName?("profile")
         filterIconName?("Filtrer")
     }

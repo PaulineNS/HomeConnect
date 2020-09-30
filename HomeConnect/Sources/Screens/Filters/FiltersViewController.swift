@@ -10,9 +10,8 @@ import UIKit
 final class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Properties
-    
-    private let viewModel: FiltersViewModel
 
+    private let viewModel: FiltersViewModel
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -124,8 +123,7 @@ final class FiltersViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Selectors
 
     @objc func didTapSearchButton() {
-        
-
+        viewModel.searchDeviceWithFilters()
     }
 
     // MARK: - Configure UI

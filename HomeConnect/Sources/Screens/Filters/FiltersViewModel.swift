@@ -12,10 +12,21 @@ final class FiltersViewModel {
     // MARK: - Private properties
 
     private let repository: FiltersRepositoryType
+    private var deviceItem: [DeviceItem] = [] {
+        didSet {
+            print("")
+        }
+    }
 
     // MARK: - Initializer
 
     init(repository: FiltersRepositoryType) {
         self.repository = repository
+    }
+
+    func searchDeviceWithFilters() {
+        repository.searchDevice { devices in
+            self.deviceItem = devices
+        }
     }
 }

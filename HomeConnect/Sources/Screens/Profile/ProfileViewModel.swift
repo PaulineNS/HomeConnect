@@ -13,14 +13,14 @@ final class ProfileViewModel {
 
     private let repository: ProfileRepositoryType
     private weak var delegate: ProfileScreenDelegate?
-    private var user: UserAttributes = UserAttributes() {
+    private var user: [UserItem] = [] {
         didSet {
             profileImageName?("light")
-            userName?("\(user.firstName ?? "") \(user.lastName ?? "")")
+            userName?("\(user.first?.firstName ?? "") \(user.first?.lastName ?? "")")
             userAge?("29 ans")
-            userStreet?("\(user.streetCode ?? ""), \(user.street ?? "")")
-            userCity?("\(user.postalCode ?? ""), \(user.city ?? "")")
-            userCountry?("\(user.country ?? "")")
+            userStreet?("\(user.first?.streetCode ?? ""), \(user.first?.street ?? "")")
+            userCity?("44, \(user.first?.city ?? "")")
+            userCountry?("\(user.first?.country ?? "")")
         }
     }
 
@@ -45,11 +45,13 @@ final class ProfileViewModel {
     // MARK: - Life cycle
 
     func viewWillAppear() {
-        user = repository.getUserInformations()
+        getUser()
     }
 
-    func viewDidLoad() {
-
+    private func getUser() {
+        repository.fetchPersistenceUser { users in
+            self.user = users
+        }
     }
 
     func didSelectUpdateProfileButton() {

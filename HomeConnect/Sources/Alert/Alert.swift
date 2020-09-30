@@ -10,6 +10,7 @@ import Foundation
 enum AlertType: Equatable {
     case networkError
     case noDevicesError
+    case noUserError
     case maximumTemperatureReached
     case minimumTemperatureReached
     case deleteDevice
@@ -38,6 +39,9 @@ extension Alert {
         case .deleteDevice:
             self = Alert(title: "🗑️",
                          message: "Voulez-vous vraiment supprimer cet objet ?")
+        case .noUserError:
+            self = Alert(title: "😶",
+                         message: "Problème de téléchargement. Veuillez réessayer ultérieurement.")
         }
     }
 }

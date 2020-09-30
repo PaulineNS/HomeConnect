@@ -127,7 +127,6 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
-        viewModel.viewDidLoad()
     }
 
     // MARK: - Bindings

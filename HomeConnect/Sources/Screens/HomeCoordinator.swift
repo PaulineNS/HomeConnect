@@ -54,7 +54,7 @@ final class HomeCoordinator {
     }
 
     private func showUpdateProfile() {
-        let viewController = screens.createUpdateProfileViewController()
+        let viewController = screens.createUpdateProfileViewController(delegate: self)
         navigationController.pushViewController(viewController, animated: true)
     }
 
@@ -118,5 +118,16 @@ extension HomeCoordinator: DevicesScreensDelegate {
 extension HomeCoordinator: ProfileScreenDelegate {
     func profileScreenDidSelectUpdateProfileButton() {
         showUpdateProfile()
+    }
+}
+
+extension HomeCoordinator: UpdateProfileScreensDelegate {
+
+    func updateProfileScreenShouldDisplayAlert(for type: AlertType) {
+        showSimpleAlert(for: type)
+    }
+
+    func updateProfileScreenDidSelectSaveButton() {
+        self.navigationController.popViewController(animated: true)
     }
 }

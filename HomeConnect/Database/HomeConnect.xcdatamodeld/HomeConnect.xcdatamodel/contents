@@ -10,7 +10,7 @@
         <attribute name="temperature" optional="YES" attributeType="String"/>
     </entity>
     <entity name="UserAttributes" representedClassName="UserAttributes" syncable="YES" codeGenerationType="class">
-        <attribute name="birthDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="birthDate" optional="YES" attributeType="String"/>
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>

@@ -58,7 +58,7 @@ open class DataBaseManager {
     func createUserEntity(userItem: UserItem) {
         let user = UserAttributes(context: managedObjectContext)
         //todo convert date
-        user.birthDate = Date(timeIntervalSince1970: 1432233446145.0/1000.0)
+        user.birthDate = "(\(Date(timeIntervalSince1970: 1432233446145.0/1000.0))"
         user.city = userItem.city
         user.country = userItem.country
         user.firstName = userItem.firstName
@@ -107,5 +107,26 @@ open class DataBaseManager {
             managedObject.setValue(temperature, forKey: "temperature")
             dataBaseStack.saveContext()
         }
+    }
+
+    func updateUserEntity(firstName: String,
+                          lastName: String,
+                          streetNumber: String,
+                          streetName: String,
+                          postalCode: String,
+                          city: String,
+                          country: String) {
+        let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
+        guard let user = try? managedObjectContext.fetch(request).first else { return }
+        let managedObject = user
+        managedObject.setValue(firstName, forKey: "firstName")
+        managedObject.setValue(lastName, forKey: "lastName")
+        managedObject.setValue(streetNumber, forKey: "streetCode")
+        managedObject.setValue(streetName, forKey: "street")
+        managedObject.setValue(postalCode, forKey: "postalCode")
+        managedObject.setValue(city, forKey: "city")
+        managedObject.setValue(country, forKey: "country")
+        managedObject.setValue("birth", forKey: "birthDate")
+        dataBaseStack.saveContext()
     }
 }

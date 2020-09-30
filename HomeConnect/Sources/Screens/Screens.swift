@@ -40,6 +40,11 @@ protocol ProfileScreenDelegate: class {
     func profileScreenDidSelectUpdateProfileButton()
 }
 
+protocol UpdateProfileScreensDelegate: class {
+    func updateProfileScreenShouldDisplayAlert(for type: AlertType)
+    func updateProfileScreenDidSelectSaveButton()
+}
+
 // MARK: - Home
 
 extension Screens {
@@ -127,10 +132,11 @@ extension Screens {
 
 extension Screens {
 
-    func createUpdateProfileViewController() -> UIViewController {
-//        let repository = ProfileRepository(dataBaseManager: context.dataBaseManager)
-//        let viewModel = ProfileViewModel(repository: repository)
-        return UpdateProfileViewController()
+    func createUpdateProfileViewController(delegate: UpdateProfileScreensDelegate?) -> UIViewController {
+        let repository = UpdateProfileRepository(dataBaseManager: context.dataBaseManager)
+        let viewModel = UpdateProfileViewModel(repository: repository,
+                                               delegate: delegate)
+        return UpdateProfileViewController(viewModel: viewModel)
     }
 }
 

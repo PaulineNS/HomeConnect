@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ProfileRepositoryType: class {
-    func getUserInformations() -> UserAttributes
+
+    func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void)
 }
 
 final class ProfileRepository: ProfileRepositoryType {
@@ -23,8 +24,24 @@ final class ProfileRepository: ProfileRepositoryType {
         self.dataBaseManager = dataBaseManager
     }
 
-    func getUserInformations() -> UserAttributes {
-        guard let user = dataBaseManager.user.first else { return UserAttributes()}
-        return user
+    func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void) {
+        let users = dataBaseManager.user
+        let userItem = users.compactMap {
+            UserItem(user: $0)
+        }
+        completion(userItem)
+    }
+}
+
+private extension UserItem {
+    init(user: UserAttributes) {
+        self.firstName = user.firstName
+        self.lastName = user.lastName
+        self.birthDate = 0
+        self.city = user.city
+        self.postalCode = 0
+        self.street = user.street
+        self.streetCode = user.streetCode
+        self.country = user.country
     }
 }

@@ -57,6 +57,9 @@
 		56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */; };
 		56DA60E825237F200005F7CE /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */; };
 		56DA60ED25237F2F0005F7CE /* UpdateProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */; };
+		56DA60F22523C00D0005F7CE /* UpdateProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60F12523C00D0005F7CE /* UpdateProfileDataSource.swift */; };
+		56DA60F72523C1340005F7CE /* UpdateProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60F62523C1340005F7CE /* UpdateProfileTableViewCell.swift */; };
+		56DA60FC2523C1E00005F7CE /* UpdateProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DA60FB2523C1E00005F7CE /* UpdateProfileCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRepository.swift; sourceTree = "<group>"; };
+		56DA60F12523C00D0005F7CE /* UpdateProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileDataSource.swift; sourceTree = "<group>"; };
+		56DA60F62523C1340005F7CE /* UpdateProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileTableViewCell.swift; sourceTree = "<group>"; };
+		56DA60FB2523C1E00005F7CE /* UpdateProfileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +410,9 @@
 				56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */,
 				56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */,
 				56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */,
+				56DA60F12523C00D0005F7CE /* UpdateProfileDataSource.swift */,
+				56DA60F62523C1340005F7CE /* UpdateProfileTableViewCell.swift */,
+				56DA60FB2523C1E00005F7CE /* UpdateProfileCellViewModel.swift */,
 			);
 			path = UpdateProfile;
 			sourceTree = "<group>";
@@ -579,9 +588,11 @@
 				56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */,
 				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
 				56DA60BE25230C780005F7CE /* HeaterRepository.swift in Sources */,
+				56DA60F72523C1340005F7CE /* UpdateProfileTableViewCell.swift in Sources */,
 				56DA60B425230C5F0005F7CE /* LightRepository.swift in Sources */,
 				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
+				56DA60FC2523C1E00005F7CE /* UpdateProfileCellViewModel.swift in Sources */,
 				5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */,
 				56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */,
 				56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */,
@@ -593,6 +604,7 @@
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
 				5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */,
 				5695814B2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift in Sources */,
+				56DA60F22523C00D0005F7CE /* UpdateProfileDataSource.swift in Sources */,
 				569581282521C8F9005EACA7 /* IntensityFilterTableViewCell.swift in Sources */,
 				5686A23B2520B84300176D70 /* UserItem.swift in Sources */,
 				56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */,

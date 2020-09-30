@@ -10,6 +10,8 @@
 		2F47BCF725222B62005AEE3C /* UserDefaultChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */; };
 		5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5614E96E251E210700B3CA27 /* DeviceItem.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
+		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
+		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
 		5686A2312520B77A00176D70 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2302520B77A00176D70 /* ProfileRepository.swift */; };
 		5686A2362520B7ED00176D70 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A2352520B7ED00176D70 /* ProductType.swift */; };
 		5686A23B2520B84300176D70 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A23A2520B84300176D70 /* UserItem.swift */; };
@@ -24,7 +26,6 @@
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
 		56D7DFF3251C903500DD5B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */; };
-		56D7E009251C903500DD5B37 /* HomeConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */; };
 		56D7E038251C97B900DD5B37 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E037251C97B900DD5B37 /* Context.swift */; };
 		56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */; };
 		56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E05D251C9B4E00DD5B37 /* Screens.swift */; };
@@ -71,19 +72,14 @@
 			remoteGlobalIDString = 56D7DFDF251C903400DD5B37;
 			remoteInfo = HomeConnect;
 		};
-		56D7E005251C903500DD5B37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 56D7DFD8251C903400DD5B37 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56D7DFDF251C903400DD5B37;
-			remoteInfo = HomeConnect;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultChecker.swift; sourceTree = "<group>"; };
 		5614E96E251E210700B3CA27 /* DeviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceItem.swift; sourceTree = "<group>"; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
+		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
+		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		5686A2302520B77A00176D70 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		5686A2352520B7ED00176D70 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		5686A23A2520B84300176D70 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
@@ -102,9 +98,6 @@
 		56D7DFF4251C903500DD5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D7DFF9251C903500DD5B37 /* HomeConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFFF251C903500DD5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56D7E004251C903500DD5B37 /* HomeConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectUITests.swift; sourceTree = "<group>"; };
-		56D7E00A251C903500DD5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D7E037251C97B900DD5B37 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		56D7E042251C97CD00DD5B37 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		56D7E05D251C9B4E00DD5B37 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
@@ -159,13 +152,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56D7E001251C903500DD5B37 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -177,6 +163,15 @@
 				5686A23A2520B84300176D70 /* UserItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56437A402524FB0100CD5C44 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */,
+				56437A492524FB6600CD5C44 /* DataBaseManager.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		569581492521F578005EACA7 /* Extensions */ = {
@@ -192,7 +187,6 @@
 			children = (
 				56D7DFE2251C903400DD5B37 /* HomeConnect */,
 				56D7DFFC251C903500DD5B37 /* HomeConnectTests */,
-				56D7E007251C903500DD5B37 /* HomeConnectUITests */,
 				56D7DFE1251C903400DD5B37 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -202,7 +196,6 @@
 			children = (
 				56D7DFE0251C903400DD5B37 /* HomeConnect.app */,
 				56D7DFF9251C903500DD5B37 /* HomeConnectTests.xctest */,
-				56D7E004251C903500DD5B37 /* HomeConnectUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,19 +214,11 @@
 		56D7DFFC251C903500DD5B37 /* HomeConnectTests */ = {
 			isa = PBXGroup;
 			children = (
+				56437A402524FB0100CD5C44 /* DataBase */,
 				56D7E0FE251DC25400DD5B37 /* Network */,
 				56D7DFFF251C903500DD5B37 /* Info.plist */,
 			);
 			path = HomeConnectTests;
-			sourceTree = "<group>";
-		};
-		56D7E007251C903500DD5B37 /* HomeConnectUITests */ = {
-			isa = PBXGroup;
-			children = (
-				56D7E008251C903500DD5B37 /* HomeConnectUITests.swift */,
-				56D7E00A251C903500DD5B37 /* Info.plist */,
-			);
-			path = HomeConnectUITests;
 			sourceTree = "<group>";
 		};
 		56D7E01B251C909700DD5B37 /* Sources */ = {
@@ -459,24 +444,6 @@
 			productReference = 56D7DFF9251C903500DD5B37 /* HomeConnectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		56D7E003251C903500DD5B37 /* HomeConnectUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 56D7E013251C903500DD5B37 /* Build configuration list for PBXNativeTarget "HomeConnectUITests" */;
-			buildPhases = (
-				56D7E000251C903500DD5B37 /* Sources */,
-				56D7E001251C903500DD5B37 /* Frameworks */,
-				56D7E002251C903500DD5B37 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				56D7E006251C903500DD5B37 /* PBXTargetDependency */,
-			);
-			name = HomeConnectUITests;
-			productName = HomeConnectUITests;
-			productReference = 56D7E004251C903500DD5B37 /* HomeConnectUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -492,10 +459,6 @@
 					56D7DFF8251C903500DD5B37 = {
 						CreatedOnToolsVersion = 12.0;
 						LastSwiftMigration = 1200;
-						TestTargetID = 56D7DFDF251C903400DD5B37;
-					};
-					56D7E003251C903500DD5B37 = {
-						CreatedOnToolsVersion = 12.0;
 						TestTargetID = 56D7DFDF251C903400DD5B37;
 					};
 				};
@@ -515,7 +478,6 @@
 			targets = (
 				56D7DFDF251C903400DD5B37 /* HomeConnect */,
 				56D7DFF8251C903500DD5B37 /* HomeConnectTests */,
-				56D7E003251C903500DD5B37 /* HomeConnectUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -531,13 +493,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		56D7DFF7251C903500DD5B37 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		56D7E002251C903500DD5B37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -629,14 +584,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		56D7E000251C903500DD5B37 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				56D7E009251C903500DD5B37 /* HomeConnectUITests.swift in Sources */,
+				56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */,
+				56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,11 +596,6 @@
 			isa = PBXTargetDependency;
 			target = 56D7DFDF251C903400DD5B37 /* HomeConnect */;
 			targetProxy = 56D7DFFA251C903500DD5B37 /* PBXContainerItemProxy */;
-		};
-		56D7E006251C903500DD5B37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 56D7DFDF251C903400DD5B37 /* HomeConnect */;
-			targetProxy = 56D7E005251C903500DD5B37 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -872,46 +816,6 @@
 			};
 			name = Release;
 		};
-		56D7E014251C903500DD5B37 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYWPUALU4A;
-				INFOPLIST_FILE = HomeConnectUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PaulineNomballais.HomeConnectUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = HomeConnect;
-			};
-			name = Debug;
-		};
-		56D7E015251C903500DD5B37 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYWPUALU4A;
-				INFOPLIST_FILE = HomeConnectUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PaulineNomballais.HomeConnectUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = HomeConnect;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -938,15 +842,6 @@
 			buildConfigurations = (
 				56D7E011251C903500DD5B37 /* Debug */,
 				56D7E012251C903500DD5B37 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		56D7E013251C903500DD5B37 /* Build configuration list for PBXNativeTarget "HomeConnectUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				56D7E014251C903500DD5B37 /* Debug */,
-				56D7E015251C903500DD5B37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

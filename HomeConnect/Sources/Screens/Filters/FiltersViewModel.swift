@@ -23,11 +23,10 @@ final class FiltersViewModel {
     init(repository: FiltersRepositoryType) {
         self.repository = repository
     }
-    
+
     // MARK: - Outputs
 
     var deviceDisplayed: ((UserItem) -> Void)?
-
 
     func searchDeviceWithFilters() {
         repository.searchDevice { devices in

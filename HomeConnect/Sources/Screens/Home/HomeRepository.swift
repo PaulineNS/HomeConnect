@@ -79,34 +79,31 @@ final class HomeRepository: HomeRepositoryType {
         guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
             return
         }
-            networkClient.request(
-                        requestType: .GET,
-                        url: url,
-                        cancelledBy: token
-                    ) { (result: Result<DeviceResponse, HTTPClientError>) in
-                        switch result {
-                        case .success(let response):
-                            let devices = response
-                                .devices?
-                                .compactMap { DeviceItem(device: $0) } ?? []
-
-                            guard let user = response.user else {
-                                return
-                            }
-                            let userItem = UserItem(user: user)
-                            self.dataBaseManager.createUserEntity(userItem: userItem)
-
-                            devices.forEach { deviceItem in
-
-                                self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem)
-                            }
-                            success(devices, userItem)
-                        case .failure:
-                            failure()
-                        }
-                    }
+        networkClient.request(
+            requestType: .GET,
+            url: url,
+            cancelledBy: token
+        ) { (result: Result<DeviceResponse, HTTPClientError>) in
+            switch result {
+            case .success(let response):
+                let devices = response
+                    .devices?
+                    .compactMap { DeviceItem(device: $0) } ?? []
+                guard let user = response.user else {
+                    return
+                }
+                let userItem = UserItem(user: user)
+                self.dataBaseManager.createUserEntity(userItem: userItem)
+                devices.forEach { deviceItem in
+                    self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem)
+                }
+                success(devices, userItem)
+            case .failure:
+                failure()
+            }
         }
     }
+}
 
 // MARK: - Device Item
 

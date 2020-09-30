@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DeviceItem: Equatable {
+public struct DeviceItem: Equatable {
     let idNumber: String
     let deviceName: String
     let productType: ProductType

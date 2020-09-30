@@ -80,16 +80,6 @@ open class DataBaseManager {
         dataBaseStack.saveContext()
     }
 
-    func deleteAllDevices() {
-        devices.forEach { managedObjectContext.delete($0) }
-        dataBaseStack.saveContext()
-    }
-
-    func deleteAllUsers() {
-        user.forEach { managedObjectContext.delete($0) }
-        dataBaseStack.saveContext()
-    }
-
     func updateDeviceEntity(for deviceId: String,
                             mode: String? = "",
                             position: String? = "",
@@ -129,15 +119,15 @@ open class DataBaseManager {
         managedObject.setValue("birth", forKey: "birthDate")
         dataBaseStack.saveContext()
     }
-    
+
     func fetchDevicesWithFilters() -> [DeviceAttributes] {
         let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-        
+
         let predicate = NSPredicate(format: "productType == %@", "Light")
         request.predicate = predicate
-        
+
         guard let device = try? managedObjectContext.fetch(request) else { return [] }
         return device
-        
+
     }
 }

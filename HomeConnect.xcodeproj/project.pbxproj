@@ -16,6 +16,8 @@
 		564364952525C51300905271 /* RollerShutterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364942525C51300905271 /* RollerShutterViewModelTests.swift */; };
 		5643649B2525CA1100905271 /* MockHeaterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643649A2525CA1100905271 /* MockHeaterRepository.swift */; };
 		5643649F2525CA1D00905271 /* HeaterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643649E2525CA1C00905271 /* HeaterViewModelTests.swift */; };
+		564364A32525CC1400905271 /* MockProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364A22525CC1400905271 /* MockProfileRepository.swift */; };
+		564364A72525CC2300905271 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364A62525CC2300905271 /* ProfileViewModelTests.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
@@ -94,6 +96,8 @@
 		564364942525C51300905271 /* RollerShutterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RollerShutterViewModelTests.swift; path = HomeConnectTests/Devices/RollerShutterViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		5643649A2525CA1100905271 /* MockHeaterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockHeaterRepository.swift; path = HomeConnectTests/Devices/MockHeaterRepository.swift; sourceTree = SOURCE_ROOT; };
 		5643649E2525CA1C00905271 /* HeaterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaterViewModelTests.swift; path = HomeConnectTests/Devices/HeaterViewModelTests.swift; sourceTree = SOURCE_ROOT; };
+		564364A22525CC1400905271 /* MockProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockProfileRepository.swift; path = HomeConnectTests/Devices/MockProfileRepository.swift; sourceTree = SOURCE_ROOT; };
+		564364A62525CC2300905271 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewModelTests.swift; path = HomeConnectTests/Devices/ProfileViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 		5643646225259C9800905271 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				564364A22525CC1400905271 /* MockProfileRepository.swift */,
+				564364A62525CC2300905271 /* ProfileViewModelTests.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -678,6 +684,8 @@
 				56437A7A2525250900CD5C44 /* MockHomeRepository.swift in Sources */,
 				56437A762525216E00CD5C44 /* HomeRepositoryTests.swift in Sources */,
 				5643646B2525A29300905271 /* LightViewModelTests.swift in Sources */,
+				564364A32525CC1400905271 /* MockProfileRepository.swift in Sources */,
+				564364A72525CC2300905271 /* ProfileViewModelTests.swift in Sources */,
 				56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */,
 				56437A7025251EBD00CD5C44 /* HomeViewModelTest.swift in Sources */,
 				564364752525A2B500905271 /* MockLightRepository.swift in Sources */,

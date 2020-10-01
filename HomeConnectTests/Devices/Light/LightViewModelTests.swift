@@ -32,6 +32,7 @@ class MockDevicesScreenDelegate: DevicesScreensDelegate {
 
     }
 }
+
 class LightViewModelTests: XCTestCase {
 
     let deviceItems: [DeviceItem] = [DeviceItem(device: DeviceMock())!]

@@ -139,23 +139,3 @@ extension ProductType {
         }
     }
 }
-
-extension DeviceMock {
-    init?(deviceId: String,
-          devineName: String,
-          intensity: Int,
-          mode: String,
-          productType: String,
-          position: Int,
-          temperature: Int
-    )
-    {
-        self.init(deviceId: deviceId,
-                  devineName: devineName,
-                  intensity: intensity,
-                  mode: mode,
-                  productType: productType,
-                  position: position,
-                  temperature: temperature)
-    }
-}

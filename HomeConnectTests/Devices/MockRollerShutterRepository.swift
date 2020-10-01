@@ -13,7 +13,7 @@ import XCTest
 class MockRollerShutterRepository: RollerShutterRepositoryType {
 
     let dataBaseManager = DataBaseManager(dataBaseStack: MockDataBaseStack())
-    
+
     var deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
 
     func deleteDevice(with deviceId: String) {
@@ -25,4 +25,3 @@ class MockRollerShutterRepository: RollerShutterRepositoryType {
         dataBaseManager.updateDeviceEntity(for: deviceId, position: position)
     }
 }
-

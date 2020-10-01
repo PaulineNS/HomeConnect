@@ -31,7 +31,6 @@ final class LightViewModel {
 
     var lightDisplayed: ((DeviceItem) -> Void)?
     var lightName: ((String) -> Void)?
-//    var lightProductType: ((String) -> Void)?
     var lightMode: ((String) -> Void)?
     var lightIntensity: ((String) -> Void)?
     var lightDeleteIconName: ((String) -> Void)?

@@ -29,9 +29,7 @@ final class HeaterViewModel {
 
     // MARK: - Output
 
-//    var heaterDisplayed: ((DeviceItem) -> Void)?
     var heaterName: ((String) -> Void)?
-//    var heaterProductType: ((String) -> Void)?
     var heaterMode: ((String) -> Void)?
     var heaterTemperature: ((String) -> Void)?
     var heaterDeleteIconName: ((String) -> Void)?

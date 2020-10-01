@@ -101,6 +101,8 @@ final class HeaterViewModel {
         self.delegate?.devicesScreenDidSelectSaveButton()
     }
 
+    // MARK: - Private Methods
+
     func defineModeAndTemperature(for device: DeviceItem) {
         switch device.productType {
         case .heater(let mode, let temperature):

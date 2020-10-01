@@ -72,10 +72,8 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         bind(to: source)
         bind(to: viewModel)
-
         viewModel.viewDidLoad()
     }
 

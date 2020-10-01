@@ -60,7 +60,9 @@ final class RollerShutterViewModel {
         self.delegate?.devicesScreenDidSelectSaveButton()
     }
 
-    func definePostion(for device: DeviceItem) {
+    // MARK: - Private Methods
+
+    private func definePostion(for device: DeviceItem) {
         switch device.productType {
         case .rollerShutter(let position):
             devicePosition = position

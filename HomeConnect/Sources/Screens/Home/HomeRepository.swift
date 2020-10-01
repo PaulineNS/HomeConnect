@@ -46,11 +46,9 @@ final class HomeRepository: HomeRepositoryType {
 
     // MARK: - HomeRepositoryType
 
-    func getUserDevices(
-        success: @escaping ([DeviceItem], UserItem) -> Void,
-        failure: @escaping (() -> Void),
-        completion: @escaping ([DeviceItem]) -> Void
-    ) {
+    func getUserDevices( success: @escaping ([DeviceItem], UserItem) -> Void,
+                         failure: @escaping (() -> Void),
+                         completion: @escaping ([DeviceItem]) -> Void) {
         if checker.hasAlreadyBeenLaunched() {
             dependanceType = .persistence
         } else {
@@ -72,18 +70,16 @@ final class HomeRepository: HomeRepositoryType {
         completion(devicesItem)
     }
 
-    private func executeNetworkRequest(
-        success: @escaping ([DeviceItem], UserItem) -> Void,
-        failure: @escaping (() -> Void)
-    ) {
+    // MARK: - Private Methods
+
+    private func executeNetworkRequest(success: @escaping ([DeviceItem], UserItem) -> Void,
+                                       failure: @escaping (() -> Void)) {
         guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
             return
         }
-        networkClient.request(
-            requestType: .GET,
-            url: url,
-            cancelledBy: token
-        ) { (result: Result<DeviceResponse, HTTPClientError>) in
+        networkClient.request(requestType: .GET,
+                              url: url,
+                              cancelledBy: token) { (result: Result<DeviceResponse, HTTPClientError>) in
             switch result {
             case .success(let response):
                 let devices = response

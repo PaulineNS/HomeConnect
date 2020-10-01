@@ -27,7 +27,7 @@ final class LightViewModel {
         self.delegate = delegate
     }
 
-    // MARK: - Output
+    // MARK: - Outputs
 
     var lightDisplayed: ((DeviceItem) -> Void)?
     var lightName: ((String) -> Void)?
@@ -35,7 +35,7 @@ final class LightViewModel {
     var lightIntensity: ((String) -> Void)?
     var lightDeleteIconName: ((String) -> Void)?
 
-    // MARK: - Input
+    // MARK: - Inputs
 
     func viewDidLoad() {
         lightName?("\(device.deviceName)")

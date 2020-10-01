@@ -16,13 +16,18 @@ extension UserDefaults: UserDefaultsType {}
 
 struct UserDefaultChecker {
 
-    private let userdefault: UserDefaultsType
+    // MARK: - Properties
 
+    private let userdefault: UserDefaultsType
     private static let firstLaunchKey = "hasAlreadyBeenLaunched"
+
+    // MARK: - Init
 
     init(userdefault: UserDefaultsType = UserDefaults.standard) {
         self.userdefault = userdefault
     }
+
+    // MARK: - Public Methods
 
     func hasAlreadyBeenLaunched() -> Bool {
         var hasBeenLaunched: Bool = false

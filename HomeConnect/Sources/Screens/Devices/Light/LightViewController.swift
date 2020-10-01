@@ -122,8 +122,6 @@ final class LightViewController: UIViewController {
 
     // MARK: - Private Functions
 
-    // MARK: - Bindings
-
     private func bind(to viewModel: LightViewModel) {
         viewModel.lightName = { [weak self] name in
             self?.navigationItem.title = name
@@ -145,22 +143,22 @@ final class LightViewController: UIViewController {
 
     // MARK: - Selectors
 
-    @objc func didTapDeleteButton() {
+    @objc private func didTapDeleteButton() {
         viewModel.didPressDeleteIconButton()
     }
 
-    @objc func didMoveIntensitySlider() {
+    @objc private func didMoveIntensitySlider() {
         viewModel.didChangeLightIntensity(with: Int(lightIntensitySlider.value))
     }
 
-    @objc func modeSwitchValueDidChange() {
+    @objc private func modeSwitchValueDidChange() {
         viewModel.didChangeModeSwitchValue(withOnvalue: lightModeSwitch.isOn)
         if let nnn = Int(lightIntensityLabel.text ?? "") {
             lightIntensitySlider.setValue(Float(nnn), animated: true)
         }
     }
 
-    @objc func didTapSaveButton() {
+    @objc private func didTapSaveButton() {
         viewModel.saveNewDeviceSettings()
     }
 
@@ -176,6 +174,7 @@ final class LightViewController: UIViewController {
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
+        //Light save button
         view.addSubview(lightSaveButton)
         lightSaveButton.anchor(bottom: safeArea.bottomAnchor,
                                paddingBottom: 15,
@@ -183,6 +182,7 @@ final class LightViewController: UIViewController {
                                height: 60)
         lightSaveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
 
+        //Light intensity slider
         view.addSubview(lightIntensitySlider)
         lightIntensitySlider.anchor(left: safeArea.leftAnchor,
                                     right: safeArea.rightAnchor,
@@ -190,6 +190,7 @@ final class LightViewController: UIViewController {
         lightIntensitySlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         lightIntensitySlider.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
+        //Light intensity label
         view.addSubview(lightIntensityLabel)
         lightIntensityLabel.anchor(top: lightIntensitySlider.bottomAnchor,
                                    paddingTop: 20,
@@ -197,6 +198,7 @@ final class LightViewController: UIViewController {
                                    height: 60)
         lightIntensityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
+        //Mode stack view
         view.addSubview(modeStackView)
         modeStackView.anchor(left: safeArea.leftAnchor,
                              bottom: lightIntensitySlider.topAnchor,

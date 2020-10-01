@@ -50,7 +50,7 @@ final class HomeViewModel {
         filterIconName?("Filtrer")
     }
 
-    // MARK: - Methods
+    // MARK: - Inputs
 
     func didSelectDevice(device: DeviceItem) {
         delegate?.homeScreenDidSelectDevice(device: device)
@@ -63,6 +63,8 @@ final class HomeViewModel {
     func didSelectFilterButton() {
         delegate?.homeScreenDidSelectFilter()
     }
+
+    // MARK: - Private Methods
 
     private func getAllDevices() {
         repository.getUserDevices(success: { [weak self] deviceResponse, _ in

@@ -100,8 +100,6 @@ final class RollerShutterViewController: UIViewController {
 
     // MARK: - Private Functions
 
-    // MARK: - Bindings
-
     private func bind(to viewModel: RollerShutterViewModel) {
 
         viewModel.rollerName = { [weak self] name in
@@ -113,20 +111,19 @@ final class RollerShutterViewController: UIViewController {
         viewModel.rollerPosition = { [weak self] value in
             self?.rollerShutterPositionLabel.text = value
         }
-
     }
 
     // MARK: - Selectors
 
-    @objc func didTapDeleteButton() {
+    @objc private func didTapDeleteButton() {
         viewModel.didPressDeleteIconButton()
     }
 
-    @objc func didMovePositionSlider() {
+    @objc private func didMovePositionSlider() {
         viewModel.didChangeRollerPosition(with: Int(rollerShutterPositionSlider.value))
     }
 
-    @objc func didTapSaveButton() {
+    @objc private func didTapSaveButton() {
         viewModel.saveNewDeviceSettings()
     }
 

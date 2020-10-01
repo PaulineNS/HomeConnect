@@ -144,8 +144,6 @@ final class HeaterViewController: UIViewController {
 
     // MARK: - Private Functions
 
-    // MARK: - Bindings
-
     private func bind(to viewModel: HeaterViewModel) {
 
         viewModel.heaterName = { [weak self] name in
@@ -169,23 +167,23 @@ final class HeaterViewController: UIViewController {
 
     // MARK: - Selectors
 
-    @objc func didTapDeleteButton() {
+    @objc private func didTapDeleteButton() {
         viewModel.didPressDeleteIconButton()
     }
 
-    @objc func didTapPlusButton() {
+    @objc private func didTapPlusButton() {
         viewModel.didPressPlusButton()
     }
 
-    @objc func didTapMinusButton() {
+    @objc private func didTapMinusButton() {
         viewModel.didPressMinusButton()
     }
 
-    @objc func modeSwitchValueDidChange() {
+    @objc private func modeSwitchValueDidChange() {
         viewModel.didChangeModeSwitchValue(withOnvalue: heaterModeSwitch.isOn)
     }
 
-    @objc func didTapSaveButton() {
+    @objc private func didTapSaveButton() {
         viewModel.saveNewDeviceSettings()
     }
 

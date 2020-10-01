@@ -27,6 +27,10 @@ final class PositionFilterTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 3.0
+        label.layer.cornerRadius = 10
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
 
@@ -34,8 +38,8 @@ final class PositionFilterTableViewCell: UITableViewCell {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.tintColor = .red
-        slider.thumbTintColor = .black
+        slider.tintColor = #colorLiteral(red: 0.9092797041, green: 0.7230312228, blue: 0.3200179338, alpha: 1)
+        slider.thumbTintColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
         slider.isContinuous = true
         return slider
     }()

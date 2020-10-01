@@ -17,8 +17,8 @@ final class IntensityFilterTableViewCell: UITableViewCell {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.tintColor = .red
-        slider.thumbTintColor = .black
+        slider.tintColor = #colorLiteral(red: 0.9092797041, green: 0.7230312228, blue: 0.3200179338, alpha: 1)
+        slider.thumbTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         slider.isContinuous = true
         return slider
     }()
@@ -33,10 +33,14 @@ final class IntensityFilterTableViewCell: UITableViewCell {
 
     private let intensitySliderValue: UILabel = {
         let label = UILabel()
+        label.text = "0"
         label.textAlignment = .center
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 3.0
-        label.text = "0"
+        label.layer.cornerRadius = 10
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.clipsToBounds = true
         return label
     }()
 

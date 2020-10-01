@@ -23,6 +23,7 @@ final class ModeFilterTableViewCell: UITableViewCell {
 
     private lazy var modeStackView: UIStackView = {
         let stackView = UIStackView()
+        modeSwitch.onTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing

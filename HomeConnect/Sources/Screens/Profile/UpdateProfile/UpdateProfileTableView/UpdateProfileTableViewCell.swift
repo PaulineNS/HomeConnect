@@ -9,6 +9,8 @@ import UIKit
 
 class UpdateProfileTableViewCell: UITableViewCell {
 
+    // MARK: - Public Properties
+
     static let identifier = "UpdateProfileTableViewCell"
     private var viewModel: UpdateProfileCellViewModel!
     var userInformationsArray: [String] = []
@@ -40,7 +42,6 @@ class UpdateProfileTableViewCell: UITableViewCell {
         viewModel.userInformations = { [weak self] user in
             self?.userInformationsArray = user
         }
-
     }
 
     public func configure() {
@@ -57,5 +58,5 @@ class UpdateProfileTableViewCell: UITableViewCell {
                              paddingTop: 10,
                              paddingLeft: 10)
     }
-
+    
 }

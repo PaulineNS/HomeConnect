@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Init DeviceItem with DeviceAttributes
+
 extension DeviceItem {
     init?(device: DeviceAttributes) {
         guard

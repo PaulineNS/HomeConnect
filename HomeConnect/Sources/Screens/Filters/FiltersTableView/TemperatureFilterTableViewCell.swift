@@ -9,10 +9,26 @@ import UIKit
 
 final class TemperatureFilterTableViewCell: UITableViewCell {
 
+    // MARK: - Public Properties
+
     static let identifier = "TemperatureFilterTableViewCell"
+    
+    let heaterPlusButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "plusButton"), for: .normal)
+        return button
+    }()
+
+    let heaterMinusButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "minusButton"), for: .normal)
+        return button
+    }()
+
+    // MARK: - Private Properties
 
     private var temperature = 0.0
-
+    
     private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.text = "Température (Radiateurs):"
@@ -40,17 +56,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
         return label
     }()
 
-    let heaterPlusButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "plusButton"), for: .normal)
-        return button
-    }()
-
-    let heaterMinusButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "minusButton"), for: .normal)
-        return button
-    }()
+    // MARK: - Public Methods
 
     public func configure() {
         contentView.addSubview(temperatureLabel)

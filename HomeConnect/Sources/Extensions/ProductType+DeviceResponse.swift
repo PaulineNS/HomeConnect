@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Init ProductType with DeviceResponse
+
 extension ProductType {
     init?(device: DeviceResponse.Device) {
         switch device.productType {

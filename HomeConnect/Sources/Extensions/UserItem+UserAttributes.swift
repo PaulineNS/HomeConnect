@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Init UserItem with UserAttributes
+
 extension UserItem {
     init(user: UserAttributes) {
         self.firstName = user.firstName
@@ -19,4 +21,3 @@ extension UserItem {
         self.country = user.country
     }
 }
-

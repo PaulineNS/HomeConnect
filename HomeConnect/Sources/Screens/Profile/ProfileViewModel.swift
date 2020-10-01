@@ -48,14 +48,18 @@ final class ProfileViewModel {
         getUser()
     }
 
+    // MARK: - Inputs
+
+    func didSelectUpdateProfileButton() {
+        delegate?.profileScreenDidSelectUpdateProfileButton()
+    }
+    
+    // MARK: - Privates Methods
+    
     private func getUser() {
         repository.fetchPersistenceUser { users in
             self.user = users
         }
-    }
-
-    func didSelectUpdateProfileButton() {
-        delegate?.profileScreenDidSelectUpdateProfileButton()
     }
 
 }

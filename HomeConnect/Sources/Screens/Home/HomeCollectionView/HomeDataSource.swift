@@ -27,7 +27,8 @@ extension HomeDataSource: UICollectionViewDataSource,
 
     // MARK: - UICollectionViewDataSource
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return devices.count
     }
 
@@ -42,12 +43,14 @@ extension HomeDataSource: UICollectionViewDataSource,
             else { return UICollectionViewCell() }
 
         let device = devices[indexPath.row]
-        let viewModel = HomeCellViewModel(device: .init(name: device.deviceName, type: device.productType))
+        let viewModel = HomeCellViewModel(device: .init(name: device.deviceName,
+                                                        type: device.productType))
         cell.configure(with: viewModel)
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         guard indexPath.row < devices.count else { return }
         selectedDevice?(devices[indexPath.row])
     }

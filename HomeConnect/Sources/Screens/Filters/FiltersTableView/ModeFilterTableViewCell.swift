@@ -9,7 +9,11 @@ import UIKit
 
 final class ModeFilterTableViewCell: UITableViewCell {
 
+    // MARK: - Public Properties
+
     static let identifier = "ModeFilterTableViewCell"
+
+    // MARK: - Private Properties
 
     private let modeLabel: UILabel = {
         let label = UILabel()
@@ -47,6 +51,8 @@ final class ModeFilterTableViewCell: UITableViewCell {
         label.textAlignment = .center
         return label
     }()
+    
+    // MARK: - Public Methods
 
     public func configure() {
         contentView.addSubview(modeLabel)

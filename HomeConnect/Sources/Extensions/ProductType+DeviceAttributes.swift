@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Init ProductType with DeviceAttributes
+
 extension ProductType {
     init?(device: DeviceAttributes) {
         switch device.productType {

@@ -25,6 +25,7 @@
 		564364CD2525EA4B00905271 /* UserItem+UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364CC2525EA4B00905271 /* UserItem+UserAttributes.swift */; };
 		564364D12525EADC00905271 /* ProductType+DeviceAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364D02525EADC00905271 /* ProductType+DeviceAttributes.swift */; };
 		564364D52525EB0300905271 /* ProductType+DeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364D42525EB0300905271 /* ProductType+DeviceResponse.swift */; };
+		564364DB2526399E00905271 /* FiltersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364DA2526399E00905271 /* FiltersDataSource.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
@@ -112,6 +113,7 @@
 		564364CC2525EA4B00905271 /* UserItem+UserAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserItem+UserAttributes.swift"; sourceTree = "<group>"; };
 		564364D02525EADC00905271 /* ProductType+DeviceAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductType+DeviceAttributes.swift"; sourceTree = "<group>"; };
 		564364D42525EB0300905271 /* ProductType+DeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductType+DeviceResponse.swift"; sourceTree = "<group>"; };
+		564364DA2526399E00905271 /* FiltersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersDataSource.swift; sourceTree = "<group>"; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
@@ -250,6 +252,29 @@
 			path = Light;
 			sourceTree = "<group>";
 		};
+		564364DE25263A9000905271 /* FiltersTableView */ = {
+			isa = PBXGroup;
+			children = (
+				564364DA2526399E00905271 /* FiltersDataSource.swift */,
+				5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */,
+				569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */,
+				569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */,
+				5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */,
+				569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */,
+			);
+			path = FiltersTableView;
+			sourceTree = "<group>";
+		};
+		564364E525263CC200905271 /* UpdateProfileTableView */ = {
+			isa = PBXGroup;
+			children = (
+				56DA60FB2523C1E00005F7CE /* UpdateProfileCellViewModel.swift */,
+				56DA60F62523C1340005F7CE /* UpdateProfileTableViewCell.swift */,
+				56DA60F12523C00D0005F7CE /* UpdateProfileDataSource.swift */,
+			);
+			path = UpdateProfileTableView;
+			sourceTree = "<group>";
+		};
 		56437A402524FB0100CD5C44 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,13 +401,9 @@
 		56D7E02C251C91AE00DD5B37 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				564364DE25263A9000905271 /* FiltersTableView */,
 				56D7E095251C9D2E00DD5B37 /* FiltersViewController.swift */,
 				56D7E0BB251C9D9300DD5B37 /* FiltersViewModel.swift */,
-				569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */,
-				5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */,
-				569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */,
-				569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */,
-				5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */,
 				56437A3825247A5A00CD5C44 /* FiltersRepository.swift */,
 			);
 			path = Filters;
@@ -500,12 +521,10 @@
 		56DA60DE25237EF30005F7CE /* UpdateProfile */ = {
 			isa = PBXGroup;
 			children = (
+				564364E525263CC200905271 /* UpdateProfileTableView */,
 				56DA60DF25237F140005F7CE /* UpdateProfileViewController.swift */,
 				56DA60E725237F200005F7CE /* UpdateProfileViewModel.swift */,
 				56DA60EC25237F2F0005F7CE /* UpdateProfileRepository.swift */,
-				56DA60F12523C00D0005F7CE /* UpdateProfileDataSource.swift */,
-				56DA60F62523C1340005F7CE /* UpdateProfileTableViewCell.swift */,
-				56DA60FB2523C1E00005F7CE /* UpdateProfileCellViewModel.swift */,
 			);
 			path = UpdateProfile;
 			sourceTree = "<group>";
@@ -667,6 +686,7 @@
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
 				56D7E05E251C9B4E00DD5B37 /* Screens.swift in Sources */,
 				56DA60E825237F200005F7CE /* UpdateProfileViewModel.swift in Sources */,
+				564364DB2526399E00905271 /* FiltersDataSource.swift in Sources */,
 				56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */,
 				56D7E087251C9D0C00DD5B37 /* LightViewController.swift in Sources */,
 				5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */,

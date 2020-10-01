@@ -11,10 +11,7 @@ final class UpdateProfileDataSource: NSObject {
 
     // MARK: - Public properties
 
-    private var users: [UserItem] = []
-
-    // MARK: - Properties
-
+    var arrayOfCells: [String] = []
     let textFieldTypeData = ["Prénom :",
                              "Nom :",
                              "N° de rue :",
@@ -23,7 +20,12 @@ final class UpdateProfileDataSource: NSObject {
                              "Ville :",
                              "Pays :"]
 
-    // MARK: - Methods
+    // MARK: - Private properties
+
+    private var users: [UserItem] = []
+
+
+    // MARK: - Public Methods
 
     func updateCell(with users: [UserItem]) {
         self.users = users
@@ -52,9 +54,6 @@ final class UpdateProfileDataSource: NSObject {
                                                                country: userCountry))
         completion(viewModel)
     }
-
-    var arrayOfCells: [String] = []
-
 }
 
 extension UpdateProfileDataSource: UITableViewDelegate,
@@ -62,11 +61,13 @@ extension UpdateProfileDataSource: UITableViewDelegate,
 
     // MARK: - UITableViewDataSource
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return textFieldTypeData.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: UpdateProfileTableViewCell.identifier,
@@ -85,16 +86,21 @@ extension UpdateProfileDataSource: UITableViewDelegate,
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
 }
 
 extension UpdateProfileDataSource: UITextFieldDelegate {
 
+    // MARK: - UITextFieldDelegate
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.addTarget(self, action: #selector(valueChanged), for: .editingChanged)
     }
+
+    // MARK: - Selector
 
     @objc func valueChanged(_ textField: UITextField) {
         switch textField.tag {

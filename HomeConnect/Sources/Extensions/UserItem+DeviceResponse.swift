@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Init UserItem with DeviceResponse
+
 extension UserItem {
     init(user: DeviceResponse.User) {
         self.firstName = user.firstName

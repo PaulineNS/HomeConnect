@@ -24,21 +24,25 @@ final class UpdateProfileViewModel {
         }
     }
 
+    // MARK: - Init
+
     init(repository: UpdateProfileRepositoryType,
          delegate: UpdateProfileScreensDelegate?) {
         self.repository = repository
         self.delegate = delegate
+    }
+    
+    // MARK: - Life cycle
+
+    func viewWillAppear() {
+        getUser()
     }
 
     // MARK: - Outputs
 
     var userDisplayed: (([UserItem]) -> Void)?
 
-    // MARK: - Life cycle
-
-    func viewWillAppear() {
-        getUser()
-    }
+    // MARK: - Inputs
 
     private func getUser() {
         repository.fetchPersistenceUser { users in
@@ -57,5 +61,4 @@ final class UpdateProfileViewModel {
                               birthdate: user.first?.birthDate ?? "")
         self.delegate?.updateProfileScreenDidSelectSaveButton()
     }
-
 }

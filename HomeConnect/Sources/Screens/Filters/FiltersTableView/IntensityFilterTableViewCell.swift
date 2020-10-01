@@ -9,7 +9,21 @@ import UIKit
 
 final class IntensityFilterTableViewCell: UITableViewCell {
 
+    // MARK: - Public Properties
+
     static let identifier = "IntensityFilterTableViewCell"
+
+    let intensitySlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.tintColor = .red
+        slider.thumbTintColor = .black
+        slider.isContinuous = true
+        return slider
+    }()
+
+    // MARK: - Private Properties
 
     private let intensityLabel: UILabel = {
         let label = UILabel()
@@ -26,15 +40,7 @@ final class IntensityFilterTableViewCell: UITableViewCell {
         return label
     }()
 
-    let intensitySlider: UISlider = {
-        let slider = UISlider()
-        slider.minimumValue = 0
-        slider.maximumValue = 100
-        slider.tintColor = .red
-        slider.thumbTintColor = .black
-        slider.isContinuous = true
-        return slider
-    }()
+    // MARK: - Public Methods
 
     public func configure() {
         contentView.addSubview(intensityLabel)

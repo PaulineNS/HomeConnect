@@ -14,6 +14,7 @@ final class FiltersViewModel {
     private let repository: FiltersRepositoryType
     private var deviceItem: [DeviceItem] = [] {
         didSet {
+            //TODO
             print("")
         }
     }

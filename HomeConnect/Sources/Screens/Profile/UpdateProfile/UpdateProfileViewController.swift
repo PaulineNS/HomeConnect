@@ -59,7 +59,6 @@ class UpdateProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
-
         setNavigationBar()
         setTableView()
         tableView.delegate = source
@@ -100,6 +99,8 @@ class UpdateProfileViewController: UIViewController {
                          right: view.rightAnchor)
     }
 }
+
+// MARK: - TextFieldData
 
 enum TextFieldData: Int {
 

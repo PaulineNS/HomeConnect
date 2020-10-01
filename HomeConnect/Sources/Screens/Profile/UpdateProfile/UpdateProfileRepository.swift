@@ -32,10 +32,7 @@ final class UpdateProfileRepository: UpdateProfileRepositoryType {
         self.dataBaseManager = dataBaseManager
     }
 
-    func getUserInformations() -> [UserAttributes] {
-
-        return dataBaseManager.user
-    }
+    // MARK: - UpdateProfileRepositoryType
 
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void) {
         let users = dataBaseManager.user

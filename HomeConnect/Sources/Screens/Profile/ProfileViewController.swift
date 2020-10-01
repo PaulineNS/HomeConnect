@@ -124,7 +124,7 @@ final class ProfileViewController: UIViewController {
         bind(to: viewModel)
     }
 
-    // MARK: - Bindings
+    // MARK: - Privates Methods
 
     private func bind(to viewModel: ProfileViewModel) {
         viewModel.profileImageName = { [weak self] name in

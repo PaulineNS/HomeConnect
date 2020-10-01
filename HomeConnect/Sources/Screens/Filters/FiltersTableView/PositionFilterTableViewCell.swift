@@ -9,7 +9,11 @@ import UIKit
 
 final class PositionFilterTableViewCell: UITableViewCell {
 
+    // MARK: - Public Properties
+
     static let identifier = "PositionFilterTableViewCell"
+
+    // MARK: - Private Properties
 
     private let positionLabel: UILabel = {
         let label = UILabel()
@@ -35,6 +39,8 @@ final class PositionFilterTableViewCell: UITableViewCell {
         slider.isContinuous = true
         return slider
     }()
+
+    // MARK: - Public Methods
 
     public func configure() {
         contentView.addSubview(positionLabel)

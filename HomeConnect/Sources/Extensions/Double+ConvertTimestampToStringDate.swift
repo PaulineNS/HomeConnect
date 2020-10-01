@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Double + ConvertTimestampToDate
+
 extension Double {
     /// Convert a timestamp into data then into String type
     func convertTimestampToStringDate() -> String {

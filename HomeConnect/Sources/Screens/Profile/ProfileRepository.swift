@@ -8,7 +8,6 @@
 import Foundation
 
 protocol ProfileRepositoryType: class {
-
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void)
 }
 
@@ -23,6 +22,8 @@ final class ProfileRepository: ProfileRepositoryType {
     init( dataBaseManager: DataBaseManager) {
         self.dataBaseManager = dataBaseManager
     }
+
+    // MARK: - ProfileRepositoryType
 
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void) {
         let users = dataBaseManager.user

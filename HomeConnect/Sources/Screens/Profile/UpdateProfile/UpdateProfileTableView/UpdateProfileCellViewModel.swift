@@ -23,6 +23,8 @@ struct UpdateProfileCellViewModel {
 
     private let user: VisibleUser
 
+    // MARK: - Init
+
     init(user: VisibleUser) {
         self.user = user
     }
@@ -31,7 +33,7 @@ struct UpdateProfileCellViewModel {
 
     var userInformations: (([String]) -> Void)?
 
-    // MARK: - Outputs
+    // MARK: - Inputs
 
     func didUpdateCell() {
         userInformations?(getUserInformations())

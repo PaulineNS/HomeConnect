@@ -9,7 +9,11 @@ import UIKit
 
 final class ProductTypeFilterTableViewCell: UITableViewCell {
 
+    // MARK: - Public Properties
+
     static let identifier = "ProductTypeFilterTableViewCell"
+
+    // MARK: - Private Properties
 
     private let productTypeLabel: UILabel = {
         let label = UILabel()
@@ -24,6 +28,8 @@ final class ProductTypeFilterTableViewCell: UITableViewCell {
         segmentedControl.selectedSegmentIndex = 1
         return segmentedControl
     }()
+
+    // MARK: - Public Methods
 
     public func configure() {
         contentView.addSubview(productTypeLabel)

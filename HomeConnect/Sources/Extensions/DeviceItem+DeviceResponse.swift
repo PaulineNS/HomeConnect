@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Init DeviceItem with DeviceResponse
+
 extension DeviceItem {
     init?(device: DeviceResponse.Device) {
         guard

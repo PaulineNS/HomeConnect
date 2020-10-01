@@ -15,11 +15,11 @@ enum ProductType: Equatable {
     var imageName: String {
         switch self {
         case .heater:
-            return "heater"
+            return "heaterr"
         case .light:
-            return "light"
+            return "lightt"
         case .rollerShutter:
-            return "rollerShutter"
+            return "rollerShutterr"
         }
     }
 

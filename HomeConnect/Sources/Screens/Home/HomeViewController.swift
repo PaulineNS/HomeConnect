@@ -105,7 +105,7 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backBarButtonItem = backButtonItem
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1081894711, green: 0.1763972342, blue: 0.2618448138, alpha: 1)
         self.navigationItem.rightBarButtonItem  = filterButton
         self.navigationItem.leftBarButtonItem  = profileButton
     }

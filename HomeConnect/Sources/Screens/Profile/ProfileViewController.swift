@@ -16,12 +16,13 @@ final class ProfileViewController: UIViewController {
 
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .blue
+        view.layer.cornerRadius = 10
+        view.backgroundColor = .white
         view.addSubview(profileImageView)
 
         // Profile Image View
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImageView.anchor(top: view.topAnchor, paddingTop: 10, width: 150, height: 150)
+        profileImageView.anchor(top: view.topAnchor, paddingTop: 100, width: 150, height: 150)
 
         // User Name Label
         view.addSubview(nameLabel)
@@ -58,7 +59,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 26)
-        label.textColor = .white
+        label.textColor = #colorLiteral(red: 0.2141337097, green: 0.269574821, blue: 0.3898406625, alpha: 1)
         return label
     }()
 
@@ -66,7 +67,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .white
+        label.textColor = #colorLiteral(red: 0.2141337097, green: 0.269574821, blue: 0.3898406625, alpha: 1)
         return label
     }()
 
@@ -74,7 +75,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
 
@@ -82,7 +83,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
 
@@ -90,7 +91,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
 
@@ -169,12 +170,12 @@ final class ProfileViewController: UIViewController {
 
     private func setUI() {
         let safeArea = view.safeAreaLayoutGuide
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.2141337097, green: 0.269574821, blue: 0.3898406625, alpha: 1)
         view.addSubview(containerView)
-        containerView.anchor(top: safeArea.topAnchor,
+        containerView.anchor(top: view.topAnchor,
                              left: safeArea.leftAnchor,
                              right: safeArea.rightAnchor,
-                             height: 250)
+                             height: 350)
         view.addSubview(adressStackView)
         adressStackView.anchor(top: containerView.bottomAnchor,
                                left: safeArea.leftAnchor,

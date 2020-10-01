@@ -38,6 +38,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textColor = .white
         return label
     }()
 
@@ -62,11 +64,11 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         viewModel.backgroundColorName = { [weak self] colorName in
             switch colorName {
             case "light":
-                self?.backgroundColor = #colorLiteral(red: 0.8992391229, green: 0.8554247022, blue: 0.2918801904, alpha: 1)
+                self?.backgroundColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
             case "heater":
-                self?.backgroundColor = #colorLiteral(red: 0.8271351457, green: 0.3662813902, blue: 0.310879916, alpha: 1)
+                self?.backgroundColor = #colorLiteral(red: 0.684643507, green: 0.785309732, blue: 0.172726661, alpha: 1)
             case "roller":
-                self?.backgroundColor = #colorLiteral(red: 0.391444236, green: 0.4994882345, blue: 0.5847318769, alpha: 1)
+                self?.backgroundColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
             default:
                 return
             }

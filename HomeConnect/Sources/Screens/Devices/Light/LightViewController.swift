@@ -18,6 +18,7 @@ final class LightViewController: UIViewController {
 
     private lazy var lightModeSwitch: UISwitch = {
         let modeSwitch = UISwitch()
+        modeSwitch.onTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
         return modeSwitch
     }()
@@ -40,23 +41,35 @@ final class LightViewController: UIViewController {
         slider.maximumValueImage = UIImage(named: "\(intensityMaxImageName)")
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.tintColor = .red
-        slider.thumbTintColor = .black
+        slider.tintColor = #colorLiteral(red: 0.9092797041, green: 0.7230312228, blue: 0.3200179338, alpha: 1)
+        slider.thumbTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         slider.isContinuous = true
         slider.addTarget(self, action: #selector(didMoveIntensitySlider), for: .valueChanged)
         return slider
     }()
 
-    private lazy var modeStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 10
-        stackView.addArrangedSubview(modeOffLabel)
-        stackView.addArrangedSubview(lightModeSwitch)
-        stackView.addArrangedSubview(modeOnLabel)
-        return stackView
+    private lazy var modeVieww: UIView = {
+        let view = UIView()
+        view.addSubview(modeOffLabel)
+        modeOffLabel.anchor(top: view.topAnchor, bottom: view.bottomAnchor)
+        modeOffLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        view.addSubview(lightModeSwitch)
+        lightModeSwitch.anchor(top: view.topAnchor,
+                               left: modeOffLabel.rightAnchor,
+                               bottom: view.bottomAnchor,
+                               paddingLeft: 15)
+        lightModeSwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        lightModeSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        view.addSubview(modeOnLabel)
+        modeOnLabel.anchor(top: view.topAnchor,
+                           left: lightModeSwitch.rightAnchor,
+                           bottom: view.bottomAnchor,
+                           paddingLeft: 15)
+        modeOnLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        return view
     }()
 
     private lazy var modeOnLabel: UILabel = {
@@ -86,7 +99,7 @@ final class LightViewController: UIViewController {
     private lazy var lightSaveButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
-        button.backgroundColor = .red
+        button.backgroundColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button
@@ -212,15 +225,11 @@ final class LightViewController: UIViewController {
                                    height: 60)
         lightIntensityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-        //Mode stack view
-        view.addSubview(modeStackView)
-        modeStackView.anchor(left: safeArea.leftAnchor,
-                             bottom: lightIntensitySlider.topAnchor,
-                             right: safeArea.rightAnchor,
-                             paddingLeft: 20,
-                             paddingBottom: 60,
-                             paddingRight: 20)
-        modeStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //Mode view
+        view.addSubview(modeVieww)
+
+        modeVieww.anchor(top: safeArea.topAnchor, paddingTop: 70, width: 100, height: 30)
+        modeVieww.centerXAnchor.constraint(equalTo: lightIntensitySlider.centerXAnchor).isActive = true
     }
 
 }

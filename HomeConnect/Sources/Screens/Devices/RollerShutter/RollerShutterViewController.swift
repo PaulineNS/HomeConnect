@@ -34,8 +34,8 @@ final class RollerShutterViewController: UIViewController {
         slider.maximumValueImage = UIImage(named: "\(positionMaxImageName)")
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.tintColor = .red
-        slider.thumbTintColor = .black
+        slider.tintColor = #colorLiteral(red: 0.9092797041, green: 0.7230312228, blue: 0.3200179338, alpha: 1)
+        slider.thumbTintColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
         slider.isContinuous = true
         slider.addTarget(self, action: #selector(didMovePositionSlider), for: .valueChanged)
         slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
@@ -53,7 +53,7 @@ final class RollerShutterViewController: UIViewController {
     private lazy var rollerShutterSaveButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
-        button.backgroundColor = .red
+        button.backgroundColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button

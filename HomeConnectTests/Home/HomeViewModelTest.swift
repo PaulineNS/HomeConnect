@@ -48,7 +48,7 @@ class HomeViewModelTests: XCTestCase {
                             country: "France")
 
     let repository = MockHomeRepository()
-    let delegate = MockHomeScreenDelegate()
+    var delegate = MockHomeScreenDelegate()
 
     func test_Given_ViewModel_When_viewWillAppear_WithNetwork_Then_ReactiveVariableAreDisplayed() {
 
@@ -92,6 +92,26 @@ class HomeViewModelTests: XCTestCase {
         viewModel.viewWillAppear()
 
         waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
+    func test_Given_ViewModel_When_didSelectProfileButton_Then_PopViewController() {
+
+        let viewModel = HomeViewModel(repository: repository, delegate: delegate)
+
+        viewModel.viewDidLoad()
+        viewModel.didSelectProfileButton()
+
+        XCTAssertEqual(delegate.didShowProfileView, true)
+    }
+
+    func test_Given_ViewModel_When_didSelectFilterButton_Then_PopViewController() {
+
+        let viewModel = HomeViewModel(repository: repository, delegate: delegate)
+
+        viewModel.viewDidLoad()
+        viewModel.didSelectFilterButton()
+
+        XCTAssertEqual(delegate.didShowFilterView, true)
     }
 
 }

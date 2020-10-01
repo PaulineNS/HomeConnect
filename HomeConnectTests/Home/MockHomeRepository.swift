@@ -12,7 +12,7 @@ import XCTest
 
 class MockHomeRepository: HomeRepositoryType {
 
-    let deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
+    var deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
     let userItem = UserItem(firstName: "Pauline",
                              lastName: "Nomballais",
                              birthDate: "100591",

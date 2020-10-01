@@ -3,4 +3,353 @@
    uuid = "1B00DFBB-3E1F-4E29-A21C-DCE7083C25A2"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C96B636-72D7-4B08-8DA2-0EAD4B58FD48"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnectTests/Home/HomeViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "homeScreenShouldDisplayAlert(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3302DE87-65D9-4DAA-8995-F6780FD48A0F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3302DE87-65D9-4DAA-8995-F6780FD48A0F - 2fb6c0f12eb5dbf5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "223">
+               </Location>
+               <Location
+                  uuid = "3302DE87-65D9-4DAA-8995-F6780FD48A0F - 96fe45d7d47440e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "539">
+               </Location>
+               <Location
+                  uuid = "3302DE87-65D9-4DAA-8995-F6780FD48A0F - 53fdb7c7bd247681"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  uuid = "3302DE87-65D9-4DAA-8995-F6780FD48A0F - 356678dfaf2f5142"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 () -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0975669-3EC0-4394-9374-E5873B80E892"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "899EDC2D-6AED-48DC-AC9B-FADDEF0F46A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "899EDC2D-6AED-48DC-AC9B-FADDEF0F46A0 - 2fb6c0f12eb5d469"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  uuid = "899EDC2D-6AED-48DC-AC9B-FADDEF0F46A0 - 96fe45d7d474b92"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "143">
+               </Location>
+               <Location
+                  uuid = "899EDC2D-6AED-48DC-AC9B-FADDEF0F46A0 - 7e216df9da7f58f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6FAA0CC-B5CF-4A02-A776-43B94F30655D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A6FAA0CC-B5CF-4A02-A776-43B94F30655D - 2fb6c0f12eb5db71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "325">
+               </Location>
+               <Location
+                  uuid = "A6FAA0CC-B5CF-4A02-A776-43B94F30655D - 53fdb7c7bd247605"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "451">
+               </Location>
+               <Location
+                  uuid = "A6FAA0CC-B5CF-4A02-A776-43B94F30655D - 6f2b0a1f28253ca4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Array&lt;HomeConnect.DeviceItem&gt;) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "143">
+               </Location>
+               <Location
+                  uuid = "A6FAA0CC-B5CF-4A02-A776-43B94F30655D - f647a2d475ccf5c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #3 (Swift.Array&lt;HomeConnect.DeviceItem&gt;) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "326774B2-3239-49CE-A2CD-966E1C420541"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F364467E-DDD1-4F3C-8841-6416426280A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E825E28-C9BB-49CC-AE39-CA412C368CB3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "getAllDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0E825E28-C9BB-49CC-AE39-CA412C368CB3 - 96fe45d7d474bf3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "162">
+               </Location>
+               <Location
+                  uuid = "0E825E28-C9BB-49CC-AE39-CA412C368CB3 - 7e216df9da7f58f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
+                  moduleName = "HomeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7EBF2DC9-4247-4997-9A66-026A3953486D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeConnectTests/Home/HomeViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "homeScreenShouldDisplayAlert(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

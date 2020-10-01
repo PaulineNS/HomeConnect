@@ -66,7 +66,7 @@ private extension UserItem {
     init(user: UserAttributes) {
         self.firstName = user.firstName
         self.lastName = user.lastName
-        self.birthDate = 0
+        self.birthDate = user.birthDate
         self.city = user.city
         self.postalCode = 0
         self.street = user.street

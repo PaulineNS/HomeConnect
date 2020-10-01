@@ -18,6 +18,7 @@
 		5643649F2525CA1D00905271 /* HeaterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643649E2525CA1C00905271 /* HeaterViewModelTests.swift */; };
 		564364A32525CC1400905271 /* MockProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364A22525CC1400905271 /* MockProfileRepository.swift */; };
 		564364A72525CC2300905271 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364A62525CC2300905271 /* ProfileViewModelTests.swift */; };
+		564364B52525E55F00905271 /* Double+ConvertTimestampToStringDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364B42525E55F00905271 /* Double+ConvertTimestampToStringDate.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
@@ -98,6 +99,7 @@
 		5643649E2525CA1C00905271 /* HeaterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaterViewModelTests.swift; path = HomeConnectTests/Devices/HeaterViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		564364A22525CC1400905271 /* MockProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockProfileRepository.swift; path = HomeConnectTests/Devices/MockProfileRepository.swift; sourceTree = SOURCE_ROOT; };
 		564364A62525CC2300905271 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewModelTests.swift; path = HomeConnectTests/Devices/ProfileViewModelTests.swift; sourceTree = SOURCE_ROOT; };
+		564364B42525E55F00905271 /* Double+ConvertTimestampToStringDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ConvertTimestampToStringDate.swift"; sourceTree = "<group>"; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */,
+				564364B42525E55F00905271 /* Double+ConvertTimestampToStringDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */,
 				569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */,
 				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
+				564364B52525E55F00905271 /* Double+ConvertTimestampToStringDate.swift in Sources */,
 				56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */,
 				56DA60B925230C6D0005F7CE /* RollerShutterRepository.swift in Sources */,
 				56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */,

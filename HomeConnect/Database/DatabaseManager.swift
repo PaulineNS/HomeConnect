@@ -57,13 +57,12 @@ open class DataBaseManager {
 
     func createUserEntity(userItem: UserItem) {
         let user = UserAttributes(context: managedObjectContext)
-        //todo convert date
-        user.birthDate = "(\(Date(timeIntervalSince1970: 1432233446145.0/1000.0))"
+        user.birthDate = userItem.birthDate
         user.city = userItem.city
         user.country = userItem.country
         user.firstName = userItem.firstName
         user.lastName = userItem.lastName
-        user.postalCode = String(userItem.postalCode ?? 0)
+        user.postalCode = "\(userItem.postalCode ?? 0)"
         user.street = userItem.street
         user.streetCode = userItem.streetCode
         dataBaseStack.saveContext()

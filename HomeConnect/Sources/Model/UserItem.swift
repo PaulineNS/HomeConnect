@@ -9,7 +9,7 @@ import Foundation
 
 struct UserItem: Equatable {
     let firstName, lastName: String?
-    let birthDate: Int?
+    let birthDate: String?
     let city: String?
     let postalCode: Int?
     let street, streetCode, country: String?

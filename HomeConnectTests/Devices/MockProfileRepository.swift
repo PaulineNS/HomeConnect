@@ -12,8 +12,6 @@ import XCTest
 
 class MockProfileRepository: ProfileRepositoryType {
 
-//    let dataBaseManager = DataBaseManager(dataBaseStack: MockDataBaseStack())
-    
     let userItem = UserItem(firstName: "Pauline",
                              lastName: "Nomballais",
                              birthDate: 100591,

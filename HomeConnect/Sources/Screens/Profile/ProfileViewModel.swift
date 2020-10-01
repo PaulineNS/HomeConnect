@@ -15,11 +15,12 @@ final class ProfileViewModel {
     private weak var delegate: ProfileScreenDelegate?
     private var user: [UserItem] = [] {
         didSet {
+            guard let userBirthDate = user.first?.birthDate else {return}
             profileImageName?("profilePicture")
             userName?("\(user.first?.firstName ?? "") \(user.first?.lastName ?? "")")
-            userAge?("29 ans")
+            userAge?("Né le : \(userBirthDate)")
             userStreet?("\(user.first?.streetCode ?? ""), \(user.first?.street ?? "")")
-            userCity?("44, \(user.first?.city ?? "")")
+            userCity?("\(user.first?.postalCode ?? 0), \(user.first?.city ?? "")")
             userCountry?("\(user.first?.country ?? "")")
         }
     }

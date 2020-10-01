@@ -105,7 +105,7 @@ struct DeviceMock {
     let deviceName: String = "light-kitchen"
     let intensity: Int = 10
     let mode: String = "ON"
-    let productType: String = "Light"
+    var productType: String = "Light"
     let position: Int = 10
     let temperature: Int = 10
 }
@@ -148,7 +148,8 @@ extension DeviceMock {
           productType: String,
           position: Int,
           temperature: Int
-    ) {
+    )
+    {
         self.init(deviceId: deviceId,
                   devineName: devineName,
                   intensity: intensity,

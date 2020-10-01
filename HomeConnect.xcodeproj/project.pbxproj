@@ -12,6 +12,8 @@
 		5643646B2525A29300905271 /* LightViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643646A2525A29300905271 /* LightViewModelTests.swift */; };
 		564364712525A2A100905271 /* LightRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364702525A2A100905271 /* LightRepositoryTests.swift */; };
 		564364752525A2B500905271 /* MockLightRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364742525A2B500905271 /* MockLightRepository.swift */; };
+		564364912525C50400905271 /* MockRollerShutterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364902525C50400905271 /* MockRollerShutterRepository.swift */; };
+		564364952525C51300905271 /* RollerShutterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364942525C51300905271 /* RollerShutterViewModelTests.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
@@ -86,6 +88,8 @@
 		5643646A2525A29300905271 /* LightViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModelTests.swift; sourceTree = "<group>"; };
 		564364702525A2A100905271 /* LightRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightRepositoryTests.swift; sourceTree = "<group>"; };
 		564364742525A2B500905271 /* MockLightRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLightRepository.swift; sourceTree = "<group>"; };
+		564364902525C50400905271 /* MockRollerShutterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockRollerShutterRepository.swift; path = HomeConnectTests/Devices/MockRollerShutterRepository.swift; sourceTree = SOURCE_ROOT; };
+		564364942525C51300905271 /* RollerShutterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RollerShutterViewModelTests.swift; path = HomeConnectTests/Devices/RollerShutterViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		564364682525A26000905271 /* RollerShutter */ = {
 			isa = PBXGroup;
 			children = (
+				564364902525C50400905271 /* MockRollerShutterRepository.swift */,
+				564364942525C51300905271 /* RollerShutterViewModelTests.swift */,
 			);
 			path = RollerShutter;
 			sourceTree = "<group>";
@@ -658,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				564364712525A2A100905271 /* LightRepositoryTests.swift in Sources */,
+				564364912525C50400905271 /* MockRollerShutterRepository.swift in Sources */,
 				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
 				56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */,
 				56437A7A2525250900CD5C44 /* MockHomeRepository.swift in Sources */,
@@ -666,6 +673,7 @@
 				56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */,
 				56437A7025251EBD00CD5C44 /* HomeViewModelTest.swift in Sources */,
 				564364752525A2B500905271 /* MockLightRepository.swift in Sources */,
+				564364952525C51300905271 /* RollerShutterViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

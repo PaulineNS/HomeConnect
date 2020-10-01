@@ -22,7 +22,7 @@ class MockDevicesScreenDelegate: DevicesScreensDelegate {
     func devicesScreenDidSelectDeleteButton() {
         didLeaveTheViewAfterDismiss = true
     }
-    
+
     func devicesScreenDidSelectSaveButton() {
         didLeaveTheViewAfterSave = true
     }

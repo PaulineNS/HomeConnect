@@ -16,40 +16,52 @@ final class HeaterViewController: UIViewController {
     private lazy var heaterPlusButtonImageName: String = ""
     private lazy var heaterMinButtonImageName: String = ""
 
-    private lazy var settingsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 100
-        stackView.addArrangedSubview(modeStackView)
-        stackView.addArrangedSubview(temperatureStackView)
-        stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        return stackView
+    private lazy var temperatureVieww: UIView = {
+        let view = UIView()
+        view.addSubview(heaterMinusButton)
+        heaterMinusButton.anchor(top: view.topAnchor, bottom: view.bottomAnchor)
+        heaterMinusButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        view.addSubview(temperatureLabel)
+        temperatureLabel.anchor(top: view.topAnchor,
+                               left: heaterMinusButton.rightAnchor,
+                               bottom: view.bottomAnchor,
+                               paddingLeft: 15)
+        temperatureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        temperatureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        view.addSubview(heaterPlusButton)
+        heaterPlusButton.anchor(top: view.topAnchor,
+                           left: temperatureLabel.rightAnchor,
+                           bottom: view.bottomAnchor,
+                           paddingLeft: 15, height: 40)
+        heaterPlusButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        return view
     }()
 
-    private lazy var temperatureStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(heaterMinusButton)
-        stackView.addArrangedSubview(temperatureLabel)
-        stackView.addArrangedSubview(heaterPlusButton)
-        return stackView
-    }()
+    private lazy var modeVieww: UIView = {
+        let view = UIView()
+        view.addSubview(modeOffLabel)
+        modeOffLabel.anchor(top: view.topAnchor, bottom: view.bottomAnchor)
+        modeOffLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
-    private lazy var modeStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 10
-        stackView.addArrangedSubview(modeOffLabel)
-        stackView.addArrangedSubview(heaterModeSwitch)
-        stackView.addArrangedSubview(modeOnLabel)
-        return stackView
+        view.addSubview(heaterModeSwitch)
+        heaterModeSwitch.anchor(top: view.topAnchor,
+                               left: modeOffLabel.rightAnchor,
+                               bottom: view.bottomAnchor,
+                               paddingLeft: 15)
+        heaterModeSwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        heaterModeSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        view.addSubview(modeOnLabel)
+        modeOnLabel.anchor(top: view.topAnchor,
+                           left: heaterModeSwitch.rightAnchor,
+                           bottom: view.bottomAnchor,
+                           paddingLeft: 15)
+        modeOnLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        return view
     }()
 
     private lazy var temperatureLabel: UILabel = {
@@ -96,6 +108,7 @@ final class HeaterViewController: UIViewController {
 
     private lazy var heaterModeSwitch: UISwitch = {
         let modeSwitch = UISwitch()
+        modeSwitch.onTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
 
         return modeSwitch
@@ -112,7 +125,7 @@ final class HeaterViewController: UIViewController {
     private lazy var heaterSaveButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
-        button.backgroundColor = .red
+        button.backgroundColor = #colorLiteral(red: 0.684643507, green: 0.785309732, blue: 0.172726661, alpha: 1)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button
@@ -213,10 +226,17 @@ final class HeaterViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
         view.addSubview(heaterSaveButton)
-        view.addSubview(settingsStackView)
-        settingsStackView.anchor()
-        settingsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        settingsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        view.addSubview(modeVieww)
+
+        modeVieww.anchor(top: safeArea.topAnchor, paddingTop: 70, width: 100, height: 30)
+        modeVieww.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        view.addSubview(temperatureVieww)
+        temperatureVieww.anchor(width: 200, height: 80)
+        temperatureVieww.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        temperatureVieww.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor).isActive = true
+
         temperatureLabel.anchor(width: 80, height: 80)
         heaterSaveButton.anchor(bottom: safeArea.bottomAnchor,
                                 paddingTop: 15,

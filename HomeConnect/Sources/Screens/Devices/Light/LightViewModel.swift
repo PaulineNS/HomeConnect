@@ -29,17 +29,22 @@ final class LightViewModel {
 
     // MARK: - Outputs
 
-    var lightDisplayed: ((DeviceItem) -> Void)?
     var lightName: ((String) -> Void)?
     var lightMode: ((String) -> Void)?
     var lightIntensity: ((String) -> Void)?
     var lightDeleteIconName: ((String) -> Void)?
+    var lightOnSwitchName: ((String) -> Void)?
+    var lightOffSwitchName: ((String) -> Void)?
+    var lightSaveButtonTilte: ((String) -> Void)?
 
     // MARK: - Inputs
 
     func viewDidLoad() {
         lightName?("\(device.deviceName)")
         lightDeleteIconName?("dustbin")
+        lightOnSwitchName?("On")
+        lightOffSwitchName?("Off")
+        lightSaveButtonTilte?("Enregistrer")
         defineLightAndIntensity(for: device)
     }
 

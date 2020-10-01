@@ -59,7 +59,6 @@ final class LightViewController: UIViewController {
 
     private lazy var modeOnLabel: UILabel = {
         let label = UILabel()
-        label.text = "On"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -68,7 +67,6 @@ final class LightViewController: UIViewController {
 
     private lazy var modeOffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Off"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -85,7 +83,6 @@ final class LightViewController: UIViewController {
 
     private lazy var lightSaveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Enregistrer", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.backgroundColor = .red
         button.layer.cornerRadius = 10
@@ -138,6 +135,15 @@ final class LightViewController: UIViewController {
         }
         viewModel.lightIntensity = { [weak self] value in
             self?.lightIntensityLabel.text = value
+        }
+        viewModel.lightOnSwitchName = { [weak self] name in
+            self?.modeOnLabel.text = name
+        }
+        viewModel.lightOffSwitchName = { [weak self] name in
+            self?.modeOffLabel.text = name
+        }
+        viewModel.lightSaveButtonTilte = { [weak self] name in
+            self?.lightSaveButton.setTitle(name, for: .normal)
         }
     }
 

@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         context.dataBaseStack.saveContext()
     }

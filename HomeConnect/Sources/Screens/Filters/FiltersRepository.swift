@@ -34,19 +34,3 @@ final class FiltersRepository: FiltersRepositoryType {
     }
 
 }
-
-private extension DeviceItem {
-    init?(device: DeviceAttributes) {
-        guard
-            let deviceId = device.deviceId,
-            let name = device.name,
-            let type = ProductType(device: device)
-            else {
-            return nil
-        }
-
-        self.idNumber = "\(deviceId)"
-        self.deviceName = name
-        self.productType = type
-    }
-}

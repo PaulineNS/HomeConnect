@@ -30,13 +30,19 @@ protocol HTTPClientType: class {
 
 final class HTTPClient: HTTPClientType {
 
+    // MARK: - Properties
+
     private let engine: HTTPEngineType
     private let jsonDecoder: JSONDecoder
+
+    // MARK: - Init
 
     init(engine: HTTPEngineType) {
         self.engine = engine
         self.jsonDecoder = JSONDecoder()
     }
+
+    // MARK: - HTTPClientType protocol
 
     func request<T: Decodable>(
         requestType: RequestType,

@@ -21,11 +21,17 @@ protocol HTTPEngineType {
 
 final class HTTPEngine: HTTPEngineType {
 
+    // MARK: - Properties
+
     private let session: URLSession
+
+    // MARK: - Init
 
     init(configuration: URLSessionConfiguration = .default) {
         self.session = URLSession(configuration: configuration)
     }
+
+    // MARK: - HTTPEngineType protocol
 
     func send(request: URLRequest,
               cancelledBy token: RequestCancellationToken,

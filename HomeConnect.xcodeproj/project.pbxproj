@@ -19,6 +19,12 @@
 		564364A32525CC1400905271 /* MockProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364A22525CC1400905271 /* MockProfileRepository.swift */; };
 		564364A72525CC2300905271 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364A62525CC2300905271 /* ProfileViewModelTests.swift */; };
 		564364B52525E55F00905271 /* Double+ConvertTimestampToStringDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364B42525E55F00905271 /* Double+ConvertTimestampToStringDate.swift */; };
+		564364BD2525E89000905271 /* DeviceItem+DeviceAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364BC2525E89000905271 /* DeviceItem+DeviceAttributes.swift */; };
+		564364C52525E9D800905271 /* DeviceItem+DeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364C42525E9D800905271 /* DeviceItem+DeviceResponse.swift */; };
+		564364C92525EA2500905271 /* UserItem+DeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364C82525EA2500905271 /* UserItem+DeviceResponse.swift */; };
+		564364CD2525EA4B00905271 /* UserItem+UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364CC2525EA4B00905271 /* UserItem+UserAttributes.swift */; };
+		564364D12525EADC00905271 /* ProductType+DeviceAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364D02525EADC00905271 /* ProductType+DeviceAttributes.swift */; };
+		564364D52525EB0300905271 /* ProductType+DeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364D42525EB0300905271 /* ProductType+DeviceResponse.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
@@ -62,7 +68,7 @@
 		56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E0EF251CEBC900DD5B37 /* HomeDataSource.swift */; };
 		56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E100251DC27700DD5B37 /* MockHTTPClient.swift */; };
 		56D7E112251DC9F200DD5B37 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E111251DC9F200DD5B37 /* HomeRepository.swift */; };
-		56D7E118251DCAA100DD5B37 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E117251DCAA100DD5B37 /* NetworkModel.swift */; };
+		56D7E118251DCAA100DD5B37 /* DeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E117251DCAA100DD5B37 /* DeviceResponse.swift */; };
 		56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E123251DCFB900DD5B37 /* Alert.swift */; };
 		56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */; };
 		56D7E139251DF9FF00DD5B37 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */; };
@@ -100,6 +106,12 @@
 		564364A22525CC1400905271 /* MockProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockProfileRepository.swift; path = HomeConnectTests/Devices/MockProfileRepository.swift; sourceTree = SOURCE_ROOT; };
 		564364A62525CC2300905271 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewModelTests.swift; path = HomeConnectTests/Devices/ProfileViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		564364B42525E55F00905271 /* Double+ConvertTimestampToStringDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ConvertTimestampToStringDate.swift"; sourceTree = "<group>"; };
+		564364BC2525E89000905271 /* DeviceItem+DeviceAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceItem+DeviceAttributes.swift"; sourceTree = "<group>"; };
+		564364C42525E9D800905271 /* DeviceItem+DeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceItem+DeviceResponse.swift"; sourceTree = "<group>"; };
+		564364C82525EA2500905271 /* UserItem+DeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserItem+DeviceResponse.swift"; sourceTree = "<group>"; };
+		564364CC2525EA4B00905271 /* UserItem+UserAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserItem+UserAttributes.swift"; sourceTree = "<group>"; };
+		564364D02525EADC00905271 /* ProductType+DeviceAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductType+DeviceAttributes.swift"; sourceTree = "<group>"; };
+		564364D42525EB0300905271 /* ProductType+DeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductType+DeviceResponse.swift"; sourceTree = "<group>"; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
@@ -148,7 +160,7 @@
 		56D7E0FF251DC27700DD5B37 /* HomeConnectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeConnectTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		56D7E100251DC27700DD5B37 /* MockHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPClient.swift; sourceTree = "<group>"; };
 		56D7E111251DC9F200DD5B37 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
-		56D7E117251DCAA100DD5B37 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		56D7E117251DCAA100DD5B37 /* DeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceResponse.swift; sourceTree = "<group>"; };
 		56D7E123251DCFB900DD5B37 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		56D7E133251DF9F100DD5B37 /* DatabaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseStack.swift; sourceTree = "<group>"; };
 		56D7E138251DF9FF00DD5B37 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -262,6 +274,12 @@
 			children = (
 				5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */,
 				564364B42525E55F00905271 /* Double+ConvertTimestampToStringDate.swift */,
+				564364BC2525E89000905271 /* DeviceItem+DeviceAttributes.swift */,
+				564364C42525E9D800905271 /* DeviceItem+DeviceResponse.swift */,
+				564364C82525EA2500905271 /* UserItem+DeviceResponse.swift */,
+				564364CC2525EA4B00905271 /* UserItem+UserAttributes.swift */,
+				564364D02525EADC00905271 /* ProductType+DeviceAttributes.swift */,
+				564364D42525EB0300905271 /* ProductType+DeviceResponse.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -456,7 +474,7 @@
 		56D7E116251DCA8300DD5B37 /* NetworkModel */ = {
 			isa = PBXGroup;
 			children = (
-				56D7E117251DCAA100DD5B37 /* NetworkModel.swift */,
+				56D7E117251DCAA100DD5B37 /* DeviceResponse.swift */,
 			);
 			path = NetworkModel;
 			sourceTree = "<group>";
@@ -625,21 +643,25 @@
 				56D7E139251DF9FF00DD5B37 /* DatabaseManager.swift in Sources */,
 				56D7E0B2251C9D7E00DD5B37 /* RollerShutterViewModel.swift in Sources */,
 				56D7E0B7251C9D8700DD5B37 /* HeaterViewModel.swift in Sources */,
+				564364CD2525EA4B00905271 /* UserItem+UserAttributes.swift in Sources */,
 				56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */,
 				56D7E096251C9D2E00DD5B37 /* FiltersViewController.swift in Sources */,
 				56D7E06D251C9BF000DD5B37 /* HTTPClient.swift in Sources */,
 				56D7E09B251C9D3D00DD5B37 /* ProfileViewController.swift in Sources */,
 				5686A2362520B7ED00176D70 /* ProductType.swift in Sources */,
+				564364D12525EADC00905271 /* ProductType+DeviceAttributes.swift in Sources */,
 				56D7E0F0251CEBC900DD5B37 /* HomeDataSource.swift in Sources */,
 				56D7E075251C9BFF00DD5B37 /* HTTPEngine.swift in Sources */,
 				56DA60BE25230C780005F7CE /* HeaterRepository.swift in Sources */,
 				56DA60F72523C1340005F7CE /* UpdateProfileTableViewCell.swift in Sources */,
 				56DA60B425230C5F0005F7CE /* LightRepository.swift in Sources */,
+				564364C52525E9D800905271 /* DeviceItem+DeviceResponse.swift in Sources */,
 				56D7E038251C97B900DD5B37 /* Context.swift in Sources */,
 				56D7E091251C9D2200DD5B37 /* HeaterViewController.swift in Sources */,
 				56DA60FC2523C1E00005F7CE /* UpdateProfileCellViewModel.swift in Sources */,
 				5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */,
 				56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */,
+				564364C92525EA2500905271 /* UserItem+DeviceResponse.swift in Sources */,
 				56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */,
 				56DA60ED25237F2F0005F7CE /* UpdateProfileRepository.swift in Sources */,
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
@@ -654,16 +676,18 @@
 				569581282521C8F9005EACA7 /* IntensityFilterTableViewCell.swift in Sources */,
 				5686A23B2520B84300176D70 /* UserItem.swift in Sources */,
 				56D7E124251DCFB900DD5B37 /* Alert.swift in Sources */,
+				564364D52525EB0300905271 /* ProductType+DeviceResponse.swift in Sources */,
 				56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */,
 				56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */,
 				56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */,
 				569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */,
 				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
+				564364BD2525E89000905271 /* DeviceItem+DeviceAttributes.swift in Sources */,
 				564364B52525E55F00905271 /* Double+ConvertTimestampToStringDate.swift in Sources */,
 				56D7E066251C9B7300DD5B37 /* HomeCoordinator.swift in Sources */,
 				56DA60B925230C6D0005F7CE /* RollerShutterRepository.swift in Sources */,
 				56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */,
-				56D7E118251DCAA100DD5B37 /* NetworkModel.swift in Sources */,
+				56D7E118251DCAA100DD5B37 /* DeviceResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

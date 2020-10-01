@@ -10,7 +10,7 @@ import CoreData
 
 open class DataBaseManager {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
     private let dataBaseStack: DataBaseStack
     private let managedObjectContext: NSManagedObjectContext
@@ -33,6 +33,8 @@ open class DataBaseManager {
         self.dataBaseStack = dataBaseStack
         self.managedObjectContext = dataBaseStack.mainContext
     }
+
+    // MARK: - Public Methods
 
     func createDeviceEntity(deviceItem: DeviceItem) {
         let device = DeviceAttributes(context: managedObjectContext)

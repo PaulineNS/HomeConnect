@@ -208,13 +208,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		5643646325259C9E00905271 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Filter;
-			sourceTree = "<group>";
-		};
 		564364672525A25F00905271 /* Heater */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +298,6 @@
 				56437A6E25251E9700CD5C44 /* Home */,
 				5643646225259C9800905271 /* Profile */,
 				5643646125259C8E00905271 /* Devices */,
-				5643646325259C9E00905271 /* Filter */,
 				56437A402524FB0100CD5C44 /* DataBase */,
 				56D7E0FE251DC25400DD5B37 /* Network */,
 				56D7DFFF251C903500DD5B37 /* Info.plist */,

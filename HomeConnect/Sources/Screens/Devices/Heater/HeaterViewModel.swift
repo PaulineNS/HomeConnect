@@ -82,11 +82,13 @@ final class HeaterViewModel {
 
     func didChangeModeSwitchValue(withOnvalue: Bool) {
         guard withOnvalue else {
+            heaterMode?("OFF")
             heaterTemperature?("0.0 C°")
             temperature = 0.0
             mode = "OFF"
             return
         }
+        heaterMode?("ON")
         temperature = 14.0
         heaterTemperature?("\(temperature) C°")
         mode = "ON"

@@ -66,12 +66,14 @@ final class LightViewModel {
 
     func didChangeModeSwitchValue(withOnvalue: Bool) {
         guard withOnvalue else {
+            lightMode?("OFF")
             lightIntensity?("0")
             mode = "OFF"
             intensity = 0
             return
         }
         lightIntensity?("50")
+        lightMode?("ON")
         mode = "ON"
         intensity = 50
     }

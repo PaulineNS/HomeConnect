@@ -28,9 +28,7 @@ final class RollerShutterViewModel {
 
     // MARK: - Output
 
-    var rollerDisplayed: ((DeviceItem) -> Void)?
     var rollerName: ((String) -> Void)?
-    var rollerProductType: ((String) -> Void)?
     var rollerPosition: ((String) -> Void)?
     var rollerDeleteIconName: ((String) -> Void)?
 

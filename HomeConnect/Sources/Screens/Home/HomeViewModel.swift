@@ -41,7 +41,6 @@ final class HomeViewModel {
     // MARK: - Life cycle
 
     func viewWillAppear() {
-//        repository.delete()
         getAllDevices()
     }
 

@@ -71,4 +71,127 @@ class LightViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
+    func test_Given_ViewModel_When_LightModeChange_Then_ReactiveVariableChanged() {
+
+        let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
+
+        let expectation0 = self.expectation(description: "Diplayed lightName")
+        let expectation2 = self.expectation(description: "Diplayed lighMode")
+        let expectation3 = self.expectation(description: "Diplayed lighIntensity")
+        let expectation4 = self.expectation(description: "Diplayed lighDeleteIconName")
+
+        viewModel.lightName = { name in
+            XCTAssertEqual(name, self.deviceItems.first?.deviceName)
+            expectation0.fulfill()
+        }
+        var counter1 = 0
+        viewModel.lightMode = { mode in
+            if counter1 == 1 {
+                XCTAssertEqual(mode, "OFF")
+                expectation2.fulfill()
+            }
+            counter1+=1
+        }
+
+        var counter2 = 0
+        viewModel.lightIntensity = { intensity in
+            if counter2 == 1 {
+                XCTAssertEqual(intensity, "0")
+                expectation3.fulfill()
+            }
+            counter2+=1
+        }
+
+        viewModel.lightDeleteIconName = { name in
+                XCTAssertEqual(name, "dustbin")
+                expectation4.fulfill()
+        }
+
+        viewModel.viewDidLoad()
+        viewModel.didChangeModeSwitchValue(withOnvalue: false)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func test_Given_ViewModel_When_IntensityChangeToZero_Then_ReactiveVariableChanged() {
+
+        let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
+
+        let expectation0 = self.expectation(description: "Diplayed lightName")
+        let expectation2 = self.expectation(description: "Diplayed lighMode")
+        let expectation3 = self.expectation(description: "Diplayed lighIntensity")
+        let expectation4 = self.expectation(description: "Diplayed lighDeleteIconName")
+
+        viewModel.lightName = { name in
+            XCTAssertEqual(name, self.deviceItems.first?.deviceName)
+            expectation0.fulfill()
+        }
+        var counter1 = 0
+        viewModel.lightMode = { mode in
+            if counter1 == 1 {
+                XCTAssertEqual(mode, "OFF")
+                expectation2.fulfill()
+            }
+            counter1+=1
+        }
+
+        var counter2 = 0
+        viewModel.lightIntensity = { intensity in
+            if counter2 == 1 {
+                XCTAssertEqual(intensity, "0")
+                expectation3.fulfill()
+            }
+            counter2+=1
+        }
+
+        viewModel.lightDeleteIconName = { name in
+                XCTAssertEqual(name, "dustbin")
+                expectation4.fulfill()
+        }
+
+        viewModel.viewDidLoad()
+        viewModel.didChangeLightIntensity(with: 0)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func test_Given_ViewModel_When_IntensityChangeToTen_Then_ReactiveVariableChanged() {
+
+        let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
+
+        let expectation0 = self.expectation(description: "Diplayed lightName")
+        let expectation2 = self.expectation(description: "Diplayed lighMode")
+        let expectation3 = self.expectation(description: "Diplayed lighIntensity")
+        let expectation4 = self.expectation(description: "Diplayed lighDeleteIconName")
+
+        viewModel.lightName = { name in
+            XCTAssertEqual(name, self.deviceItems.first?.deviceName)
+            expectation0.fulfill()
+        }
+        var counter1 = 0
+        viewModel.lightMode = { mode in
+            if counter1 == 1 {
+                XCTAssertEqual(mode, "ON")
+                expectation2.fulfill()
+            }
+            counter1+=1
+        }
+
+        var counter2 = 0
+        viewModel.lightIntensity = { intensity in
+            if counter2 == 1 {
+                XCTAssertEqual(intensity, "10")
+                expectation3.fulfill()
+            }
+            counter2+=1
+        }
+
+        viewModel.lightDeleteIconName = { name in
+                XCTAssertEqual(name, "dustbin")
+                expectation4.fulfill()
+        }
+
+        viewModel.viewDidLoad()
+        viewModel.didChangeLightIntensity(with: 10)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
 }

@@ -42,4 +42,36 @@ class RollerShutterViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
+    func test_Given_ViewModel_When_RollerPositionChange_Then_ReactiveVariableChanged() {
+
+        var deviceMock = DeviceMock()
+        deviceMock.productType = "RollerShutter"
+        let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
+
+        let viewModel = RollerShutterViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
+
+        let expectation0 = self.expectation(description: "Diplayed rollerName")
+        let expectation1 = self.expectation(description: "Diplayed rollerPosition")
+        let expectation2 = self.expectation(description: "Diplayed rollerDeleteIconName")
+
+        viewModel.rollerName = { name in
+            XCTAssertEqual(name, deviceItems.first?.deviceName)
+            expectation0.fulfill()
+        }
+        var counter = 0
+        viewModel.rollerPosition = { position in
+            if counter == 1 {
+            XCTAssertEqual(position, "100")
+            expectation1.fulfill()
+            }
+            counter += 1
+        }
+        viewModel.rollerDeleteIconName = { name in
+            XCTAssertEqual(name, "dustbin")
+            expectation2.fulfill()
+        }
+        viewModel.viewDidLoad()
+        viewModel.didChangeRollerPosition(with: 100)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
 }

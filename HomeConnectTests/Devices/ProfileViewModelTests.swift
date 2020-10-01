@@ -23,7 +23,7 @@ class ProfileViewModelTests: XCTestCase {
 
     let userItem = UserItem(firstName: "Pauline",
                              lastName: "Nomballais",
-                             birthDate: 100591,
+                             birthDate: "100591",
                              city: "Paris",
                              postalCode: 75001,
                              street: "Paris",
@@ -54,7 +54,7 @@ class ProfileViewModelTests: XCTestCase {
             expectation1.fulfill()
         }
         viewModel.userAge = { age in
-            XCTAssertEqual(age, "29 ans")
+            XCTAssertEqual(age, "Né le : \(self.userItem.birthDate ?? "")")
             expectation2.fulfill()
         }
         viewModel.userStreet = { street in
@@ -62,7 +62,7 @@ class ProfileViewModelTests: XCTestCase {
             expectation3.fulfill()
         }
         viewModel.userCity = { city in
-            XCTAssertEqual(city, "44, \(self.userItem.city ?? "")")
+            XCTAssertEqual(city, "\(self.userItem.postalCode ?? 0), \(self.userItem.city ?? "")")
             expectation4.fulfill()
         }
         viewModel.userCountry = { country in

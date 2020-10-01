@@ -42,7 +42,7 @@ final class DataBaseManagerTests: XCTestCase {
     func testCreateNewUser_WhenAnEntityIsCreated_ThenShouldBeCorrectlySaved() {
         dataBaseManager.createUserEntity(userItem: UserItem(firstName: "Pauline",
                                                             lastName: "Nomballais",
-                                                            birthDate: 100591,
+                                                            birthDate: "100591",
                                                             city: "Paris",
                                                             postalCode: 75001,
                                                             street: "Paris",
@@ -75,7 +75,7 @@ final class DataBaseManagerTests: XCTestCase {
     func testUpdateUser_WhenAnEntityIsUpdated_ThenShouldBeCorrectlySaved() {
         dataBaseManager.createUserEntity(userItem: UserItem(firstName: "Pauline",
                                                             lastName: "Nomballais",
-                                                            birthDate: 100591,
+                                                            birthDate: "100591",
                                                             city: "Paris",
                                                             postalCode: 75001,
                                                             street: "Paris",
@@ -83,7 +83,7 @@ final class DataBaseManagerTests: XCTestCase {
                                                             country: "France"))
         dataBaseManager.createUserEntity(userItem: UserItem(firstName: "Pierre",
                                                             lastName: "Paul",
-                                                            birthDate: 11000,
+                                                            birthDate: "11000",
                                                             city: "Nantes",
                                                             postalCode: 44000,
                                                             street: "Rue Jean Paul",

@@ -14,7 +14,7 @@ class MockProfileRepository: ProfileRepositoryType {
 
     let userItem = UserItem(firstName: "Pauline",
                              lastName: "Nomballais",
-                             birthDate: 100591,
+                             birthDate: "100591",
                              city: "Paris",
                              postalCode: 75001,
                              street: "Paris",

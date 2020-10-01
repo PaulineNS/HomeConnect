@@ -29,7 +29,7 @@ class HomeRepositoryTests: XCTestCase {
     let deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
     let userItem = UserItem(firstName: "Pauline",
                              lastName: "Nomballais",
-                             birthDate: 100591,
+                             birthDate: "100591",
                              city: "Paris",
                              postalCode: 75001,
                              street: "Paris",

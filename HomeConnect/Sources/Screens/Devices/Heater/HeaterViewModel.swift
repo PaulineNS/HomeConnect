@@ -33,6 +33,9 @@ final class HeaterViewModel {
     var heaterMode: ((String) -> Void)?
     var heaterTemperature: ((String) -> Void)?
     var heaterDeleteIconName: ((String) -> Void)?
+    var heaterSwitchOnText: ((String) -> Void)?
+    var heaterSwitchOffText: ((String) -> Void)?
+    var heaterSaveButtonTitle: ((String) -> Void)?
 
     // MARK: - Input
 
@@ -40,6 +43,9 @@ final class HeaterViewModel {
         heaterName?("\(device.deviceName)")
         heaterDeleteIconName?("dustbin")
         defineModeAndTemperature(for: device)
+        heaterSwitchOnText?("On")
+        heaterSwitchOffText?("Off")
+        heaterSaveButtonTitle?("Enregistrer")
     }
 
     func didPressDeleteIconButton() {

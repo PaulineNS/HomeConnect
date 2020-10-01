@@ -13,6 +13,7 @@ class UpdateProfileViewController: UIViewController {
 
     private lazy var source: UpdateProfileDataSource = UpdateProfileDataSource()
     private let viewModel: UpdateProfileViewModel
+    private lazy var saveIconName: String = ""
 
     let textFieldTypeData = ["Prénom :", "Nom :",
                              "N° de rue :",
@@ -33,7 +34,7 @@ class UpdateProfileViewController: UIViewController {
     }()
 
     private lazy var saveInformationsButton: UIBarButtonItem = {
-        let updateButton = UIBarButtonItem(title: "Enregistrer",
+        let updateButton = UIBarButtonItem(title: "\(saveIconName)",
                         style: .plain,
                         target: self,
                         action: #selector(didTapUpdateProfileButton))
@@ -69,12 +70,16 @@ class UpdateProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         bind(to: viewModel)
+        viewModel.viewDidLoad()
     }
 
     private func bind(to viewModel: UpdateProfileViewModel) {
         viewModel.userDisplayed = { [weak self] users in
             self?.source.updateCell(with: users)
             self?.tableView.reloadData()
+        }
+        viewModel.saveIconName = { [weak self] name in
+            self?.saveIconName = name
         }
     }
 

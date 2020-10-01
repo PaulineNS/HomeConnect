@@ -13,6 +13,7 @@ final class FiltersViewController: UIViewController {
 
     private lazy var source: FiltersDataSource = FiltersDataSource()
     private let viewModel: FiltersViewModel
+    private lazy var searchIconTitleName: String = ""
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -31,7 +32,7 @@ final class FiltersViewController: UIViewController {
     }()
 
     private lazy var searchButton: UIBarButtonItem = {
-        let updateButton = UIBarButtonItem(title: "Chercher",
+        let updateButton = UIBarButtonItem(title: "\(searchIconTitleName)",
                         style: .plain,
                         target: self,
                         action: #selector(didTapSearchButton))
@@ -60,6 +61,8 @@ final class FiltersViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = source
         tableView.dataSource = source
+        bind(to: viewModel)
+        viewModel.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -83,4 +86,9 @@ final class FiltersViewController: UIViewController {
 
     }
 
+    private func bind(to viewModel: FiltersViewModel) {
+        viewModel.searchIconName = { [weak self] title in
+            self?.searchIconTitleName = title
+        }
+    }
 }

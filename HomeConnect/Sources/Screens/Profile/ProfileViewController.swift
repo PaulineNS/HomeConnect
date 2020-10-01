@@ -12,6 +12,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - Properties
 
     private let viewModel: ProfileViewModel
+    private lazy var updateIconName: String = ""
 
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -94,7 +95,7 @@ final class ProfileViewController: UIViewController {
     }()
 
     private lazy var updateProfileButton: UIBarButtonItem = {
-        let updateButton = UIBarButtonItem(title: "Modifier",
+        let updateButton = UIBarButtonItem(title: "\(updateIconName)",
                         style: .plain,
                         target: self,
                         action: #selector(didTapUpdateProfileButton))
@@ -122,6 +123,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
+        viewModel.viewDidLoad()
     }
 
     // MARK: - Privates Methods
@@ -144,6 +146,9 @@ final class ProfileViewController: UIViewController {
         }
         viewModel.userCountry = { [weak self] country in
             self?.countryLabel.text = country
+        }
+        viewModel.updateIconName = { [weak self] name in
+            self?.updateIconName = name
         }
     }
 

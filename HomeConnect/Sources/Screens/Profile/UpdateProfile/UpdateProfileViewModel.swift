@@ -31,16 +31,21 @@ final class UpdateProfileViewModel {
         self.repository = repository
         self.delegate = delegate
     }
-    
+
+    // MARK: - Outputs
+
+    var userDisplayed: (([UserItem]) -> Void)?
+    var saveIconName: ((String) -> Void)?
+
     // MARK: - Life cycle
 
     func viewWillAppear() {
         getUser()
     }
 
-    // MARK: - Outputs
-
-    var userDisplayed: (([UserItem]) -> Void)?
+    func viewDidLoad() {
+        saveIconName?("Enregistrer")
+    }
 
     // MARK: - Inputs
 

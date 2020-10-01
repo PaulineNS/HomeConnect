@@ -14,20 +14,6 @@ final class RollerShutterViewController: UIViewController {
     private let viewModel: RollerShutterViewModel
     private lazy var deleteIconName: String = ""
 
-    private lazy var rollerShutterOpenLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Ouvert"
-        label.textAlignment = .center
-        return label
-    }()
-
-    private lazy var rollerShutterClosedLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Fermé"
-        label.textAlignment = .center
-        return label
-    }()
-
     private lazy var rollerShutterPositionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -64,7 +50,6 @@ final class RollerShutterViewController: UIViewController {
 
     private lazy var rollerShutterSaveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Enregistrer", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.backgroundColor = .red
         button.layer.cornerRadius = 10
@@ -111,6 +96,10 @@ final class RollerShutterViewController: UIViewController {
         viewModel.rollerPosition = { [weak self] value in
             self?.rollerShutterPositionLabel.text = value
         }
+        viewModel.lightSaveButtonTilte = { [weak self] name in
+            self?.rollerShutterSaveButton.setTitle(name, for: .normal)
+        }
+
     }
 
     // MARK: - Selectors

@@ -28,7 +28,12 @@ final class FiltersViewModel {
     // MARK: - Outputs
 
     var deviceDisplayed: ((UserItem) -> Void)?
+    var searchIconName: ((String) -> Void)?
 
+    func viewDidLoad() {
+        searchIconName?("Chercher")
+    }
+    
     func searchDeviceWithFilters() {
         repository.searchDevice { devices in
             self.deviceItem = devices

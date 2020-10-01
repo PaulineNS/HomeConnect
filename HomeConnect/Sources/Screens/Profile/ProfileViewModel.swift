@@ -41,11 +41,16 @@ final class ProfileViewModel {
     var userStreet: ((String) -> Void)?
     var userCity: ((String) -> Void)?
     var userCountry: ((String) -> Void)?
+    var updateIconName: ((String) -> Void)?
 
     // MARK: - Life cycle
 
     func viewWillAppear() {
         getUser()
+    }
+    
+    func viewDidLoad() {
+        updateIconName?("Modifier")
     }
 
     // MARK: - Inputs

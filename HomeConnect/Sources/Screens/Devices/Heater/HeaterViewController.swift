@@ -78,7 +78,6 @@ final class HeaterViewController: UIViewController {
 
     private lazy var modeOnLabel: UILabel = {
         let label = UILabel()
-        label.text = "On"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -87,7 +86,6 @@ final class HeaterViewController: UIViewController {
 
     private lazy var modeOffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Off"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -111,7 +109,6 @@ final class HeaterViewController: UIViewController {
 
     private lazy var heaterSaveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Enregistrer", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         button.backgroundColor = .red
         button.layer.cornerRadius = 10
@@ -162,7 +159,15 @@ final class HeaterViewController: UIViewController {
         viewModel.heaterDeleteIconName = { [weak self] name in
             self?.deleteIconName = name
         }
-
+        viewModel.heaterSwitchOnText = { [weak self] name in
+            self?.modeOnLabel.text = name
+        }
+        viewModel.heaterSwitchOffText = { [weak self] name in
+            self?.modeOffLabel.text = name
+        }
+        viewModel.heaterSaveButtonTitle = { [weak self] title in
+            self?.heaterSaveButton.setTitle(title, for: .normal)
+        }
     }
 
     // MARK: - Selectors

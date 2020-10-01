@@ -31,12 +31,14 @@ final class RollerShutterViewModel {
     var rollerName: ((String) -> Void)?
     var rollerPosition: ((String) -> Void)?
     var rollerDeleteIconName: ((String) -> Void)?
+    var lightSaveButtonTilte: ((String) -> Void)?
 
     // MARK: - Input
 
     func viewDidLoad() {
         rollerName?("\(device.deviceName)")
         rollerDeleteIconName?("dustbin")
+        lightSaveButtonTilte?("Enregistrer")
         definePostion(for: device)
     }
 

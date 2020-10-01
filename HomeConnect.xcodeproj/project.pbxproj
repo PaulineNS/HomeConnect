@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2F47BCF725222B62005AEE3C /* UserDefaultChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */; };
 		5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5614E96E251E210700B3CA27 /* DeviceItem.swift */; };
+		5643646B2525A29300905271 /* LightViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643646A2525A29300905271 /* LightViewModelTests.swift */; };
+		564364712525A2A100905271 /* LightRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364702525A2A100905271 /* LightRepositoryTests.swift */; };
+		564364752525A2B500905271 /* MockLightRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364742525A2B500905271 /* MockLightRepository.swift */; };
 		56437A3925247A5A00CD5C44 /* FiltersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A3825247A5A00CD5C44 /* FiltersRepository.swift */; };
 		56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */; };
 		56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56437A492524FB6600CD5C44 /* DataBaseManager.swift */; };
@@ -80,6 +83,9 @@
 /* Begin PBXFileReference section */
 		2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultChecker.swift; sourceTree = "<group>"; };
 		5614E96E251E210700B3CA27 /* DeviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceItem.swift; sourceTree = "<group>"; };
+		5643646A2525A29300905271 /* LightViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModelTests.swift; sourceTree = "<group>"; };
+		564364702525A2A100905271 /* LightRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightRepositoryTests.swift; sourceTree = "<group>"; };
+		564364742525A2B500905271 /* MockLightRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLightRepository.swift; sourceTree = "<group>"; };
 		56437A3825247A5A00CD5C44 /* FiltersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersRepository.swift; sourceTree = "<group>"; };
 		56437A412524FB1700CD5C44 /* MockDataBaseStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBaseStack.swift; sourceTree = "<group>"; };
 		56437A492524FB6600CD5C44 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
@@ -171,6 +177,54 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5643646125259C8E00905271 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				564364692525A26200905271 /* Light */,
+				564364682525A26000905271 /* RollerShutter */,
+				564364672525A25F00905271 /* Heater */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		5643646225259C9800905271 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		5643646325259C9E00905271 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		564364672525A25F00905271 /* Heater */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Heater;
+			sourceTree = "<group>";
+		};
+		564364682525A26000905271 /* RollerShutter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RollerShutter;
+			sourceTree = "<group>";
+		};
+		564364692525A26200905271 /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				5643646A2525A29300905271 /* LightViewModelTests.swift */,
+				564364702525A2A100905271 /* LightRepositoryTests.swift */,
+				564364742525A2B500905271 /* MockLightRepository.swift */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
 		56437A402524FB0100CD5C44 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +285,9 @@
 			isa = PBXGroup;
 			children = (
 				56437A6E25251E9700CD5C44 /* Home */,
+				5643646225259C9800905271 /* Profile */,
+				5643646125259C8E00905271 /* Devices */,
+				5643646325259C9E00905271 /* Filter */,
 				56437A402524FB0100CD5C44 /* DataBase */,
 				56D7E0FE251DC25400DD5B37 /* Network */,
 				56D7DFFF251C903500DD5B37 /* Info.plist */,
@@ -600,12 +657,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564364712525A2A100905271 /* LightRepositoryTests.swift in Sources */,
 				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
 				56437A4A2524FB6600CD5C44 /* DataBaseManager.swift in Sources */,
 				56437A7A2525250900CD5C44 /* MockHomeRepository.swift in Sources */,
 				56437A762525216E00CD5C44 /* HomeRepositoryTests.swift in Sources */,
+				5643646B2525A29300905271 /* LightViewModelTests.swift in Sources */,
 				56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */,
 				56437A7025251EBD00CD5C44 /* HomeViewModelTest.swift in Sources */,
+				564364752525A2B500905271 /* MockLightRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

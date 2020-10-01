@@ -14,8 +14,8 @@ final class LightViewModel {
     private var device: DeviceItem
     private var repository: LightRepositoryType
     private weak var delegate: DevicesScreensDelegate?
-    private var intensity = 0
-    private var mode = ""
+    private var intensity = 10
+    private var mode = "ON"
 
     // MARK: - Initializer
 
@@ -31,7 +31,7 @@ final class LightViewModel {
 
     var lightDisplayed: ((DeviceItem) -> Void)?
     var lightName: ((String) -> Void)?
-    var lightProductType: ((String) -> Void)?
+//    var lightProductType: ((String) -> Void)?
     var lightMode: ((String) -> Void)?
     var lightIntensity: ((String) -> Void)?
     var lightDeleteIconName: ((String) -> Void)?

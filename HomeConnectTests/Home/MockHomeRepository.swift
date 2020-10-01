@@ -12,8 +12,15 @@ import XCTest
 
 class MockHomeRepository: HomeRepositoryType {
 
-    var deviceItem: [DeviceItem]?
-    var userItem: UserItem?
+    let deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
+    let userItem = UserItem(firstName: "Pauline",
+                             lastName: "Nomballais",
+                             birthDate: 100591,
+                             city: "Paris",
+                             postalCode: 75001,
+                             street: "Paris",
+                             streetCode: "44",
+                             country: "France")
 
     var isSuccess = true
     var error: Error?
@@ -22,7 +29,6 @@ class MockHomeRepository: HomeRepositoryType {
                         failure: @escaping (() -> Void),
                         completion: @escaping ([DeviceItem]) -> Void) {
         if isSuccess {
-            guard let deviceItem = deviceItem, let userItem = userItem else { return }
             success(deviceItem, userItem)
         } else {
             failure()

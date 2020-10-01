@@ -10,7 +10,7 @@ import XCTest
 
 // MARK: - Mock
 
-class MockUserDefaultChecker: UserDefaultsType {
+class MockHomeUserDefaultChecker: UserDefaultsType {
     func bool(forKey defaultName: String) -> Bool {
         false
     }
@@ -45,7 +45,7 @@ class HomeRepositoryTests: XCTestCase {
                                             dataBaseStack: DataBaseStack(
                                                 modelName: "HomeConnect")
                                         ),
-                                        checker: UserDefaultChecker(userdefault: MockUserDefaultChecker()))
+                                        checker: UserDefaultChecker(userdefault: MockHomeUserDefaultChecker()))
         repository.getUserDevices { (deviceItem, _) in
             XCTAssertEqual("\(deviceItem[0].idNumber)", self.deviceItem[0].idNumber)
         } failure: {

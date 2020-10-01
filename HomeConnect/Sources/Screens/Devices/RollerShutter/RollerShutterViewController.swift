@@ -13,6 +13,8 @@ final class RollerShutterViewController: UIViewController {
 
     private let viewModel: RollerShutterViewModel
     private lazy var deleteIconName: String = ""
+    private lazy var positionMaxImageName: String = ""
+    private lazy var positionMinImageName: String = ""
 
     private lazy var rollerShutterPositionLabel: UILabel = {
         let label = UILabel()
@@ -28,8 +30,8 @@ final class RollerShutterViewController: UIViewController {
 
     private lazy var rollerShutterPositionSlider: UISlider = {
         let slider = UISlider()
-        slider.minimumValueImage = #imageLiteral(resourceName: "close")
-        slider.maximumValueImage = #imageLiteral(resourceName: "open")
+        slider.minimumValueImage = UIImage(named: "\(positionMinImageName)")
+        slider.maximumValueImage = UIImage(named: "\(positionMaxImageName)")
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.tintColor = .red
@@ -96,8 +98,14 @@ final class RollerShutterViewController: UIViewController {
         viewModel.rollerPosition = { [weak self] value in
             self?.rollerShutterPositionLabel.text = value
         }
-        viewModel.lightSaveButtonTilte = { [weak self] name in
+        viewModel.rollerSaveButtonTilte = { [weak self] name in
             self?.rollerShutterSaveButton.setTitle(name, for: .normal)
+        }
+        viewModel.rollerPositionMaxImageName = { [weak self] name in
+            self?.positionMaxImageName = name
+        }
+        viewModel.rollerPositionMinImageName = { [weak self] name in
+            self?.positionMinImageName = name
         }
 
     }

@@ -13,6 +13,8 @@ final class HeaterViewController: UIViewController {
 
     private let viewModel: HeaterViewModel
     private lazy var deleteIconName: String = ""
+    private lazy var heaterPlusButtonImageName: String = ""
+    private lazy var heaterMinButtonImageName: String = ""
 
     private lazy var settingsStackView: UIStackView = {
         let stackView = UIStackView()
@@ -64,14 +66,14 @@ final class HeaterViewController: UIViewController {
 
     private lazy var heaterPlusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "hot"), for: .normal)
+        button.setImage(UIImage(named: "\(heaterPlusButtonImageName)"), for: .normal)
         button.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
         return button
     }()
 
     private lazy var heaterMinusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "cold"), for: .normal)
+        button.setImage(UIImage(named: "\(heaterMinButtonImageName)"), for: .normal)
         button.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
         return button
     }()
@@ -167,6 +169,12 @@ final class HeaterViewController: UIViewController {
         }
         viewModel.heaterSaveButtonTitle = { [weak self] title in
             self?.heaterSaveButton.setTitle(title, for: .normal)
+        }
+        viewModel.heaterPlusButtonImageName = { [weak self] name in
+            self?.heaterPlusButtonImageName = name
+        }
+        viewModel.heaterMinButtonImageName = { [weak self] name in
+            self?.heaterMinButtonImageName = name
         }
     }
 

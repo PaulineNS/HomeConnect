@@ -33,7 +33,7 @@ final class FiltersViewModel {
     func viewDidLoad() {
         searchIconName?("Chercher")
     }
-    
+
     func searchDeviceWithFilters() {
         repository.searchDevice { devices in
             self.deviceItem = devices

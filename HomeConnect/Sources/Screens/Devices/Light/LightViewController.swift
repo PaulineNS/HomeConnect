@@ -13,6 +13,8 @@ final class LightViewController: UIViewController {
 
     private let viewModel: LightViewModel
     private lazy var deleteIconName: String = ""
+    private lazy var intensityMaxImageName: String = ""
+    private lazy var intensityMinImageName: String = ""
 
     private lazy var lightModeSwitch: UISwitch = {
         let modeSwitch = UISwitch()
@@ -34,8 +36,8 @@ final class LightViewController: UIViewController {
 
     private lazy var lightIntensitySlider: UISlider = {
         let slider = UISlider()
-        slider.minimumValueImage = #imageLiteral(resourceName: "lightOff")
-        slider.maximumValueImage = #imageLiteral(resourceName: "lightOn")
+        slider.minimumValueImage = UIImage(named: "\(intensityMinImageName)")
+        slider.maximumValueImage = UIImage(named: "\(intensityMaxImageName)")
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.tintColor = .red
@@ -144,6 +146,12 @@ final class LightViewController: UIViewController {
         }
         viewModel.lightSaveButtonTilte = { [weak self] name in
             self?.lightSaveButton.setTitle(name, for: .normal)
+        }
+        viewModel.lightIntensityMaxImageName = { [weak self] name in
+            self?.intensityMaxImageName = name
+        }
+        viewModel.lightIntensityMinImageName = { [weak self] name in
+            self?.intensityMinImageName = name
         }
     }
 

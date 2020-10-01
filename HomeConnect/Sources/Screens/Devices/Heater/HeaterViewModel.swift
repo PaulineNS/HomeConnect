@@ -36,6 +36,8 @@ final class HeaterViewModel {
     var heaterSwitchOnText: ((String) -> Void)?
     var heaterSwitchOffText: ((String) -> Void)?
     var heaterSaveButtonTitle: ((String) -> Void)?
+    var heaterPlusButtonImageName: ((String) -> Void)?
+    var heaterMinButtonImageName: ((String) -> Void)?
 
     // MARK: - Input
 
@@ -46,6 +48,8 @@ final class HeaterViewModel {
         heaterSwitchOnText?("On")
         heaterSwitchOffText?("Off")
         heaterSaveButtonTitle?("Enregistrer")
+        heaterPlusButtonImageName?("hot")
+        heaterMinButtonImageName?("cold")
     }
 
     func didPressDeleteIconButton() {

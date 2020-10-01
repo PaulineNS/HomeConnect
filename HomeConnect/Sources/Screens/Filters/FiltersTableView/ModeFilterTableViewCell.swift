@@ -51,7 +51,7 @@ final class ModeFilterTableViewCell: UITableViewCell {
         label.textAlignment = .center
         return label
     }()
-    
+
     // MARK: - Public Methods
 
     public func configure() {

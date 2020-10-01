@@ -111,7 +111,7 @@ class LightViewModelTests: XCTestCase {
         viewModel.didChangeModeSwitchValue(withOnvalue: false)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
+
     func test_Given_ViewModel_When_IntensityChangeToZero_Then_ReactiveVariableChanged() {
 
         let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
@@ -152,7 +152,7 @@ class LightViewModelTests: XCTestCase {
         viewModel.didChangeLightIntensity(with: 0)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
+
     func test_Given_ViewModel_When_IntensityChangeToTen_Then_ReactiveVariableChanged() {
 
         let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)

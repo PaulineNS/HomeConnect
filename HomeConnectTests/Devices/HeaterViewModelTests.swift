@@ -89,7 +89,7 @@ class HeaterViewModelTests: XCTestCase {
         viewModel.didChangeModeSwitchValue(withOnvalue: false)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
+
     func test_Given_ViewModel_When_PlusButtonPressed_Then_ReactiveVariableChanged() {
 
         var deviceMock = DeviceMock()
@@ -128,7 +128,7 @@ class HeaterViewModelTests: XCTestCase {
         viewModel.didPressPlusButton()
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
+
     func test_Given_ViewModel_When_MinusButtonPressed_Then_ReactiveVariableChanged() {
 
         var deviceMock = DeviceMock()

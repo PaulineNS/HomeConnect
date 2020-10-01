@@ -12,7 +12,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "TemperatureFilterTableViewCell"
-    
+
     let heaterPlusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "plusButton"), for: .normal)
@@ -28,7 +28,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
     // MARK: - Private Properties
 
     private var temperature = 0.0
-    
+
     private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.text = "Température (Radiateurs):"

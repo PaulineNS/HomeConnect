@@ -36,6 +36,8 @@ final class LightViewModel {
     var lightOnSwitchName: ((String) -> Void)?
     var lightOffSwitchName: ((String) -> Void)?
     var lightSaveButtonTilte: ((String) -> Void)?
+    var lightIntensityMaxImageName: ((String) -> Void)?
+    var lightIntensityMinImageName: ((String) -> Void)?
 
     // MARK: - Inputs
 
@@ -45,6 +47,8 @@ final class LightViewModel {
         lightOnSwitchName?("On")
         lightOffSwitchName?("Off")
         lightSaveButtonTilte?("Enregistrer")
+        lightIntensityMaxImageName?("lightOn")
+        lightIntensityMinImageName?("lightOff")
         defineLightAndIntensity(for: device)
     }
 

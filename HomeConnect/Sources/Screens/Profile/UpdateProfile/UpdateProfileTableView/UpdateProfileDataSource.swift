@@ -24,7 +24,6 @@ final class UpdateProfileDataSource: NSObject {
 
     private var users: [UserItem] = []
 
-
     // MARK: - Public Methods
 
     func updateCell(with users: [UserItem]) {

@@ -48,7 +48,7 @@ final class ProfileViewModel {
     func viewWillAppear() {
         getUser()
     }
-    
+
     func viewDidLoad() {
         updateIconName?("Modifier")
     }
@@ -58,9 +58,9 @@ final class ProfileViewModel {
     func didSelectUpdateProfileButton() {
         delegate?.profileScreenDidSelectUpdateProfileButton()
     }
-    
+
     // MARK: - Privates Methods
-    
+
     private func getUser() {
         repository.fetchPersistenceUser { users in
             self.user = users

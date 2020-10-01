@@ -16,7 +16,8 @@ protocol UpdateProfileRepositoryType {
                     streetName: String,
                     postalCode: String,
                     city: String,
-                    country: String)
+                    country: String,
+                    birthdate: String)
 }
 
 final class UpdateProfileRepository: UpdateProfileRepositoryType {
@@ -50,14 +51,16 @@ final class UpdateProfileRepository: UpdateProfileRepositoryType {
                     streetName: String,
                     postalCode: String,
                     city: String,
-                    country: String) {
+                    country: String,
+                    birthdate: String) {
         dataBaseManager.updateUserEntity(firstName: firstName,
                                          lastName: lastName,
                                          streetNumber: streetNumber,
                                          streetName: streetName,
                                          postalCode: postalCode,
                                          city: city,
-                                         country: country)
+                                         country: country,
+                                         birthdate: birthdate)
     }
 
 }

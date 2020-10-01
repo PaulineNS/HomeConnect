@@ -106,7 +106,8 @@ open class DataBaseManager {
                           streetName: String,
                           postalCode: String,
                           city: String,
-                          country: String) {
+                          country: String,
+                          birthdate: String) {
         let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
         guard let user = try? managedObjectContext.fetch(request).first else { return }
         let managedObject = user
@@ -117,7 +118,7 @@ open class DataBaseManager {
         managedObject.setValue(postalCode, forKey: "postalCode")
         managedObject.setValue(city, forKey: "city")
         managedObject.setValue(country, forKey: "country")
-        managedObject.setValue("birth", forKey: "birthDate")
+        managedObject.setValue(birthdate, forKey: "birthDate")
         dataBaseStack.saveContext()
     }
 

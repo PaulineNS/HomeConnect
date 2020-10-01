@@ -53,7 +53,8 @@ final class UpdateProfileViewModel {
                               streetName: newInformatiosn[3],
                               postalCode: newInformatiosn[4],
                               city: newInformatiosn[5],
-                              country: newInformatiosn[6])
+                              country: newInformatiosn[6],
+                              birthdate: user.first?.birthDate ?? "")
         self.delegate?.updateProfileScreenDidSelectSaveButton()
     }
 

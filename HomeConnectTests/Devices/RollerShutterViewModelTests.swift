@@ -13,7 +13,7 @@ class RollerShutterViewModelTests: XCTestCase {
     let repository = MockRollerShutterRepository()
     let delegate = MockDevicesScreenDelegate()
 
-    func test_Given_ViewModel_When_viewWillAppear_WithPersistence_Then_ReactiveVariableAreDisplayed() {
+    func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"

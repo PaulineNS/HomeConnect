@@ -53,7 +53,7 @@ extension Screens {
         let repository = HomeRepository(networkClient: context.client,
                                         token: context.requestCancellation,
                                         dependanceType: .network,
-                                        dataBaseManager: context.dataBaseManager,
+                                        dataBaseEngine: context.dataBaseEngine,
                                         checker: context.userDefaultchecker)
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
         return HomeViewController(viewModel: viewModel)
@@ -82,7 +82,7 @@ extension Screens {
 
     private func createHeaterViewController(heaterSelected: DeviceItem,
                                             delegate: DevicesScreensDelegate?) -> UIViewController {
-        let repository = HeaterRepository(dataBaseManager: context.dataBaseManager)
+        let repository = HeaterRepository(dataBaseEngine: context.dataBaseEngine)
         let viewModel = HeaterViewModel(device: heaterSelected,
                                         repository: repository,
                                         delegate: delegate)
@@ -91,7 +91,7 @@ extension Screens {
 
     private func createLightViewController(lightSelected: DeviceItem,
                                            delegate: DevicesScreensDelegate?) -> UIViewController {
-        let repository = LightRepository(dataBaseManager: context.dataBaseManager)
+        let repository = LightRepository(dataBaseEngine: context.dataBaseEngine)
         let viewModel = LightViewModel(device: lightSelected,
                                        repository: repository,
                                        delegate: delegate)
@@ -100,7 +100,7 @@ extension Screens {
 
     private func createRollerShutterViewController(rollerShutterSelected: DeviceItem,
                                                    delegate: DevicesScreensDelegate?) -> UIViewController {
-        let repository = RollerShutterRepository(dataBaseManager: context.dataBaseManager)
+        let repository = RollerShutterRepository(dataBaseEngine: context.dataBaseEngine)
         let viewModel = RollerShutterViewModel(device: rollerShutterSelected,
                                                repository: repository,
                                                delegate: delegate)
@@ -113,7 +113,7 @@ extension Screens {
 extension Screens {
 
     func createProfileViewController(delegate: ProfileScreenDelegate?) -> UIViewController {
-        let repository = ProfileRepository(dataBaseManager: context.dataBaseManager)
+        let repository = ProfileRepository(dataBaseEngine: context.dataBaseEngine)
         let viewModel = ProfileViewModel(repository: repository, delegate: delegate)
         return ProfileViewController(viewModel: viewModel)
     }
@@ -124,7 +124,7 @@ extension Screens {
 extension Screens {
 
     func createFilterViewController() -> UIViewController {
-        let repository = FiltersRepository(dataBaseManager: context.dataBaseManager)
+        let repository = FiltersRepository(dataBaseEngine: context.dataBaseEngine)
         let viewModel = FiltersViewModel(repository: repository)
         return FiltersViewController(viewModel: viewModel)
 
@@ -136,7 +136,7 @@ extension Screens {
 extension Screens {
 
     func createUpdateProfileViewController(delegate: UpdateProfileScreensDelegate?) -> UIViewController {
-        let repository = UpdateProfileRepository(dataBaseManager: context.dataBaseManager)
+        let repository = UpdateProfileRepository(dataBaseEngine: context.dataBaseEngine)
         let viewModel = UpdateProfileViewModel(repository: repository,
                                                delegate: delegate)
         return UpdateProfileViewController(viewModel: viewModel)

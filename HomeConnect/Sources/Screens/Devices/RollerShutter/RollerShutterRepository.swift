@@ -16,22 +16,22 @@ final class RollerShutterRepository: RollerShutterRepositoryType {
 
     // MARK: - Properties
 
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
 
     // MARK: - Init
 
-    init( dataBaseManager: DataBaseManager) {
-        self.dataBaseManager = dataBaseManager
+    init( dataBaseEngine: DataBaseEngine) {
+        self.dataBaseEngine = dataBaseEngine
     }
 
     // MARK: - RollerShutterRepositoryType
 
     func deleteDevice(with deviceId: String) {
-        dataBaseManager.deleteADevice(with: deviceId)
+        dataBaseEngine.deleteADevice(with: deviceId)
     }
 
     func updateDevice(with deviceId: String, position: String) {
-        dataBaseManager.updateDeviceEntity(for: deviceId, position: position)
+        dataBaseEngine.updateDeviceEntity(for: deviceId, position: position)
     }
 
 }

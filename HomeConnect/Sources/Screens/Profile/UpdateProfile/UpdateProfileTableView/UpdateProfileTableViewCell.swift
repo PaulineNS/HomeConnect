@@ -58,5 +58,5 @@ class UpdateProfileTableViewCell: UITableViewCell {
                              paddingTop: 10,
                              paddingLeft: 10)
     }
-    
+
 }

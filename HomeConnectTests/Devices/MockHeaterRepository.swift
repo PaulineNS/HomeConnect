@@ -12,17 +12,17 @@ import XCTest
 
 class MockHeaterRepository: HeaterRepositoryType {
 
-    let dataBaseManager = DataBaseManager(dataBaseStack: MockDataBaseStack())
+    let dataBaseEngine = DataBaseEngine(dataBaseStack: MockDataBaseStack())
 
     var deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
 
     func deleteItem(with deviceId: String) {
         deviceItem = []
-        dataBaseManager.deleteADevice(with: deviceId)
+        dataBaseEngine.deleteADevice(with: deviceId)
     }
 
     func updateDevice(with deviceId: String, mode: String, temperature: String) {
-        dataBaseManager.updateDeviceEntity(for: deviceId, mode: mode, temperature: temperature)
+        dataBaseEngine.updateDeviceEntity(for: deviceId, mode: mode, temperature: temperature)
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  DataBaseManager.swift
+//  DataBaseEngine.swift
 //  HomeConnect
 //
 //  Created by Pauline Nomballais on 25/09/2020.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-open class DataBaseManager {
+open class DataBaseEngine {
 
     // MARK: - Properties
 

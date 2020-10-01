@@ -25,7 +25,7 @@ final class HomeRepository: HomeRepositoryType {
     private let networkClient: HTTPClientType
     private let token: RequestCancellationToken
     private var dependanceType: DependanceType
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
     private let checker: UserDefaultChecker
 
     // MARK: - Init
@@ -34,13 +34,13 @@ final class HomeRepository: HomeRepositoryType {
         networkClient: HTTPClientType,
         token: RequestCancellationToken,
         dependanceType: DependanceType,
-        dataBaseManager: DataBaseManager,
+        dataBaseEngine: DataBaseEngine,
         checker: UserDefaultChecker
     ) {
         self.networkClient = networkClient
         self.token = token
         self.dependanceType = dependanceType
-        self.dataBaseManager = dataBaseManager
+        self.dataBaseEngine = dataBaseEngine
         self.checker = checker
     }
 
@@ -63,7 +63,7 @@ final class HomeRepository: HomeRepositoryType {
     }
 
     private func fetchPersistenceDevices(completion: @escaping ([DeviceItem]) -> Void) {
-        let devices = dataBaseManager.devices
+        let devices = dataBaseEngine.devices
         let devicesItem = devices.compactMap {
             DeviceItem(device: $0)
         }
@@ -89,9 +89,9 @@ final class HomeRepository: HomeRepositoryType {
                     return
                 }
                 let userItem = UserItem(user: user)
-                self.dataBaseManager.createUserEntity(userItem: userItem)
+                self.dataBaseEngine.createUserEntity(userItem: userItem)
                 devices.forEach { deviceItem in
-                    self.dataBaseManager.createDeviceEntity(deviceItem: deviceItem)
+                    self.dataBaseEngine.createDeviceEntity(deviceItem: deviceItem)
                 }
                 success(devices, userItem)
             case .failure:

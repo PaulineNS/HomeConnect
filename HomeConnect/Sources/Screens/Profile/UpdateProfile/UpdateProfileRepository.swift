@@ -24,18 +24,18 @@ final class UpdateProfileRepository: UpdateProfileRepositoryType {
 
     // MARK: - Properties
 
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
 
     // MARK: - Init
 
-    init(dataBaseManager: DataBaseManager) {
-        self.dataBaseManager = dataBaseManager
+    init(dataBaseEngine: DataBaseEngine) {
+        self.dataBaseEngine = dataBaseEngine
     }
 
     // MARK: - UpdateProfileRepositoryType
 
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void) {
-        let users = dataBaseManager.user
+        let users = dataBaseEngine.user
         let userItem = users.compactMap {
             UserItem(user: $0)
         }
@@ -50,7 +50,7 @@ final class UpdateProfileRepository: UpdateProfileRepositoryType {
                     city: String,
                     country: String,
                     birthdate: String) {
-        dataBaseManager.updateUserEntity(firstName: firstName,
+        dataBaseEngine.updateUserEntity(firstName: firstName,
                                          lastName: lastName,
                                          streetNumber: streetNumber,
                                          streetName: streetName,

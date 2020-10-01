@@ -1,5 +1,5 @@
 //
-//  DataBaseManager.swift
+//  DataBaseEngineTests.swift
 //  HomeConnectTests
 //
 //  Created by Pauline Nomballais on 30/09/2020.
@@ -8,12 +8,12 @@
 @testable import HomeConnect
 import XCTest
 
-final class DataBaseManagerTests: XCTestCase {
+final class DataBaseEngineTests: XCTestCase {
 
     // MARK: - Variables
 
     var dataBaseStack: MockDataBaseStack!
-    var dataBaseManager: DataBaseManager!
+    var dataBaseEngine: DataBaseEngine!
     let deviceMock = DeviceMock()
 
     // MARK: - Tests Life Cycle
@@ -21,26 +21,26 @@ final class DataBaseManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         dataBaseStack = MockDataBaseStack()
-        dataBaseManager = DataBaseManager(dataBaseStack: dataBaseStack)
+        dataBaseEngine = DataBaseEngine(dataBaseStack: dataBaseStack)
     }
 
     override func tearDown() {
         super.tearDown()
-        dataBaseManager = nil
+        dataBaseEngine = nil
         dataBaseStack = nil
     }
 
     // MARK: - Tests
 
     func testCreateNewDevice_WhenAnEntityIsCreated_ThenShouldBeCorrectlySaved() {
-        dataBaseManager.createDeviceEntity(deviceItem: DeviceItem(device: deviceMock)!)
-        XCTAssertTrue(!dataBaseManager.devices.isEmpty)
-        XCTAssertTrue(dataBaseManager.devices.count == 1)
-        XCTAssertTrue(dataBaseManager.devices[0].name! == "light-kitchen")
+        dataBaseEngine.createDeviceEntity(deviceItem: DeviceItem(device: deviceMock)!)
+        XCTAssertTrue(!dataBaseEngine.devices.isEmpty)
+        XCTAssertTrue(dataBaseEngine.devices.count == 1)
+        XCTAssertTrue(dataBaseEngine.devices[0].name! == "light-kitchen")
     }
 
     func testCreateNewUser_WhenAnEntityIsCreated_ThenShouldBeCorrectlySaved() {
-        dataBaseManager.createUserEntity(userItem: UserItem(firstName: "Pauline",
+        dataBaseEngine.createUserEntity(userItem: UserItem(firstName: "Pauline",
                                                             lastName: "Nomballais",
                                                             birthDate: "100591",
                                                             city: "Paris",
@@ -48,32 +48,32 @@ final class DataBaseManagerTests: XCTestCase {
                                                             street: "Paris",
                                                             streetCode: "44",
                                                             country: "France"))
-        XCTAssertTrue(!dataBaseManager.user.isEmpty)
-        XCTAssertTrue(dataBaseManager.user.count == 1)
-        XCTAssertTrue(dataBaseManager.user[0].firstName! == "Pauline")
+        XCTAssertTrue(!dataBaseEngine.user.isEmpty)
+        XCTAssertTrue(dataBaseEngine.user.count == 1)
+        XCTAssertTrue(dataBaseEngine.user[0].firstName! == "Pauline")
     }
 
     func testDeleteADeviceMethod_WhenEntitiesAreDeleted_ThenShouldBeCorrectlyDeleted() {
-        dataBaseManager.createDeviceEntity(deviceItem: DeviceItem(device: deviceMock)!)
-        dataBaseManager.deleteADevice(with: "1")
-        XCTAssertTrue(dataBaseManager.devices.isEmpty)
+        dataBaseEngine.createDeviceEntity(deviceItem: DeviceItem(device: deviceMock)!)
+        dataBaseEngine.deleteADevice(with: "1")
+        XCTAssertTrue(dataBaseEngine.devices.isEmpty)
     }
 
     func testUpdateDevice_WhenAnEntityIsUpdated_ThenShouldBeCorrectlySaved() {
-        dataBaseManager.createDeviceEntity(deviceItem: DeviceItem(device: deviceMock)!)
-        dataBaseManager.updateDeviceEntity(for: "1",
+        dataBaseEngine.createDeviceEntity(deviceItem: DeviceItem(device: deviceMock)!)
+        dataBaseEngine.updateDeviceEntity(for: "1",
                                            mode: "ON",
                                            position: "100",
                                            intensity: "200",
                                            temperature: "10")
-        XCTAssertTrue(dataBaseManager.devices[0].mode! == "ON")
-        XCTAssertTrue(dataBaseManager.devices[0].intensity! == "200")
-        XCTAssertTrue(dataBaseManager.devices[0].temperature! == "10")
-        XCTAssertTrue(dataBaseManager.devices[0].position! == "100")
+        XCTAssertTrue(dataBaseEngine.devices[0].mode! == "ON")
+        XCTAssertTrue(dataBaseEngine.devices[0].intensity! == "200")
+        XCTAssertTrue(dataBaseEngine.devices[0].temperature! == "10")
+        XCTAssertTrue(dataBaseEngine.devices[0].position! == "100")
     }
 
     func testUpdateUser_WhenAnEntityIsUpdated_ThenShouldBeCorrectlySaved() {
-        dataBaseManager.createUserEntity(userItem: UserItem(firstName: "Pauline",
+        dataBaseEngine.createUserEntity(userItem: UserItem(firstName: "Pauline",
                                                             lastName: "Nomballais",
                                                             birthDate: "100591",
                                                             city: "Paris",
@@ -81,7 +81,7 @@ final class DataBaseManagerTests: XCTestCase {
                                                             street: "Paris",
                                                             streetCode: "44",
                                                             country: "France"))
-        dataBaseManager.createUserEntity(userItem: UserItem(firstName: "Pierre",
+        dataBaseEngine.createUserEntity(userItem: UserItem(firstName: "Pierre",
                                                             lastName: "Paul",
                                                             birthDate: "11000",
                                                             city: "Nantes",
@@ -89,13 +89,13 @@ final class DataBaseManagerTests: XCTestCase {
                                                             street: "Rue Jean Paul",
                                                             streetCode: "12",
                                                             country: "Italie"))
-        XCTAssertTrue(dataBaseManager.user[0].city! == "Nantes")
-        XCTAssertTrue(dataBaseManager.user[0].country! == "Italie")
-        XCTAssertTrue(dataBaseManager.user[0].firstName! == "Pierre")
-        XCTAssertTrue(dataBaseManager.user[0].lastName! == "Paul")
-        XCTAssertTrue(dataBaseManager.user[0].postalCode! == "44000")
-        XCTAssertTrue(dataBaseManager.user[0].street! == "Rue Jean Paul")
-        XCTAssertTrue(dataBaseManager.user[0].streetCode! == "12")
+        XCTAssertTrue(dataBaseEngine.user[0].city! == "Nantes")
+        XCTAssertTrue(dataBaseEngine.user[0].country! == "Italie")
+        XCTAssertTrue(dataBaseEngine.user[0].firstName! == "Pierre")
+        XCTAssertTrue(dataBaseEngine.user[0].lastName! == "Paul")
+        XCTAssertTrue(dataBaseEngine.user[0].postalCode! == "44000")
+        XCTAssertTrue(dataBaseEngine.user[0].street! == "Rue Jean Paul")
+        XCTAssertTrue(dataBaseEngine.user[0].streetCode! == "12")
     }
 
 }

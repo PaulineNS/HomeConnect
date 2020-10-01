@@ -12,16 +12,16 @@ import XCTest
 
 class MockLightRepository: LightRepositoryType {
 
-    let dataBaseManager = DataBaseManager(dataBaseStack: MockDataBaseStack())
+    let dataBaseEngine = DataBaseEngine(dataBaseStack: MockDataBaseStack())
 
     var deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
 
     func deleteDevice(with deviceId: String) {
         deviceItem = []
-        dataBaseManager.deleteADevice(with: deviceId)
+        dataBaseEngine.deleteADevice(with: deviceId)
     }
 
     func updateDevice(with deviceId: String, mode: String, intensity: String) {
-        dataBaseManager.updateDeviceEntity(for: deviceId, mode: mode, intensity: intensity)
+        dataBaseEngine.updateDeviceEntity(for: deviceId, mode: mode, intensity: intensity)
     }
 }

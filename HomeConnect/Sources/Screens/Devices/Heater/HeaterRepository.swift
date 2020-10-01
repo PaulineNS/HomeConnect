@@ -19,24 +19,24 @@ final class HeaterRepository: HeaterRepositoryType {
 
     // MARK: - Properties
 
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
 
     // MARK: - Init
 
-    init( dataBaseManager: DataBaseManager) {
-        self.dataBaseManager = dataBaseManager
+    init( dataBaseEngine: DataBaseEngine) {
+        self.dataBaseEngine = dataBaseEngine
     }
 
     // MARK: - HeaterRepositoryType
 
     func deleteItem(with deviceId: String) {
-        dataBaseManager.deleteADevice(with: deviceId)
+        dataBaseEngine.deleteADevice(with: deviceId)
     }
 
     func updateDevice(with deviceId: String,
                       mode: String,
                       temperature: String) {
-        dataBaseManager.updateDeviceEntity(for: deviceId,
+        dataBaseEngine.updateDeviceEntity(for: deviceId,
                                            mode: mode,
                                            temperature: temperature)
     }

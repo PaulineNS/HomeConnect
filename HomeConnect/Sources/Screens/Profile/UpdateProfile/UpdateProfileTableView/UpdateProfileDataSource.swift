@@ -68,13 +68,12 @@ extension UpdateProfileDataSource: UITableViewDelegate,
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: UpdateProfileTableViewCell.identifier,
-                for: indexPath
-            ) as? UpdateProfileTableViewCell,
+        guard let cell = tableView.dequeueReusableCell( withIdentifier: UpdateProfileTableViewCell.identifier,
+                                                        for: indexPath) as? UpdateProfileTableViewCell,
             textFieldTypeData.indices.contains(indexPath.row)
-        else { return UITableViewCell() }
+        else {
+            return UITableViewCell()
+        }
         initViewModel { viewModel in
             cell.configure(with: viewModel)
         }
@@ -83,12 +82,13 @@ extension UpdateProfileDataSource: UITableViewDelegate,
         arrayOfCells.append(cell.dataTextField.text ?? "")
         cell.dataTextField.tag = indexPath.row
         cell.dataTextField.delegate = self
+        cell.selectionStyle = .none
         return cell
     }
 
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
 }
 

@@ -27,12 +27,14 @@ final class FiltersDataSource: NSObject,
                                                            for: indexPath)
                     as? ProductTypeFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.selectionStyle = .none
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ModeFilterTableViewCell.identifier,
                                                            for: indexPath)
                     as? ModeFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.selectionStyle = .none
             return cell
         case 2:
 
@@ -40,6 +42,7 @@ final class FiltersDataSource: NSObject,
                                                            for: indexPath)
                     as? IntensityFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.selectionStyle = .none
             cell.intensitySlider.addTarget(cell, action: #selector(cell.didMoveIntensitySlider), for: .valueChanged)
             return cell
 
@@ -48,6 +51,7 @@ final class FiltersDataSource: NSObject,
                                                            for: indexPath)
                     as? PositionFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.selectionStyle = .none
             cell.positionSlider.addTarget(cell, action: #selector(cell.didMovePositionSlider), for: .valueChanged)
             return cell
 
@@ -56,6 +60,7 @@ final class FiltersDataSource: NSObject,
                                                            for: indexPath)
                     as? TemperatureFilterTableViewCell else { return UITableViewCell() }
             cell.configure()
+            cell.selectionStyle = .none
             cell.heaterMinusButton.addTarget(cell, action: #selector(cell.didTapMinusButton), for: .touchUpInside)
             cell.heaterPlusButton.addTarget(cell, action: #selector(cell.didTapPlusButton), for: .touchUpInside)
             return cell
@@ -71,4 +76,8 @@ final class FiltersDataSource: NSObject,
         return 100
     }
 
+    /// Display the tableView footer depending the number of elements tableView
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return tableView.bounds.size.height
+    }
 }

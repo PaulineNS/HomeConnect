@@ -15,18 +15,18 @@ final class FiltersRepository: FiltersRepositoryType {
 
     // MARK: - Properties
 
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
 
     // MARK: - Init
 
-    init(dataBaseManager: DataBaseManager) {
-        self.dataBaseManager = dataBaseManager
+    init(dataBaseEngine: DataBaseEngine) {
+        self.dataBaseEngine = dataBaseEngine
     }
 
     // MARK: - FiltersRepositoryType
 
     func searchDevice(completion: @escaping ([DeviceItem]) -> Void) {
-        let devices = dataBaseManager.fetchDevicesWithFilters()
+        let devices = dataBaseEngine.fetchDevicesWithFilters()
         let deviceItem = devices.compactMap {
             DeviceItem(device: $0)
         }

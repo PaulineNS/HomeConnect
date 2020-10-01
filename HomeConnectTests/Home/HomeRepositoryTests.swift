@@ -38,13 +38,12 @@ class HomeRepositoryTests: XCTestCase {
 
     func test_Given_HomeRepository_When_getUserDevices_Then_DataIsCorrectlyReturned() {
 
+        let dataBaseEngine = DataBaseEngine(dataBaseStack: MockDataBaseStack())
+
         let repository = HomeRepository(networkClient: client,
                                         token: RequestCancellationToken(),
                                         dependanceType: DependanceType.network,
-                                        dataBaseManager: DataBaseManager(
-                                            dataBaseStack: DataBaseStack(
-                                                modelName: "HomeConnect")
-                                        ),
+                                        dataBaseEngine: dataBaseEngine,
                                         checker: UserDefaultChecker(userdefault: MockHomeUserDefaultChecker()))
         repository.getUserDevices { (deviceItem, _) in
             XCTAssertEqual("\(deviceItem[0].idNumber)", self.deviceItem[0].idNumber)

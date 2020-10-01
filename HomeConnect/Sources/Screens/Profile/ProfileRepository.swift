@@ -15,18 +15,18 @@ final class ProfileRepository: ProfileRepositoryType {
 
     // MARK: - Properties
 
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
 
     // MARK: - Init
 
-    init( dataBaseManager: DataBaseManager) {
-        self.dataBaseManager = dataBaseManager
+    init( dataBaseEngine: DataBaseEngine) {
+        self.dataBaseEngine = dataBaseEngine
     }
 
     // MARK: - ProfileRepositoryType
 
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void) {
-        let users = dataBaseManager.user
+        let users = dataBaseEngine.user
         let userItem = users.compactMap {
             UserItem(user: $0)
         }

@@ -15,7 +15,7 @@ final class Context {
     let engine: HTTPEngineType
     let requestCancellation: RequestCancellationToken
     let dataBaseStack: DataBaseStack
-    let dataBaseManager: DataBaseManager
+    let dataBaseEngine: DataBaseEngine
     let userDefaultchecker: UserDefaultChecker
 
     // MARK: - Initializer
@@ -25,7 +25,7 @@ final class Context {
         self.client = HTTPClient(engine: engine)
         self.requestCancellation = RequestCancellationToken()
         self.dataBaseStack = DataBaseStack(modelName: "HomeConnect")
-        self.dataBaseManager = DataBaseManager(dataBaseStack: dataBaseStack)
+        self.dataBaseEngine = DataBaseEngine(dataBaseStack: dataBaseStack)
         self.userDefaultchecker = UserDefaultChecker()
     }
 

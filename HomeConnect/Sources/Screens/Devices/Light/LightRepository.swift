@@ -16,22 +16,22 @@ final class LightRepository: LightRepositoryType {
 
     // MARK: - Properties
 
-    private let dataBaseManager: DataBaseManager
+    private let dataBaseEngine: DataBaseEngine
 
     // MARK: - Init
 
-    init( dataBaseManager: DataBaseManager) {
-        self.dataBaseManager = dataBaseManager
+    init( dataBaseEngine: DataBaseEngine) {
+        self.dataBaseEngine = dataBaseEngine
     }
 
     // MARK: - LightRepositoryType
 
     func deleteDevice(with deviceId: String) {
-        dataBaseManager.deleteADevice(with: deviceId)
+        dataBaseEngine.deleteADevice(with: deviceId)
     }
 
     func updateDevice(with deviceId: String, mode: String, intensity: String) {
-        dataBaseManager.updateDeviceEntity(for: deviceId,
+        dataBaseEngine.updateDeviceEntity(for: deviceId,
                                            mode: mode,
                                            intensity: intensity)
     }

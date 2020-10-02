@@ -14,6 +14,7 @@ final class FiltersViewController: UIViewController {
     private lazy var source: FiltersDataSource = FiltersDataSource()
     private let viewModel: FiltersViewModel
     private lazy var searchIconTitleName: String = ""
+    private lazy var closeIconName: String = ""
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -36,6 +37,14 @@ final class FiltersViewController: UIViewController {
                         style: .plain,
                         target: self,
                         action: #selector(didTapSearchButton))
+        return updateButton
+    }()
+
+    private lazy var crossButton: UIBarButtonItem = {
+        let updateButton = UIBarButtonItem(image: UIImage(named: "\(closeIconName)"),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapCrossButton))
         return updateButton
     }()
 
@@ -76,10 +85,15 @@ final class FiltersViewController: UIViewController {
         viewModel.searchDeviceWithFilters()
     }
 
+    @objc func didTapCrossButton() {
+        viewModel.didSelectCrossButton()
+    }
+
     // MARK: - Configure UI
 
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = searchButton
+        self.navigationItem.leftBarButtonItem = crossButton
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.tintColor = .black
@@ -89,6 +103,9 @@ final class FiltersViewController: UIViewController {
     private func bind(to viewModel: FiltersViewModel) {
         viewModel.searchIconName = { [weak self] title in
             self?.searchIconTitleName = title
+        }
+        viewModel.closeIconName = { [weak self] name in
+            self?.closeIconName = name
         }
     }
 }

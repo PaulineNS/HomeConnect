@@ -13,10 +13,16 @@ import XCTest
 class MockProfileScreenDelegate: ProfileScreenDelegate {
 
     var didShowUpdateProfileView = false
+    var didLeaveTheView = false
 
     func profileScreenDidSelectUpdateProfileButton() {
         didShowUpdateProfileView = true
     }
+
+    func profileScreenDidSelectCloseButton() {
+        didLeaveTheView = true
+    }
+
 }
 
 // MARK: - Tests

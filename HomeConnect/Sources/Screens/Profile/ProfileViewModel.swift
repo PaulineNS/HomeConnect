@@ -42,6 +42,7 @@ final class ProfileViewModel {
     var userCity: ((String) -> Void)?
     var userCountry: ((String) -> Void)?
     var updateIconName: ((String) -> Void)?
+    var closeIconName: ((String) -> Void)?
 
     // MARK: - Life cycle
 
@@ -51,12 +52,17 @@ final class ProfileViewModel {
 
     func viewDidLoad() {
         updateIconName?("Modifier")
+        closeIconName?("crossClose")
     }
 
     // MARK: - Inputs
 
     func didSelectUpdateProfileButton() {
         delegate?.profileScreenDidSelectUpdateProfileButton()
+    }
+
+    func didSelectCrossButton() {
+        delegate?.profileScreenDidSelectCloseButton()
     }
 
     // MARK: - Privates Methods

@@ -38,6 +38,11 @@ protocol DevicesScreensDelegate: class {
 
 protocol ProfileScreenDelegate: class {
     func profileScreenDidSelectUpdateProfileButton()
+    func profileScreenDidSelectCloseButton()
+}
+
+protocol FiltersScreenDelegate: class {
+    func filtersScreenDidSelectCloseButton()
 }
 
 protocol UpdateProfileScreensDelegate: class {
@@ -122,9 +127,9 @@ extension Screens {
 
 extension Screens {
 
-    func createFilterViewController() -> UIViewController {
+    func createFilterViewController(delegate: FiltersScreenDelegate?) -> UIViewController {
         let repository = FiltersRepository(dataBaseEngine: context.dataBaseEngine)
-        let viewModel = FiltersViewModel(repository: repository)
+        let viewModel = FiltersViewModel(repository: repository, delegate: delegate)
         return FiltersViewController(viewModel: viewModel)
 
     }

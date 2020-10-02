@@ -13,6 +13,7 @@ final class ProfileViewController: UIViewController {
 
     private let viewModel: ProfileViewModel
     private lazy var updateIconName: String = ""
+    private lazy var closeIconName: String = ""
 
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -95,11 +96,24 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
+    private let backButtonItem: UIBarButtonItem = {
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        return backButton
+    }()
+
     private lazy var updateProfileButton: UIBarButtonItem = {
         let updateButton = UIBarButtonItem(title: "\(updateIconName)",
                         style: .plain,
                         target: self,
                         action: #selector(didTapUpdateProfileButton))
+        return updateButton
+    }()
+
+    private lazy var crossButton: UIBarButtonItem = {
+        let updateButton = UIBarButtonItem(image: UIImage(named: "\(closeIconName)"),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didTapCrossButton))
         return updateButton
     }()
 
@@ -151,6 +165,9 @@ final class ProfileViewController: UIViewController {
         viewModel.updateIconName = { [weak self] name in
             self?.updateIconName = name
         }
+        viewModel.closeIconName = { [weak self] name in
+            self?.closeIconName = name
+        }
     }
 
     // MARK: - Selectors
@@ -159,10 +176,16 @@ final class ProfileViewController: UIViewController {
         viewModel.didSelectUpdateProfileButton()
     }
 
+    @objc func didTapCrossButton() {
+        viewModel.didSelectCrossButton()
+    }
+
     // MARK: - Configure UI
 
     private func setNavigationBar() {
         self.navigationItem.rightBarButtonItem  = updateProfileButton
+        self.navigationItem.leftBarButtonItem = crossButton
+        navigationItem.backBarButtonItem = backButtonItem
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.tintColor = .black

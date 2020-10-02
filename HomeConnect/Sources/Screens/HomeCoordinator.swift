@@ -14,6 +14,8 @@ final class HomeCoordinator {
     private let presenter: UIWindow
     private let navigationController: UINavigationController
     private let screens: Screens
+    private var profileNavigationController: UINavigationController?
+    private var filterNavigationController: UINavigationController?
 
     // MARK: - Init
 
@@ -45,17 +47,25 @@ final class HomeCoordinator {
 
     private func showProfile() {
         let viewController = screens.createProfileViewController(delegate: self)
-        navigationController.pushViewController(viewController, animated: true)// TODO: je ferais un present plutot
+        profileNavigationController = UINavigationController(nibName: nil, bundle: nil)
+        profileNavigationController = UINavigationController(rootViewController: viewController)
+        profileNavigationController?.modalPresentationStyle = .fullScreen
+        guard let profileNavigation = profileNavigationController else { return }
+        self.navigationController.present(profileNavigation, animated: true, completion: nil)
     }
 
     private func showFilter() {
-        let viewController = screens.createFilterViewController()
-        navigationController.pushViewController(viewController, animated: true)
+        let viewController = screens.createFilterViewController(delegate: self)
+        filterNavigationController = UINavigationController(nibName: nil, bundle: nil)
+        filterNavigationController = UINavigationController(rootViewController: viewController)
+        filterNavigationController?.modalPresentationStyle = .fullScreen
+        guard let filterNavigation = filterNavigationController else { return }
+        self.navigationController.present(filterNavigation, animated: true, completion: nil)
     }
 
     private func showUpdateProfile() {
         let viewController = screens.createUpdateProfileViewController(delegate: self)
-        navigationController.pushViewController(viewController, animated: true)
+        profileNavigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: - SimpleAlert
@@ -69,7 +79,6 @@ final class HomeCoordinator {
 
     private func showMultiChoiseAlert(for type: AlertType, completion: @escaping (Bool) -> Void) {
         let alert = screens.createMultiChoicesAlert(for: type, completion: completion)
-//        let alert = screens.createAlert(for: type)
         navigationController.visibleViewController?.present(alert, animated: true, completion: nil)
     }
 
@@ -116,8 +125,18 @@ extension HomeCoordinator: DevicesScreensDelegate {
 }
 
 extension HomeCoordinator: ProfileScreenDelegate {
+    func profileScreenDidSelectCloseButton() {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+
     func profileScreenDidSelectUpdateProfileButton() {
         showUpdateProfile()
+    }
+}
+
+extension HomeCoordinator: FiltersScreenDelegate {
+    func filtersScreenDidSelectCloseButton() {
+        navigationController.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -128,6 +147,6 @@ extension HomeCoordinator: UpdateProfileScreensDelegate {
     }
 
     func updateProfileScreenDidSelectSaveButton() {
-        self.navigationController.popViewController(animated: true)
+        self.profileNavigationController?.popViewController(animated: true)
     }
 }

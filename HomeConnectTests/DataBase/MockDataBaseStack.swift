@@ -9,6 +9,8 @@ import Foundation
 import HomeConnect
 import CoreData
 
+// MARK: - Mock
+
 final class MockDataBaseStack: DataBaseStack {
 
     // MARK: - Initializer

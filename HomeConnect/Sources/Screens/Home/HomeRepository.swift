@@ -23,22 +23,21 @@ final class HomeRepository: HomeRepositoryType {
     // MARK: - Properties
 
     private let networkClient: HTTPClientType
-    private let token: RequestCancellationToken
     private var dependanceType: DependanceType
     private let dataBaseEngine: DataBaseEngine
     private let checker: UserDefaultChecker
+
+    private let token = RequestCancellationToken()
 
     // MARK: - Init
 
     init(
         networkClient: HTTPClientType,
-        token: RequestCancellationToken,
         dependanceType: DependanceType,
         dataBaseEngine: DataBaseEngine,
         checker: UserDefaultChecker
     ) {
         self.networkClient = networkClient
-        self.token = token
         self.dependanceType = dependanceType
         self.dataBaseEngine = dataBaseEngine
         self.checker = checker

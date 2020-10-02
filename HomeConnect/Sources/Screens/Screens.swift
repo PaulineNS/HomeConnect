@@ -51,7 +51,6 @@ extension Screens {
 
     func createHome(delegate: HomeScreenDelegate?) -> UIViewController {
         let repository = HomeRepository(networkClient: context.client,
-                                        token: context.requestCancellation,
                                         dependanceType: .network,
                                         dataBaseEngine: context.dataBaseEngine,
                                         checker: context.userDefaultchecker)

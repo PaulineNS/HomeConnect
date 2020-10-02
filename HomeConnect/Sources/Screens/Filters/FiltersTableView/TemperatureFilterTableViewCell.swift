@@ -15,13 +15,13 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
 
     let heaterPlusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "plusButton"), for: .normal)
+        button.setImage(UIImage(named: "plusIcon"), for: .normal)
         return button
     }()
 
     let heaterMinusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "minusButton"), for: .normal)
+        button.setImage(UIImage(named: "minusIcon"), for: .normal)
         return button
     }()
 

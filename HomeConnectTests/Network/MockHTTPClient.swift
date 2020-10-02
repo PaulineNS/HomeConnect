@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import HomeConnect
 
-    // MARK: - Mock
+// MARK: - Mock
 
 class MockHTTPClient: HTTPClientType {
 

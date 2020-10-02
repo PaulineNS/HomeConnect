@@ -41,7 +41,6 @@ class HomeRepositoryTests: XCTestCase {
         let dataBaseEngine = DataBaseEngine(dataBaseStack: MockDataBaseStack())
 
         let repository = HomeRepository(networkClient: client,
-                                        token: RequestCancellationToken(),
                                         dependanceType: DependanceType.network,
                                         dataBaseEngine: dataBaseEngine,
                                         checker: UserDefaultChecker(userdefault: MockHomeUserDefaultChecker()))

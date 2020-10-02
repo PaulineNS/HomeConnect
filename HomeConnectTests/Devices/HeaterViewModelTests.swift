@@ -8,6 +8,8 @@
 import XCTest
 @ testable import HomeConnect
 
+// MARK: - Tests
+
 class HeaterViewModelTests: XCTestCase {
 
     let repository = MockHeaterRepository()

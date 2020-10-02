@@ -12,12 +12,14 @@ import XCTest
 
 class MockProfileScreenDelegate: ProfileScreenDelegate {
 
-    var didLeaveTheViewAfterSave = false
+    var didShowUpdateProfileView = false
 
     func profileScreenDidSelectUpdateProfileButton() {
-        didLeaveTheViewAfterSave = true
+        didShowUpdateProfileView = true
     }
 }
+
+// MARK: - Tests
 
 class ProfileViewModelTests: XCTestCase {
 
@@ -72,6 +74,16 @@ class ProfileViewModelTests: XCTestCase {
 
         viewModel.viewWillAppear()
         waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
+    func test_Given_ViewModel_When_didSelectUpdtaeProfileButton_Then_ShowViewController() {
+
+        let viewModel = ProfileViewModel(repository: repository, delegate: delegate)
+
+        viewModel.viewWillAppear()
+        viewModel.didSelectUpdateProfileButton()
+
+        XCTAssertEqual(delegate.didShowUpdateProfileView, true)
     }
 
 }

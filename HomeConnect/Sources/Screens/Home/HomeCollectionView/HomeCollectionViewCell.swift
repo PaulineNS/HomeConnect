@@ -23,7 +23,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         stackView.addArrangedSubview(deviceNameLabel)
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillProportionally
         stackView.spacing = 10
         return stackView
     }()
@@ -38,6 +38,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.numberOfLines = 0
+        label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         return label
@@ -87,7 +88,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
                              paddingBottom: 10,
                              paddingRight: 10)
         deviceImageView.translatesAutoresizingMaskIntoConstraints = false
-        deviceImageView.heightAnchor.constraint(equalTo: cellStackView.heightAnchor, multiplier: 2/3).isActive = true
+        deviceImageView.heightAnchor.constraint(equalTo: cellStackView.heightAnchor, multiplier: 1/2).isActive = true
         deviceNameLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 }

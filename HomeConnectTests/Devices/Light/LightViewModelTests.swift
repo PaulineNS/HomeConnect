@@ -8,7 +8,7 @@
 import XCTest
 @ testable import HomeConnect
 
-// MARK: - Mock
+// MARK: - Mocks
 
 class MockDevicesScreenDelegate: DevicesScreensDelegate {
     var alert: AlertType? = nil
@@ -32,6 +32,8 @@ class MockDevicesScreenDelegate: DevicesScreensDelegate {
 
     }
 }
+
+// MARK: - Tests
 
 class LightViewModelTests: XCTestCase {
 

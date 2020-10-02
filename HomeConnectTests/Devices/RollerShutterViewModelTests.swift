@@ -8,6 +8,8 @@
 import XCTest
 @ testable import HomeConnect
 
+// MARK: - Tests
+
 class RollerShutterViewModelTests: XCTestCase {
 
     let repository = MockRollerShutterRepository()

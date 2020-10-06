@@ -47,8 +47,10 @@ final class HomeViewModel {
     func viewWillAppear() {
         if fromFilter {
             fromFilter = false
+            filterIconName?("réinintialiser")
         } else {
             getAllDevices()
+            filterIconName?("filter_title".localized)
         }
     }
 
@@ -71,15 +73,22 @@ final class HomeViewModel {
     func didSelectFilterButton() {
         delegate?.homeScreenDidSelectFilter()
     }
-    
+
     func getFilteredItems(deviceItems: [DeviceItem]) {
         fromFilter = true
-        filterIconName?("réinintialiser")
         self.deviceItems = deviceItems
+    }
+
+    func checkingFilterIconValue(with value: String) {
+        guard value == "filter_title".localized else {
+            resetFilters()
+            return }
+        didSelectFilterButton()
     }
 
     func resetFilters() {
         self.deviceItems = unFilteredItems
+        filterIconName?("filter_title".localized)
     }
 
     // MARK: - Private Methods
@@ -97,6 +106,7 @@ final class HomeViewModel {
         }, completion: { [weak self] persistence in
             DispatchQueue.main.async {
                 self?.deviceItems = persistence
+                self?.unFilteredItems = persistence
             }
         })
     }

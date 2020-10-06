@@ -44,6 +44,7 @@ protocol ProfileScreenDelegate: class {
 protocol FiltersScreenDelegate: class {
     func filtersScreenDidSelectCloseButton()
     func filtersScreenDidSelectSearchButton(device: [DeviceItem])
+    func filtersScreenShouldDisplayAlert(for type: AlertType)
 }
 
 protocol UpdateProfileScreensDelegate: class {

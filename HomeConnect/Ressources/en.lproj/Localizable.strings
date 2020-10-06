@@ -14,6 +14,7 @@
 "alert_min_temperature" = "You've reached the minimum temperature";
 "alert_deletion" = "Do you really want to delete this object ?";
 "alert_no_user" = "Data loading probleme. Please retry later.";
+"filters_alert" = "No object matches your search";
 "filter_search_title" = "Search";
 "heater_object" = "Heater";
 "roller_shutter_object" = "Roller Shutter";

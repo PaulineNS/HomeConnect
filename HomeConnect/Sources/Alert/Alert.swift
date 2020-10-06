@@ -14,6 +14,7 @@ enum AlertType: Equatable {
     case maximumTemperatureReached
     case minimumTemperatureReached
     case deleteDevice
+    case filtersError
 }
 
 struct Alert: Equatable {
@@ -42,6 +43,9 @@ extension Alert {
         case .noUserError:
             self = Alert(title: "😶",
                          message: "alert_no_user".localized)
+        case .filtersError:
+            self = Alert(title: "😶",
+                         message: "filters_alert".localized)
         }
     }
 }

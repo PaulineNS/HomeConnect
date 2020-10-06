@@ -29,13 +29,13 @@ final class HomeViewController: UIViewController {
         return collection
     }()
 
-    private lazy var filterButton: UIBarButtonItem = {
-        let filterButton = UIBarButtonItem(title: filterIconName,
-                        style: .plain,
-                        target: self,
-                        action: #selector(didTapFilterButton))
-        return filterButton
-    }()
+//    private lazy var filterButton: UIBarButtonItem = {
+//        let filterButton = UIBarButtonItem(title: filterIconName,
+//                        style: .plain,
+//                        target: self,
+//                        action: #selector(didTapFilterButton))
+//        return filterButton
+//    }()
 
     private lazy var profileButton: UIBarButtonItem = {
         let profileButton = UIBarButtonItem(image: UIImage(named: profileIconName),
@@ -98,7 +98,7 @@ final class HomeViewController: UIViewController {
             self?.filterIconName = name
         }
     }
-
+    
     // MARK: - Public
 
     func didSelectFilters(deviceItems: [DeviceItem]) {
@@ -112,7 +112,10 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backBarButtonItem = backButtonItem
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1081894711, green: 0.1763972342, blue: 0.2618448138, alpha: 1)
-        self.navigationItem.rightBarButtonItem  = filterButton
+        self.navigationItem.rightBarButtonItem  = UIBarButtonItem(title: filterIconName,
+                                                                  style: .plain,
+                                                                  target: self,
+                                                                  action: #selector(didTapFilterButton))
         self.navigationItem.leftBarButtonItem  = profileButton
     }
 
@@ -131,7 +134,9 @@ final class HomeViewController: UIViewController {
     }
 
     @objc func didTapFilterButton() {
-        viewModel.didSelectFilterButton()
+        guard let filterTitle = self.navigationItem.rightBarButtonItem?.title else {return}
+        viewModel.checkingFilterIconValue(with: filterTitle)
+        setNavigationBar()
     }
 
 }

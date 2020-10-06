@@ -133,7 +133,9 @@ open class DataBaseEngine {
         let andPredicate = NSCompoundPredicate(type: .and,
                                                subpredicates: [productTypePredicate, modePredicate, settingsPredicate])
         request.predicate = andPredicate
-        guard let device = try? managedObjectContext.fetch(request) else { return [] }
+        guard let device = try? managedObjectContext.fetch(request) else {
+            return []
+        }
         return device
 
     }

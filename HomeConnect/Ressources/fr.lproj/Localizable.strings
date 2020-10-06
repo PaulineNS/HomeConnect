@@ -14,6 +14,7 @@
 "alert_min_temperature" = "Vous avez atteint la température minimale";
 "alert_deletion" = "Voulez-vous vraiment supprimer cet objet ?";
 "alert_no_user" = "Problème de chargement des données. Veuillez réessayer ultérieurement.";
+"filters_alert" = "Aucun objet ne correspond à votre recherche";
 "filter_search_title" = "Chercher";
 "heater_object" = "Radiateur";
 "roller_shutter_object" = "Volet";

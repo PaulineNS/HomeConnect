@@ -46,8 +46,11 @@ final class FiltersViewModel {
                                 settings: settings,
                                 settingsValue: settingsValue) { devices in
             self.deviceItem = devices
+            guard devices.count != 0 else {
+                self.delegate?.filtersScreenShouldDisplayAlert(for: .filtersError)
+                return }
+            self.delegate?.filtersScreenDidSelectSearchButton(device: self.deviceItem)
         }
-        delegate?.filtersScreenDidSelectSearchButton(device: deviceItem)
     }
 
     func didSelectCrossButton() {

@@ -10,13 +10,12 @@ import XCTest
 
 // MARK: - Mock
 
-class MockHomeUserDefaultChecker: UserDefaultsType {
-    func bool(forKey defaultName: String) -> Bool {
-        false
-    }
+class MockHomeUserDefaultChecker: UserDefaultCheckerType {
 
-    func set(_ value: Bool, forKey defaultName: String) {
-        print("")
+    var alreadyBeenLaunched = false
+
+    func hasAlreadyBeenLaunched() -> Bool {
+        return alreadyBeenLaunched
     }
 }
 
@@ -24,32 +23,59 @@ class MockHomeUserDefaultChecker: UserDefaultsType {
 
 class HomeRepositoryTests: XCTestCase {
 
-    let client = MockHTTPClient()
+    var client: MockHTTPClient!
+    var databaseEngine: DataBaseEngine!
+    var checker: MockHomeUserDefaultChecker!
 
-    let deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
-    let userItem = UserItem(firstName: "Pauline",
-                             lastName: "Nomballais",
-                             birthDate: "100591",
-                             city: "Paris",
-                             postalCode: 75001,
-                             street: "Paris",
-                             streetCode: "44",
-                             country: "France")
+    var repository: HomeRepository!
 
-    func test_Given_HomeRepository_When_getUserDevices_Then_DataIsCorrectlyReturned() {
+    override func setUp() {
+        super.setUp()
+        client = MockHTTPClient()
+        databaseEngine = DataBaseEngine(
+            dataBaseStack: MockDataBaseStack()
+        )
+        checker = MockHomeUserDefaultChecker()
+        repository = HomeRepository(
+            networkClient: client,
+            dataBaseEngine: databaseEngine,
+            checker: checker
+        )
+    }
 
-        let dataBaseEngine = DataBaseEngine(dataBaseStack: MockDataBaseStack())
+    func test_GivenAHomeRepository_WhenGetDevicesAndCheckerHasNeverBeenLaunchedBefore_ThenItReturnsNetworkResult() {
+        checker.alreadyBeenLaunched = false
+        client.response = mockDeviceResponse
+        let expectation = self.expectation(description: "Returned deviceItems")
 
-        let repository = HomeRepository(networkClient: client,
-                                        dependanceType: DependanceType.network,
-                                        dataBaseEngine: dataBaseEngine,
-                                        checker: UserDefaultChecker(userdefault: MockHomeUserDefaultChecker()))
-        repository.getUserDevices { (deviceItem, _) in
-            XCTAssertEqual("\(deviceItem[0].idNumber)", self.deviceItem[0].idNumber)
-        } failure: {
-            print("error")
-        } completion: { deviceItem in
-            print(deviceItem)
+        let expectedResult: [DeviceItem] = (mockDeviceResponse?.devices!.map { DeviceItem(device: $0)! })!
+
+        repository.getDevices { result in
+            if case .success(let deviceItems) = result {
+                XCTAssertEqual(deviceItems, expectedResult)
+                expectation.fulfill()
+            }
         }
+
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
+    func test_GivenAHomeRepository_WhenGetDevicesAndCheckerHasBeenLaunchedBefore_ThenItReturnsNetworkResult() {
+        checker.alreadyBeenLaunched = true
+        let deviceItemsToSave = mockDeviceResponse?.devices!.map { DeviceItem(device: $0)! }
+        deviceItemsToSave?.forEach {
+            databaseEngine.createDeviceEntity(deviceItem: $0)
+        }
+
+        let expectation = self.expectation(description: "Returned deviceItems")
+
+        repository.getDevices { result in
+            if case .success(let deviceItems) = result {
+                XCTAssertEqual(deviceItems.count, 12)
+                expectation.fulfill()
+            }
+        }
+
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-open class DataBaseStack {
+class DataBaseStack {
 
     // MARK: - Variables
 

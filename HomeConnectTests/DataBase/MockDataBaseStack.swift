@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import HomeConnect
 import CoreData
+@testable import HomeConnect
 
 // MARK: - Mock
 

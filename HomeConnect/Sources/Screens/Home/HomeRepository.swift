@@ -7,15 +7,8 @@
 
 import Foundation
 
-enum DependanceType {
-    case network
-    case persistence
-}
-
 protocol HomeRepositoryType: class {
-    func getUserDevices(success: @escaping ([DeviceItem], UserItem) -> Void,
-                        failure: @escaping (() -> Void),
-                        completion: @escaping ([DeviceItem]) -> Void)
+    func getDevices(callback: @escaping (Result<[DeviceItem], Error>) -> Void)
 }
 
 final class HomeRepository: HomeRepositoryType {
@@ -23,9 +16,8 @@ final class HomeRepository: HomeRepositoryType {
     // MARK: - Properties
 
     private let networkClient: HTTPClientType
-    private var dependanceType: DependanceType
     private let dataBaseEngine: DataBaseEngine
-    private let checker: UserDefaultChecker
+    private let checker: UserDefaultCheckerType
 
     private let token = RequestCancellationToken()
 
@@ -33,46 +25,35 @@ final class HomeRepository: HomeRepositoryType {
 
     init(
         networkClient: HTTPClientType,
-        dependanceType: DependanceType,
         dataBaseEngine: DataBaseEngine,
-        checker: UserDefaultChecker
+        checker: UserDefaultCheckerType
     ) {
         self.networkClient = networkClient
-        self.dependanceType = dependanceType
         self.dataBaseEngine = dataBaseEngine
         self.checker = checker
     }
 
     // MARK: - HomeRepositoryType
 
-    func getUserDevices( success: @escaping ([DeviceItem], UserItem) -> Void,
-                         failure: @escaping (() -> Void),
-                         completion: @escaping ([DeviceItem]) -> Void) {
+    func getDevices(callback: @escaping (Result<[DeviceItem], Error>) -> Void) {
         if checker.hasAlreadyBeenLaunched() {
-            dependanceType = .persistence
+            fetchPersistenceDevices(callback: callback)
         } else {
-            dependanceType = .network
-        }
-        switch dependanceType {
-        case .network:
-            executeNetworkRequest(success: success, failure: failure)
-        case .persistence:
-            fetchPersistenceDevices(completion: completion)
+            executeNetworkRequest(callback: callback)
         }
     }
 
-    private func fetchPersistenceDevices(completion: @escaping ([DeviceItem]) -> Void) {
+    private func fetchPersistenceDevices(callback: @escaping (Result<[DeviceItem], Error>) -> Void) {
         let devices = dataBaseEngine.devices
-        let devicesItem = devices.compactMap {
+        let deviceItems = devices.compactMap {
             DeviceItem(device: $0)
         }
-        completion(devicesItem)
+        callback(.success(deviceItems))
     }
 
     // MARK: - Private Methods
 
-    private func executeNetworkRequest(success: @escaping ([DeviceItem], UserItem) -> Void,
-                                       failure: @escaping (() -> Void)) {
+    private func executeNetworkRequest(callback: @escaping (Result<[DeviceItem], Error>) -> Void) {
         guard let url = URL(string: "http://storage42.com/modulotest/data.json") else {
             return
         }
@@ -81,21 +62,25 @@ final class HomeRepository: HomeRepositoryType {
                               cancelledBy: token) { (result: Result<DeviceResponse, HTTPClientError>) in
             switch result {
             case .success(let response):
-                let devices = response
+                let deviceItems = response
                     .devices?
                     .compactMap { DeviceItem(device: $0) } ?? []
-                guard let user = response.user else {
-                    return
-                }
-                let userItem = UserItem(user: user)
-                self.dataBaseEngine.createUserEntity(userItem: userItem)
-                devices.forEach { deviceItem in
-                    self.dataBaseEngine.createDeviceEntity(deviceItem: deviceItem)
-                }
-                success(devices, userItem)
-            case .failure:
-                failure()
+                callback(.success(deviceItems))
+                self.save(user: response.user)
+                self.save(devices: deviceItems)
+            case .failure(let error):
+                callback(.failure(error))
             }
         }
+    }
+
+    private func save(user: DeviceResponse.User?) {
+        guard let user = user else { return }
+        let userItem = UserItem(user: user)
+        dataBaseEngine.createUserEntity(userItem: userItem)
+    }
+
+    private func save(devices: [DeviceItem]) {
+        devices.forEach { self.dataBaseEngine.createDeviceEntity(deviceItem: $0) }
     }
 }

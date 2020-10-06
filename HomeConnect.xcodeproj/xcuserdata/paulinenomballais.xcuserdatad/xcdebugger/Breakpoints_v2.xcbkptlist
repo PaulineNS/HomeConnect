@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B3A6F118-134D-469F-8D50-BE1911F1CC84"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeConnect/Sources/Screens/Home/HomeRepository.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "executeNetworkRequest(success:failure:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5CD0F40B-DF30-4959-823A-1D44E1587F7C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -94,9 +78,9 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "viewWillAppear()"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "start()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -110,9 +94,9 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "viewWillAppear()"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "start()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,26 +110,10 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "setNavigationBar()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "73FF1C5D-EE4F-4210-B9DB-232936F8F459"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeConnect/Sources/Screens/Home/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "HomeViewController"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,8 +126,8 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "checkingFilterIconValue(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +142,8 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "checkingFilterIconValue(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,25 +158,9 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "resetFilters()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AA059CF7-E639-483D-B221-B95247BC46E5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "getAllDevices()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -222,8 +174,8 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "resetFilters()"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,9 +190,9 @@
             filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "viewWillAppear()"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "start()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -434,69 +386,6 @@
             endingLineNumber = "48"
             landmarkName = "searchDeviceWithFilters(productType:mode:settings:settingsValue:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "116983F0-CEE9-419A-9BB1-8E6699269575"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "getAllDevices()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "116983F0-CEE9-419A-9BB1-8E6699269575 - 2fb6c0f12eb5d8ee"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
-                  moduleName = "HomeConnect"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  uuid = "116983F0-CEE9-419A-9BB1-8E6699269575 - 96fe45d7d474715"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
-                  moduleName = "HomeConnect"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "143">
-               </Location>
-               <Location
-                  uuid = "116983F0-CEE9-419A-9BB1-8E6699269575 - 7e216df9da7f5472"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Array&lt;HomeConnect.DeviceItem&gt;, HomeConnect.UserItem) -&gt; () in HomeConnect.HomeViewModel.(getAllDevices in _8CD2688A3AEE8A30949FB088B3928E0B)() -&gt; ()"
-                  moduleName = "HomeConnect"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/paulinenomballais/Desktop/HomeConnect/HomeConnect/Sources/Screens/Home/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "95">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

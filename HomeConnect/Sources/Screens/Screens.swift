@@ -58,7 +58,6 @@ extension Screens {
 
     func createHome(delegate: HomeScreenDelegate?) -> HomeViewController {
         let repository = HomeRepository(networkClient: context.client,
-                                        dependanceType: .network,
                                         dataBaseEngine: context.dataBaseEngine,
                                         checker: context.userDefaultchecker)
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)

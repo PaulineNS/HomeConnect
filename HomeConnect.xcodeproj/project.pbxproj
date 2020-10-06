@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F47BCF725222B62005AEE3C /* UserDefaultChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */; };
 		5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5614E96E251E210700B3CA27 /* DeviceItem.swift */; };
 		5643646B2525A29300905271 /* LightViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643646A2525A29300905271 /* LightViewModelTests.swift */; };
 		564364752525A2B500905271 /* MockLightRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564364742525A2B500905271 /* MockLightRepository.swift */; };
@@ -43,6 +42,8 @@
 		56AFCF8E25223DAB00CF2B4B /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFCF8D25223DAB00CF2B4B /* HomeCellViewModel.swift */; };
 		56C446E2252C3C3500B96EDF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56C446E4252C3C3500B96EDF /* Localizable.strings */; };
 		56C4475E252C409F00B96EDF /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4475D252C409F00B96EDF /* String+Localized.swift */; };
+		56C447E1252C9DE300B96EDF /* MockDeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C447E0252C9DE300B96EDF /* MockDeviceResponse.swift */; };
+		56C447E5252CA3DE00B96EDF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C447E4252CA3DE00B96EDF /* UserDefault.swift */; };
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
@@ -96,7 +97,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultChecker.swift; sourceTree = "<group>"; };
 		5614E96E251E210700B3CA27 /* DeviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceItem.swift; sourceTree = "<group>"; };
 		5643646A2525A29300905271 /* LightViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModelTests.swift; sourceTree = "<group>"; };
 		564364742525A2B500905271 /* MockLightRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLightRepository.swift; sourceTree = "<group>"; };
@@ -134,6 +134,8 @@
 		56C446E3252C3C3500B96EDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		56C446E7252C3C3700B96EDF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		56C4475D252C409F00B96EDF /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		56C447E0252C9DE300B96EDF /* MockDeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeviceResponse.swift; sourceTree = "<group>"; };
+		56C447E4252CA3DE00B96EDF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				56437A6F25251EBD00CD5C44 /* HomeViewModelTest.swift */,
 				56437A752525216E00CD5C44 /* HomeRepositoryTests.swift */,
 				56437A792525250900CD5C44 /* MockHomeRepository.swift */,
+				56C447E0252C9DE300B96EDF /* MockDeviceResponse.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -387,7 +390,7 @@
 				56D7E07E251C9CF700DD5B37 /* HomeViewController.swift */,
 				56D7E09F251C9D5400DD5B37 /* HomeViewModel.swift */,
 				56D7E111251DC9F200DD5B37 /* HomeRepository.swift */,
-				2F47BCF625222B62005AEE3C /* UserDefaultChecker.swift */,
+				56C447E4252CA3DE00B96EDF /* UserDefault.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -657,7 +660,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F47BCF725222B62005AEE3C /* UserDefaultChecker.swift in Sources */,
 				56D7E0A0251C9D5400DD5B37 /* HomeViewModel.swift in Sources */,
 				56D7E07A251C9C1600DD5B37 /* RequestCancellationToken.swift in Sources */,
 				569581372521C92D005EACA7 /* PositionFilterTableViewCell.swift in Sources */,
@@ -689,6 +691,7 @@
 				56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */,
 				564364C92525EA2500905271 /* UserItem+DeviceResponse.swift in Sources */,
 				56C4475E252C409F00B96EDF /* String+Localized.swift in Sources */,
+				56C447E5252CA3DE00B96EDF /* UserDefault.swift in Sources */,
 				56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */,
 				56DA60ED25237F2F0005F7CE /* UpdateProfileRepository.swift in Sources */,
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
@@ -725,6 +728,7 @@
 			files = (
 				5643649B2525CA1100905271 /* MockHeaterRepository.swift in Sources */,
 				564364912525C50400905271 /* MockRollerShutterRepository.swift in Sources */,
+				56C447E1252C9DE300B96EDF /* MockDeviceResponse.swift in Sources */,
 				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
 				56437A4A2524FB6600CD5C44 /* DataBaseEngineTests.swift in Sources */,
 				5643649F2525CA1D00905271 /* HeaterViewModelTests.swift in Sources */,
@@ -824,7 +828,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -880,7 +884,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -898,7 +902,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = "$(SRCROOT)/HomeConnect/Ressources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -918,7 +922,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = "$(SRCROOT)/HomeConnect/Ressources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -939,7 +943,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = HomeConnectTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -964,7 +968,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYWPUALU4A;
 				INFOPLIST_FILE = HomeConnectTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

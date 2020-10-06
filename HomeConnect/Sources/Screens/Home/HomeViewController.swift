@@ -29,14 +29,6 @@ final class HomeViewController: UIViewController {
         return collection
     }()
 
-//    private lazy var filterButton: UIBarButtonItem = {
-//        let filterButton = UIBarButtonItem(title: filterIconName,
-//                        style: .plain,
-//                        target: self,
-//                        action: #selector(didTapFilterButton))
-//        return filterButton
-//    }()
-
     private lazy var profileButton: UIBarButtonItem = {
         let profileButton = UIBarButtonItem(image: UIImage(named: profileIconName),
                                             style: .plain,
@@ -63,7 +55,7 @@ final class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.viewWillAppear()
+        viewModel.start()
         setNavigationBar()
         setCollectionView()
         collectionView.delegate = source
@@ -74,7 +66,6 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         bind(to: source)
         bind(to: viewModel)
-        viewModel.viewDidLoad()
     }
 
     // MARK: - Bindings
@@ -87,8 +78,8 @@ final class HomeViewController: UIViewController {
         viewModel.homeTitle = { [weak self] title in
             self?.navigationController?.navigationBar.topItem?.title = title
         }
-        viewModel.devicesDisplayed = { [weak self] devices in
-            self?.source.updateCell(with: devices)
+        viewModel.items = { [weak self] items in
+            self?.source.updateCell(with: items)
             self?.collectionView.reloadData()
         }
         viewModel.profileIconName = { [weak self] name in
@@ -98,7 +89,7 @@ final class HomeViewController: UIViewController {
             self?.filterIconName = name
         }
     }
-    
+
     // MARK: - Public
 
     func didSelectFilters(deviceItems: [DeviceItem]) {

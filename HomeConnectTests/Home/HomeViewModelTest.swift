@@ -37,16 +37,6 @@ class MockHomeScreenDelegate: HomeScreenDelegate {
 
 class HomeViewModelTests: XCTestCase {
 
-    let deviceItem: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
-    let userItem = UserItem(firstName: "Pauline",
-                            lastName: "Nomballais",
-                            birthDate: "100591",
-                            city: "Paris",
-                            postalCode: 75001,
-                            street: "Paris",
-                            streetCode: "44",
-                            country: "France")
-
     let repository = MockHomeRepository()
     var delegate = MockHomeScreenDelegate()
 
@@ -54,14 +44,14 @@ class HomeViewModelTests: XCTestCase {
 
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
-        let expectation0 = self.expectation(description: "Diplayed filterIconName")
+//        let expectation0 = self.expectation(description: "Diplayed filterIconName")
         let expectation1 = self.expectation(description: "Diplayed homeTitle")
         let expectation2 = self.expectation(description: "Diplayed profileIconName")
 
-        viewModel.filterIconName = { name in
-            XCTAssertEqual(name, "filter_title".localized)
-            expectation0.fulfill()
-        }
+//        viewModel.filterIconName = { name in
+//            XCTAssertEqual(name, "filter_title".localized)
+//            expectation0.fulfill()
+//        }
         viewModel.homeTitle = { title in
             XCTAssertEqual(title, "home_title".localized)
             expectation1.fulfill()
@@ -71,25 +61,24 @@ class HomeViewModelTests: XCTestCase {
             expectation2.fulfill()
         }
 
-        viewModel.viewDidLoad()
-        viewModel.viewWillAppear()
+        viewModel.start()
 
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
     func test_Given_ViewModel_When_viewWillAppear_WithNetwork_Then_visibleDevicesAreDiplayed() {
 
+        repository.deviceItem = (mockDeviceResponse?.devices!.map { DeviceItem(device: $0)! })!
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
         let expectation = self.expectation(description: "Diplayed devicesDiplayes")
 
-        viewModel.devicesDisplayed = { devices in
+        viewModel.items = { devices in
             XCTAssertEqual(devices, self.repository.deviceItem)
             expectation.fulfill()
         }
 
-        viewModel.viewDidLoad()
-        viewModel.viewWillAppear()
+        viewModel.start()
 
         waitForExpectations(timeout: 1.0, handler: nil)
     }
@@ -98,7 +87,6 @@ class HomeViewModelTests: XCTestCase {
 
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
-        viewModel.viewDidLoad()
         viewModel.didSelectProfileButton()
 
         XCTAssertEqual(delegate.didShowProfileView, true)
@@ -108,7 +96,6 @@ class HomeViewModelTests: XCTestCase {
 
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
-        viewModel.viewDidLoad()
         viewModel.didSelectFilterButton()
 
         XCTAssertEqual(delegate.didShowFilterView, true)

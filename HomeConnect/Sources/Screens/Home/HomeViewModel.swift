@@ -20,12 +20,11 @@ final class HomeViewModel {
                 delegate?.homeScreenShouldDisplayAlert(for: .noDevicesError)
                 return
             }
-            devicesDisplayed?(deviceItems)
+            items?(deviceItems)
         }
     }
-    
-    private var unFilteredItems: [DeviceItem] = []
 
+    private var unFilteredItems: [DeviceItem] = []
 
     // MARK: - Initializer
 
@@ -38,13 +37,15 @@ final class HomeViewModel {
     // MARK: - Outputs
 
     var homeTitle: ((String) -> Void)?
-    var devicesDisplayed: (([DeviceItem]) -> Void)?
+    var items: (([DeviceItem]) -> Void)?
     var profileIconName: ((String) -> Void)?
     var filterIconName: ((String) -> Void)?
 
     // MARK: - Life cycle
 
-    func viewWillAppear() {
+    func start() {
+        homeTitle?("home_title".localized)
+        profileIconName?("profile")
         if fromFilter {
             fromFilter = false
             filterIconName?("réinintialiser")
@@ -52,12 +53,6 @@ final class HomeViewModel {
             getAllDevices()
             filterIconName?("filter_title".localized)
         }
-    }
-
-    func viewDidLoad() {
-        homeTitle?("home_title".localized)
-        profileIconName?("profile")
-        filterIconName?("filter_title".localized)
     }
 
     // MARK: - Inputs
@@ -94,20 +89,16 @@ final class HomeViewModel {
     // MARK: - Private Methods
 
     private func getAllDevices() {
-        repository.getUserDevices(success: { [weak self] deviceResponse, _ in
+        repository.getDevices { [weak self] result in
             DispatchQueue.main.async {
-                self?.deviceItems = deviceResponse
-                self?.unFilteredItems = deviceResponse
+                switch result {
+                case let .success(deviceItems):
+                    self?.deviceItems = deviceItems
+                    self?.unFilteredItems = deviceItems
+                case .failure:
+                    self?.delegate?.homeScreenShouldDisplayAlert(for: .networkError)
+                }
             }
-        }, failure: { [weak self] in
-            DispatchQueue.main.async {
-                self?.delegate?.homeScreenShouldDisplayAlert(for: .networkError)
-            }
-        }, completion: { [weak self] persistence in
-            DispatchQueue.main.async {
-                self?.deviceItems = persistence
-                self?.unFilteredItems = persistence
-            }
-        })
+        }
     }
 }

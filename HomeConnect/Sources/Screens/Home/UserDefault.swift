@@ -1,8 +1,8 @@
 //
-//  UserDefaultChecker.swift
+//  UserDefault.swift
 //  HomeConnect
 //
-//  Created by Bertrand BLOC'H on 28/09/2020.
+//  Created by Pauline Nomballais on 06/10/2020.
 //
 
 import Foundation
@@ -14,7 +14,11 @@ protocol UserDefaultsType {
 
 extension UserDefaults: UserDefaultsType {}
 
-struct UserDefaultChecker {
+protocol UserDefaultCheckerType {
+    func hasAlreadyBeenLaunched() -> Bool
+}
+
+struct UserDefaultChecker: UserDefaultCheckerType {
 
     // MARK: - Properties
 

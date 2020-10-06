@@ -38,7 +38,7 @@ final class FiltersViewModel {
     }
 
     func searchDeviceWithFilters(productType: String,
-                                 mode: String,
+                                 mode: String? = nil,
                                  settings: String,
                                  settingsValue: String) {
         repository.searchDevice(productType: productType,

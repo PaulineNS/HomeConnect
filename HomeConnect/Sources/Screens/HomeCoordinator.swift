@@ -140,7 +140,7 @@ extension HomeCoordinator: FiltersScreenDelegate {
     func filtersScreenShouldDisplayAlert(for type: AlertType) {
         showSimpleAlert(for: type)
     }
-    
+
     func filtersScreenDidSelectSearchButton(device: [DeviceItem]) {
         homeViewController?.didSelectFilters(deviceItems: device)
         navigationController.dismiss(animated: true, completion: nil)

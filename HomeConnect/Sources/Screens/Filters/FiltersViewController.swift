@@ -114,7 +114,7 @@ final class FiltersViewController: UIViewController {
         case 1:
             guard let settings = source.dictionnaryOfCells["position"] else {return}
             viewModel.searchDeviceWithFilters(productType: "RollerShutter",
-                                              mode: mode,
+                                              mode: nil,
                                               settings: "position",
                                               settingsValue: settings)
         case 2:

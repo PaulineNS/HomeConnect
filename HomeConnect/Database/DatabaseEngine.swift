@@ -44,12 +44,16 @@ open class DataBaseEngine {
         switch deviceItem.productType {
         case .heater(let mode, let temperature):
             device.productType = "Heater"
-            device.mode = mode
-            device.temperature = temperature
+            let deviceMode = temperature == "0" ? "OFF" : mode
+            device.mode = deviceMode
+            let deviceTemperature = mode == "OFF" ? "0" : temperature
+            device.temperature = deviceTemperature
         case .light(let mode, let intensity):
             device.productType = "Light"
-            device.mode = mode
-            device.intensity = intensity
+            let deviceMode = intensity == "0" ? "OFF" : mode
+            device.mode = deviceMode
+            let deviceIntensity = mode == "OFF" ? "0" : intensity
+            device.intensity = deviceIntensity
         case .rollerShutter(let position):
             device.productType = "RollerShutter"
             device.position = position
@@ -123,9 +127,39 @@ open class DataBaseEngine {
     }
 
     func fetchDevicesWithFilters(productType: String,
-                                 mode: String,
+                                 mode: String? = nil,
                                  settings: String,
                                  settingsValue: String) -> [DeviceAttributes] {
+        guard let mode = mode else {
+            return fetchDevicesWithTwoPredicates(productType: productType,
+                                                 settings: settings,
+                                                 settingsValue: settingsValue)
+        }
+        return fetchDevicesWithThreePredicates(productType: productType,
+                                               mode: mode,
+                                               settings: settings,
+                                               settingsValue: settingsValue)
+    }
+
+    private func fetchDevicesWithTwoPredicates(productType: String,
+                                               settings: String,
+                                               settingsValue: String) -> [DeviceAttributes] {
+        let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
+        let productTypePredicate = NSPredicate(format: "productType == %@", productType)
+        let settingsPredicate = NSPredicate(format: "\(settings) == %@", settingsValue)
+        let andPredicate = NSCompoundPredicate(type: .and,
+                                               subpredicates: [productTypePredicate, settingsPredicate])
+        request.predicate = andPredicate
+        guard let device = try? managedObjectContext.fetch(request) else {
+            return []
+        }
+        return device
+    }
+
+    private func fetchDevicesWithThreePredicates(productType: String,
+                                                 mode: String,
+                                                 settings: String,
+                                                 settingsValue: String) -> [DeviceAttributes] {
         let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
         let productTypePredicate = NSPredicate(format: "productType == %@", productType)
         let modePredicate = NSPredicate(format: "mode == %@", mode)
@@ -137,6 +171,5 @@ open class DataBaseEngine {
             return []
         }
         return device
-
     }
 }

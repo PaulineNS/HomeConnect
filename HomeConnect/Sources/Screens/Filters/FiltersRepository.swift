@@ -9,7 +9,7 @@ import Foundation
 
 protocol FiltersRepositoryType: class {
     func searchDevice(productType: String,
-                      mode: String,
+                      mode: String?,
                       settings: String,
                       settingsValue: String,
                       completion: @escaping ([DeviceItem]) -> Void)
@@ -30,7 +30,7 @@ final class FiltersRepository: FiltersRepositoryType {
     // MARK: - FiltersRepositoryType
 
     func searchDevice(productType: String,
-                      mode: String,
+                      mode: String? = nil,
                       settings: String,
                       settingsValue: String,
                       completion: @escaping ([DeviceItem]) -> Void) {

@@ -79,7 +79,7 @@ final class RollerShutterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
-        viewModel.viewDidLoad()
+        viewModel.start()
         if let nnn = Int(rollerShutterPositionLabel.text ?? "") {
             rollerShutterPositionSlider.setValue(Float(nnn), animated: true)
         }

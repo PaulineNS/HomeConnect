@@ -88,11 +88,10 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
     }
 
     @objc func didTapMinusButton() {
-        guard temperature < 28.0 else { return }
-        if temperature < 7.0 {
-            temperature = 6.5
+        guard temperature > 7.0 else {
+            return
         }
-        temperature += 0.5
+        temperature -= 0.5
         temperatureValueLabel.text = "\(temperature)"
         delegate?.didChangeTemperatureValue(with: "\(temperature)")
     }

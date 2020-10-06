@@ -59,7 +59,7 @@ class UpdateProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.viewWillAppear()
+        viewModel.start()
         setNavigationBar()
         setTableView()
         tableView.delegate = source
@@ -70,7 +70,6 @@ class UpdateProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         bind(to: viewModel)
-        viewModel.viewDidLoad()
     }
 
     private func bind(to viewModel: UpdateProfileViewModel) {

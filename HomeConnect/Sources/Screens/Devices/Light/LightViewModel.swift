@@ -41,7 +41,7 @@ final class LightViewModel {
 
     // MARK: - Inputs
 
-    func viewDidLoad() {
+    func start() {
         lightName?("\(device.deviceName)")
         lightDeleteIconName?("dustbin")
         lightOnSwitchName?("on_status".localized)

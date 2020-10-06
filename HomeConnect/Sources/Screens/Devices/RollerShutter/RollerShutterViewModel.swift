@@ -37,7 +37,7 @@ final class RollerShutterViewModel {
 
     // MARK: - Input
 
-    func viewDidLoad() {
+    func start() {
         rollerName?("\(device.deviceName)")
         rollerDeleteIconName?("dustbin")
         rollerSaveButtonTilte?("save_button".localized)

@@ -46,11 +46,8 @@ final class ProfileViewModel {
 
     // MARK: - Life cycle
 
-    func viewWillAppear() {
+    func start() {
         getUser()
-    }
-
-    func viewDidLoad() {
         updateIconName?("update_profile".localized)
         closeIconName?("crossClose")
     }

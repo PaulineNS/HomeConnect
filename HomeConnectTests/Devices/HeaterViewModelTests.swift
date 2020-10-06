@@ -45,7 +45,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation3.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
@@ -87,7 +87,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation3.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didChangeModeSwitchValue(withOnvalue: false)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
@@ -126,7 +126,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation3.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didPressPlusButton()
         waitForExpectations(timeout: 1.0, handler: nil)
     }
@@ -165,7 +165,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation3.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didPressMinusButton()
         waitForExpectations(timeout: 1.0, handler: nil)
     }

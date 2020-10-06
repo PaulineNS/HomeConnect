@@ -130,7 +130,7 @@ final class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.viewWillAppear()
+        viewModel.start()
         setUI()
         setNavigationBar()
     }
@@ -138,7 +138,6 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
-        viewModel.viewDidLoad()
     }
 
     // MARK: - Privates Methods

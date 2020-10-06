@@ -40,7 +40,7 @@ class RollerShutterViewModelTests: XCTestCase {
             expectation2.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
@@ -72,7 +72,7 @@ class RollerShutterViewModelTests: XCTestCase {
             XCTAssertEqual(name, "dustbin")
             expectation2.fulfill()
         }
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didChangeRollerPosition(with: 100)
         waitForExpectations(timeout: 1.0, handler: nil)
     }

@@ -125,7 +125,7 @@ final class LightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
-        viewModel.viewDidLoad()
+        viewModel.start()
         if let intensityValue = Int(lightIntensityLabel.text ?? "") {
             lightIntensitySlider.setValue(Float(intensityValue), animated: true)
         }

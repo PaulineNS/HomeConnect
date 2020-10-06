@@ -78,7 +78,7 @@ class ProfileViewModelTests: XCTestCase {
             expectation5.fulfill()
         }
 
-        viewModel.viewWillAppear()
+        viewModel.start()
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
@@ -86,7 +86,7 @@ class ProfileViewModelTests: XCTestCase {
 
         let viewModel = ProfileViewModel(repository: repository, delegate: delegate)
 
-        viewModel.viewWillAppear()
+        viewModel.start()
         viewModel.didSelectUpdateProfileButton()
 
         XCTAssertEqual(delegate.didShowUpdateProfileView, true)

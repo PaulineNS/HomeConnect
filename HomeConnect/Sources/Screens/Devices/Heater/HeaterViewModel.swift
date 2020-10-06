@@ -41,7 +41,7 @@ final class HeaterViewModel {
 
     // MARK: - Input
 
-    func viewDidLoad() {
+    func start() {
         heaterName?("\(device.deviceName)")
         heaterDeleteIconName?("dustbin")
         defineModeAndTemperature(for: device)

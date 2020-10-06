@@ -69,7 +69,7 @@ class LightViewModelTests: XCTestCase {
             expectation4.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
@@ -109,7 +109,7 @@ class LightViewModelTests: XCTestCase {
                 expectation4.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didChangeModeSwitchValue(withOnvalue: false)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
@@ -150,7 +150,7 @@ class LightViewModelTests: XCTestCase {
                 expectation4.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didChangeLightIntensity(with: 0)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
@@ -191,7 +191,7 @@ class LightViewModelTests: XCTestCase {
                 expectation4.fulfill()
         }
 
-        viewModel.viewDidLoad()
+        viewModel.start()
         viewModel.didChangeLightIntensity(with: 10)
         waitForExpectations(timeout: 1.0, handler: nil)
     }

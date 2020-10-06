@@ -39,11 +39,8 @@ final class UpdateProfileViewModel {
 
     // MARK: - Life cycle
 
-    func viewWillAppear() {
+    func start() {
         getUser()
-    }
-
-    func viewDidLoad() {
         saveIconName?("save_button".localized)
     }
 

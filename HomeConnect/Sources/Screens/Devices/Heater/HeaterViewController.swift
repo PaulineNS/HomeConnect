@@ -151,7 +151,7 @@ final class HeaterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
-        viewModel.viewDidLoad()
+        viewModel.start()
     }
 
     // MARK: - Private Functions

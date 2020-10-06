@@ -82,7 +82,7 @@ final class FiltersViewController: UIViewController {
         tableView.delegate = source
         tableView.dataSource = source
         bind(to: viewModel)
-        viewModel.viewDidLoad()
+        viewModel.start()
         configure()
     }
 
@@ -92,7 +92,7 @@ final class FiltersViewController: UIViewController {
         productTypeSegmentedControl.anchor(top: safeArea.topAnchor,
                                            left: safeArea.leftAnchor,
                                            right: safeArea.rightAnchor,
-                                           height: 100)
+                                           height: 60)
         tableView.anchor(top: productTypeSegmentedControl.bottomAnchor,
                          left: safeArea.leftAnchor,
                          bottom: safeArea.bottomAnchor,

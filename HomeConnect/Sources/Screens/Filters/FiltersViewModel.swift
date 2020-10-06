@@ -32,7 +32,7 @@ final class FiltersViewModel {
     var searchIconName: ((String) -> Void)?
     var closeIconName: ((String) -> Void)?
 
-    func viewDidLoad() {
+    func start() {
         searchIconName?("filter_search_title".localized)
         closeIconName?("crossClose")
     }

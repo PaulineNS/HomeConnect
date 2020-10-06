@@ -16,6 +16,16 @@ final class FiltersViewController: UIViewController {
     private lazy var searchIconTitleName: String = ""
     private lazy var closeIconName: String = ""
 
+    private let productTypeSegmentedControl: UISegmentedControl = {
+        let segmentedControlItems: [String] = ["heater_object".localized,
+                                               "roller_shutter_object".localized,
+                                               "light_object".localized]
+        let segmentedControl = UISegmentedControl(items: segmentedControlItems)
+        segmentedControl.addTarget(self, action: #selector(didChangeSegmentedControlValue), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
+
     private let tableView: UITableView = {
         let table = UITableView()
         table.tableFooterView = UIView()
@@ -68,21 +78,55 @@ final class FiltersViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .gray
         view.addSubview(tableView)
+        view.addSubview(productTypeSegmentedControl)
         tableView.delegate = source
         tableView.dataSource = source
         bind(to: viewModel)
         viewModel.viewDidLoad()
+        configure()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+    func configure() {
+        view.backgroundColor = .white
+        let safeArea = view.safeAreaLayoutGuide
+        productTypeSegmentedControl.anchor(top: safeArea.topAnchor,
+                                           left: safeArea.leftAnchor,
+                                           right: safeArea.rightAnchor,
+                                           height: 100)
+        tableView.anchor(top: productTypeSegmentedControl.bottomAnchor,
+                         left: safeArea.leftAnchor,
+                         bottom: safeArea.bottomAnchor,
+                         right: safeArea.rightAnchor,
+                         paddingTop: 10)
     }
 
     // MARK: - Selectors
 
     @objc func didTapSearchButton() {
-        viewModel.searchDeviceWithFilters()
+        guard let mode = source.dictionnaryOfCells["mode"] else { return }
+        switch productTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            guard let settings = source.dictionnaryOfCells["temperature"] else {return}
+            viewModel.searchDeviceWithFilters(productType: "Heater",
+                                              mode: mode,
+                                              settings: "temperature",
+                                              settingsValue: settings)
+        case 1:
+            guard let settings = source.dictionnaryOfCells["position"] else {return}
+            viewModel.searchDeviceWithFilters(productType: "RollerShutter",
+                                              mode: mode,
+                                              settings: "position",
+                                              settingsValue: settings)
+        case 2:
+            guard let settings = source.dictionnaryOfCells["intensity"] else {return}
+            viewModel.searchDeviceWithFilters(productType: "Light",
+                                              mode: mode,
+                                              settings: "intensity",
+                                              settingsValue: settings)
+        default:
+            return
+        }
+
     }
 
     @objc func didTapCrossButton() {
@@ -108,4 +152,10 @@ final class FiltersViewController: UIViewController {
             self?.closeIconName = name
         }
     }
+
+    @objc func didChangeSegmentedControlValue() {
+        source.segmentedControlIndex = productTypeSegmentedControl.selectedSegmentIndex
+        tableView.reloadData()
+    }
+
 }

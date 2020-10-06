@@ -12,6 +12,7 @@ final class IntensityFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "IntensityFilterTableViewCell"
+    weak var delegate: IntensityFilterTableViewCellDelegate?
 
     let intensitySlider: UISlider = {
         let slider = UISlider()
@@ -27,11 +28,11 @@ final class IntensityFilterTableViewCell: UITableViewCell {
 
     private let intensityLabel: UILabel = {
         let label = UILabel()
-        label.text = "Intensité (Lumière):"
+        label.text = "intensity_filter".localized
         return label
     }()
 
-    private let intensitySliderValue: UILabel = {
+    let intensitySliderValue: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.textAlignment = .center
@@ -74,6 +75,11 @@ final class IntensityFilterTableViewCell: UITableViewCell {
     @objc func didMoveIntensitySlider() {
         let value = Int(intensitySlider.value)
         intensitySliderValue.text = String(value)
+        delegate?.didChangeIntensityValue(with: String(value))
     }
 
+}
+
+protocol IntensityFilterTableViewCellDelegate: class {
+    func didChangeIntensityValue(with value: String)
 }

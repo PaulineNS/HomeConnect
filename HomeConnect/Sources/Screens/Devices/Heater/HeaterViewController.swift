@@ -34,7 +34,7 @@ final class HeaterViewController: UIViewController {
         heaterPlusButton.anchor(top: view.topAnchor,
                            left: temperatureLabel.rightAnchor,
                            bottom: view.bottomAnchor,
-                           paddingLeft: 15, height: 40)
+                           paddingLeft: 15)
         heaterPlusButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
         return view

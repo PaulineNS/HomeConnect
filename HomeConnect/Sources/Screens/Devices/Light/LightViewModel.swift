@@ -44,9 +44,9 @@ final class LightViewModel {
     func viewDidLoad() {
         lightName?("\(device.deviceName)")
         lightDeleteIconName?("dustbin")
-        lightOnSwitchName?("On ")
-        lightOffSwitchName?("Off")
-        lightSaveButtonTilte?("Enregistrer")
+        lightOnSwitchName?("on_status".localized)
+        lightOffSwitchName?("off_status".localized)
+        lightSaveButtonTilte?("save_button".localized)
         lightIntensityMaxImageName?("lightOn")
         lightIntensityMinImageName?("lightOff")
         defineLightAndIntensity(for: device)

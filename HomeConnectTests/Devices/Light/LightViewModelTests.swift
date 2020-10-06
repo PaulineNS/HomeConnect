@@ -11,7 +11,7 @@ import XCTest
 // MARK: - Mocks
 
 class MockDevicesScreenDelegate: DevicesScreensDelegate {
-    var alert: AlertType? = nil
+    var alert: AlertType?
     var didLeaveTheViewAfterDismiss = false
     var didLeaveTheViewAfterSave = false
 

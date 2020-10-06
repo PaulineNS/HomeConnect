@@ -12,6 +12,7 @@ final class ProductTypeFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "ProductTypeFilterTableViewCell"
+    weak var delegate: ProductTypeFilterTableViewCellDelegate?
 
     // MARK: - Private Properties
 
@@ -21,11 +22,11 @@ final class ProductTypeFilterTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let productTypeSegmentedControl: UISegmentedControl = {
+    let productTypeSegmentedControl: UISegmentedControl = {
         let segmentedControlItems: [String] = ["Radiateur", "Volet", "Lumière"]
         let segmentedControl = UISegmentedControl(items: segmentedControlItems)
-
-        segmentedControl.selectedSegmentIndex = 1
+//        segmentedControl.addTarget(self, action: #selector(didChangeSegmentedControlValue), for: .valueChanged)
+//        segmentedControl.selectedSegmentIndex = 1
         return segmentedControl
     }()
 
@@ -47,4 +48,27 @@ final class ProductTypeFilterTableViewCell: UITableViewCell {
                                height: 30)
     }
 
+    func getSegmentedControlIndex() -> Int {
+        let index = productTypeSegmentedControl.selectedSegmentIndex
+        switch index {
+        case 0:
+            return 1
+        case 1:
+            return 2
+        case 2:
+            return 3
+        default:
+            return 0
+        }
+    }
+
+    @objc func didChangeSegmentedControlValue() {
+        productTypeSegmentedControl.selectedSegmentIndex = productTypeSegmentedControl.selectedSegmentIndex
+        delegate?.didChangeSegmentedControlValue()
+    }
+
+}
+
+protocol ProductTypeFilterTableViewCellDelegate: class {
+    func didChangeSegmentedControlValue()
 }

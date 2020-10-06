@@ -44,7 +44,7 @@ final class UpdateProfileViewModel {
     }
 
     func viewDidLoad() {
-        saveIconName?("Enregistrer")
+        saveIconName?("save_button".localized)
     }
 
     // MARK: - Inputs

@@ -40,7 +40,7 @@ final class RollerShutterViewModel {
     func viewDidLoad() {
         rollerName?("\(device.deviceName)")
         rollerDeleteIconName?("dustbin")
-        rollerSaveButtonTilte?("Enregistrer")
+        rollerSaveButtonTilte?("save_button".localized)
         rollerPositionMaxImageName?("open")
         rollerPositionMinImageName?("close")
         definePostion(for: device)

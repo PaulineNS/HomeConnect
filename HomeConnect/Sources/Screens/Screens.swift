@@ -43,6 +43,7 @@ protocol ProfileScreenDelegate: class {
 
 protocol FiltersScreenDelegate: class {
     func filtersScreenDidSelectCloseButton()
+    func filtersScreenDidSelectSearchButton(device: [DeviceItem])
 }
 
 protocol UpdateProfileScreensDelegate: class {
@@ -54,7 +55,7 @@ protocol UpdateProfileScreensDelegate: class {
 
 extension Screens {
 
-    func createHome(delegate: HomeScreenDelegate?) -> UIViewController {
+    func createHome(delegate: HomeScreenDelegate?) -> HomeViewController {
         let repository = HomeRepository(networkClient: context.client,
                                         dependanceType: .network,
                                         dataBaseEngine: context.dataBaseEngine,

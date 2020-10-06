@@ -122,12 +122,17 @@ open class DataBaseEngine {
         dataBaseStack.saveContext()
     }
 
-    func fetchDevicesWithFilters() -> [DeviceAttributes] {
+    func fetchDevicesWithFilters(productType: String,
+                                 mode: String,
+                                 settings: String,
+                                 settingsValue: String) -> [DeviceAttributes] {
         let request: NSFetchRequest<DeviceAttributes> = DeviceAttributes.fetchRequest()
-
-        let predicate = NSPredicate(format: "productType == %@", "Light")
-        request.predicate = predicate
-
+        let productTypePredicate = NSPredicate(format: "productType == %@", productType)
+        let modePredicate = NSPredicate(format: "mode == %@", mode)
+        let settingsPredicate = NSPredicate(format: "\(settings) == %@", settingsValue)
+        let andPredicate = NSCompoundPredicate(type: .and,
+                                               subpredicates: [productTypePredicate, modePredicate, settingsPredicate])
+        request.predicate = andPredicate
         guard let device = try? managedObjectContext.fetch(request) else { return [] }
         return device
 

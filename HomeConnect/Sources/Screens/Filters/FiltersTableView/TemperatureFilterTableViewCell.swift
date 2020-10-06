@@ -12,6 +12,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "TemperatureFilterTableViewCell"
+    weak var delegate: TemperatureFilterTableViewCellDelegate?
 
     let heaterPlusButton: UIButton = {
         let button = UIButton()
@@ -29,9 +30,9 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
 
     private var temperature = 0.0
 
-    private let temperatureLabel: UILabel = {
+    let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.text = "Température (Radiateurs):"
+        label.text = "temperature_filter".localized
         return label
     }()
 
@@ -70,8 +71,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
                               paddingTop: 10, paddingLeft: 10, height: 30)
         temperatureValueLabel.anchor(width: 50, height: 30)
         temperatureStackView.anchor(top: temperatureLabel.bottomAnchor,
-                               paddingTop: 10
-                           )
+                               paddingTop: 10)
         temperatureStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
 
@@ -84,6 +84,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
         }
         temperature += 0.5
         temperatureValueLabel.text = "\(temperature)"
+        delegate?.didChangeTemperatureValue(with: "\(temperature)")
     }
 
     @objc func didTapMinusButton() {
@@ -93,5 +94,10 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
         }
         temperature += 0.5
         temperatureValueLabel.text = "\(temperature)"
+        delegate?.didChangeTemperatureValue(with: "\(temperature)")
     }
+}
+
+protocol TemperatureFilterTableViewCellDelegate: class {
+    func didChangeTemperatureValue(with value: String)
 }

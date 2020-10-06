@@ -99,6 +99,12 @@ final class HomeViewController: UIViewController {
         }
     }
 
+    // MARK: - Public
+
+    func didSelectFilters(deviceItems: [DeviceItem]) {
+        viewModel.getFilteredItems(deviceItems: deviceItems)
+    }
+
     // MARK: - Configure UI
 
     private func setNavigationBar() {

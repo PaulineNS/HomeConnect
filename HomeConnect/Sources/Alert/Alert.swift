@@ -26,22 +26,22 @@ extension Alert {
         switch type {
         case .networkError:
             self = Alert(title: "😲",
-                         message: "Veuillez réesayer ultérieurement...")
+                         message: "alert_networkError".localized)
         case .noDevicesError:
             self = Alert(title: "🔄",
-                         message: "Pas d'objet trouvés. Veuillez réinitialiser votre comptre dans votre profil.")
+                         message: "alert_no_devices".localized)
         case .maximumTemperatureReached:
             self = Alert(title: "🔥",
-                         message: "Vous avez atteint la température maximale")
+                         message: "alert_max_temperature".localized)
         case .minimumTemperatureReached:
             self = Alert(title: "🥶",
-                         message: "Vous avez atteint la température minimale")
+                         message: "alert_min_temperature".localized)
         case .deleteDevice:
             self = Alert(title: "🗑️",
-                         message: "Voulez-vous vraiment supprimer cet objet ?")
+                         message: "alert_deletion".localized)
         case .noUserError:
             self = Alert(title: "😶",
-                         message: "Problème de téléchargement. Veuillez réessayer ultérieurement.")
+                         message: "alert_no_user".localized)
         }
     }
 }

@@ -18,7 +18,7 @@ final class ProfileViewModel {
             guard let userBirthDate = user.first?.birthDate else {return}
             profileImageName?("profilePicture")
             userName?("\(user.first?.firstName ?? "") \(user.first?.lastName ?? "")")
-            userAge?("Né le : \(userBirthDate)")
+            userAge?("profile_birth_date_title".localized + "\(userBirthDate)")
             userStreet?("\(user.first?.streetCode ?? ""), \(user.first?.street ?? "")")
             userCity?("\(user.first?.postalCode ?? 0), \(user.first?.city ?? "")")
             userCountry?("\(user.first?.country ?? "")")
@@ -51,7 +51,7 @@ final class ProfileViewModel {
     }
 
     func viewDidLoad() {
-        updateIconName?("Modifier")
+        updateIconName?("update_profile".localized)
         closeIconName?("crossClose")
     }
 

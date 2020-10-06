@@ -12,16 +12,17 @@ final class PositionFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "PositionFilterTableViewCell"
+    weak var delegate: PositionFilterTableViewCellDelegate?
 
     // MARK: - Private Properties
 
     private let positionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Position (Volets):"
+        label.text = "position_filter".localized
         return label
     }()
 
-    private let positionSliderValue: UILabel = {
+    let positionSliderValue: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.textAlignment = .center
@@ -74,6 +75,11 @@ final class PositionFilterTableViewCell: UITableViewCell {
     @objc func didMovePositionSlider() {
         let value = Int(positionSlider.value)
         positionSliderValue.text = String(value)
+        delegate?.didChangePositionValue(with: String(value))
     }
 
+}
+
+protocol PositionFilterTableViewCellDelegate: class {
+    func didChangePositionValue(with value: String)
 }

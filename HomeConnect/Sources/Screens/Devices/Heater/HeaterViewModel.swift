@@ -45,9 +45,9 @@ final class HeaterViewModel {
         heaterName?("\(device.deviceName)")
         heaterDeleteIconName?("dustbin")
         defineModeAndTemperature(for: device)
-        heaterSwitchOnText?("On")
-        heaterSwitchOffText?("Off")
-        heaterSaveButtonTitle?("Enregistrer")
+        heaterSwitchOnText?("on_status".localized)
+        heaterSwitchOffText?("off_status".localized)
+        heaterSaveButtonTitle?("save_button".localized)
         heaterPlusButtonImageName?("plusIcon")
         heaterMinButtonImageName?("minusIcon")
     }

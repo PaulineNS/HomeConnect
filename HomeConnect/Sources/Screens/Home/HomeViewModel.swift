@@ -13,15 +13,19 @@ final class HomeViewModel {
 
     private let repository: HomeRepositoryType
     private weak var delegate: HomeScreenDelegate?
-    private var devices: [DeviceItem] = [] {
+    private var fromFilter = false
+    private var deviceItems: [DeviceItem] = [] {
         didSet {
-            guard !devices.isEmpty else {
+            guard !deviceItems.isEmpty else {
                 delegate?.homeScreenShouldDisplayAlert(for: .noDevicesError)
                 return
             }
-            devicesDisplayed?(devices)
+            devicesDisplayed?(deviceItems)
         }
     }
+    
+    private var unFilteredItems: [DeviceItem] = []
+
 
     // MARK: - Initializer
 
@@ -41,13 +45,17 @@ final class HomeViewModel {
     // MARK: - Life cycle
 
     func viewWillAppear() {
-        getAllDevices()
+        if fromFilter {
+            fromFilter = false
+        } else {
+            getAllDevices()
+        }
     }
 
     func viewDidLoad() {
-        homeTitle?("Mes Objets")
+        homeTitle?("home_title".localized)
         profileIconName?("profile")
-        filterIconName?("Filtrer")
+        filterIconName?("filter_title".localized)
     }
 
     // MARK: - Inputs
@@ -63,13 +71,24 @@ final class HomeViewModel {
     func didSelectFilterButton() {
         delegate?.homeScreenDidSelectFilter()
     }
+    
+    func getFilteredItems(deviceItems: [DeviceItem]) {
+        fromFilter = true
+        filterIconName?("réinintialiser")
+        self.deviceItems = deviceItems
+    }
+
+    func resetFilters() {
+        self.deviceItems = unFilteredItems
+    }
 
     // MARK: - Private Methods
 
     private func getAllDevices() {
         repository.getUserDevices(success: { [weak self] deviceResponse, _ in
             DispatchQueue.main.async {
-                self?.devices = deviceResponse
+                self?.deviceItems = deviceResponse
+                self?.unFilteredItems = deviceResponse
             }
         }, failure: { [weak self] in
             DispatchQueue.main.async {
@@ -77,7 +96,7 @@ final class HomeViewModel {
             }
         }, completion: { [weak self] persistence in
             DispatchQueue.main.async {
-                self?.devices = persistence
+                self?.deviceItems = persistence
             }
         })
     }

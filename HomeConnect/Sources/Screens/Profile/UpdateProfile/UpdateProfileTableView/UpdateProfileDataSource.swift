@@ -12,13 +12,13 @@ final class UpdateProfileDataSource: NSObject {
     // MARK: - Public properties
 
     var arrayOfCells: [String] = []
-    let textFieldTypeData = ["Prénom :",
-                             "Nom :",
-                             "N° de rue :",
-                             "Nom de Rue :",
-                             "Code Postal :",
-                             "Ville :",
-                             "Pays :"]
+    let textFieldTypeData = ["update_profile_first_name".localized,
+                             "update_profile_last_name".localized,
+                             "update_profile_street_number".localized,
+                             "update_profile_street_name".localized,
+                             "update_profile_postal_code".localized,
+                             "update_profile_city".localized,
+                             "update_profile_country".localized]
 
     // MARK: - Private properties
 

@@ -8,7 +8,11 @@
 import Foundation
 
 protocol FiltersRepositoryType: class {
-    func searchDevice(completion: @escaping ([DeviceItem]) -> Void)
+    func searchDevice(productType: String,
+                      mode: String,
+                      settings: String,
+                      settingsValue: String,
+                      completion: @escaping ([DeviceItem]) -> Void)
 }
 
 final class FiltersRepository: FiltersRepositoryType {
@@ -25,8 +29,15 @@ final class FiltersRepository: FiltersRepositoryType {
 
     // MARK: - FiltersRepositoryType
 
-    func searchDevice(completion: @escaping ([DeviceItem]) -> Void) {
-        let devices = dataBaseEngine.fetchDevicesWithFilters()
+    func searchDevice(productType: String,
+                      mode: String,
+                      settings: String,
+                      settingsValue: String,
+                      completion: @escaping ([DeviceItem]) -> Void) {
+        let devices = dataBaseEngine.fetchDevicesWithFilters(productType: productType,
+                                                             mode: mode,
+                                                             settings: settings,
+                                                             settingsValue: settingsValue)
         let deviceItem = devices.compactMap {
             DeviceItem(device: $0)
         }

@@ -12,12 +12,13 @@ final class ModeFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "ModeFilterTableViewCell"
+    weak var delegate: ModeFilterTableViewCellDelegate?
 
     // MARK: - Private Properties
 
     private let modeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mode :"
+        label.text = "mode_filter".localized
         return label
     }()
 
@@ -34,21 +35,21 @@ final class ModeFilterTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    private let modeSwitch: UISwitch = {
+    let modeSwitch: UISwitch = {
         let mySwitch = UISwitch()
         return mySwitch
     }()
 
     private lazy var modeOnLabel: UILabel = {
         let label = UILabel()
-        label.text = "On"
+        label.text = "on_status".localized
         label.textAlignment = .center
         return label
     }()
 
     private lazy var modeOffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Off"
+        label.text = "off_status".localized
         label.textAlignment = .center
         return label
     }()
@@ -66,4 +67,12 @@ final class ModeFilterTableViewCell: UITableViewCell {
                           paddingTop: 10)
         modeStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
+
+    @objc func didChangeSwitchValue() {
+        delegate?.didChangeModeSwitchValue(to: modeSwitch.isOn)
+    }
+}
+
+protocol ModeFilterTableViewCellDelegate: class {
+    func didChangeModeSwitchValue(to value: Bool)
 }

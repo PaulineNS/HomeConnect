@@ -41,6 +41,8 @@
 		5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */; };
 		5695814B2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */; };
 		56AFCF8E25223DAB00CF2B4B /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AFCF8D25223DAB00CF2B4B /* HomeCellViewModel.swift */; };
+		56C446E2252C3C3500B96EDF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56C446E4252C3C3500B96EDF /* Localizable.strings */; };
+		56C4475E252C409F00B96EDF /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4475D252C409F00B96EDF /* String+Localized.swift */; };
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
@@ -128,6 +130,10 @@
 		5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFilterTableViewCell.swift; sourceTree = "<group>"; };
 		5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AutoLayoutAnchor.swift"; sourceTree = "<group>"; };
 		56AFCF8D25223DAB00CF2B4B /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
+		56C446DB252C3B8600B96EDF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		56C446E3252C3C3500B96EDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		56C446E7252C3C3700B96EDF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		56C4475D252C409F00B96EDF /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
@@ -302,6 +308,7 @@
 				564364CC2525EA4B00905271 /* UserItem+UserAttributes.swift */,
 				564364D02525EADC00905271 /* ProductType+DeviceAttributes.swift */,
 				564364D42525EB0300905271 /* ProductType+DeviceResponse.swift */,
+				56C4475D252C409F00B96EDF /* String+Localized.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,6 +375,7 @@
 				56D7DFF4251C903500DD5B37 /* Info.plist */,
 				56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */,
 				56D7DFEF251C903500DD5B37 /* Assets.xcassets */,
+				56C446E4252C3C3500B96EDF /* Localizable.strings */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -591,6 +599,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 56D7DFD7251C903400DD5B37;
 			productRefGroup = 56D7DFE1251C903400DD5B37 /* Products */;
@@ -609,6 +618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56D7DFF3251C903500DD5B37 /* LaunchScreen.storyboard in Resources */,
+				56C446E2252C3C3500B96EDF /* Localizable.strings in Resources */,
 				56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,6 +688,7 @@
 				5614E96F251E210700B3CA27 /* DeviceItem.swift in Sources */,
 				56D7E134251DF9F100DD5B37 /* DatabaseStack.swift in Sources */,
 				564364C92525EA2500905271 /* UserItem+DeviceResponse.swift in Sources */,
+				56C4475E252C409F00B96EDF /* String+Localized.swift in Sources */,
 				56DA60E025237F140005F7CE /* UpdateProfileViewController.swift in Sources */,
 				56DA60ED25237F2F0005F7CE /* UpdateProfileRepository.swift in Sources */,
 				56D7E0A5251C9D5D00DD5B37 /* LightViewModel.swift in Sources */,
@@ -740,10 +751,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		56C446E4252C3C3500B96EDF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56C446E3252C3C3500B96EDF /* en */,
+				56C446E7252C3C3700B96EDF /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		56D7DFF1251C903500DD5B37 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				56D7DFF2251C903500DD5B37 /* Base */,
+				56C446DB252C3B8600B96EDF /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -755,6 +776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -816,6 +838,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

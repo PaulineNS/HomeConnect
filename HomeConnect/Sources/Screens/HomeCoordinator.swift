@@ -16,6 +16,7 @@ final class HomeCoordinator {
     private let screens: Screens
     private var profileNavigationController: UINavigationController?
     private var filterNavigationController: UINavigationController?
+    private var homeViewController: HomeViewController?
 
     // MARK: - Init
 
@@ -36,8 +37,9 @@ final class HomeCoordinator {
     // MARK: - Home
 
     private func showHome() {
-        let viewController = screens.createHome(delegate: self)
-        navigationController.viewControllers = [viewController]
+        homeViewController = screens.createHome(delegate: self)
+        guard let homeViewController = homeViewController else { return }
+        navigationController.viewControllers = [homeViewController]
     }
 
     private func showDevicesDetail(device: DeviceItem) {
@@ -135,6 +137,11 @@ extension HomeCoordinator: ProfileScreenDelegate {
 }
 
 extension HomeCoordinator: FiltersScreenDelegate {
+    func filtersScreenDidSelectSearchButton(device: [DeviceItem]) {
+        homeViewController?.didSelectFilters(deviceItems: device)
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+
     func filtersScreenDidSelectCloseButton() {
         navigationController.dismiss(animated: true, completion: nil)
     }

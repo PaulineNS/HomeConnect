@@ -12,7 +12,7 @@ import Foundation
 extension DeviceItem {
     init?(device: DeviceResponse.Device) {
         guard
-            let deviceId = device.id,
+            let deviceId = device.deviceId,
             let name = device.deviceName,
             let type = ProductType(device: device)
             else { return nil }

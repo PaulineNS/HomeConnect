@@ -15,8 +15,6 @@ final class FiltersViewModel {
     private weak var delegate: FiltersScreenDelegate?
     private var deviceItem: [DeviceItem] = [] {
         didSet {
-            //TODO
-            print("")
         }
     }
 
@@ -35,14 +33,21 @@ final class FiltersViewModel {
     var closeIconName: ((String) -> Void)?
 
     func viewDidLoad() {
-        searchIconName?("Chercher")
+        searchIconName?("filter_search_title".localized)
         closeIconName?("crossClose")
     }
 
-    func searchDeviceWithFilters() {
-        repository.searchDevice { devices in
+    func searchDeviceWithFilters(productType: String,
+                                 mode: String,
+                                 settings: String,
+                                 settingsValue: String) {
+        repository.searchDevice(productType: productType,
+                                mode: mode,
+                                settings: settings,
+                                settingsValue: settingsValue) { devices in
             self.deviceItem = devices
         }
+        delegate?.filtersScreenDidSelectSearchButton(device: deviceItem)
     }
 
     func didSelectCrossButton() {

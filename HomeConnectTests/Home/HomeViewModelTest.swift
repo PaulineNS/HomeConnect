@@ -12,7 +12,7 @@ import XCTest
 
 class MockHomeScreenDelegate: HomeScreenDelegate {
 
-    var alert: AlertType? = nil
+    var alert: AlertType?
     var didShowFilterView = false
     var didShowProfileView = false
 
@@ -59,11 +59,11 @@ class HomeViewModelTests: XCTestCase {
         let expectation2 = self.expectation(description: "Diplayed profileIconName")
 
         viewModel.filterIconName = { name in
-            XCTAssertEqual(name, "Filtrer")
+            XCTAssertEqual(name, "filter_title".localized)
             expectation0.fulfill()
         }
         viewModel.homeTitle = { title in
-            XCTAssertEqual(title, "Mes Objets")
+            XCTAssertEqual(title, "home_title".localized)
             expectation1.fulfill()
         }
         viewModel.profileIconName = { name in

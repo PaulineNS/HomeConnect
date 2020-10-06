@@ -62,7 +62,7 @@ class ProfileViewModelTests: XCTestCase {
             expectation1.fulfill()
         }
         viewModel.userAge = { age in
-            XCTAssertEqual(age, "Né le : \(self.userItem.birthDate ?? "")")
+            XCTAssertEqual(age, "profile_birth_date_title".localized + "\(self.userItem.birthDate ?? "")")
             expectation2.fulfill()
         }
         viewModel.userStreet = { street in

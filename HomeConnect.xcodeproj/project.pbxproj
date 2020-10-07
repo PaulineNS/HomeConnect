@@ -46,6 +46,9 @@
 		56C447E5252CA3DE00B96EDF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C447E4252CA3DE00B96EDF /* UserDefault.swift */; };
 		56C447F8252DBD5E00B96EDF /* FilterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C447F7252DBD5E00B96EDF /* FilterViewModelTests.swift */; };
 		56C447FE252DBD7300B96EDF /* MockFilterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C447FD252DBD7300B96EDF /* MockFilterRepository.swift */; };
+		56C44802252DCE8800B96EDF /* LightRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C44801252DCE8800B96EDF /* LightRepositoryTests.swift */; };
+		56C44806252DD1C300B96EDF /* RollerShutterRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C44805252DD1C300B96EDF /* RollerShutterRepositoryTests.swift */; };
+		56C4480A252DD1D400B96EDF /* HeaterRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C44809252DD1D400B96EDF /* HeaterRepositoryTests.swift */; };
 		56D7DFE4251C903400DD5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFE3251C903400DD5B37 /* AppDelegate.swift */; };
 		56D7DFEE251C903400DD5B37 /* HomeConnect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D7DFEC251C903400DD5B37 /* HomeConnect.xcdatamodeld */; };
 		56D7DFF0251C903500DD5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D7DFEF251C903500DD5B37 /* Assets.xcassets */; };
@@ -140,6 +143,9 @@
 		56C447E4252CA3DE00B96EDF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		56C447F7252DBD5E00B96EDF /* FilterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModelTests.swift; sourceTree = "<group>"; };
 		56C447FD252DBD7300B96EDF /* MockFilterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFilterRepository.swift; sourceTree = "<group>"; };
+		56C44801252DCE8800B96EDF /* LightRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightRepositoryTests.swift; sourceTree = "<group>"; };
+		56C44805252DD1C300B96EDF /* RollerShutterRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RollerShutterRepositoryTests.swift; path = HomeConnectTests/Devices/Light/RollerShutterRepositoryTests.swift; sourceTree = SOURCE_ROOT; };
+		56C44809252DD1D400B96EDF /* HeaterRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaterRepositoryTests.swift; path = HomeConnectTests/Devices/Light/HeaterRepositoryTests.swift; sourceTree = SOURCE_ROOT; };
 		56D7DFE0251C903400DD5B37 /* HomeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D7DFE3251C903400DD5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D7DFED251C903400DD5B37 /* HomeConnect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeConnect.xcdatamodel; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 			children = (
 				5643649A2525CA1100905271 /* MockHeaterRepository.swift */,
 				5643649E2525CA1C00905271 /* HeaterViewModelTests.swift */,
+				56C44809252DD1D400B96EDF /* HeaterRepositoryTests.swift */,
 			);
 			path = Heater;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 			children = (
 				564364902525C50400905271 /* MockRollerShutterRepository.swift */,
 				564364942525C51300905271 /* RollerShutterViewModelTests.swift */,
+				56C44805252DD1C300B96EDF /* RollerShutterRepositoryTests.swift */,
 			);
 			path = RollerShutter;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 			children = (
 				5643646A2525A29300905271 /* LightViewModelTests.swift */,
 				564364742525A2B500905271 /* MockLightRepository.swift */,
+				56C44801252DCE8800B96EDF /* LightRepositoryTests.swift */,
 			);
 			path = Light;
 			sourceTree = "<group>";
@@ -741,6 +750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5643649B2525CA1100905271 /* MockHeaterRepository.swift in Sources */,
+				56C44806252DD1C300B96EDF /* RollerShutterRepositoryTests.swift in Sources */,
 				564364912525C50400905271 /* MockRollerShutterRepository.swift in Sources */,
 				56C447E1252C9DE300B96EDF /* MockDeviceResponse.swift in Sources */,
 				56D7E101251DC27700DD5B37 /* MockHTTPClient.swift in Sources */,
@@ -749,9 +759,11 @@
 				56437A7A2525250900CD5C44 /* MockHomeRepository.swift in Sources */,
 				56437A762525216E00CD5C44 /* HomeRepositoryTests.swift in Sources */,
 				5643646B2525A29300905271 /* LightViewModelTests.swift in Sources */,
+				56C4480A252DD1D400B96EDF /* HeaterRepositoryTests.swift in Sources */,
 				564364A32525CC1400905271 /* MockProfileRepository.swift in Sources */,
 				56C447F8252DBD5E00B96EDF /* FilterViewModelTests.swift in Sources */,
 				564364A72525CC2300905271 /* ProfileViewModelTests.swift in Sources */,
+				56C44802252DCE8800B96EDF /* LightRepositoryTests.swift in Sources */,
 				56437A422524FB1700CD5C44 /* MockDataBaseStack.swift in Sources */,
 				56437A7025251EBD00CD5C44 /* HomeViewModelTest.swift in Sources */,
 				564364752525A2B500905271 /* MockLightRepository.swift in Sources */,

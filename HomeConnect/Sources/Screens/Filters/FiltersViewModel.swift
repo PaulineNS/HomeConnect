@@ -13,10 +13,7 @@ final class FiltersViewModel {
 
     private let repository: FiltersRepositoryType
     private weak var delegate: FiltersScreenDelegate?
-    private var deviceItem: [DeviceItem] = [] {
-        didSet {
-        }
-    }
+    private var deviceItem: [DeviceItem] = []
 
     // MARK: - Initializer
 
@@ -28,7 +25,6 @@ final class FiltersViewModel {
 
     // MARK: - Outputs
 
-    var deviceDisplayed: ((UserItem) -> Void)?
     var searchIconName: ((String) -> Void)?
     var closeIconName: ((String) -> Void)?
 

@@ -52,10 +52,7 @@ final class FiltersDataSource: NSObject,
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ModeFilterTableViewCell.identifier,
                                                            for: indexPath)
                     as? ModeFilterTableViewCell else { return UITableViewCell() }
-            cell.configure()
-            cell.delegate = self
-            cell.modeSwitch.addTarget(cell, action: #selector(cell.didChangeSwitchValue), for: .valueChanged)
-            cell.selectionStyle = .none
+            cell.configure(delegate: self)
             return cell
         default:
             return UITableViewCell()
@@ -69,29 +66,19 @@ final class FiltersDataSource: NSObject,
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TemperatureFilterTableViewCell.identifier,
                                                            for: indexPath)
                     as? TemperatureFilterTableViewCell else { return UITableViewCell() }
-            cell.configure()
-            cell.delegate = self
-            cell.selectionStyle = .none
-            cell.heaterMinusButton.addTarget(cell, action: #selector(cell.didTapMinusButton), for: .touchUpInside)
-            cell.heaterPlusButton.addTarget(cell, action: #selector(cell.didTapPlusButton), for: .touchUpInside)
+            cell.configure(delegate: self)
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PositionFilterTableViewCell.identifier,
                                                            for: indexPath)
                     as? PositionFilterTableViewCell else { return UITableViewCell() }
-            cell.configure()
-            cell.delegate = self
-            cell.selectionStyle = .none
-            cell.positionSlider.addTarget(cell, action: #selector(cell.didMovePositionSlider), for: .valueChanged)
+            cell.configure(delegate: self)
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: IntensityFilterTableViewCell.identifier,
                                                            for: indexPath)
                     as? IntensityFilterTableViewCell else { return UITableViewCell() }
-            cell.configure()
-            cell.delegate = self
-            cell.selectionStyle = .none
-            cell.intensitySlider.addTarget(cell, action: #selector(cell.didMoveIntensitySlider), for: .valueChanged)
+            cell.configure(delegate: self)
             return cell
         default:
             return UITableViewCell()

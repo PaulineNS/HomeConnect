@@ -12,9 +12,12 @@ final class IntensityFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "IntensityFilterTableViewCell"
-    weak var delegate: IntensityFilterTableViewCellDelegate?
 
-    let intensitySlider: UISlider = {
+    // MARK: - Private Properties
+
+    private weak var delegate: IntensityFilterTableViewCellDelegate?
+
+    private let intensitySlider: UISlider = {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 100
@@ -24,15 +27,13 @@ final class IntensityFilterTableViewCell: UITableViewCell {
         return slider
     }()
 
-    // MARK: - Private Properties
-
     private let intensityLabel: UILabel = {
         let label = UILabel()
         label.text = "intensity_filter".localized
         return label
     }()
 
-    let intensitySliderValue: UILabel = {
+    private let intensitySliderValue: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.textAlignment = .center
@@ -45,9 +46,33 @@ final class IntensityFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    //MARK: - Lifecycle
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        intensitySliderValue.text = "0"
+    }
+
     // MARK: - Public Methods
 
-    public func configure() {
+    func configure(delegate: IntensityFilterTableViewCellDelegate?) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Private Methods
+
+    private func setupUI() {
+        selectionStyle = .none
         contentView.addSubview(intensityLabel)
         contentView.addSubview(intensitySliderValue)
         contentView.addSubview(intensitySlider)
@@ -67,12 +92,16 @@ final class IntensityFilterTableViewCell: UITableViewCell {
                                paddingTop: 10,
                                paddingLeft: 50,
                                paddingRight: 50)
+        configureEvents()
+    }
 
+    private func configureEvents() {
+        intensitySlider.addTarget(self, action: #selector(didMoveIntensitySlider), for: .valueChanged)
     }
 
     // MARK: - Selectors
 
-    @objc func didMoveIntensitySlider() {
+    @objc private func didMoveIntensitySlider() {
         let value = Int(intensitySlider.value)
         intensitySliderValue.text = String(value)
         delegate?.didChangeIntensityValue(with: String(value))

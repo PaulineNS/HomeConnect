@@ -35,7 +35,6 @@
 		5686A23B2520B84300176D70 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5686A23A2520B84300176D70 /* UserItem.swift */; };
 		569581282521C8F9005EACA7 /* IntensityFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */; };
 		5695812D2521C914005EACA7 /* ModeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */; };
-		569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */; };
 		569581372521C92D005EACA7 /* PositionFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */; };
 		5695813C2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */; };
 		5695814B2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */; };
@@ -134,7 +133,6 @@
 		5686A23A2520B84300176D70 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityFilterTableViewCell.swift; sourceTree = "<group>"; };
 		5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeFilterTableViewCell.swift; sourceTree = "<group>"; };
-		569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeFilterTableViewCell.swift; sourceTree = "<group>"; };
 		569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionFilterTableViewCell.swift; sourceTree = "<group>"; };
 		5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFilterTableViewCell.swift; sourceTree = "<group>"; };
 		5695814A2521F5B8005EACA7 /* View+AutoLayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AutoLayoutAnchor.swift"; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 				564364DA2526399E00905271 /* FiltersDataSource.swift */,
 				5695813B2521C94F005EACA7 /* TemperatureFilterTableViewCell.swift */,
 				569581362521C92D005EACA7 /* PositionFilterTableViewCell.swift */,
-				569581312521C921005EACA7 /* ProductTypeFilterTableViewCell.swift */,
 				5695812C2521C914005EACA7 /* ModeFilterTableViewCell.swift */,
 				569581272521C8F9005EACA7 /* IntensityFilterTableViewCell.swift */,
 			);
@@ -754,7 +751,6 @@
 				56D7E0BC251C9D9300DD5B37 /* FiltersViewModel.swift in Sources */,
 				56D7E07F251C9CF700DD5B37 /* HomeViewController.swift in Sources */,
 				56D7E0C1251C9D9B00DD5B37 /* ProfileViewModel.swift in Sources */,
-				569581322521C921005EACA7 /* ProductTypeFilterTableViewCell.swift in Sources */,
 				56D7E043251C97CD00DD5B37 /* AppCoordinator.swift in Sources */,
 				564364BD2525E89000905271 /* DeviceItem+DeviceAttributes.swift in Sources */,
 				564364B52525E55F00905271 /* Double+ConvertTimestampToStringDate.swift in Sources */,

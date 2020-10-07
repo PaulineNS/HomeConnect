@@ -12,25 +12,25 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "TemperatureFilterTableViewCell"
-    weak var delegate: TemperatureFilterTableViewCellDelegate?
 
-    let heaterPlusButton: UIButton = {
+    // MARK: - Private Properties
+
+    private weak var delegate: TemperatureFilterTableViewCellDelegate?
+    private var temperature = 0.0
+
+    private let heaterPlusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "plusIcon"), for: .normal)
         return button
     }()
 
-    let heaterMinusButton: UIButton = {
+    private let heaterMinusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "minusIcon"), for: .normal)
         return button
     }()
 
-    // MARK: - Private Properties
-
-    private var temperature = 0.0
-
-    let temperatureLabel: UILabel = {
+    private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.text = "temperature_filter".localized
         return label
@@ -61,23 +61,61 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    //MARK: - Lifecycle
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        temperatureValueLabel.text = "0.0"
+    }
+
     // MARK: - Public Methods
 
-    public func configure() {
+    func configure(delegate: TemperatureFilterTableViewCellDelegate?) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Private Methods
+
+    private func setupUI() {
+        selectionStyle = .none
         contentView.addSubview(temperatureLabel)
         contentView.addSubview(temperatureStackView)
         temperatureLabel.anchor(top: contentView.topAnchor,
-                              left: contentView.leftAnchor,
-                              paddingTop: 10, paddingLeft: 10, height: 30)
+                                left: contentView.leftAnchor,
+                                paddingTop: 10, paddingLeft: 10, height: 30)
         temperatureValueLabel.anchor(width: 50, height: 30)
         temperatureStackView.anchor(top: temperatureLabel.bottomAnchor,
-                               paddingTop: 10)
+                                    paddingTop: 10)
         temperatureStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        configureEvents()
+    }
+
+    private func configureEvents() {
+        heaterMinusButton.addTarget(
+            self,
+            action: #selector(didTapMinusButton),
+            for: .touchUpInside
+        )
+        heaterPlusButton.addTarget(
+            self,
+            action: #selector(didTapPlusButton),
+            for: .touchUpInside
+        )
     }
 
     // MARK: - Selectors
 
-    @objc func didTapPlusButton() {
+    @objc private func didTapPlusButton() {
         guard temperature < 28.0 else { return }
         if temperature < 7.0 {
             temperature = 6.5
@@ -87,7 +125,7 @@ final class TemperatureFilterTableViewCell: UITableViewCell {
         delegate?.didChangeTemperatureValue(with: "\(temperature)")
     }
 
-    @objc func didTapMinusButton() {
+    @objc private func didTapMinusButton() {
         guard temperature > 7.0 else {
             return
         }

@@ -29,8 +29,6 @@ final class FiltersViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.tableFooterView = UIView()
-        table.register(ProductTypeFilterTableViewCell.self,
-                       forCellReuseIdentifier: ProductTypeFilterTableViewCell.identifier)
         table.register(IntensityFilterTableViewCell.self,
                        forCellReuseIdentifier: IntensityFilterTableViewCell.identifier)
         table.register(ModeFilterTableViewCell.self,

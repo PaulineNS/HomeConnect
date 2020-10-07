@@ -12,9 +12,10 @@ final class PositionFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "PositionFilterTableViewCell"
-    weak var delegate: PositionFilterTableViewCellDelegate?
 
     // MARK: - Private Properties
+
+    private weak var delegate: PositionFilterTableViewCellDelegate?
 
     private let positionLabel: UILabel = {
         let label = UILabel()
@@ -22,7 +23,7 @@ final class PositionFilterTableViewCell: UITableViewCell {
         return label
     }()
 
-    let positionSliderValue: UILabel = {
+    private let positionSliderValue: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.textAlignment = .center
@@ -35,7 +36,7 @@ final class PositionFilterTableViewCell: UITableViewCell {
         return label
     }()
 
-    let positionSlider: UISlider = {
+    private let positionSlider: UISlider = {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 100
@@ -45,13 +46,36 @@ final class PositionFilterTableViewCell: UITableViewCell {
         return slider
     }()
 
+    //MARK: - Lifecycle
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        positionSliderValue.text = "0"
+    }
+
     // MARK: - Public Methods
 
-    public func configure() {
+    func configure(delegate: PositionFilterTableViewCellDelegate?) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Private Methods
+
+    private func setupUI() {
+        selectionStyle = .none
         contentView.addSubview(positionLabel)
         contentView.addSubview(positionSliderValue)
         contentView.addSubview(positionSlider)
-
         positionLabel.anchor(top: contentView.topAnchor,
                               left: contentView.leftAnchor,
                               paddingTop: 10, paddingLeft: 10, height: 30)
@@ -68,6 +92,11 @@ final class PositionFilterTableViewCell: UITableViewCell {
                                paddingTop: 10,
                                paddingLeft: 50,
                                paddingRight: 50)
+        configureEvents()
+    }
+
+    private func configureEvents() {
+        positionSlider.addTarget(self, action: #selector(didMovePositionSlider), for: .valueChanged)
     }
 
     // MARK: - Selectors

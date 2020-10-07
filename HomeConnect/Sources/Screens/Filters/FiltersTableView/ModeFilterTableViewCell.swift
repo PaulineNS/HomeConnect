@@ -12,9 +12,10 @@ final class ModeFilterTableViewCell: UITableViewCell {
     // MARK: - Public Properties
 
     static let identifier = "ModeFilterTableViewCell"
-    weak var delegate: ModeFilterTableViewCellDelegate?
 
     // MARK: - Private Properties
+
+    private weak var delegate: ModeFilterTableViewCellDelegate?
 
     private let modeLabel: UILabel = {
         let label = UILabel()
@@ -35,7 +36,7 @@ final class ModeFilterTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    let modeSwitch: UISwitch = {
+    private let modeSwitch: UISwitch = {
         let mySwitch = UISwitch()
         return mySwitch
     }()
@@ -54,9 +55,28 @@ final class ModeFilterTableViewCell: UITableViewCell {
         return label
     }()
 
+    //MARK: - Lifecycle
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+    }
+
     // MARK: - Public Methods
 
-    public func configure() {
+    func configure(delegate: ModeFilterTableViewCellDelegate?) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Private Methods
+
+    private func setupUI() {
+        selectionStyle = .none
         contentView.addSubview(modeLabel)
         contentView.addSubview(modeStackView)
 
@@ -66,9 +86,18 @@ final class ModeFilterTableViewCell: UITableViewCell {
         modeStackView.anchor(top: modeLabel.bottomAnchor,
                           paddingTop: 10)
         modeStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        configureEvents()
     }
 
-    @objc func didChangeSwitchValue() {
+    private func configureEvents() {
+        modeSwitch.addTarget(self,
+                             action: #selector(didChangeSwitchValue),
+                             for: .valueChanged)
+    }
+
+    // MARK: - Selector
+
+    @objc private func didChangeSwitchValue() {
         delegate?.didChangeModeSwitchValue(to: modeSwitch.isOn)
     }
 }

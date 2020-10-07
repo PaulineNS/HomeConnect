@@ -13,9 +13,10 @@ import XCTest
 class RollerShutterViewModelTests: XCTestCase {
 
     let repository = MockRollerShutterRepository()
-    let delegate = MockDevicesScreenDelegate()
 
     func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"
@@ -45,6 +46,8 @@ class RollerShutterViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_RollerPositionChange_Then_ReactiveVariableChanged() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"
@@ -79,6 +82,8 @@ class RollerShutterViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_didPressDeleteIconButton_Then_AlertISDisplayed() {
 
+        let delegate = MockDevicesScreenDelegate()
+
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"
         let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
@@ -92,6 +97,8 @@ class RollerShutterViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_didPressSave_Then_TheViewIdDissmiss() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"

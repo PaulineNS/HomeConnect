@@ -40,9 +40,9 @@ class ProfileViewModelTests: XCTestCase {
 
     let repository = MockProfileRepository()
 
-    let delegate = MockProfileScreenDelegate()
-
     func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockProfileScreenDelegate()
 
         let viewModel = ProfileViewModel(repository: repository, delegate: delegate)
 
@@ -83,6 +83,8 @@ class ProfileViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_didSelectUpdtaeProfileButton_Then_ShowViewController() {
+
+        let delegate = MockProfileScreenDelegate()
 
         let viewModel = ProfileViewModel(repository: repository, delegate: delegate)
 

@@ -38,9 +38,10 @@ class MockHomeScreenDelegate: HomeScreenDelegate {
 class HomeViewModelTests: XCTestCase {
 
     let repository = MockHomeRepository()
-    var delegate = MockHomeScreenDelegate()
 
     func test_Given_ViewModel_When_viewWillAppear_WithNetwork_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockHomeScreenDelegate()
 
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
@@ -68,6 +69,8 @@ class HomeViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_viewWillAppear_WithNetwork_Then_visibleDevicesAreDiplayed() {
 
+        let delegate = MockHomeScreenDelegate()
+
         repository.deviceItem = (mockDeviceResponse?.devices!.map { DeviceItem(device: $0)! })!
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
@@ -85,6 +88,8 @@ class HomeViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_didSelectProfileButton_Then_PopViewController() {
 
+        let delegate = MockHomeScreenDelegate()
+
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
         viewModel.didSelectProfileButton()
@@ -94,6 +99,8 @@ class HomeViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_didSelectFilterButton_Then_PopViewController() {
 
+        let delegate = MockHomeScreenDelegate()
+
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
         viewModel.didSelectFilterButton()
@@ -102,6 +109,8 @@ class HomeViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_didSelectDevice_Then_expectedResult() {
+
+        let delegate = MockHomeScreenDelegate()
 
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 

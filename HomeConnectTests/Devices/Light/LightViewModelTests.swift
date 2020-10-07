@@ -41,9 +41,9 @@ class LightViewModelTests: XCTestCase {
 
     let repository = MockLightRepository()
 
-    let delegate = MockDevicesScreenDelegate()
-
     func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
 
@@ -74,6 +74,8 @@ class LightViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_LightModeChange_Then_ReactiveVariableChanged() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
 
@@ -116,6 +118,8 @@ class LightViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_IntensityChangeToZero_Then_ReactiveVariableChanged() {
 
+        let delegate = MockDevicesScreenDelegate()
+
         let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
 
         let expectation0 = self.expectation(description: "Diplayed lightName")
@@ -156,6 +160,8 @@ class LightViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_IntensityChangeToTen_Then_ReactiveVariableChanged() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         let viewModel = LightViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
 
@@ -198,6 +204,8 @@ class LightViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_didPressDeleteIconButton_Then_AlertISDisplayed() {
 
+        let delegate = MockDevicesScreenDelegate()
+
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"
         let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
@@ -211,6 +219,8 @@ class LightViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_didPressSave_Then_TheViewIdDissmiss() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"

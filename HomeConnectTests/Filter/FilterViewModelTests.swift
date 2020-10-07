@@ -31,9 +31,10 @@ class FiltersViewModelTests: XCTestCase {
 
     let deviceItems: [DeviceItem] = [DeviceItem(device: DeviceMock())!]
     let repository = MockFilterRepository()
-    let delegate = MockFiltersScreenDelegate()
 
     func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockFiltersScreenDelegate()
 
         let viewModel = FiltersViewModel(repository: repository, delegate: delegate)
 
@@ -54,6 +55,8 @@ class FiltersViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_didPressClose_Then_TheViewIsDissmiss() {
 
+        let delegate = MockFiltersScreenDelegate()
+
         let viewModel = FiltersViewModel(repository: repository, delegate: delegate)
 
         viewModel.didSelectCrossButton()
@@ -62,6 +65,8 @@ class FiltersViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_didPressSearchAndDeviceDoNotExist_Then_AlertDisplay() {
+
+        let delegate = MockFiltersScreenDelegate()
 
         let deviceMock = DeviceMock()
         let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]

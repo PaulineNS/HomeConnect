@@ -40,9 +40,9 @@ class UpdateProfileViewModelTests: XCTestCase {
 
     let repository = MockUpdateProfileRepository()
 
-    let delegate = MockUpdateProfileScreenDelegate()
-
     func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockUpdateProfileScreenDelegate()
 
         let viewModel = UpdateProfileViewModel(repository: repository, delegate: delegate)
 
@@ -63,6 +63,8 @@ class UpdateProfileViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_DidSelectSave_Then_DismissViewController() {
+
+        let delegate = MockUpdateProfileScreenDelegate()
 
         let viewModel = UpdateProfileViewModel(repository: repository, delegate: delegate)
 

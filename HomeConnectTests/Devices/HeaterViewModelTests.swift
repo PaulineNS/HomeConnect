@@ -13,9 +13,10 @@ import XCTest
 class HeaterViewModelTests: XCTestCase {
 
     let repository = MockHeaterRepository()
-    let delegate = MockDevicesScreenDelegate()
 
     func test_Given_ViewModel_When_viewWillAppear_Then_ReactiveVariableAreDisplayed() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "Heater"
@@ -50,6 +51,8 @@ class HeaterViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_HeatertModeChange_Then_ReactiveVariableChanged() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "Heater"
@@ -94,6 +97,8 @@ class HeaterViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_PlusButtonPressed_Then_ReactiveVariableChanged() {
 
+        let delegate = MockDevicesScreenDelegate()
+
         var deviceMock = DeviceMock()
         deviceMock.productType = "Heater"
         let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
@@ -132,6 +137,8 @@ class HeaterViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_MinusButtonPressed_Then_ReactiveVariableChanged() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "Heater"
@@ -172,6 +179,8 @@ class HeaterViewModelTests: XCTestCase {
 
     func test_Given_ViewModel_When_didPressDeleteIconButton_Then_AlertISDisplayed() {
 
+        let delegate = MockDevicesScreenDelegate()
+
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"
         let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
@@ -185,6 +194,8 @@ class HeaterViewModelTests: XCTestCase {
     }
 
     func test_Given_ViewModel_When_didPressSave_Then_TheViewIdDissmiss() {
+
+        let delegate = MockDevicesScreenDelegate()
 
         var deviceMock = DeviceMock()
         deviceMock.productType = "RollerShutter"

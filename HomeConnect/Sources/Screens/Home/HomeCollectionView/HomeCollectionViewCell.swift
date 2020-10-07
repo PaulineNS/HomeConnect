@@ -62,17 +62,9 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         viewModel.imageName = { [weak self] name in
             self?.deviceImageView.image = UIImage(named: name)
         }
-        viewModel.backgroundColorName = { [weak self] colorName in
-            switch colorName {
-            case "light":
-                self?.backgroundColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
-            case "heater":
-                self?.backgroundColor = #colorLiteral(red: 0.684643507, green: 0.785309732, blue: 0.172726661, alpha: 1)
-            case "roller":
-                self?.backgroundColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
-            default:
-                return
-            }
+        viewModel.deviceType = { [weak self] type in
+            let palette = ColorPalette.handle(type: type)
+            self?.backgroundColor = palette.backgroundColor
         }
     }
 
@@ -90,5 +82,20 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         deviceImageView.translatesAutoresizingMaskIntoConstraints = false
         deviceImageView.heightAnchor.constraint(equalTo: cellStackView.heightAnchor, multiplier: 1/2).isActive = true
         deviceNameLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+private struct ColorPalette {
+    let backgroundColor: UIColor
+
+    static func handle(type: ProductType) -> ColorPalette {
+        switch type {
+        case .heater:
+            return Self(backgroundColor: #colorLiteral(red: 0.684643507, green: 0.785309732, blue: 0.172726661, alpha: 1))
+        case .light:
+            return Self(backgroundColor: #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1))
+        case .rollerShutter:
+            return Self(backgroundColor: #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1))
+        }
     }
 }

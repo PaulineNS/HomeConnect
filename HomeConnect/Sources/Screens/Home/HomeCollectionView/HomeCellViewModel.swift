@@ -26,20 +26,13 @@ struct HomeCellViewModel {
 
     var deviceName: ((String) -> Void)?
     var imageName: ((String) -> Void)?
-    var backgroundColorName: ((String) -> Void)?
+    var deviceType: ((ProductType) -> Void)?
 
     // MARK: - Outputs
 
     func didUpdateCell() {
         deviceName?(device.name)
         imageName?(device.type.imageName)
-        switch device.type {
-        case .heater:
-            backgroundColorName?("heater")
-        case .light:
-            backgroundColorName?("light")
-        case .rollerShutter:
-            backgroundColorName?("roller")
-        }
+        deviceType?(device.type)
     }
 }

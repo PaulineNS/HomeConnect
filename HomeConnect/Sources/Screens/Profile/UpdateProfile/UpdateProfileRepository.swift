@@ -10,14 +10,7 @@ import Foundation
 protocol UpdateProfileRepositoryType {
 
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void)
-    func updateUser(firstName: String,
-                    lastName: String,
-                    streetNumber: String,
-                    streetName: String,
-                    postalCode: String,
-                    city: String,
-                    country: String,
-                    birthdate: String)
+    func updateUser(userItem: UserItem, birthdate: String)
 }
 
 final class UpdateProfileRepository: UpdateProfileRepositoryType {
@@ -42,22 +35,9 @@ final class UpdateProfileRepository: UpdateProfileRepositoryType {
         completion(userItem)
     }
 
-    func updateUser(firstName: String,
-                    lastName: String,
-                    streetNumber: String,
-                    streetName: String,
-                    postalCode: String,
-                    city: String,
-                    country: String,
-                    birthdate: String) {
-        dataBaseEngine.updateUserEntity(firstName: firstName,
-                                         lastName: lastName,
-                                         streetNumber: streetNumber,
-                                         streetName: streetName,
-                                         postalCode: postalCode,
-                                         city: city,
-                                         country: country,
-                                         birthdate: birthdate)
+    func updateUser(userItem: UserItem, birthdate: String) {
+        dataBaseEngine.updateUserEntity(userItem: userItem,
+                                        birthdate: birthdate)
     }
 
 }

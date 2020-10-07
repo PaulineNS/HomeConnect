@@ -104,24 +104,17 @@ open class DataBaseEngine {
         }
     }
 
-    func updateUserEntity(firstName: String,
-                          lastName: String,
-                          streetNumber: String,
-                          streetName: String,
-                          postalCode: String,
-                          city: String,
-                          country: String,
-                          birthdate: String) {
+    func updateUserEntity(userItem: UserItem, birthdate: String) {
         let request: NSFetchRequest<UserAttributes> = UserAttributes.fetchRequest()
         guard let user = try? managedObjectContext.fetch(request).first else { return }
         let managedObject = user
-        managedObject.setValue(firstName, forKey: "firstName")
-        managedObject.setValue(lastName, forKey: "lastName")
-        managedObject.setValue(streetNumber, forKey: "streetCode")
-        managedObject.setValue(streetName, forKey: "street")
-        managedObject.setValue(postalCode, forKey: "postalCode")
-        managedObject.setValue(city, forKey: "city")
-        managedObject.setValue(country, forKey: "country")
+        managedObject.setValue(userItem.firstName, forKey: "firstName")
+        managedObject.setValue(userItem.lastName, forKey: "lastName")
+        managedObject.setValue(userItem.streetCode, forKey: "streetCode")
+        managedObject.setValue(userItem.street, forKey: "street")
+        managedObject.setValue(String(userItem.postalCode ?? 0), forKey: "postalCode")
+        managedObject.setValue(userItem.city, forKey: "city")
+        managedObject.setValue(userItem.country, forKey: "country")
         managedObject.setValue(birthdate, forKey: "birthDate")
         dataBaseStack.saveContext()
     }

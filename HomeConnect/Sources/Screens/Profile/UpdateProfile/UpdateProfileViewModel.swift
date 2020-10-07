@@ -52,15 +52,22 @@ final class UpdateProfileViewModel {
         }
     }
 
-    func saveNewUserInformations(with newInformatiosn: [String]) {
-        repository.updateUser(firstName: newInformatiosn[0],
-                              lastName: newInformatiosn[1],
-                              streetNumber: newInformatiosn[2],
-                              streetName: newInformatiosn[3],
-                              postalCode: newInformatiosn[4],
-                              city: newInformatiosn[5],
-                              country: newInformatiosn[6],
-                              birthdate: user.first?.birthDate ?? "")
+    func saveNewUserInformations(with newInformations: [String]) {
+        let userItem = UserItem(user: newInformations)
+        repository.updateUser(userItem: userItem, birthdate: user.first?.birthDate ?? "")
         self.delegate?.updateProfileScreenDidSelectSaveButton()
+    }
+}
+
+private extension UserItem {
+    init(user: [String]) {
+        self.firstName = user[0]
+        self.lastName = user[1]
+        self.city = user[5]
+        self.postalCode = Int(user[4])
+        self.street = user[3]
+        self.streetCode = user[2]
+        self.country = user[6]
+        self.birthDate = ""
     }
 }

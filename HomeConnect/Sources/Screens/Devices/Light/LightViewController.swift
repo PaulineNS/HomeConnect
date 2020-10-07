@@ -139,11 +139,12 @@ final class LightViewController: UIViewController {
             self?.navigationItem.title = name
         }
         viewModel.lightMode = { [weak self] mode in
-            guard mode == "ON" else {
+            switch mode {
+            case .off:
                 self?.lightModeSwitch.setOn(false, animated: true)
-                return
+            case .on:
+                self?.lightModeSwitch.setOn(true, animated: true)
             }
-            self?.lightModeSwitch.setOn(true, animated: true)
         }
         viewModel.lightDeleteIconName = { [weak self] name in
             self?.deleteIconName = name

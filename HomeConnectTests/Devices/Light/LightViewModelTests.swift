@@ -57,7 +57,7 @@ class LightViewModelTests: XCTestCase {
             expectation0.fulfill()
         }
         viewModel.lightMode = { mode in
-            XCTAssertEqual(mode, "ON")
+            XCTAssertEqual(mode.rawValue, "ON")
             expectation2.fulfill()
         }
         viewModel.lightIntensity = { intensity in
@@ -91,7 +91,7 @@ class LightViewModelTests: XCTestCase {
         var counter1 = 0
         viewModel.lightMode = { mode in
             if counter1 == 1 {
-                XCTAssertEqual(mode, "OFF")
+                XCTAssertEqual(mode.rawValue, "OFF")
                 expectation2.fulfill()
             }
             counter1+=1
@@ -134,7 +134,7 @@ class LightViewModelTests: XCTestCase {
         var counter1 = 0
         viewModel.lightMode = { mode in
             if counter1 == 1 {
-                XCTAssertEqual(mode, "OFF")
+                XCTAssertEqual(mode.rawValue, "OFF")
                 expectation2.fulfill()
             }
             counter1+=1
@@ -177,7 +177,7 @@ class LightViewModelTests: XCTestCase {
         var counter1 = 0
         viewModel.lightMode = { mode in
             if counter1 == 1 {
-                XCTAssertEqual(mode, "ON")
+                XCTAssertEqual(mode.rawValue, "ON")
                 expectation2.fulfill()
             }
             counter1+=1

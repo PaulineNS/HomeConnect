@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum LightMode: String {
+    case on = "ON"
+    case off = "OFF"
+}
+
 final class LightViewModel {
 
     // MARK: - Private Properties
@@ -15,7 +20,12 @@ final class LightViewModel {
     private var repository: LightRepositoryType
     private weak var delegate: DevicesScreensDelegate?
     private var intensity = 10
-    private var mode = "ON"
+    private var mode: LightMode? = .on {
+        didSet {
+            guard let mode = mode else { return }
+            lightMode?(mode)
+        }
+    }
 
     // MARK: - Initializer
 
@@ -30,7 +40,7 @@ final class LightViewModel {
     // MARK: - Outputs
 
     var lightName: ((String) -> Void)?
-    var lightMode: ((String) -> Void)?
+    var lightMode: ((LightMode) -> Void)?
     var lightIntensity: ((String) -> Void)?
     var lightDeleteIconName: ((String) -> Void)?
     var lightOnSwitchName: ((String) -> Void)?
@@ -63,11 +73,11 @@ final class LightViewModel {
 
     func didChangeLightIntensity(with value: Int) {
         if value == 0 {
-            lightMode?("OFF")
-            mode = "OFF"
+            lightMode?(.off)
+            mode = .off
         } else {
-            lightMode?("ON")
-            mode = "ON"
+            lightMode?(.on)
+            mode = .on
         }
         lightIntensity?("\(value)")
         intensity = value
@@ -75,19 +85,20 @@ final class LightViewModel {
 
     func didChangeModeSwitchValue(withOnvalue: Bool) {
         guard withOnvalue else {
-            lightMode?("OFF")
+            lightMode?(.off)
+            mode = .off
             lightIntensity?("0")
-            mode = "OFF"
             intensity = 0
             return
         }
         lightIntensity?("50")
-        lightMode?("ON")
-        mode = "ON"
+        lightMode?(.on)
+        mode = .on
         intensity = 50
     }
 
     func saveNewDeviceSettings() {
+        guard let mode = mode?.rawValue else { return }
         repository.updateDevice(with: device.idNumber,
                                 mode: mode,
                                 intensity: String(intensity))
@@ -98,12 +109,11 @@ final class LightViewModel {
         switch device.productType {
         case .light(let mode, let intensity):
             self.intensity = Int(intensity) ?? 0
-            self.mode = mode
             if mode == "ON" && intensity != "0" {
-                lightMode?("\(mode)")
+                lightMode?(.on)
                 lightIntensity?("\(intensity)")
             } else {
-                lightMode?("OFF")
+                lightMode?(.off)
                 lightIntensity?("\(intensity)")
             }
         default:

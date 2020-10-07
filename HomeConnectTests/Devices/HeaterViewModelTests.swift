@@ -170,4 +170,32 @@ class HeaterViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
+    func test_Given_ViewModel_When_didPressDeleteIconButton_Then_AlertISDisplayed() {
+
+        var deviceMock = DeviceMock()
+        deviceMock.productType = "RollerShutter"
+        let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
+
+        let viewModel = HeaterViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
+
+        viewModel.didPressDeleteIconButton()
+
+        XCTAssertEqual(delegate.alert, .deleteDevice)
+
+    }
+
+    func test_Given_ViewModel_When_didPressSave_Then_TheViewIdDissmiss() {
+
+        var deviceMock = DeviceMock()
+        deviceMock.productType = "RollerShutter"
+        let deviceItems: [DeviceItem] = [DeviceItem(device: deviceMock)!]
+
+        let viewModel = HeaterViewModel(device: deviceItems.first!, repository: repository, delegate: delegate)
+
+        viewModel.saveNewDeviceSettings()
+
+        XCTAssertEqual(delegate.didLeaveTheViewAfterSave, true)
+
+    }
+
 }

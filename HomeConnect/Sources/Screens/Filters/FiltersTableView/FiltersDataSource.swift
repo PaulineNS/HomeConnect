@@ -113,7 +113,6 @@ final class FiltersDataSource: NSObject,
 extension FiltersDataSource: ModeFilterTableViewCellDelegate {
     func didChangeModeSwitchValue(to value: Bool) {
         dictionnaryOfCells["mode"] = value ? "ON" : "OFF"
-        print(dictionnaryOfCells)
     }
 }
 extension FiltersDataSource: IntensityFilterTableViewCellDelegate {

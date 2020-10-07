@@ -44,14 +44,14 @@ class HomeViewModelTests: XCTestCase {
 
         let viewModel = HomeViewModel(repository: repository, delegate: delegate)
 
-//        let expectation0 = self.expectation(description: "Diplayed filterIconName")
+        let expectation0 = self.expectation(description: "Diplayed filterIconName")
         let expectation1 = self.expectation(description: "Diplayed homeTitle")
         let expectation2 = self.expectation(description: "Diplayed profileIconName")
 
-//        viewModel.filterIconName = { name in
-//            XCTAssertEqual(name, "filter_title".localized)
-//            expectation0.fulfill()
-//        }
+        viewModel.filterIconName = { name in
+            XCTAssertEqual(name, "filter_title".localized)
+            expectation0.fulfill()
+        }
         viewModel.homeTitle = { title in
             XCTAssertEqual(title, "home_title".localized)
             expectation1.fulfill()
@@ -99,6 +99,19 @@ class HomeViewModelTests: XCTestCase {
         viewModel.didSelectFilterButton()
 
         XCTAssertEqual(delegate.didShowFilterView, true)
+    }
+
+    func test_Given_ViewModel_When_didSelectDevice_Then_expectedResult() {
+
+        let viewModel = HomeViewModel(repository: repository, delegate: delegate)
+
+        let deviceItems = (mockDeviceResponse?.devices!.map { DeviceItem(device: $0)! })!
+        repository.deviceItem = deviceItems
+        viewModel.start()
+        viewModel.didSelectDevice(device: deviceItems.first!)
+
+        XCTAssertEqual(delegate.deviceItem, deviceItems.first)
+
     }
 
 }

@@ -14,7 +14,7 @@ class MockHomeRepository: HomeRepositoryType {
 
     var deviceItem: [DeviceItem] = []
     var isSuccess = true
-    var error: Error!
+    var error: HTTPClientError = .missingData
 
     func getDevices(callback: @escaping (Result<[DeviceItem], Error>) -> Void) {
         if isSuccess {

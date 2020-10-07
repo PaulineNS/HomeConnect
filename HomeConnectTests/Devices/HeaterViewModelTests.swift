@@ -34,7 +34,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation0.fulfill()
         }
         viewModel.heaterMode = { mode in
-            XCTAssertEqual(mode, "ON")
+            XCTAssertEqual(mode.rawValue, "ON")
             expectation1.fulfill()
         }
         viewModel.heaterTemperature = { temperature in
@@ -72,7 +72,7 @@ class HeaterViewModelTests: XCTestCase {
         var counter1 = 0
         viewModel.heaterMode = { mode in
             if counter1 == 1 {
-                XCTAssertEqual(mode, "OFF")
+                XCTAssertEqual(mode.rawValue, "OFF")
                 expectation1.fulfill()
             }
             counter1 += 1
@@ -115,7 +115,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation0.fulfill()
         }
         viewModel.heaterMode = { mode in
-            XCTAssertEqual(mode, "ON")
+            XCTAssertEqual(mode.rawValue, "ON")
             expectation1.fulfill()
         }
         var counter = 0
@@ -156,7 +156,7 @@ class HeaterViewModelTests: XCTestCase {
             expectation0.fulfill()
         }
         viewModel.heaterMode = { mode in
-            XCTAssertEqual(mode, "ON")
+            XCTAssertEqual(mode.rawValue, "ON")
             expectation1.fulfill()
         }
         var counter = 0

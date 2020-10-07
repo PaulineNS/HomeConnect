@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum HeaterMode: String {
+    case on = "ON"
+    case off = "OFF"
+}
+
 final class HeaterViewModel {
 
     // MARK: - Private Properties
@@ -15,7 +20,12 @@ final class HeaterViewModel {
     private var repository: HeaterRepositoryType
     private weak var delegate: DevicesScreensDelegate?
     private var temperature = 0.0
-    private var mode = ""
+    private var mode: HeaterMode? = .off {
+        didSet {
+            guard let mode = mode else { return }
+            heaterMode?(mode)
+        }
+    }
 
     // MARK: - Initializer
 
@@ -30,7 +40,7 @@ final class HeaterViewModel {
     // MARK: - Output
 
     var heaterName: ((String) -> Void)?
-    var heaterMode: ((String) -> Void)?
+    var heaterMode: ((HeaterMode) -> Void)?
     var heaterTemperature: ((String) -> Void)?
     var heaterDeleteIconName: ((String) -> Void)?
     var heaterSwitchOnText: ((String) -> Void)?
@@ -69,9 +79,8 @@ final class HeaterViewModel {
         if temperature < 7.0 {
             temperature = 6.5
         }
-        if mode == "OFF"{
-            heaterMode?("ON")
-            mode = "ON"
+        if mode == .off {
+            mode = .on
         }
         temperature += 0.5
         heaterTemperature?("\(temperature) C°")
@@ -82,9 +91,8 @@ final class HeaterViewModel {
             delegate?.devicesScreensShouldDisplayAlert(for: .minimumTemperatureReached)
             return
         }
-        if mode == "OFF"{
-            heaterMode?("ON")
-            mode = "ON"
+        if mode == .off {
+            mode = .on
         }
         temperature -= 0.5
         heaterTemperature?("\(temperature) C°")
@@ -92,19 +100,18 @@ final class HeaterViewModel {
 
     func didChangeModeSwitchValue(withOnvalue: Bool) {
         guard withOnvalue else {
-            heaterMode?("OFF")
             heaterTemperature?("0.0 C°")
             temperature = 0.0
-            mode = "OFF"
+            mode = .off
             return
         }
-        heaterMode?("ON")
         temperature = 14.0
         heaterTemperature?("\(temperature) C°")
-        mode = "ON"
+        mode = .on
     }
 
     func saveNewDeviceSettings() {
+        guard let mode = mode?.rawValue else { return }
         repository.updateDevice(with: device.idNumber,
                                 mode: mode,
                                 temperature: String(temperature))
@@ -116,14 +123,14 @@ final class HeaterViewModel {
     func defineModeAndTemperature(for device: DeviceItem) {
         switch device.productType {
         case .heater(let mode, let temperature):
-            heaterMode?(mode)
-            self.mode = mode
             self.temperature = Double(temperature) ?? 1.1
             guard mode == "ON" else {
+                self.mode = .off
                 heaterTemperature?("0 C°")
                 self.temperature = 0.0
                 return
             }
+            self.mode = .on
             heaterTemperature?("\(temperature) C°")
         default:
             return

@@ -110,7 +110,6 @@ final class HeaterViewController: UIViewController {
         let modeSwitch = UISwitch()
         modeSwitch.onTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
-
         return modeSwitch
     }()
 
@@ -162,11 +161,12 @@ final class HeaterViewController: UIViewController {
             self?.navigationItem.title = name
         }
         viewModel.heaterMode = { [weak self] mode in
-            guard mode == "ON" else {
+            switch mode {
+            case .off:
                 self?.heaterModeSwitch.setOn(false, animated: true)
-                return
+            case .on:
+                self?.heaterModeSwitch.setOn(true, animated: true)
             }
-            self?.heaterModeSwitch.setOn(true, animated: true)
         }
         viewModel.heaterTemperature = { [weak self] temperature in
             self?.temperatureLabel.text = temperature

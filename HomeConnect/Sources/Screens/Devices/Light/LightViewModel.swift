@@ -73,10 +73,8 @@ final class LightViewModel {
 
     func didChangeLightIntensity(with value: Int) {
         if value == 0 {
-            lightMode?(.off)
             mode = .off
         } else {
-            lightMode?(.on)
             mode = .on
         }
         lightIntensity?("\(value)")
@@ -85,14 +83,12 @@ final class LightViewModel {
 
     func didChangeModeSwitchValue(withOnvalue: Bool) {
         guard withOnvalue else {
-            lightMode?(.off)
             mode = .off
             lightIntensity?("0")
             intensity = 0
             return
         }
         lightIntensity?("50")
-        lightMode?(.on)
         mode = .on
         intensity = 50
     }
@@ -110,10 +106,10 @@ final class LightViewModel {
         case .light(let mode, let intensity):
             self.intensity = Int(intensity) ?? 0
             if mode == "ON" && intensity != "0" {
-                lightMode?(.on)
+                self.mode = .on
                 lightIntensity?("\(intensity)")
             } else {
-                lightMode?(.off)
+                self.mode = .off
                 lightIntensity?("\(intensity)")
             }
         default:

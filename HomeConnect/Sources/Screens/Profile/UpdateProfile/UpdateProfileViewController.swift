@@ -42,7 +42,10 @@ class UpdateProfileViewController: UIViewController {
     }()
 
     private let backButtonItem: UIBarButtonItem = {
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "",
+                                         style: .plain,
+                                         target: nil,
+                                         action: nil)
         return backButton
     }()
 

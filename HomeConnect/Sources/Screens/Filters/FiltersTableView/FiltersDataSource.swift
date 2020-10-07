@@ -36,9 +36,11 @@ final class FiltersDataSource: NSObject,
 
         switch indexPath.row {
         case 0:
-            return defineSettingsCell(tableView: tableView, cellForRowAt: indexPath)
+            return defineSettingsCell(tableView: tableView,
+                                      cellForRowAt: indexPath)
         case 1:
-            return defineModeCell(tableView: tableView, cellForRowAt: indexPath)
+            return defineModeCell(tableView: tableView,
+                                  cellForRowAt: indexPath)
 
         default:
         return UITableViewCell()
@@ -91,7 +93,8 @@ final class FiltersDataSource: NSObject,
     }
 
     /// Display the tableView footer depending the number of elements tableView
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
         return tableView.bounds.size.height
     }
 

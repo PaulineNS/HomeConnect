@@ -10,7 +10,8 @@ import Foundation
 protocol UpdateProfileRepositoryType {
 
     func fetchPersistenceUser(completion: @escaping ([UserItem]) -> Void)
-    func updateUser(userItem: UserItem, birthdate: String)
+    func updateUser(userItem: UserItem,
+                    birthdate: String)
 }
 
 final class UpdateProfileRepository: UpdateProfileRepositoryType {
@@ -35,7 +36,8 @@ final class UpdateProfileRepository: UpdateProfileRepositoryType {
         completion(userItem)
     }
 
-    func updateUser(userItem: UserItem, birthdate: String) {
+    func updateUser(userItem: UserItem,
+                    birthdate: String) {
         dataBaseEngine.updateUserEntity(userItem: userItem,
                                         birthdate: birthdate)
     }

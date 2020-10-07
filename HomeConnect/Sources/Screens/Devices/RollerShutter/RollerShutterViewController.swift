@@ -37,7 +37,9 @@ final class RollerShutterViewController: UIViewController {
         slider.tintColor = #colorLiteral(red: 0.9092797041, green: 0.7230312228, blue: 0.3200179338, alpha: 1)
         slider.thumbTintColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
         slider.isContinuous = true
-        slider.addTarget(self, action: #selector(didMovePositionSlider), for: .valueChanged)
+        slider.addTarget(self,
+                         action: #selector(didMovePositionSlider),
+                         for: .valueChanged)
         slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
         return slider
     }()
@@ -52,7 +54,9 @@ final class RollerShutterViewController: UIViewController {
 
     private lazy var rollerShutterSaveButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(didTapSaveButton),
+                         for: .touchUpInside)
         button.backgroundColor = #colorLiteral(red: 0.2540504634, green: 0.4793154001, blue: 0.1733816266, alpha: 1)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
@@ -134,13 +138,16 @@ final class RollerShutterViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = .white
         view.addSubview(rollerShutterSaveButton)
-        rollerShutterSaveButton.anchor(bottom: safeArea.bottomAnchor, paddingBottom: 15, width: 100, height: 60)
+        rollerShutterSaveButton.anchor(bottom: safeArea.bottomAnchor,
+                                       paddingBottom: 15,
+                                       width: 100,
+                                       height: 60)
         rollerShutterSaveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
 
         view.addSubview(rollerShutterPositionSlider)
         rollerShutterPositionSlider.anchor(left: safeArea.leftAnchor,
-                                    right: safeArea.rightAnchor,
-                                    paddingLeft: 20, paddingRight: 20)
+                                           right: safeArea.rightAnchor,
+                                           paddingLeft: 20, paddingRight: 20)
         rollerShutterPositionSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         rollerShutterPositionSlider.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 

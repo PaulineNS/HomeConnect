@@ -48,8 +48,10 @@ final class IntensityFilterTableViewCell: UITableViewCell {
 
     //MARK: - Lifecycle
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle,
+                  reuseIdentifier: String?) {
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
         setupUI()
     }
 
@@ -96,7 +98,9 @@ final class IntensityFilterTableViewCell: UITableViewCell {
     }
 
     private func configureEvents() {
-        intensitySlider.addTarget(self, action: #selector(didMoveIntensitySlider), for: .valueChanged)
+        intensitySlider.addTarget(self,
+                                  action: #selector(didMoveIntensitySlider),
+                                  for: .valueChanged)
     }
 
     // MARK: - Selectors

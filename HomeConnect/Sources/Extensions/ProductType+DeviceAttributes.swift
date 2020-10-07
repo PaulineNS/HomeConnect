@@ -17,13 +17,15 @@ extension ProductType {
                 let mode = device.mode,
                 let temperature = device.temperature
                 else { return nil }
-            self = .heater(mode: mode, temperature: "\(temperature)")
+            self = .heater(mode: mode,
+                           temperature: "\(temperature)")
         case "Light":
         guard
             let mode = device.mode,
             let intensity = device.intensity
             else { return nil }
-        self = .light(mode: mode, intensity: "\(intensity)")
+        self = .light(mode: mode,
+                      intensity: "\(intensity)")
         case "RollerShutter":
         guard
             let position = device.position

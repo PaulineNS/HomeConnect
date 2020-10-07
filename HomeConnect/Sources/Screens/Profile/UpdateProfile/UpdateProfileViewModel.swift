@@ -54,7 +54,8 @@ final class UpdateProfileViewModel {
 
     func saveNewUserInformations(with newInformations: [String]) {
         let userItem = UserItem(user: newInformations)
-        repository.updateUser(userItem: userItem, birthdate: user.first?.birthDate ?? "")
+        repository.updateUser(userItem: userItem,
+                              birthdate: user.first?.birthDate ?? "")
         self.delegate?.updateProfileScreenDidSelectSaveButton()
     }
 }

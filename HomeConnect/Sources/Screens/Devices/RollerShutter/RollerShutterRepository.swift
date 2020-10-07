@@ -9,7 +9,8 @@ import Foundation
 
 protocol RollerShutterRepositoryType {
     func deleteDevice(with deviceId: String)
-    func updateDevice(with deviceId: String, position: String)
+    func updateDevice(with deviceId: String,
+                      position: String)
 }
 
 final class RollerShutterRepository: RollerShutterRepositoryType {
@@ -30,8 +31,10 @@ final class RollerShutterRepository: RollerShutterRepositoryType {
         dataBaseEngine.deleteADevice(with: deviceId)
     }
 
-    func updateDevice(with deviceId: String, position: String) {
-        dataBaseEngine.updateDeviceEntity(for: deviceId, position: position)
+    func updateDevice(with deviceId: String,
+                      position: String) {
+        dataBaseEngine.updateDeviceEntity(for: deviceId,
+                                          position: position)
     }
 
 }

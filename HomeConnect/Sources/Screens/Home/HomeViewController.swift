@@ -17,13 +17,19 @@ final class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
 
     private let collectionView: UICollectionView = {
-        let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+        let collection = UICollectionView(frame: CGRect.zero,
+                                          collectionViewLayout: UICollectionViewLayout())
         collection.backgroundColor = .white
-        collection.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        collection.register(HomeCollectionViewCell.self,
+                            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
-        collection.setCollectionViewLayout(collectionViewFlowLayout, animated: true)
+        collection.setCollectionViewLayout(collectionViewFlowLayout,
+                                           animated: true)
         collectionViewFlowLayout.scrollDirection = .vertical
-        collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 10,
+                                                             left: 10,
+                                                             bottom: 10,
+                                                             right: 10)
         collectionViewFlowLayout.minimumInteritemSpacing = 10
         collectionViewFlowLayout.minimumLineSpacing = 10
         return collection
@@ -38,7 +44,10 @@ final class HomeViewController: UIViewController {
     }()
 
     private let backButtonItem: UIBarButtonItem = {
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "",
+                                         style: .plain,
+                                         target: nil,
+                                         action: nil)
         return backButton
     }()
 

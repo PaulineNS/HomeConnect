@@ -19,7 +19,9 @@ final class LightViewController: UIViewController {
     private lazy var lightModeSwitch: UISwitch = {
         let modeSwitch = UISwitch()
         modeSwitch.onTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
-        modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
+        modeSwitch.addTarget(self,
+                             action: #selector(modeSwitchValueDidChange),
+                             for: .valueChanged)
         return modeSwitch
     }()
 
@@ -44,14 +46,17 @@ final class LightViewController: UIViewController {
         slider.tintColor = #colorLiteral(red: 0.9092797041, green: 0.7230312228, blue: 0.3200179338, alpha: 1)
         slider.thumbTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
         slider.isContinuous = true
-        slider.addTarget(self, action: #selector(didMoveIntensitySlider), for: .valueChanged)
+        slider.addTarget(self,
+                         action: #selector(didMoveIntensitySlider),
+                         for: .valueChanged)
         return slider
     }()
 
     private lazy var modeVieww: UIView = {
         let view = UIView()
         view.addSubview(modeOffLabel)
-        modeOffLabel.anchor(top: view.topAnchor, bottom: view.bottomAnchor)
+        modeOffLabel.anchor(top: view.topAnchor,
+                            bottom: view.bottomAnchor)
         modeOffLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
         view.addSubview(lightModeSwitch)
@@ -229,7 +234,10 @@ final class LightViewController: UIViewController {
         //Mode view
         view.addSubview(modeVieww)
 
-        modeVieww.anchor(top: safeArea.topAnchor, paddingTop: 70, width: 100, height: 30)
+        modeVieww.anchor(top: safeArea.topAnchor,
+                         paddingTop: 70,
+                         width: 100,
+                         height: 30)
         modeVieww.centerXAnchor.constraint(equalTo: lightIntensitySlider.centerXAnchor).isActive = true
     }
 

@@ -19,7 +19,8 @@ final class HeaterViewController: UIViewController {
     private lazy var temperatureVieww: UIView = {
         let view = UIView()
         view.addSubview(heaterMinusButton)
-        heaterMinusButton.anchor(top: view.topAnchor, bottom: view.bottomAnchor)
+        heaterMinusButton.anchor(top: view.topAnchor,
+                                 bottom: view.bottomAnchor)
         heaterMinusButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
         view.addSubview(temperatureLabel)
@@ -32,9 +33,9 @@ final class HeaterViewController: UIViewController {
 
         view.addSubview(heaterPlusButton)
         heaterPlusButton.anchor(top: view.topAnchor,
-                           left: temperatureLabel.rightAnchor,
-                           bottom: view.bottomAnchor,
-                           paddingLeft: 15)
+                                left: temperatureLabel.rightAnchor,
+                                bottom: view.bottomAnchor,
+                                paddingLeft: 15)
         heaterPlusButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
         return view
@@ -43,7 +44,8 @@ final class HeaterViewController: UIViewController {
     private lazy var modeVieww: UIView = {
         let view = UIView()
         view.addSubview(modeOffLabel)
-        modeOffLabel.anchor(top: view.topAnchor, bottom: view.bottomAnchor)
+        modeOffLabel.anchor(top: view.topAnchor,
+                            bottom: view.bottomAnchor)
         modeOffLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
         view.addSubview(heaterModeSwitch)
@@ -79,14 +81,18 @@ final class HeaterViewController: UIViewController {
     private lazy var heaterPlusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "\(heaterPlusButtonImageName)"), for: .normal)
-        button.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(didTapPlusButton),
+                         for: .touchUpInside)
         return button
     }()
 
     private lazy var heaterMinusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "\(heaterMinButtonImageName)"), for: .normal)
-        button.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(didTapMinusButton),
+                         for: .touchUpInside)
         return button
     }()
 
@@ -109,7 +115,9 @@ final class HeaterViewController: UIViewController {
     private lazy var heaterModeSwitch: UISwitch = {
         let modeSwitch = UISwitch()
         modeSwitch.onTintColor = #colorLiteral(red: 0.307313025, green: 0.70265311, blue: 0.7067130804, alpha: 1)
-        modeSwitch.addTarget(self, action: #selector(modeSwitchValueDidChange), for: .valueChanged)
+        modeSwitch.addTarget(self,
+                             action: #selector(modeSwitchValueDidChange),
+                             for: .valueChanged)
         return modeSwitch
     }()
 
@@ -123,7 +131,9 @@ final class HeaterViewController: UIViewController {
 
     private lazy var heaterSaveButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(didTapSaveButton),
+                         for: .touchUpInside)
         button.backgroundColor = #colorLiteral(red: 0.684643507, green: 0.785309732, blue: 0.172726661, alpha: 1)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
@@ -229,15 +239,20 @@ final class HeaterViewController: UIViewController {
 
         view.addSubview(modeVieww)
 
-        modeVieww.anchor(top: safeArea.topAnchor, paddingTop: 70, width: 100, height: 30)
+        modeVieww.anchor(top: safeArea.topAnchor,
+                         paddingTop: 70,
+                         width: 100,
+                         height: 30)
         modeVieww.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         view.addSubview(temperatureVieww)
-        temperatureVieww.anchor(width: 200, height: 80)
+        temperatureVieww.anchor(width: 200,
+                                height: 80)
         temperatureVieww.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
         temperatureVieww.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor).isActive = true
 
-        temperatureLabel.anchor(width: 80, height: 80)
+        temperatureLabel.anchor(width: 80,
+                                height: 80)
         heaterSaveButton.anchor(bottom: safeArea.bottomAnchor,
                                 paddingTop: 15,
                                 paddingBottom: 15,

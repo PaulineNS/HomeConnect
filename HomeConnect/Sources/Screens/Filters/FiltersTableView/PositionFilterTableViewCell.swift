@@ -48,8 +48,10 @@ final class PositionFilterTableViewCell: UITableViewCell {
 
     //MARK: - Lifecycle
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle,
+                  reuseIdentifier: String?) {
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
         setupUI()
     }
 
@@ -96,7 +98,9 @@ final class PositionFilterTableViewCell: UITableViewCell {
     }
 
     private func configureEvents() {
-        positionSlider.addTarget(self, action: #selector(didMovePositionSlider), for: .valueChanged)
+        positionSlider.addTarget(self,
+                                 action: #selector(didMovePositionSlider),
+                                 for: .valueChanged)
     }
 
     // MARK: - Selectors

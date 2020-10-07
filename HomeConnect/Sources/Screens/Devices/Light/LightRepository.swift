@@ -9,7 +9,9 @@ import Foundation
 
 protocol LightRepositoryType {
     func deleteDevice(with deviceId: String)
-    func updateDevice(with deviceId: String, mode: String, intensity: String)
+    func updateDevice(with deviceId: String,
+                      mode: String,
+                      intensity: String)
 }
 
 final class LightRepository: LightRepositoryType {
@@ -30,7 +32,9 @@ final class LightRepository: LightRepositoryType {
         dataBaseEngine.deleteADevice(with: deviceId)
     }
 
-    func updateDevice(with deviceId: String, mode: String, intensity: String) {
+    func updateDevice(with deviceId: String,
+                      mode: String,
+                      intensity: String) {
         dataBaseEngine.updateDeviceEntity(for: deviceId,
                                            mode: mode,
                                            intensity: intensity)

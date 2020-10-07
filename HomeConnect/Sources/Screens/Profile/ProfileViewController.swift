@@ -23,17 +23,22 @@ final class ProfileViewController: UIViewController {
 
         // Profile Image View
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImageView.anchor(top: view.topAnchor, paddingTop: 100, width: 150, height: 150)
+        profileImageView.anchor(top: view.topAnchor,
+                                paddingTop: 100,
+                                width: 150,
+                                height: 150)
 
         // User Name Label
         view.addSubview(nameLabel)
         nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 10)
+        nameLabel.anchor(top: profileImageView.bottomAnchor,
+                         paddingTop: 10)
 
         // User Age Label
         view.addSubview(ageLabel)
         ageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ageLabel.anchor(top: nameLabel.bottomAnchor, paddingTop: 4)
+        ageLabel.anchor(top: nameLabel.bottomAnchor,
+                        paddingTop: 4)
 
         return view
     }()
@@ -97,7 +102,10 @@ final class ProfileViewController: UIViewController {
     }()
 
     private let backButtonItem: UIBarButtonItem = {
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "",
+                                         style: .plain,
+                                         target: nil,
+                                         action: nil)
         return backButton
     }()
 
